@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="KPP_Alpha1.dbClass">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAEAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>dbClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.EditClass">
+    <Position X="3.25" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AASSAQAAAAAQgQAAkCIAACAAwAFQAAAAAAYBAAAAYEA=</HashCode>
+      <FileName>EditClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.form_Main">
+    <Position X="7.5" Y="4" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AUiQAAgygDAQAKDACASBQoECEAVAAkggQpoEQAGgSAM=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.form_Korisnici">
+    <Position X="7.5" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEAmgAEAACAQBAQAAECAAAACAAACIAAaAAIBABBAAAA=</HashCode>
+      <FileName>Korisnici.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.form_KPP">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAQgAAIAACoQBBWAYUCQICRDAAAQIAAKAQAgEABCIgA=</HashCode>
+      <FileName>KPP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.KPPeditClass">
+    <Position X="3.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAABAQAAAAABQAAAAgBAACAAAAJAAAAAAAAAA=</HashCode>
+      <FileName>KPPeditClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.form_Mjesta">
+    <Position X="5" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQkgCgIICQYJAUAUMCEAAAiwAAAAAECBQIAAkBAQEM=</HashCode>
+      <FileName>Mjesta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.form_Odjeli">
+    <Position X="5" Y="5.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEAggAAAACAQBEAAAEqAAAACIAgCIAACAAIAABBAAAA=</HashCode>
+      <FileName>Odjeli.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KPP_Alpha1.form_Posiljatelji">
+    <Position X="0.5" Y="5.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AEQsgAAAAKAQBEEAQECACgASAAACIAACAAIAAhBAQAA=</HashCode>
+      <FileName>Posiljatelji.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
