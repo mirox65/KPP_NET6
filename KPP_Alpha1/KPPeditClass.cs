@@ -13,7 +13,6 @@ namespace KPP_Alpha1
         dbClass dbc = new dbClass();
                 
         public int KnjigaID { get; set; }
-        public int BrojPosiljke { get; set; }
         public string DatumPrimitka { get; set; }
         public string Pismeno { get; set; }
         public string Brojcano { get; set; }
