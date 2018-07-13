@@ -20,6 +20,8 @@ namespace KPP_Alpha1
         public string UnosError = "Unos nije napravljen!";
         public string IdError = "ID stavke nije prondađen!";
 
+        //ovaj će biti s novim menijem
+
         public DataTable Select(string Dbs)
         {
             OleDbConnection conn = new OleDbConnection(conn_string);
