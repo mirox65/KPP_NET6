@@ -17,6 +17,7 @@ namespace KPP_Alpha1
         dbClass dbc = new dbClass();
         KPPeditClass uredi = new KPPeditClass();
         EditClass EditIt = new EditClass();
+        
 
         public string _sifra { get; set; }
         public string TrazeniID { get; set; }
