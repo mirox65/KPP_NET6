@@ -19,6 +19,7 @@ namespace KPP_Alpha1
         public string IzmjenaError = "Izmjena nije izvršena!";
         public string UnosError = "Unos nije napravljen!";
         public string IdError = "ID stavke nije prondađen!";
+        //test login forme
 
         public DataTable Select(string Dbs)
         {
