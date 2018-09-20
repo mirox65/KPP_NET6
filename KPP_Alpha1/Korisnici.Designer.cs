@@ -39,6 +39,10 @@
             this.lbl_uredi = new System.Windows.Forms.Button();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
+            this.txt_korIme = new System.Windows.Forms.TextBox();
+            this.txt_lozinka = new System.Windows.Forms.TextBox();
+            this.lbl_lozinka = new System.Windows.Forms.Label();
+            this.lbl_korisnicko_ime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_korisnik)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +52,7 @@
             this.lbl_id_korisnik.AutoSize = true;
             this.lbl_id_korisnik.Location = new System.Drawing.Point(12, 29);
             this.lbl_id_korisnik.Name = "lbl_id_korisnik";
-            this.lbl_id_korisnik.Size = new System.Drawing.Size(31, 23);
+            this.lbl_id_korisnik.Size = new System.Drawing.Size(26, 19);
             this.lbl_id_korisnik.TabIndex = 0;
             this.lbl_id_korisnik.Text = "ID:";
             // 
@@ -58,7 +62,7 @@
             this.lbl_ime_korisnik.AutoSize = true;
             this.lbl_ime_korisnik.Location = new System.Drawing.Point(12, 81);
             this.lbl_ime_korisnik.Name = "lbl_ime_korisnik";
-            this.lbl_ime_korisnik.Size = new System.Drawing.Size(43, 23);
+            this.lbl_ime_korisnik.Size = new System.Drawing.Size(35, 19);
             this.lbl_ime_korisnik.TabIndex = 1;
             this.lbl_ime_korisnik.Text = "Ime:";
             // 
@@ -68,7 +72,7 @@
             this.lbl_prezime_korisnik.AutoSize = true;
             this.lbl_prezime_korisnik.Location = new System.Drawing.Point(12, 133);
             this.lbl_prezime_korisnik.Name = "lbl_prezime_korisnik";
-            this.lbl_prezime_korisnik.Size = new System.Drawing.Size(75, 23);
+            this.lbl_prezime_korisnik.Size = new System.Drawing.Size(60, 19);
             this.lbl_prezime_korisnik.TabIndex = 2;
             this.lbl_prezime_korisnik.Text = "Prezime:";
             // 
@@ -79,7 +83,7 @@
             this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_id.Name = "txt_id";
             this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 30);
+            this.txt_id.Size = new System.Drawing.Size(105, 26);
             this.txt_id.TabIndex = 1;
             this.txt_id.TabStop = false;
             // 
@@ -89,7 +93,7 @@
             this.txt_ime.Location = new System.Drawing.Point(148, 77);
             this.txt_ime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_ime.Name = "txt_ime";
-            this.txt_ime.Size = new System.Drawing.Size(210, 30);
+            this.txt_ime.Size = new System.Drawing.Size(178, 26);
             this.txt_ime.TabIndex = 1;
             // 
             // txt_prezime
@@ -98,7 +102,7 @@
             this.txt_prezime.Location = new System.Drawing.Point(148, 129);
             this.txt_prezime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_prezime.Name = "txt_prezime";
-            this.txt_prezime.Size = new System.Drawing.Size(210, 30);
+            this.txt_prezime.Size = new System.Drawing.Size(178, 26);
             this.txt_prezime.TabIndex = 2;
             // 
             // dgv_korisnik
@@ -143,7 +147,7 @@
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_pretrazivanje.Location = new System.Drawing.Point(148, 181);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 30);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 26);
             this.txt_pretrazivanje.TabIndex = 10;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -154,16 +158,58 @@
             this.lbl_pretrazivanje.AutoSize = true;
             this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 185);
             this.lbl_pretrazivanje.Name = "lbl_pretrazivanje";
-            this.lbl_pretrazivanje.Size = new System.Drawing.Size(112, 23);
+            this.lbl_pretrazivanje.Size = new System.Drawing.Size(90, 19);
             this.lbl_pretrazivanje.TabIndex = 11;
             this.lbl_pretrazivanje.Text = "Pretraživanje:";
             // 
+            // txt_korIme
+            // 
+            this.txt_korIme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_korIme.Location = new System.Drawing.Point(470, 77);
+            this.txt_korIme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_korIme.Name = "txt_korIme";
+            this.txt_korIme.Size = new System.Drawing.Size(178, 26);
+            this.txt_korIme.TabIndex = 12;
+            // 
+            // txt_lozinka
+            // 
+            this.txt_lozinka.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_lozinka.Location = new System.Drawing.Point(470, 129);
+            this.txt_lozinka.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_lozinka.Name = "txt_lozinka";
+            this.txt_lozinka.Size = new System.Drawing.Size(178, 26);
+            this.txt_lozinka.TabIndex = 13;
+            // 
+            // lbl_lozinka
+            // 
+            this.lbl_lozinka.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_lozinka.AutoSize = true;
+            this.lbl_lozinka.Location = new System.Drawing.Point(346, 133);
+            this.lbl_lozinka.Name = "lbl_lozinka";
+            this.lbl_lozinka.Size = new System.Drawing.Size(58, 19);
+            this.lbl_lozinka.TabIndex = 15;
+            this.lbl_lozinka.Text = "Lozinka:";
+            // 
+            // lbl_korisnicko_ime
+            // 
+            this.lbl_korisnicko_ime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_korisnicko_ime.AutoSize = true;
+            this.lbl_korisnicko_ime.Location = new System.Drawing.Point(346, 81);
+            this.lbl_korisnicko_ime.Name = "lbl_korisnicko_ime";
+            this.lbl_korisnicko_ime.Size = new System.Drawing.Size(100, 19);
+            this.lbl_korisnicko_ime.TabIndex = 14;
+            this.lbl_korisnicko_ime.Text = "Korisničko ime:";
+            // 
             // form_Korisnici
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.lbl_lozinka);
+            this.Controls.Add(this.lbl_korisnicko_ime);
+            this.Controls.Add(this.txt_lozinka);
+            this.Controls.Add(this.txt_korIme);
             this.Controls.Add(this.lbl_pretrazivanje);
             this.Controls.Add(this.txt_pretrazivanje);
             this.Controls.Add(this.lbl_uredi);
@@ -199,5 +245,9 @@
         private System.Windows.Forms.Button lbl_uredi;
         private System.Windows.Forms.TextBox txt_pretrazivanje;
         private System.Windows.Forms.Label lbl_pretrazivanje;
+        private System.Windows.Forms.TextBox txt_korIme;
+        private System.Windows.Forms.TextBox txt_lozinka;
+        private System.Windows.Forms.Label lbl_lozinka;
+        private System.Windows.Forms.Label lbl_korisnicko_ime;
     }
 }

@@ -40,7 +40,7 @@ namespace KPP_Alpha1
 
         private void lbl_dodaj_Click(object sender, EventArgs e)
         {
-            if (txt_ime.Text == "" | txt_prezime.Text == "")
+            if (txt_ime.Text == "" | txt_prezime.Text == "" | txt_korIme.Text =="" |txt_lozinka.Text=="")
             {
                 if (txt_ime.Text == "")
                 {
