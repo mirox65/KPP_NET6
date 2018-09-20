@@ -11,17 +11,27 @@ namespace KPP_Alpha1
     class EditClass
     {
         dbClass dbc = new dbClass();
-
+        //Get i seteri
+        //Get, seteri za mjesto
         public int idMjesto { get; set; }
         public string Ptt { get; set; }
         public string Mjesto { get; set; }
         public int idZupaija { get; set; }
         public int secKey { get; set; }
+
+        //Get, seteri za odjel
         public string NazivOdjela { get; set; }
         public int OdjelId { get; set; }
+
+        //Get, seteri za korisnika
         public int KorisnikId { get; set; }
         public string KorisnikIme { get; set; }
         public string KorisnikPrezime { get; set; }
+        public string KorisnikKorisnicko { get; set; }
+        public string KorisnikLozinka { get; set; }
+        public string KorisnikUloga { get; set; }
+
+        //Get. seteri za Posiljatelja
         public int PosiljateljId { get; set; }
         public string PosiljateljNaziv { get; set; }
         public int PosiljateljMjesto { get; set; }
@@ -189,11 +199,14 @@ namespace KPP_Alpha1
 
             try
             {
-                string Unos = "INSERT INTO korisnici(ime, prezime) VALUES(@ime, @prezime);";
+                string Unos = "INSERT INTO korisnici(Ime, Prezime, KorisnickoIme, Lozinka, Uloga) VALUES(@Ime, @Prezime, @KorisnickoIme, @Lozinka, @Uloga)";
 
                 OleDbCommand cmd = new OleDbCommand(Unos, conn);
-                cmd.Parameters.AddWithValue("@ime", e.KorisnikIme);
-                cmd.Parameters.AddWithValue("@prezime", e.KorisnikPrezime);
+                cmd.Parameters.AddWithValue("@Ime", e.KorisnikIme);
+                cmd.Parameters.AddWithValue("@Prezime", e.KorisnikPrezime);
+                cmd.Parameters.AddWithValue("@KorisnickoIme", e.KorisnikKorisnicko);
+                cmd.Parameters.AddWithValue("@Lozinka", e.KorisnikLozinka);
+                cmd.Parameters.AddWithValue("@Uloga", e.KorisnikUloga);
 
                 conn.Open();
                 int rows = cmd.ExecuteNonQuery();
@@ -224,12 +237,15 @@ namespace KPP_Alpha1
 
             try
             {
-                string Uredi = "UPDATE korisnici SET id=@id, ime=@ime, prezime=@prezime WHERE id=@id;";
+                string Uredi = "UPDATE korisnici SET id=@id, ime=@ime, prezime=@prezime, KorisnickoIme=@KorisnickoIme, Lozinka=@Lozinka, Uloga=@Uloga WHERE id=@id";
 
                 OleDbCommand cmd = new OleDbCommand(Uredi, conn);
                 cmd.Parameters.AddWithValue("@id", e.KorisnikId);
                 cmd.Parameters.AddWithValue("@ime", e.KorisnikIme);
                 cmd.Parameters.AddWithValue("@prezime", e.KorisnikPrezime);
+                cmd.Parameters.AddWithValue("@KorisnickoIme", e.KorisnikKorisnicko);
+                cmd.Parameters.AddWithValue("@Lozinka", e.KorisnikLozinka);
+                cmd.Parameters.AddWithValue("@Uloga", e.KorisnikUloga);
 
                 conn.Open();
                 int rows = cmd.ExecuteNonQuery();

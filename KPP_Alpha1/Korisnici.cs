@@ -19,6 +19,7 @@ namespace KPP_Alpha1
         public form_Korisnici()
         {
             InitializeComponent();
+            cmb_uloga.SelectedIndex = 1;
         }
 
         private void DTUpdate()
@@ -30,7 +31,12 @@ namespace KPP_Alpha1
 
         private void Clear()
         {
-
+            txt_id.Text = "";
+            txt_ime.Text = "";
+            txt_prezime.Text= "";
+            txt_korIme.Text = "";
+            txt_lozinka.Text="";
+            cmb_uloga.SelectedIndex=1;
         }
 
         private void form_Korisnici_Load(object sender, EventArgs e)
@@ -40,7 +46,7 @@ namespace KPP_Alpha1
 
         private void lbl_dodaj_Click(object sender, EventArgs e)
         {
-            if (txt_ime.Text == "" | txt_prezime.Text == "" | txt_korIme.Text =="" |txt_lozinka.Text=="")
+            if (txt_ime.Text == "" | txt_prezime.Text == "" | txt_korIme.Text =="" |txt_lozinka.Text=="" |cmb_uloga.Text=="")
             {
                 if (txt_ime.Text == "")
                 {
@@ -58,12 +64,39 @@ namespace KPP_Alpha1
                 {
                     txt_prezime.BackColor = Color.White;
                 }
+                if (txt_korIme.Text == "")
+                {
+                    txt_korIme.BackColor = Color.LightPink;
+                }
+                else
+                {
+                    txt_korIme.BackColor = Color.White;
+                }
+                if (txt_lozinka.Text == "")
+                {
+                    txt_lozinka.BackColor = Color.LightPink;
+                }
+                else
+                {
+                    txt_lozinka.BackColor = Color.White;
+                }
+                if (cmb_uloga.Text == "")
+                {
+                    cmb_uloga.BackColor = Color.LightPink;
+                }
+                else
+                {
+                    cmb_uloga.BackColor = Color.White;
+                }
                 MessageBox.Show(dbc.PraznaCelija);
             }
             else
             {
                 uredi.KorisnikIme = txt_ime.Text;
                 uredi.KorisnikPrezime = txt_prezime.Text;
+                uredi.KorisnikKorisnicko = txt_korIme.Text;
+                uredi.KorisnikLozinka = txt_lozinka.Text;
+                uredi.KorisnikUloga = cmb_uloga.Text;
 
                 bool success = uredi.InsertKorisnik(uredi);
 
@@ -84,6 +117,9 @@ namespace KPP_Alpha1
             uredi.KorisnikId = int.Parse(txt_id.Text);
             uredi.KorisnikIme = txt_ime.Text;
             uredi.KorisnikPrezime = txt_prezime.Text;
+            uredi.KorisnikKorisnicko = txt_korIme.Text;
+            uredi.KorisnikLozinka = txt_lozinka.Text;
+            uredi.KorisnikUloga = cmb_uloga.Text;
 
             bool success = uredi.UpdateKorsinik(uredi);
 
@@ -104,6 +140,8 @@ namespace KPP_Alpha1
             txt_id.Text = dgv_korisnik.Rows[RowIndex].Cells[0].Value.ToString();
             txt_ime.Text = dgv_korisnik.Rows[RowIndex].Cells[1].Value.ToString();
             txt_prezime.Text = dgv_korisnik.Rows[RowIndex].Cells[2].Value.ToString();
+            txt_korIme.Text = dgv_korisnik.Rows[RowIndex].Cells[3].Value.ToString();
+            cmb_uloga.Text = dgv_korisnik.Rows[RowIndex].Cells[5].Value.ToString();
         }
 
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
