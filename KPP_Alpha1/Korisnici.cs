@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace KPP_Alpha1
 {
@@ -42,6 +43,20 @@ namespace KPP_Alpha1
         private void form_Korisnici_Load(object sender, EventArgs e)
         {
             DTUpdate();
+        }
+        public string NapraviMD5(string Lozinka)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(Lozinka));
+            byte[] rezultat = md5.Hash;
+
+            StringBuilder sb = new StringBuilder();
+
+            for(int i = 0; i < rezultat.Length; i++)
+            {
+                sb.Append(rezultat[i].ToString("x2"));
+            }
+            return sb.ToString();
         }
 
         private void lbl_dodaj_Click(object sender, EventArgs e)
@@ -95,7 +110,7 @@ namespace KPP_Alpha1
                 uredi.KorisnikIme = txt_ime.Text;
                 uredi.KorisnikPrezime = txt_prezime.Text;
                 uredi.KorisnikKorisnicko = txt_korIme.Text;
-                uredi.KorisnikLozinka = txt_lozinka.Text;
+                uredi.KorisnikLozinka = NapraviMD5(txt_lozinka.Text);
                 uredi.KorisnikUloga = cmb_uloga.Text;
 
                 bool success = uredi.InsertKorisnik(uredi);
@@ -118,7 +133,7 @@ namespace KPP_Alpha1
             uredi.KorisnikIme = txt_ime.Text;
             uredi.KorisnikPrezime = txt_prezime.Text;
             uredi.KorisnikKorisnicko = txt_korIme.Text;
-            uredi.KorisnikLozinka = txt_lozinka.Text;
+            uredi.KorisnikLozinka = NapraviMD5(txt_lozinka.Text);
             uredi.KorisnikUloga = cmb_uloga.Text;
 
             bool success = uredi.UpdateKorsinik(uredi);

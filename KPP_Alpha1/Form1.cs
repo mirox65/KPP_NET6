@@ -117,6 +117,7 @@ namespace KPP_Alpha1
         {
             if(ActiveMdiChild != null)
             {
+                //menuStrip1.Visible = false;
                 ActiveMdiChild.Close();
                 form_KPP form = new form_KPP();
                 form.Show();
@@ -125,8 +126,10 @@ namespace KPP_Alpha1
             }
             else
             {
+                //menuStrip1.Visible = false;
                 form_KPP form = new form_KPP();
                 form.Show();
+                form.MainMenuStrip.Visible = false;
                 form.MdiParent = this;
                 form.WindowState = FormWindowState.Maximized;
             }
