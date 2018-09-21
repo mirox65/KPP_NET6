@@ -16,7 +16,8 @@ namespace KPP_Alpha1
         dbClass dbc = new dbClass();
         string por = null; //string za poruke sustava korisniku
         form_Login log = new form_Login();
-                
+        bool LogSuccess = false;
+
         OleDbConnection conn = null;
         
         //O aplikaciji
@@ -193,12 +194,14 @@ namespace KPP_Alpha1
         private void form_Main_Load(object sender, EventArgs e)
         {
             spojiToolStripMenuItem.PerformClick();
-            menuStrip1.Enabled = false;
-            bool success = false;
-
-            if()
-            menuStrip1.Enabled = false;
-            
+            form_Login _log = new form_Login();
+            //_log.MdiParent = this;
+            _log.ShowDialog();
+            /*menuStrip1.Enabled = false;
+            if(LogSuccess == true)
+            {
+                menuStrip1.Enabled = true;
+            }*/            
         }
 
         public void pošiljateljiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,11 +250,6 @@ namespace KPP_Alpha1
         private void oAplikacijiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Aplikacija:\t\t" + appName + "\nVerzija aplikacije:\t" + appVersion + "\nAutor aplikacije:\t" + appAuthor + "\n\n" + aboutApp);
-        }
-
-        private void btn_prijava_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

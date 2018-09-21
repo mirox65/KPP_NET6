@@ -30,7 +30,7 @@ namespace KPP_Alpha1
             OleDbDataReader _reader = cmd.ExecuteReader();
             while (_reader.Read())
             {
-
+                //form_Main.menustrup1.enabled
             }
             return isSuccess;            
         }

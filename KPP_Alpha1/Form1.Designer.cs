@@ -252,7 +252,6 @@
             this.btn_prijava.TabIndex = 4;
             this.btn_prijava.Text = "Prijava";
             this.btn_prijava.UseVisualStyleBackColor = true;
-            this.btn_prijava.Click += new System.EventHandler(this.btn_prijava_Click);
             // 
             // lbl_korIme
             // 
