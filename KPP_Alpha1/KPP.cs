@@ -230,10 +230,5 @@ namespace KPP_Alpha1
                 MessageBox.Show("Unos nije izmjenjen!");
             }
         }
-
-        private void zatvoriKPPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

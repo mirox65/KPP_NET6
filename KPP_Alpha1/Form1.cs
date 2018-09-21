@@ -15,6 +15,7 @@ namespace KPP_Alpha1
     {
         dbClass dbc = new dbClass();
         string por = null; //string za poruke sustava korisniku
+        form_Login log = new form_Login();
                 
         OleDbConnection conn = null;
         
@@ -117,7 +118,6 @@ namespace KPP_Alpha1
         {
             if(ActiveMdiChild != null)
             {
-                //menuStrip1.Visible = false;
                 ActiveMdiChild.Close();
                 form_KPP form = new form_KPP();
                 form.Show();
@@ -126,10 +126,8 @@ namespace KPP_Alpha1
             }
             else
             {
-                //menuStrip1.Visible = false;
                 form_KPP form = new form_KPP();
                 form.Show();
-                form.MainMenuStrip.Visible = false;
                 form.MdiParent = this;
                 form.WindowState = FormWindowState.Maximized;
             }
@@ -195,6 +193,12 @@ namespace KPP_Alpha1
         private void form_Main_Load(object sender, EventArgs e)
         {
             spojiToolStripMenuItem.PerformClick();
+            menuStrip1.Enabled = false;
+            bool success = false;
+
+            if()
+            menuStrip1.Enabled = false;
+            
         }
 
         public void pošiljateljiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -243,6 +247,11 @@ namespace KPP_Alpha1
         private void oAplikacijiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Aplikacija:\t\t" + appName + "\nVerzija aplikacije:\t" + appVersion + "\nAutor aplikacije:\t" + appAuthor + "\n\n" + aboutApp);
+        }
+
+        private void btn_prijava_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
