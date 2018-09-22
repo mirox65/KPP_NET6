@@ -15,8 +15,7 @@ namespace KPP_Alpha1
     {
         dbClass dbc = new dbClass();
         string por = null; //string za poruke sustava korisniku
-        form_Login log = new form_Login();
-        bool LogSuccess = false;
+        form_Login LogFrm = new form_Login();
 
         OleDbConnection conn = null;
         
@@ -194,10 +193,22 @@ namespace KPP_Alpha1
         private void form_Main_Load(object sender, EventArgs e)
         {
             spojiToolStripMenuItem.PerformClick();
-            form_Login _log = new form_Login();
-            //_log.MdiParent = this;
-            _log.ShowDialog();
-            /*menuStrip1.Enabled = false;
+            using (form_Login LogForm = new form_Login())
+            {
+                if(LogFrm.ShowDialog() != DialogResult.OK)
+                {
+                    Application.Exit();
+                    return;
+                }
+            }
+            //bool LogSucces = LogFrm.prijava();
+            //form_Login _log = new form_Login();
+            //_log.ShowDialog();
+            /*if(LogFrm.logsuccess == true)
+            {
+
+            }
+            menuStrip1.Enabled = false;
             if(LogSuccess == true)
             {
                 menuStrip1.Enabled = true;

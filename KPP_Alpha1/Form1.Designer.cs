@@ -49,11 +49,6 @@
             this.oAplikacijiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btn_prijava = new System.Windows.Forms.Button();
-            this.lbl_korIme = new System.Windows.Forms.Label();
-            this.txt_user = new System.Windows.Forms.TextBox();
-            this.lbl_lozinka = new System.Windows.Forms.Label();
-            this.txt_lozinka = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -244,56 +239,10 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // btn_prijava
-            // 
-            this.btn_prijava.Location = new System.Drawing.Point(281, 325);
-            this.btn_prijava.Name = "btn_prijava";
-            this.btn_prijava.Size = new System.Drawing.Size(102, 35);
-            this.btn_prijava.TabIndex = 4;
-            this.btn_prijava.Text = "Prijava";
-            this.btn_prijava.UseVisualStyleBackColor = true;
-            // 
-            // lbl_korIme
-            // 
-            this.lbl_korIme.AutoSize = true;
-            this.lbl_korIme.Location = new System.Drawing.Point(151, 218);
-            this.lbl_korIme.Name = "lbl_korIme";
-            this.lbl_korIme.Size = new System.Drawing.Size(107, 19);
-            this.lbl_korIme.TabIndex = 5;
-            this.lbl_korIme.Text = "Korisnikčko ime:";
-            // 
-            // txt_user
-            // 
-            this.txt_user.Location = new System.Drawing.Point(281, 215);
-            this.txt_user.Name = "txt_user";
-            this.txt_user.Size = new System.Drawing.Size(177, 26);
-            this.txt_user.TabIndex = 6;
-            // 
-            // lbl_lozinka
-            // 
-            this.lbl_lozinka.AutoSize = true;
-            this.lbl_lozinka.Location = new System.Drawing.Point(175, 269);
-            this.lbl_lozinka.Name = "lbl_lozinka";
-            this.lbl_lozinka.Size = new System.Drawing.Size(58, 19);
-            this.lbl_lozinka.TabIndex = 5;
-            this.lbl_lozinka.Text = "Lozinka:";
-            // 
-            // txt_lozinka
-            // 
-            this.txt_lozinka.Location = new System.Drawing.Point(281, 266);
-            this.txt_lozinka.Name = "txt_lozinka";
-            this.txt_lozinka.Size = new System.Drawing.Size(177, 26);
-            this.txt_lozinka.TabIndex = 6;
-            // 
             // form_Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(902, 575);
-            this.Controls.Add(this.txt_lozinka);
-            this.Controls.Add(this.lbl_lozinka);
-            this.Controls.Add(this.txt_user);
-            this.Controls.Add(this.lbl_korIme);
-            this.Controls.Add(this.btn_prijava);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -336,11 +285,6 @@
         private System.Windows.Forms.ToolStripMenuItem bazaPodatakaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spojiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odspojiToolStripMenuItem;
-        private System.Windows.Forms.Button btn_prijava;
-        private System.Windows.Forms.Label lbl_korIme;
-        private System.Windows.Forms.TextBox txt_user;
-        private System.Windows.Forms.Label lbl_lozinka;
-        private System.Windows.Forms.TextBox txt_lozinka;
     }
 }
 

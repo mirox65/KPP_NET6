@@ -14,25 +14,42 @@ namespace KPP_Alpha1
     public partial class form_Login : Form
     {
         dbClass dbc = new dbClass();
+        form_Korisnici Kor = new form_Korisnici();
         
         public form_Login()
         {
             InitializeComponent();
         }
-
-        private bool btn_prijava_Click(object sender, EventArgs e)
+        private void btn_prijava_Click_1(object sender, EventArgs e)
         {
-            bool isSuccess = false;
-            string ole = "SELECT * FROM korisnici WHERE KorisnickoIme='" + txt_korIme + "'and Lozinka='" + txt_lozinka + "'";
-            OleDbConnection conn = new OleDbConnection(dbc.conn_string);
-            OleDbCommand cmd = new OleDbCommand(ole, conn);
-            conn.Open();
-            OleDbDataReader _reader = cmd.ExecuteReader();
-            while (_reader.Read())
+            try
             {
-                //form_Main.menustrup1.enabled
+                string ole = "SELECT * FROM korisnici WHERE KorisnickoIme='" + txt_korIme.Text + "'and Lozinka='" + Kor.NapraviMD5(txt_lozinka.Text) + "'";
+                OleDbConnection conn = new OleDbConnection(dbc.conn_string);
+                OleDbCommand cmd = new OleDbCommand(ole, conn);
+                conn.Open();
+                OleDbDataReader korisnik = cmd.ExecuteReader();
+                if (korisnik.HasRows)
+                {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Korisničko ime ili lozinka nisu točni. Pokušaj ponovno!");
+
+                }
+
+                conn.Close();
             }
-            return isSuccess;            
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error" + ex);
+            }
+        }
+
+        private void btn_izlaz_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

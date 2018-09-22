@@ -69,26 +69,29 @@
             this.txt_lozinka.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.txt_lozinka.Location = new System.Drawing.Point(132, 115);
             this.txt_lozinka.Name = "txt_lozinka";
+            this.txt_lozinka.PasswordChar = '*';
             this.txt_lozinka.Size = new System.Drawing.Size(253, 22);
-            this.txt_lozinka.TabIndex = 1;
+            this.txt_lozinka.TabIndex = 2;
             // 
             // btn_prijava
             // 
             this.btn_prijava.Location = new System.Drawing.Point(132, 153);
             this.btn_prijava.Name = "btn_prijava";
             this.btn_prijava.Size = new System.Drawing.Size(103, 35);
-            this.btn_prijava.TabIndex = 2;
+            this.btn_prijava.TabIndex = 3;
             this.btn_prijava.Text = "Prijava";
             this.btn_prijava.UseVisualStyleBackColor = true;
+            this.btn_prijava.Click += new System.EventHandler(this.btn_prijava_Click_1);
             // 
             // btn_izlaz
             // 
             this.btn_izlaz.Location = new System.Drawing.Point(282, 153);
             this.btn_izlaz.Name = "btn_izlaz";
             this.btn_izlaz.Size = new System.Drawing.Size(103, 35);
-            this.btn_izlaz.TabIndex = 2;
+            this.btn_izlaz.TabIndex = 4;
             this.btn_izlaz.Text = "Izlaz";
             this.btn_izlaz.UseVisualStyleBackColor = true;
+            this.btn_izlaz.Click += new System.EventHandler(this.btn_izlaz_Click_1);
             // 
             // form_Login
             // 
@@ -102,6 +105,7 @@
             this.Controls.Add(this.lbl_lozinka);
             this.Controls.Add(this.lbl_korIme);
             this.Name = "form_Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prijava korisnika";
             this.ResumeLayout(false);
             this.PerformLayout();
