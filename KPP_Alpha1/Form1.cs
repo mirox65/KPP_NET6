@@ -201,6 +201,18 @@ namespace KPP_Alpha1
                     return;
                 }
             }
+            //bool LogSucces = LogFrm.prijava();
+            //form_Login _log = new form_Login();
+            //_log.ShowDialog();
+            /*if(LogFrm.logsuccess == true)
+            {
+
+            }
+            menuStrip1.Enabled = false;
+            if(LogSuccess == true)
+            {
+                menuStrip1.Enabled = true;
+            }*/            
         }
 
         public void pošiljateljiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -222,7 +234,7 @@ namespace KPP_Alpha1
             }
         }
 
-        public void mjestaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mjestaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(ActiveMdiChild != null)
             {
