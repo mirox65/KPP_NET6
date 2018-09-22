@@ -17,14 +17,6 @@ namespace KPP_Alpha1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new form_Main());
-            /*if (LogForm.LogSuccess())
-            {
-                Application.Run(new form_Main());
-            }
-            else
-            {
-                Application.Exit();
-            }*/
         }
     }
 }
