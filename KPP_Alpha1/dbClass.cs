@@ -21,6 +21,9 @@ namespace KPP_Alpha1
         public string IdError = "ID stavke nije prondađen!";
         //test login forme
 
+        //ovaj će biti s novim menijem
+        //zejebava ovaj push pull
+
         public DataTable Select(string Dbs)
         {
             OleDbConnection conn = new OleDbConnection(conn_string);

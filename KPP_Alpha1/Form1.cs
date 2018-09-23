@@ -222,7 +222,7 @@ namespace KPP_Alpha1
             }
         }
 
-        private void mjestaToolStripMenuItem_Click(object sender, EventArgs e)
+        public void mjestaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(ActiveMdiChild != null)
             {

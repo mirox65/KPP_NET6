@@ -102,7 +102,7 @@ namespace KPP_Alpha1
         {
             string Pretraga = txt_pretrazivanje.Text;
             string Dbs = "SELECT * FROM odjeli" +
-                " WHERE naziv LIKE '%" + Pretraga + "%' OR idodjel LIKE '%" + Pretraga + "%'";
+                " WHERE naziv LIKE '%" + Pretraga + "%'";
 
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             OleDbDataAdapter a = new OleDbDataAdapter(Dbs, conn);

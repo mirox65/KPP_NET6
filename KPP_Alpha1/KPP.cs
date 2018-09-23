@@ -17,6 +17,7 @@ namespace KPP_Alpha1
         dbClass dbc = new dbClass();
         KPPeditClass uredi = new KPPeditClass();
         EditClass EditIt = new EditClass();
+        
 
         public string _sifra { get; set; }
         public string TrazeniID { get; set; }
@@ -229,6 +230,38 @@ namespace KPP_Alpha1
             {
                 MessageBox.Show("Unos nije izmjenjen!");
             }
+        }
+
+        private void btn_search_posiljatelj_Click(object sender, EventArgs e)
+        {
+            form_Mjesta form = new form_Mjesta();
+            form.Show();
+            form.MdiParent = this.MdiParent;
+            form.WindowState = FormWindowState.Maximized;
+            this.Close();
+        }
+
+        private void btn_search_odjel_Click(object sender, EventArgs e)
+        {
+            form_Odjeli form = new form_Odjeli();
+            form.Show();
+            form.MdiParent = this.MdiParent;
+            form.WindowState = FormWindowState.Maximized;
+            this.Close();
+        }
+
+        private void btn_search_korisnik_Click(object sender, EventArgs e)
+        {
+            form_Korisnici form = new form_Korisnici();
+            form.Show();
+            form.MdiParent = this.MdiParent;
+            form.WindowState = FormWindowState.Maximized;
+            this.Close();
+        }
+
+        private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_dodaj.PerformClick();
         }
     }
 }
