@@ -12,8 +12,8 @@ namespace KPP_Alpha1
     class dbClass
     {
         //public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\users\\miro\\Dropbox\\OOP2_projekt\\KPP_DB\\KPP.accdb; Persist Security Info = false";
-        //public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=d:\\Dropbox\\OOP2_projekt\\KPP_DB\\KPP.accdb; Persist Security Info = false";
-        public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=R:\\Studenti\\DB\\KPP_DB\\KPP.accdb; Persist Security Info = false";
+        public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=d:\\Dropbox\\OOP2_projekt\\KPP_DB\\KPP.accdb; Persist Security Info = false";
+        //public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=R:\\Studenti\\DB\\KPP_DB\\KPP.accdb; Persist Security Info = false";
 
         public string PraznaCelija = "Čelije ne smiju biti prazne!";
         public string IzmjenaError = "Izmjena nije izvršena!";

@@ -180,5 +180,15 @@ namespace KPP_Alpha1
                 }                
             }            
         }
+
+        private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_dodaj.PerformClick();
+        }
+
+        private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_Uredi.PerformClick();
+        }
     }
 }
