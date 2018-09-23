@@ -72,6 +72,7 @@
             this.txt_lozinka.PasswordChar = '*';
             this.txt_lozinka.Size = new System.Drawing.Size(253, 22);
             this.txt_lozinka.TabIndex = 2;
+            this.txt_lozinka.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
             // btn_prijava
             // 
@@ -104,6 +105,7 @@
             this.Controls.Add(this.txt_korIme);
             this.Controls.Add(this.lbl_lozinka);
             this.Controls.Add(this.lbl_korIme);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "form_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prijava korisnika";

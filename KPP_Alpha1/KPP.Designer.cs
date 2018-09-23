@@ -344,7 +344,7 @@
             // 
             this.spremiIzmjeneToolStripMenuItem.Name = "spremiIzmjeneToolStripMenuItem";
             this.spremiIzmjeneToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.spremiIzmjeneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.spremiIzmjeneToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
             // 
             // form_KPP
@@ -379,6 +379,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_KPP";

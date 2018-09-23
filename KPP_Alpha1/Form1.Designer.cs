@@ -31,8 +31,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otvoriKPPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zatvoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izađiIzAplikacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.urediToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajKorisnikaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajOdjelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,8 +47,6 @@
             this.oAplikacijiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +87,11 @@
             this.otvoriKPPToolStripMenuItem.Click += new System.EventHandler(this.otvoriKPPToolStripMenuItem_Click);
             this.otvoriKPPToolStripMenuItem.MouseHover += new System.EventHandler(this.otvoriKPPToolStripMenuItem_MouseHover);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(200, 6);
+            // 
             // zatvoriToolStripMenuItem
             // 
             this.zatvoriToolStripMenuItem.Name = "zatvoriToolStripMenuItem";
@@ -105,6 +110,11 @@
             this.izađiIzAplikacijeToolStripMenuItem.Click += new System.EventHandler(this.izađiIzAplikacijeToolStripMenuItem_Click);
             this.izađiIzAplikacijeToolStripMenuItem.MouseHover += new System.EventHandler(this.izađiIzAplikacijeToolStripMenuItem_MouseHover);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(200, 6);
+            // 
             // urediToolStripMenuItem1
             // 
             this.urediToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -119,7 +129,7 @@
             // dodajKorisnikaToolStripMenuItem
             // 
             this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
-            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
             this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
             this.dodajKorisnikaToolStripMenuItem.MouseHover += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_MouseHover);
@@ -127,7 +137,7 @@
             // dodajOdjelToolStripMenuItem
             // 
             this.dodajOdjelToolStripMenuItem.Name = "dodajOdjelToolStripMenuItem";
-            this.dodajOdjelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodajOdjelToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.dodajOdjelToolStripMenuItem.Text = "Dodaj odjel";
             this.dodajOdjelToolStripMenuItem.Click += new System.EventHandler(this.dodajOdjelToolStripMenuItem_Click);
             this.dodajOdjelToolStripMenuItem.MouseHover += new System.EventHandler(this.dodajOdjelToolStripMenuItem_MouseHover);
@@ -135,14 +145,14 @@
             // pošiljateljiToolStripMenuItem
             // 
             this.pošiljateljiToolStripMenuItem.Name = "pošiljateljiToolStripMenuItem";
-            this.pošiljateljiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pošiljateljiToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.pošiljateljiToolStripMenuItem.Text = "Dodaj pošiljatelja";
             this.pošiljateljiToolStripMenuItem.Click += new System.EventHandler(this.pošiljateljiToolStripMenuItem_Click);
             // 
             // mjestaToolStripMenuItem
             // 
             this.mjestaToolStripMenuItem.Name = "mjestaToolStripMenuItem";
-            this.mjestaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mjestaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.mjestaToolStripMenuItem.Text = "Dodaj mjesto";
             this.mjestaToolStripMenuItem.Click += new System.EventHandler(this.mjestaToolStripMenuItem_Click);
             // 
@@ -158,7 +168,7 @@
             // spojiToolStripMenuItem
             // 
             this.spojiToolStripMenuItem.Name = "spojiToolStripMenuItem";
-            this.spojiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.spojiToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.spojiToolStripMenuItem.Text = "Spoji";
             this.spojiToolStripMenuItem.Click += new System.EventHandler(this.spojiToolStripMenuItem_Click_1);
             // 
@@ -166,7 +176,7 @@
             // 
             this.odspojiToolStripMenuItem.Enabled = false;
             this.odspojiToolStripMenuItem.Name = "odspojiToolStripMenuItem";
-            this.odspojiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odspojiToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.odspojiToolStripMenuItem.Text = "Odspoji";
             this.odspojiToolStripMenuItem.Click += new System.EventHandler(this.odspojiToolStripMenuItem_Click_1);
             // 
@@ -181,7 +191,7 @@
             // oAplikacijiToolStripMenuItem
             // 
             this.oAplikacijiToolStripMenuItem.Name = "oAplikacijiToolStripMenuItem";
-            this.oAplikacijiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oAplikacijiToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.oAplikacijiToolStripMenuItem.Text = "O aplikaciji";
             this.oAplikacijiToolStripMenuItem.Click += new System.EventHandler(this.oAplikacijiToolStripMenuItem_Click);
             this.oAplikacijiToolStripMenuItem.MouseHover += new System.EventHandler(this.oAplikacijiToolStripMenuItem_MouseHover);
@@ -203,16 +213,6 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(200, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(200, 6);
-            // 
             // form_Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -220,6 +220,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

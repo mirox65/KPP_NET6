@@ -51,5 +51,13 @@ namespace KPP_Alpha1
         {
             Application.Exit();
         }
+
+        private void Enter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                btn_prijava.PerformClick();
+            }
+        }
     }
 }

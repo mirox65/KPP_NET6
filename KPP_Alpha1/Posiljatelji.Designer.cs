@@ -232,6 +232,7 @@
             this.Controls.Add(this.lbl_naziv);
             this.Controls.Add(this.lbl_id_korisnik);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_Posiljatelji";
             this.Text = "Posiljatelji";

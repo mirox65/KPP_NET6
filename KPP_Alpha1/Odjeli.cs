@@ -110,5 +110,15 @@ namespace KPP_Alpha1
             a.Fill(dt);
             dgv_odjel.DataSource = dt;
         }
+
+        private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_dodaj.PerformClick();
+        }
+
+        private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_uredi.PerformClick();
+        }
     }
 }

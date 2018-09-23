@@ -68,10 +68,9 @@
             // btn_uredi
             // 
             this.btn_uredi.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_uredi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_uredi.BackColor = System.Drawing.Color.Gainsboro;
             this.btn_uredi.FlatAppearance.BorderSize = 0;
             this.btn_uredi.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_uredi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_uredi.Location = new System.Drawing.Point(680, 104);
             this.btn_uredi.Name = "btn_uredi";
             this.btn_uredi.Size = new System.Drawing.Size(90, 65);
@@ -84,10 +83,7 @@
             // btn_dodaj
             // 
             this.btn_dodaj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_dodaj.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btn_dodaj.FlatAppearance.BorderSize = 0;
-            this.btn_dodaj.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_dodaj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_dodaj.BackColor = System.Drawing.Color.Gainsboro;
             this.btn_dodaj.Location = new System.Drawing.Point(680, 33);
             this.btn_dodaj.Name = "btn_dodaj";
             this.btn_dodaj.Size = new System.Drawing.Size(90, 65);
@@ -100,7 +96,6 @@
             // 
             this.dgv_odjel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.dgv_odjel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_odjel.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgv_odjel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_odjel.Location = new System.Drawing.Point(12, 208);
             this.dgv_odjel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -178,6 +173,7 @@
             this.dodajNoviUnosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.dodajNoviUnosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.dodajNoviUnosToolStripMenuItem.Text = "Spremi novi unos";
+            this.dodajNoviUnosToolStripMenuItem.Click += new System.EventHandler(this.dodajNoviUnosToolStripMenuItem_Click);
             // 
             // spremiIzmjeneToolStripMenuItem
             // 
@@ -185,12 +181,13 @@
             this.spremiIzmjeneToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.spremiIzmjeneToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
+            this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
             // 
             // form_Odjeli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lbl_pretrazivanje);

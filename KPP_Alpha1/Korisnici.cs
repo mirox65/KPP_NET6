@@ -110,7 +110,7 @@ namespace KPP_Alpha1
                 uredi.KorisnikIme = txt_ime.Text;
                 uredi.KorisnikPrezime = txt_prezime.Text;
                 uredi.KorisnikKorisnicko = txt_korIme.Text;
-                uredi.KorisnikLozinka = NapraviMD5(txt_lozinka.Text)
+                uredi.KorisnikLozinka = NapraviMD5(txt_lozinka.Text);
                 uredi.KorisnikUloga = cmb_uloga.Text;
 
                 bool success = uredi.InsertKorisnik(uredi);
@@ -133,7 +133,7 @@ namespace KPP_Alpha1
             uredi.KorisnikIme = txt_ime.Text;
             uredi.KorisnikPrezime = txt_prezime.Text;
             uredi.KorisnikKorisnicko = txt_korIme.Text;
-            uredi.KorisnikLozinka = NapraviMD5(txt_lozinka.Text)
+            uredi.KorisnikLozinka = NapraviMD5(txt_lozinka.Text);
             uredi.KorisnikUloga = cmb_uloga.Text;
 
             bool success = uredi.UpdateKorsinik(uredi);
@@ -171,5 +171,15 @@ namespace KPP_Alpha1
             a.Fill(dt);
             dgv_korisnik.DataSource = dt;
         }
-     }
+
+        private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_dodaj.PerformClick();
+        }
+
+        private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_uredi.PerformClick();
+        }
+    }
 }

@@ -43,6 +43,12 @@
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmb_uloga = new System.Windows.Forms.ComboBox();
+            this.txt_korIme = new System.Windows.Forms.TextBox();
+            this.txt_lozinka = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_korisnik)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +86,7 @@
             // txt_id
             // 
             this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(148, 39);
+            this.txt_id.Location = new System.Drawing.Point(109, 39);
             this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_id.Name = "txt_id";
             this.txt_id.ReadOnly = true;
@@ -91,7 +97,7 @@
             // txt_ime
             // 
             this.txt_ime.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_ime.Location = new System.Drawing.Point(148, 86);
+            this.txt_ime.Location = new System.Drawing.Point(109, 86);
             this.txt_ime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_ime.Name = "txt_ime";
             this.txt_ime.Size = new System.Drawing.Size(210, 26);
@@ -100,7 +106,7 @@
             // txt_prezime
             // 
             this.txt_prezime.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_prezime.Location = new System.Drawing.Point(148, 133);
+            this.txt_prezime.Location = new System.Drawing.Point(109, 133);
             this.txt_prezime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_prezime.Name = "txt_prezime";
             this.txt_prezime.Size = new System.Drawing.Size(210, 26);
@@ -123,7 +129,7 @@
             // btn_dodaj
             // 
             this.btn_dodaj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_dodaj.Location = new System.Drawing.Point(680, 38);
+            this.btn_dodaj.Location = new System.Drawing.Point(680, 39);
             this.btn_dodaj.Name = "btn_dodaj";
             this.btn_dodaj.Size = new System.Drawing.Size(90, 65);
             this.btn_dodaj.TabIndex = 3;
@@ -146,9 +152,9 @@
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(148, 180);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(109, 180);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 26);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(661, 26);
             this.txt_pretrazivanje.TabIndex = 10;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -200,25 +206,93 @@
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
             this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
             // 
+            // cmb_uloga
+            // 
+            this.cmb_uloga.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmb_uloga.FormattingEnabled = true;
+            this.cmb_uloga.Items.AddRange(new object[] {
+            "Korisnik",
+            "Administrator"});
+            this.cmb_uloga.Location = new System.Drawing.Point(451, 39);
+            this.cmb_uloga.Name = "cmb_uloga";
+            this.cmb_uloga.Size = new System.Drawing.Size(210, 27);
+            this.cmb_uloga.TabIndex = 31;
+            // 
+            // txt_korIme
+            // 
+            this.txt_korIme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_korIme.Location = new System.Drawing.Point(451, 86);
+            this.txt_korIme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_korIme.Name = "txt_korIme";
+            this.txt_korIme.Size = new System.Drawing.Size(210, 26);
+            this.txt_korIme.TabIndex = 1;
+            // 
+            // txt_lozinka
+            // 
+            this.txt_lozinka.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_lozinka.Location = new System.Drawing.Point(451, 133);
+            this.txt_lozinka.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_lozinka.Name = "txt_lozinka";
+            this.txt_lozinka.PasswordChar = '*';
+            this.txt_lozinka.Size = new System.Drawing.Size(210, 26);
+            this.txt_lozinka.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(340, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 19);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Korisničko ime:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(340, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Lozinka:";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(340, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 19);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Tip računa:";
+            // 
             // form_Korisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.cmb_uloga);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lbl_pretrazivanje);
             this.Controls.Add(this.txt_pretrazivanje);
             this.Controls.Add(this.btn_uredi);
             this.Controls.Add(this.btn_dodaj);
             this.Controls.Add(this.dgv_korisnik);
+            this.Controls.Add(this.txt_lozinka);
+            this.Controls.Add(this.txt_korIme);
             this.Controls.Add(this.txt_prezime);
             this.Controls.Add(this.txt_ime);
             this.Controls.Add(this.txt_id);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_prezime_korisnik);
             this.Controls.Add(this.lbl_ime_korisnik);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lbl_id_korisnik);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_Korisnici";
             this.Text = "Korisnici";
@@ -248,5 +322,11 @@
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cmb_uloga;
+        private System.Windows.Forms.TextBox txt_korIme;
+        private System.Windows.Forms.TextBox txt_lozinka;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
