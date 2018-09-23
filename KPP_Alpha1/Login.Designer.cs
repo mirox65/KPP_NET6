@@ -116,7 +116,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prijava korisnika";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TipkaEnter);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Forma_ESC_Press);
             this.ResumeLayout(false);
             this.PerformLayout();
 
