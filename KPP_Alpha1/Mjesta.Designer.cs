@@ -52,7 +52,7 @@
             this.lbl_pretrazivanje.AutoSize = true;
             this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 180);
             this.lbl_pretrazivanje.Name = "lbl_pretrazivanje";
-            this.lbl_pretrazivanje.Size = new System.Drawing.Size(112, 23);
+            this.lbl_pretrazivanje.Size = new System.Drawing.Size(137, 30);
             this.lbl_pretrazivanje.TabIndex = 37;
             this.lbl_pretrazivanje.Text = "Pretraživanje:";
             // 
@@ -61,7 +61,7 @@
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_pretrazivanje.Location = new System.Drawing.Point(148, 176);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 30);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 35);
             this.txt_pretrazivanje.TabIndex = 36;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -109,7 +109,7 @@
             this.txt_Mjesto.Location = new System.Drawing.Point(148, 98);
             this.txt_Mjesto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Mjesto.Name = "txt_Mjesto";
-            this.txt_Mjesto.Size = new System.Drawing.Size(210, 30);
+            this.txt_Mjesto.Size = new System.Drawing.Size(210, 35);
             this.txt_Mjesto.TabIndex = 2;
             // 
             // txt_Ptt
@@ -118,7 +118,7 @@
             this.txt_Ptt.Location = new System.Drawing.Point(148, 59);
             this.txt_Ptt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Ptt.Name = "txt_Ptt";
-            this.txt_Ptt.Size = new System.Drawing.Size(210, 30);
+            this.txt_Ptt.Size = new System.Drawing.Size(210, 35);
             this.txt_Ptt.TabIndex = 1;
             // 
             // txt_id
@@ -128,7 +128,7 @@
             this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_id.Name = "txt_id";
             this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 30);
+            this.txt_id.Size = new System.Drawing.Size(105, 35);
             this.txt_id.TabIndex = 28;
             this.txt_id.TabStop = false;
             // 
@@ -138,7 +138,7 @@
             this.lbl_mjesto.AutoSize = true;
             this.lbl_mjesto.Location = new System.Drawing.Point(12, 102);
             this.lbl_mjesto.Name = "lbl_mjesto";
-            this.lbl_mjesto.Size = new System.Drawing.Size(65, 23);
+            this.lbl_mjesto.Size = new System.Drawing.Size(81, 30);
             this.lbl_mjesto.TabIndex = 31;
             this.lbl_mjesto.Text = "Mjesto:";
             // 
@@ -148,7 +148,7 @@
             this.lbl_ptt.AutoSize = true;
             this.lbl_ptt.Location = new System.Drawing.Point(12, 63);
             this.lbl_ptt.Name = "lbl_ptt";
-            this.lbl_ptt.Size = new System.Drawing.Size(42, 23);
+            this.lbl_ptt.Size = new System.Drawing.Size(52, 30);
             this.lbl_ptt.TabIndex = 29;
             this.lbl_ptt.Text = "PTT:";
             // 
@@ -158,7 +158,7 @@
             this.lbl_id_korisnik.AutoSize = true;
             this.lbl_id_korisnik.Location = new System.Drawing.Point(12, 24);
             this.lbl_id_korisnik.Name = "lbl_id_korisnik";
-            this.lbl_id_korisnik.Size = new System.Drawing.Size(31, 23);
+            this.lbl_id_korisnik.Size = new System.Drawing.Size(39, 30);
             this.lbl_id_korisnik.TabIndex = 26;
             this.lbl_id_korisnik.Text = "ID:";
             // 
@@ -170,7 +170,7 @@
             this.txt_Zupanija.Location = new System.Drawing.Point(148, 137);
             this.txt_Zupanija.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Zupanija.Name = "txt_Zupanija";
-            this.txt_Zupanija.Size = new System.Drawing.Size(210, 30);
+            this.txt_Zupanija.Size = new System.Drawing.Size(210, 35);
             this.txt_Zupanija.TabIndex = 3;
             // 
             // lbl_zupanija
@@ -179,7 +179,7 @@
             this.lbl_zupanija.AutoSize = true;
             this.lbl_zupanija.Location = new System.Drawing.Point(12, 141);
             this.lbl_zupanija.Name = "lbl_zupanija";
-            this.lbl_zupanija.Size = new System.Drawing.Size(76, 23);
+            this.lbl_zupanija.Size = new System.Drawing.Size(93, 30);
             this.lbl_zupanija.TabIndex = 40;
             this.lbl_zupanija.Text = "Županija";
             // 
@@ -189,7 +189,7 @@
             this.txt_secKey.Location = new System.Drawing.Point(463, 137);
             this.txt_secKey.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_secKey.Name = "txt_secKey";
-            this.txt_secKey.Size = new System.Drawing.Size(105, 30);
+            this.txt_secKey.Size = new System.Drawing.Size(105, 35);
             this.txt_secKey.TabIndex = 42;
             this.txt_secKey.TabStop = false;
             // 
@@ -199,13 +199,13 @@
             this.lbl_secKey.AutoSize = true;
             this.lbl_secKey.Location = new System.Drawing.Point(368, 141);
             this.lbl_secKey.Name = "lbl_secKey";
-            this.lbl_secKey.Size = new System.Drawing.Size(65, 23);
+            this.lbl_secKey.Size = new System.Drawing.Size(81, 30);
             this.lbl_secKey.TabIndex = 41;
             this.lbl_secKey.Text = "secKey:";
             // 
             // form_Mjesta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
@@ -229,6 +229,7 @@
             this.Name = "form_Mjesta";
             this.Text = "Mjesta";
             this.Load += new System.EventHandler(this.Form_Mjesta_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Spremi_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_mjesta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
