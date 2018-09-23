@@ -20,7 +20,14 @@ namespace KPP_Alpha1
         {
             InitializeComponent();
         }
-        private void btn_prijava_Click_1(object sender, EventArgs e)
+        private void TipkaEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_prijava.PerformClick();
+            }
+        }
+private void btn_prijava_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -36,9 +43,7 @@ namespace KPP_Alpha1
                 else
                 {
                     MessageBox.Show("Korisničko ime ili lozinka nisu točni. Pokušaj ponovno!");
-
                 }
-
                 conn.Close();
             }
             catch (Exception ex)
@@ -46,10 +51,17 @@ namespace KPP_Alpha1
                 MessageBox.Show("Error" + ex);
             }
         }
-
         private void btn_izlaz_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void polje_lozinka(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btn_prijava.PerformClick();
+            }
         }
     }
 }
