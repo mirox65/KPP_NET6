@@ -42,7 +42,6 @@
             this.txt_Korisnik = new System.Windows.Forms.TextBox();
             this.date_datum = new System.Windows.Forms.DateTimePicker();
             this.date_primitka = new System.Windows.Forms.DateTimePicker();
-            this.btn_search_korisnik = new System.Windows.Forms.Button();
             this.btn_search_posiljatelj = new System.Windows.Forms.Button();
             this.btn_search_odjel = new System.Windows.Forms.Button();
             this.btn_dodaj = new System.Windows.Forms.Button();
@@ -64,7 +63,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(309, 136);
+            this.label2.Location = new System.Drawing.Point(338, 148);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 19);
             this.label2.TabIndex = 1;
@@ -74,7 +73,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(309, 85);
+            this.label3.Location = new System.Drawing.Point(338, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 19);
             this.label3.TabIndex = 2;
@@ -84,17 +83,17 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 85);
+            this.label4.Location = new System.Drawing.Point(16, 84);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 19);
+            this.label4.Size = new System.Drawing.Size(69, 19);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Datum primitka:";
+            this.label4.Text = "Primljeno:";
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(309, 35);
+            this.label5.Location = new System.Drawing.Point(338, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 19);
             this.label5.TabIndex = 4;
@@ -104,7 +103,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(451, 136);
+            this.label6.Location = new System.Drawing.Point(338, 180);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 19);
             this.label6.TabIndex = 5;
@@ -114,7 +113,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 136);
+            this.label7.Location = new System.Drawing.Point(16, 116);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 19);
             this.label7.TabIndex = 6;
@@ -124,7 +123,7 @@
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(451, 85);
+            this.label8.Location = new System.Drawing.Point(338, 116);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 19);
             this.label8.TabIndex = 7;
@@ -135,25 +134,25 @@
             this.txt_Posiljatelj.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_Posiljatelj.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_Posiljatelj.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Posiljatelj.Location = new System.Drawing.Point(309, 56);
+            this.txt_Posiljatelj.Location = new System.Drawing.Point(411, 48);
             this.txt_Posiljatelj.Name = "txt_Posiljatelj";
-            this.txt_Posiljatelj.Size = new System.Drawing.Size(389, 26);
+            this.txt_Posiljatelj.Size = new System.Drawing.Size(237, 26);
             this.txt_Posiljatelj.TabIndex = 1;
             // 
             // txt_Pismeno
             // 
             this.txt_Pismeno.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Pismeno.Location = new System.Drawing.Point(309, 106);
+            this.txt_Pismeno.Location = new System.Drawing.Point(411, 80);
             this.txt_Pismeno.Name = "txt_Pismeno";
-            this.txt_Pismeno.Size = new System.Drawing.Size(129, 26);
+            this.txt_Pismeno.Size = new System.Drawing.Size(237, 26);
             this.txt_Pismeno.TabIndex = 2;
             // 
             // txt_Brojcano
             // 
             this.txt_Brojcano.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Brojcano.Location = new System.Drawing.Point(451, 106);
+            this.txt_Brojcano.Location = new System.Drawing.Point(411, 112);
             this.txt_Brojcano.Name = "txt_Brojcano";
-            this.txt_Brojcano.Size = new System.Drawing.Size(302, 26);
+            this.txt_Brojcano.Size = new System.Drawing.Size(237, 26);
             this.txt_Brojcano.TabIndex = 3;
             // 
             // txt_Odjel
@@ -161,9 +160,9 @@
             this.txt_Odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_Odjel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_Odjel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Odjel.Location = new System.Drawing.Point(451, 157);
+            this.txt_Odjel.Location = new System.Drawing.Point(411, 176);
             this.txt_Odjel.Name = "txt_Odjel";
-            this.txt_Odjel.Size = new System.Drawing.Size(250, 26);
+            this.txt_Odjel.Size = new System.Drawing.Size(237, 26);
             this.txt_Odjel.TabIndex = 5;
             // 
             // txt_Korisnik
@@ -171,9 +170,9 @@
             this.txt_Korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_Korisnik.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_Korisnik.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Korisnik.Location = new System.Drawing.Point(16, 158);
+            this.txt_Korisnik.Location = new System.Drawing.Point(91, 112);
             this.txt_Korisnik.Name = "txt_Korisnik";
-            this.txt_Korisnik.Size = new System.Drawing.Size(220, 26);
+            this.txt_Korisnik.Size = new System.Drawing.Size(176, 26);
             this.txt_Korisnik.TabIndex = 15;
             this.txt_Korisnik.TabStop = false;
             // 
@@ -181,37 +180,25 @@
             // 
             this.date_datum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_datum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_datum.Location = new System.Drawing.Point(309, 157);
+            this.date_datum.Location = new System.Drawing.Point(411, 144);
             this.date_datum.Name = "date_datum";
-            this.date_datum.Size = new System.Drawing.Size(129, 26);
+            this.date_datum.Size = new System.Drawing.Size(120, 26);
             this.date_datum.TabIndex = 4;
             // 
             // date_primitka
             // 
             this.date_primitka.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_primitka.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_primitka.Location = new System.Drawing.Point(16, 107);
+            this.date_primitka.Location = new System.Drawing.Point(91, 80);
             this.date_primitka.Name = "date_primitka";
-            this.date_primitka.Size = new System.Drawing.Size(129, 26);
+            this.date_primitka.Size = new System.Drawing.Size(120, 26);
             this.date_primitka.TabIndex = 16;
             this.date_primitka.TabStop = false;
-            // 
-            // btn_search_korisnik
-            // 
-            this.btn_search_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_search_korisnik.Location = new System.Drawing.Point(243, 156);
-            this.btn_search_korisnik.Name = "btn_search_korisnik";
-            this.btn_search_korisnik.Size = new System.Drawing.Size(46, 30);
-            this.btn_search_korisnik.TabIndex = 17;
-            this.btn_search_korisnik.TabStop = false;
-            this.btn_search_korisnik.Text = "...";
-            this.btn_search_korisnik.UseVisualStyleBackColor = true;
-            this.btn_search_korisnik.Click += new System.EventHandler(this.btn_search_korisnik_Click);
             // 
             // btn_search_posiljatelj
             // 
             this.btn_search_posiljatelj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_search_posiljatelj.Location = new System.Drawing.Point(707, 54);
+            this.btn_search_posiljatelj.Location = new System.Drawing.Point(654, 46);
             this.btn_search_posiljatelj.Name = "btn_search_posiljatelj";
             this.btn_search_posiljatelj.Size = new System.Drawing.Size(46, 30);
             this.btn_search_posiljatelj.TabIndex = 18;
@@ -223,7 +210,7 @@
             // btn_search_odjel
             // 
             this.btn_search_odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_search_odjel.Location = new System.Drawing.Point(707, 155);
+            this.btn_search_odjel.Location = new System.Drawing.Point(654, 174);
             this.btn_search_odjel.Name = "btn_search_odjel";
             this.btn_search_odjel.Size = new System.Drawing.Size(46, 30);
             this.btn_search_odjel.TabIndex = 19;
@@ -259,9 +246,9 @@
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(16, 208);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(125, 208);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(854, 26);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(745, 26);
             this.txt_pretrazivanje.TabIndex = 24;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretraži_TextChanged);
@@ -270,7 +257,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 187);
+            this.label9.Location = new System.Drawing.Point(16, 212);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 19);
             this.label9.TabIndex = 25;
@@ -294,10 +281,10 @@
             // txt_id
             // 
             this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(16, 56);
+            this.txt_id.Location = new System.Drawing.Point(91, 48);
             this.txt_id.Name = "txt_id";
             this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 26);
+            this.txt_id.Size = new System.Drawing.Size(176, 26);
             this.txt_id.TabIndex = 28;
             this.txt_id.TabStop = false;
             // 
@@ -305,7 +292,7 @@
             // 
             this.lbl_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_id.AutoSize = true;
-            this.lbl_id.Location = new System.Drawing.Point(16, 34);
+            this.lbl_id.Location = new System.Drawing.Point(16, 52);
             this.lbl_id.Name = "lbl_id";
             this.lbl_id.Size = new System.Drawing.Size(26, 19);
             this.lbl_id.TabIndex = 27;
@@ -362,7 +349,6 @@
             this.Controls.Add(this.btn_dodaj);
             this.Controls.Add(this.btn_search_odjel);
             this.Controls.Add(this.btn_search_posiljatelj);
-            this.Controls.Add(this.btn_search_korisnik);
             this.Controls.Add(this.date_primitka);
             this.Controls.Add(this.date_datum);
             this.Controls.Add(this.txt_Korisnik);
@@ -408,7 +394,6 @@
         private System.Windows.Forms.TextBox txt_Korisnik;
         private System.Windows.Forms.DateTimePicker date_datum;
         private System.Windows.Forms.DateTimePicker date_primitka;
-        private System.Windows.Forms.Button btn_search_korisnik;
         private System.Windows.Forms.Button btn_search_posiljatelj;
         private System.Windows.Forms.Button btn_search_odjel;
         private System.Windows.Forms.Button btn_dodaj;
