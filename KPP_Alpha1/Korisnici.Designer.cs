@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Korisnici));
             this.lbl_id_korisnik = new System.Windows.Forms.Label();
             this.lbl_ime_korisnik = new System.Windows.Forms.Label();
             this.lbl_prezime_korisnik = new System.Windows.Forms.Label();
@@ -236,6 +237,7 @@
             this.txt_lozinka.PasswordChar = '*';
             this.txt_lozinka.Size = new System.Drawing.Size(210, 26);
             this.txt_lozinka.TabIndex = 2;
+            this.txt_lozinka.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -292,7 +294,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbl_id_korisnik);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_Korisnici";
             this.Text = "Korisnici";

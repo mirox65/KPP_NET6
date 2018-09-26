@@ -41,7 +41,7 @@ namespace KPP_Alpha1
             if (txt_naziv.Text == "")
             {
                 txt_naziv.BackColor = Color.LightPink;
-                MessageBox.Show(dbc.PraznaCelija);
+                MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show(dbc.UnosError);
+                    MessageBox.Show(dbc.UnosError, dbc.CelijaNazivUpozorenje);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace KPP_Alpha1
             if(txt_naziv.Text == "")
             {
                 txt_naziv.BackColor = Color.LightPink;
-                MessageBox.Show(dbc.PraznaCelija);
+                MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);
             }
             else
             {
@@ -86,7 +86,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show(dbc.IzmjenaError);
+                    MessageBox.Show(dbc.IzmjenaError, dbc.CelijaNazivUpozorenje);
                 }
             }            
         }

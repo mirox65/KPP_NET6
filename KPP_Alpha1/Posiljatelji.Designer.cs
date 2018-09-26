@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Posiljatelji));
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.btn_uredi = new System.Windows.Forms.Button();
@@ -232,7 +233,7 @@
             this.Controls.Add(this.lbl_naziv);
             this.Controls.Add(this.lbl_id_korisnik);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_Posiljatelji";
             this.Text = "Posiljatelji";

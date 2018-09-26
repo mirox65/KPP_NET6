@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_KPP));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,15 +56,17 @@
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_kpp)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(338, 148);
+            this.label2.Location = new System.Drawing.Point(356, 148);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 19);
             this.label2.TabIndex = 1;
@@ -73,7 +76,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(338, 84);
+            this.label3.Location = new System.Drawing.Point(356, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 19);
             this.label3.TabIndex = 2;
@@ -83,7 +86,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 84);
+            this.label4.Location = new System.Drawing.Point(18, 116);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 19);
             this.label4.TabIndex = 3;
@@ -93,7 +96,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(338, 52);
+            this.label5.Location = new System.Drawing.Point(356, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 19);
             this.label5.TabIndex = 4;
@@ -103,7 +106,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(338, 180);
+            this.label6.Location = new System.Drawing.Point(356, 180);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 19);
             this.label6.TabIndex = 5;
@@ -113,7 +116,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 116);
+            this.label7.Location = new System.Drawing.Point(18, 148);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 19);
             this.label7.TabIndex = 6;
@@ -123,7 +126,7 @@
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(338, 116);
+            this.label8.Location = new System.Drawing.Point(356, 116);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 19);
             this.label8.TabIndex = 7;
@@ -134,7 +137,7 @@
             this.txt_Posiljatelj.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_Posiljatelj.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_Posiljatelj.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Posiljatelj.Location = new System.Drawing.Point(411, 48);
+            this.txt_Posiljatelj.Location = new System.Drawing.Point(429, 48);
             this.txt_Posiljatelj.Name = "txt_Posiljatelj";
             this.txt_Posiljatelj.Size = new System.Drawing.Size(237, 26);
             this.txt_Posiljatelj.TabIndex = 1;
@@ -142,7 +145,7 @@
             // txt_Pismeno
             // 
             this.txt_Pismeno.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Pismeno.Location = new System.Drawing.Point(411, 80);
+            this.txt_Pismeno.Location = new System.Drawing.Point(429, 80);
             this.txt_Pismeno.Name = "txt_Pismeno";
             this.txt_Pismeno.Size = new System.Drawing.Size(237, 26);
             this.txt_Pismeno.TabIndex = 2;
@@ -150,7 +153,7 @@
             // txt_Brojcano
             // 
             this.txt_Brojcano.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Brojcano.Location = new System.Drawing.Point(411, 112);
+            this.txt_Brojcano.Location = new System.Drawing.Point(429, 112);
             this.txt_Brojcano.Name = "txt_Brojcano";
             this.txt_Brojcano.Size = new System.Drawing.Size(237, 26);
             this.txt_Brojcano.TabIndex = 3;
@@ -160,7 +163,7 @@
             this.txt_Odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_Odjel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_Odjel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Odjel.Location = new System.Drawing.Point(411, 176);
+            this.txt_Odjel.Location = new System.Drawing.Point(429, 176);
             this.txt_Odjel.Name = "txt_Odjel";
             this.txt_Odjel.Size = new System.Drawing.Size(237, 26);
             this.txt_Odjel.TabIndex = 5;
@@ -168,11 +171,10 @@
             // txt_Korisnik
             // 
             this.txt_Korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Korisnik.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txt_Korisnik.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Korisnik.Location = new System.Drawing.Point(91, 112);
+            this.txt_Korisnik.Location = new System.Drawing.Point(127, 144);
             this.txt_Korisnik.Name = "txt_Korisnik";
-            this.txt_Korisnik.Size = new System.Drawing.Size(176, 26);
+            this.txt_Korisnik.ReadOnly = true;
+            this.txt_Korisnik.Size = new System.Drawing.Size(197, 26);
             this.txt_Korisnik.TabIndex = 15;
             this.txt_Korisnik.TabStop = false;
             // 
@@ -180,7 +182,7 @@
             // 
             this.date_datum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_datum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_datum.Location = new System.Drawing.Point(411, 144);
+            this.date_datum.Location = new System.Drawing.Point(429, 144);
             this.date_datum.Name = "date_datum";
             this.date_datum.Size = new System.Drawing.Size(120, 26);
             this.date_datum.TabIndex = 4;
@@ -189,7 +191,7 @@
             // 
             this.date_primitka.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_primitka.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_primitka.Location = new System.Drawing.Point(91, 80);
+            this.date_primitka.Location = new System.Drawing.Point(127, 112);
             this.date_primitka.Name = "date_primitka";
             this.date_primitka.Size = new System.Drawing.Size(120, 26);
             this.date_primitka.TabIndex = 16;
@@ -198,7 +200,7 @@
             // btn_search_posiljatelj
             // 
             this.btn_search_posiljatelj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_search_posiljatelj.Location = new System.Drawing.Point(654, 46);
+            this.btn_search_posiljatelj.Location = new System.Drawing.Point(672, 46);
             this.btn_search_posiljatelj.Name = "btn_search_posiljatelj";
             this.btn_search_posiljatelj.Size = new System.Drawing.Size(46, 30);
             this.btn_search_posiljatelj.TabIndex = 18;
@@ -210,7 +212,7 @@
             // btn_search_odjel
             // 
             this.btn_search_odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_search_odjel.Location = new System.Drawing.Point(654, 174);
+            this.btn_search_odjel.Location = new System.Drawing.Point(672, 174);
             this.btn_search_odjel.Name = "btn_search_odjel";
             this.btn_search_odjel.Size = new System.Drawing.Size(46, 30);
             this.btn_search_odjel.TabIndex = 19;
@@ -246,9 +248,9 @@
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(125, 208);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(127, 176);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(745, 26);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(197, 26);
             this.txt_pretrazivanje.TabIndex = 24;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretraži_TextChanged);
@@ -257,7 +259,7 @@
             // 
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 212);
+            this.label9.Location = new System.Drawing.Point(18, 180);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(90, 19);
             this.label9.TabIndex = 25;
@@ -281,10 +283,10 @@
             // txt_id
             // 
             this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(91, 48);
+            this.txt_id.Location = new System.Drawing.Point(127, 80);
             this.txt_id.Name = "txt_id";
             this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(176, 26);
+            this.txt_id.Size = new System.Drawing.Size(120, 26);
             this.txt_id.TabIndex = 28;
             this.txt_id.TabStop = false;
             // 
@@ -292,7 +294,7 @@
             // 
             this.lbl_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_id.AutoSize = true;
-            this.lbl_id.Location = new System.Drawing.Point(16, 52);
+            this.lbl_id.Location = new System.Drawing.Point(18, 84);
             this.lbl_id.Name = "lbl_id";
             this.lbl_id.Size = new System.Drawing.Size(26, 19);
             this.lbl_id.TabIndex = 27;
@@ -333,6 +335,19 @@
             this.spremiIzmjeneToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.spremiIzmjeneToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
+            this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(22, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(96, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
             // 
             // form_KPP
             // 
@@ -340,6 +355,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(882, 555);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_id);
             this.Controls.Add(this.dgv_kpp);
@@ -365,7 +381,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "form_KPP";
@@ -374,6 +390,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_kpp)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,5 +424,6 @@
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

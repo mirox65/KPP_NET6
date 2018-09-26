@@ -12,17 +12,16 @@ namespace KPP_Alpha1
     class dbClass
     {
         //public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\users\\miro\\Dropbox\\OOP2_projekt\\KPP_DB\\KPP.accdb; Persist Security Info = false";
-        public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=d:\\Dropbox\\OOP2_projekt\\KPP_DB\\KPP.accdb; Persist Security Info = false";
-        //public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=R:\\Studenti\\DB\\KPP_DB\\KPP.accdb; Persist Security Info = false";
+        //public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=d:\\Dropbox\\OOP2_projekt\\KPP_DB\\KPP.accdb; Persist Security Info = false";
+        public String conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=R:\\Studenti\\DB\\KPP_DB\\KPP.accdb; Persist Security Info = false";
 
-        public string PraznaCelija = "Čelije ne smiju biti prazne!";
+        //poruke korisniku kad nešto nije odrađeo kako treba
+        public string PraznaCelija = "Ćelije ne smiju biti prazne!";
+        public string CelijaNazivUpozorenje = "Upozorenje";
+        public string CelijaNazivObavjest = "Obavjest aplikacije";
         public string IzmjenaError = "Izmjena nije izvršena!";
         public string UnosError = "Unos nije napravljen!";
         public string IdError = "ID stavke nije prondađen!";
-        //test login forme
-
-        //ovaj će biti s novim menijem
-        //zejebava ovaj push pull
 
         public DataTable Select(string Dbs)
         {
@@ -38,7 +37,7 @@ namespace KPP_Alpha1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, CelijaNazivObavjest);
             }
             finally
             {

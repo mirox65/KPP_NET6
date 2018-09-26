@@ -7,7 +7,7 @@
     <ProjectGuid>{77557E0E-82AF-4A45-8C57-C973447A277B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>KPP_Alpha1</RootNamespace>
-    <AssemblyName>KPP_Alpha1</AssemblyName>
+    <AssemblyName>KPP</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -30,6 +30,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>notebook %281%29.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,6 +141,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="notebook %281%29.ico" />
+    <Content Include="notebook -s pozadinom.ico" />
+    <Content Include="notebook.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

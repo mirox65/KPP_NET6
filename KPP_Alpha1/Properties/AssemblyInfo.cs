@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KPP_Alpha1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("KPP")]
+[assembly: AssemblyDescription("Knjiga primljenih pošiljki")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KPP_Alpha1")]
+[assembly: AssemblyProduct("KPP")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

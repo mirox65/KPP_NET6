@@ -31,11 +31,12 @@ namespace KPP_Alpha1
                 OleDbDataReader korisnik = cmd.ExecuteReader();
                 if (korisnik.HasRows)
                 {
+                    EditClass.KorisnickoIme = txt_korIme.Text;
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    MessageBox.Show("Korisničko ime ili lozinka nisu točni. Pokušaj ponovno!");
+                    MessageBox.Show("Korisničko ime ili lozinka nisu točni. Pokušaj ponovno!", dbc.CelijaNazivUpozorenje);
 
                 }
 
@@ -43,7 +44,7 @@ namespace KPP_Alpha1
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error" + ex);
+                MessageBox.Show("Error" + ex, dbc.CelijaNazivObavjest);
             }
         }
 

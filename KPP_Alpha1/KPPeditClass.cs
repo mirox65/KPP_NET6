@@ -11,7 +11,7 @@ namespace KPP_Alpha1
     class KPPeditClass
     {
         dbClass dbc = new dbClass();
-                
+        //Geteri i seteri za glavnu formu KPP        
         public int KnjigaID { get; set; }
         public string DatumPrimitka { get; set; }
         public string Pismeno { get; set; }
@@ -20,7 +20,6 @@ namespace KPP_Alpha1
         public string Datum { get; set; }
         public int Idodjel { get; set; }
         public int Idkorisnik { get; set; }
-
 
        public bool Insert(KPPeditClass k)
         {

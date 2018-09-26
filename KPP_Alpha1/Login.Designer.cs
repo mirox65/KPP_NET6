@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Login));
             this.lbl_korIme = new System.Windows.Forms.Label();
             this.lbl_lozinka = new System.Windows.Forms.Label();
             this.txt_korIme = new System.Windows.Forms.TextBox();
@@ -72,6 +73,7 @@
             this.txt_lozinka.PasswordChar = '*';
             this.txt_lozinka.Size = new System.Drawing.Size(253, 22);
             this.txt_lozinka.TabIndex = 2;
+            this.txt_lozinka.UseSystemPasswordChar = true;
             this.txt_lozinka.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
             // 
             // btn_prijava
@@ -105,7 +107,7 @@
             this.Controls.Add(this.txt_korIme);
             this.Controls.Add(this.lbl_lozinka);
             this.Controls.Add(this.lbl_korIme);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "form_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prijava korisnika";
