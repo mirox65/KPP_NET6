@@ -113,6 +113,13 @@ namespace KPP_Alpha1
             form.MdiParent = this;
             form.WindowState = FormWindowState.Maximized;
         }
+        private void FormaIzvoz()
+        {
+            form_ExportData form = new form_ExportData();
+            form.Show();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+        }
         private void otvoriKPPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(ActiveMdiChild != null)
@@ -171,6 +178,18 @@ namespace KPP_Alpha1
             else
             {
                 FormaMjesta();
+            }
+        }
+        private void izvozPodatakaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+            {
+                ActiveMdiChild.Close();
+                FormaIzvoz();
+            }
+            else
+            {
+                FormaIzvoz();
             }
         }
         private void spojiToolStripMenuItem_Click_1(object sender, EventArgs e)

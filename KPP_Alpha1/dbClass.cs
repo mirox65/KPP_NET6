@@ -44,6 +44,38 @@ namespace KPP_Alpha1
             }
             return dt;
         }
+        public DataTable IzvozPodataka(string Dbs)
+        {
+            conn = new OleDbConnection(conn_string);
+            cmd = new OleDbCommand(Dbs, conn);
+            DataTable dt = new DataTable();
+            StringBuilder sb = new StringBuilder();
+            try
+            {
+                OleDbDataReader myReader = cmd.ExecuteReader();
+                conn.Open();
+                dt.Load(myReader);
+                foreach(DataRow red in dt.Rows)
+                {
+                    foreach(DataColumn stup in dt.Columns)
+                    {
+                        sb.ToString();
+                        sb.Append(";");
+                        sb.Append(red[stup.ColumnName].ToString());
+                    }
+                    sb.Append("\n");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, CelijaNazivObavjest);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dt;
+        }
 
         public AutoCompleteStringCollection AutoComplete(string DbAc, string AcPrvi, string AcDrugi)
         {                        
