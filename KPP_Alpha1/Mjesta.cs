@@ -21,9 +21,6 @@ namespace KPP_Alpha1
         public string IzTablice { get; set; }
         public string GdjeTrazim { get; set; }
 
-        string Dbs = "SELECT mjesta.id AS ID, mjesta.ptt AS 'Poštanski broj', mjesta.mjesto AS Mjesto, zupanije.zupanija AS Županija, mjesta.secKey AS 'Poštanski ured'" +
-            " FROM mjesta INNER JOIN zupanije ON mjesta.idZupanije = zupanije.id ORDER BY ptt ASC, mjesta.id ASC;";
-
         public form_Mjesta()
         {
             InitializeComponent();
@@ -38,6 +35,8 @@ namespace KPP_Alpha1
         }
         private void DTUpdate()
         {
+            string Dbs = "SELECT mjesta.id AS ID, mjesta.ptt AS 'Poštanski broj', mjesta.mjesto AS Mjesto, zupanije.zupanija AS Županija, mjesta.secKey AS 'Poštanski ured'" +
+                            " FROM mjesta INNER JOIN zupanije ON mjesta.idZupanije = zupanije.id ORDER BY ptt ASC, mjesta.id ASC;";
             DataTable dt = dbc.Select(Dbs);
             dgv_mjesta.DataSource = dt;
         }
@@ -47,29 +46,36 @@ namespace KPP_Alpha1
         }
         private void btn_Uredi_Click(object sender, EventArgs e)
         {
-            uredi.idMjesto = int.Parse(txt_id.Text);
-            uredi.Ptt = txt_Ptt.Text;
-            uredi.Mjesto = txt_Mjesto.Text;
-
-            _sifra = txt_Zupanija.Text;
-            GdjeTrazim = "zupanija";
-            IzTablice = "zupanije";
-            uredi.idZupaija = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
-
-            _sifra = txt_secKey.Text;
-            GdjeTrazim = "mjesto";
-            IzTablice = "mjesta";
-            uredi.secKey = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
-            bool success = uredi.UpdateMjesto(uredi);
-            if (success == true)
+            if (txt_Mjesto.Text == "" | txt_Ptt.Text == "" | txt_Zupanija.Text == "")
             {
-                DTUpdate();
-                Clear();
-                txt_Ptt.Focus();
+                PrazneCelije();
             }
             else
             {
-                MessageBox.Show(dbc.IzmjenaError, dbc.CelijaNazivUpozorenje);
+                uredi.idMjesto = int.Parse(txt_id.Text);
+                uredi.Ptt = txt_Ptt.Text;
+                uredi.Mjesto = txt_Mjesto.Text;
+
+                _sifra = txt_Zupanija.Text;
+                GdjeTrazim = "zupanija";
+                IzTablice = "zupanije";
+                uredi.idZupaija = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
+
+                _sifra = txt_secKey.Text;
+                GdjeTrazim = "mjesto";
+                IzTablice = "mjesta";
+                uredi.secKey = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
+                bool success = uredi.UpdateMjesto(uredi);
+                if (success == true)
+                {
+                    DTUpdate();
+                    Clear();
+                    txt_Ptt.Focus();
+                }
+                else
+                {
+                    MessageBox.Show(dbc.IzmjenaError, dbc.CelijaNazivUpozorenje);
+                }
             }
         }
         private void dgv_mjesta_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -106,31 +112,7 @@ namespace KPP_Alpha1
         {
             if (txt_Mjesto.Text == "" | txt_Ptt.Text=="" | txt_Zupanija.Text=="")
             {
-                if (txt_Mjesto.Text == "")
-                {
-                    txt_Mjesto.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    txt_Mjesto.BackColor = Color.White;
-                }
-                if (txt_Ptt.Text == "")
-                {
-                    txt_Ptt.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    txt_Ptt.BackColor = Color.White;
-                }
-                if (txt_Zupanija.Text == "")
-                {
-                    txt_Zupanija.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    txt_Zupanija.BackColor = Color.White;
-                }
-                MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);                
+                PrazneCelije();
             }
             else
             {
@@ -172,6 +154,34 @@ namespace KPP_Alpha1
         private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btn_Uredi.PerformClick();
+        }
+        private void PrazneCelije()
+        {
+                if (txt_Mjesto.Text == "")
+                {
+                    txt_Mjesto.BackColor = Color.LightPink;
+                }
+                else
+                {
+                    txt_Mjesto.BackColor = Color.White;
+                }
+                if (txt_Ptt.Text == "")
+                {
+                    txt_Ptt.BackColor = Color.LightPink;
+                }
+                else
+                {
+                    txt_Ptt.BackColor = Color.White;
+                }
+                if (txt_Zupanija.Text == "")
+                {
+                    txt_Zupanija.BackColor = Color.LightPink;
+                }
+                else
+                {
+                    txt_Zupanija.BackColor = Color.White;
+                }
+                MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);           
         }
     }
 }

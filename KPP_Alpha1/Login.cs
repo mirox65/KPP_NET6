@@ -22,10 +22,10 @@ namespace KPP_Alpha1
         }
         private void btn_prijava_Click_1(object sender, EventArgs e)
         {
+            string ole = "SELECT * FROM korisnici WHERE KorisnickoIme='" + txt_korIme.Text + "'and Lozinka='" + Kor.NapraviMD5(txt_lozinka.Text) + "'";
+            OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string ole = "SELECT * FROM korisnici WHERE KorisnickoIme='" + txt_korIme.Text + "'and Lozinka='" + Kor.NapraviMD5(txt_lozinka.Text) + "'";
-                OleDbConnection conn = new OleDbConnection(dbc.conn_string);
                 OleDbCommand cmd = new OleDbCommand(ole, conn);
                 conn.Open();
                 OleDbDataReader korisnik = cmd.ExecuteReader();
@@ -37,14 +37,15 @@ namespace KPP_Alpha1
                 else
                 {
                     MessageBox.Show("Korisničko ime ili lozinka nisu točni. Pokušaj ponovno!", dbc.CelijaNazivUpozorenje);
-
                 }
-
-                conn.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error" + ex, dbc.CelijaNazivObavjest);
+                MessageBox.Show(dbc.ExError + ex, dbc.CelijaNazivObavjest);
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 

@@ -18,7 +18,7 @@ namespace KPP_Alpha1
         form_Login LogFrm = new form_Login();
         OleDbConnection conn = null;
         //O aplikaciji
-        string CelijaNazivAplikacija = "O aplikaciji KPP";
+        string MB_NazivAplikacija = "O aplikaciji KPP";
         string appName = "Knjiga primljenih pošiljki (KPP)";
         string appVersion = "Version 1.0.0.0";
         string appAuthor = "Miroslav Vranić";
@@ -80,7 +80,7 @@ namespace KPP_Alpha1
         }
         private void FormaKPP()
         {
-            form_Mjesta form = new form_Mjesta();
+            form_KPP form = new form_KPP();
             form.Show();
             form.MdiParent = this;
             form.WindowState = FormWindowState.Maximized;
@@ -182,7 +182,10 @@ namespace KPP_Alpha1
                 odspojiToolStripMenuItem.Enabled = true;
                 spojiToolStripMenuItem.Enabled = false;
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message, dbc.CelijaNazivUpozorenje); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, dbc.CelijaNazivObavjest);
+            }
         }
         private void odspojiToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -212,7 +215,7 @@ namespace KPP_Alpha1
         }
         private void oAplikacijiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Aplikacija:\t\t" + appName + "\nVerzija aplikacije:\t" + appVersion + "\nAutor aplikacije:\t" + appAuthor + "\n\nO aplikaciji:\n" + aboutApp, CelijaNazivAplikacija);
+            MessageBox.Show("Aplikacija:\t\t" + appName + "\nVerzija aplikacije:\t" + appVersion + "\nAutor aplikacije:\t" + appAuthor + "\n\nO aplikaciji:\n" + aboutApp, MB_NazivAplikacija);
         }
     }
 }

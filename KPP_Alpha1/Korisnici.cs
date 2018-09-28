@@ -20,7 +20,7 @@ namespace KPP_Alpha1
         public form_Korisnici()
         {
             InitializeComponent();
-            cmb_uloga.SelectedIndex = 1;
+            cmb_uloga.SelectedIndex = 0;
         }
         private void DTUpdate()
         {
@@ -35,7 +35,7 @@ namespace KPP_Alpha1
             txt_prezime.Text= "";
             txt_korIme.Text = "";
             txt_lozinka.Text="";
-            cmb_uloga.SelectedIndex=1;
+            cmb_uloga.SelectedIndex=0;
             txt_ime.Focus();
         }
         private void form_Korisnici_Load(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show("Korisnik nije unešen!", dbc.CelijaNazivUpozorenje);
+                    MessageBox.Show(dbc.UnosError, dbc.CelijaNazivUpozorenje);
                 }
             }
         }
@@ -105,7 +105,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show("Korisnik nije izmjenjen!", dbc.CelijaNazivUpozorenje);
+                    MessageBox.Show(dbc.IzmjenaError, dbc.CelijaNazivUpozorenje);
                 }
             }
         }
@@ -123,12 +123,23 @@ namespace KPP_Alpha1
             string Pretraga = txt_pretrazivanje.Text;
             string Dbs = "SELECT * FROM korisnici" +
                 " WHERE ime LIKE '%" + Pretraga + "%' OR prezime LIKE '%" + Pretraga + "%'";
-
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             OleDbDataAdapter a = new OleDbDataAdapter(Dbs, conn);
             DataTable dt = new DataTable();
-            a.Fill(dt);
-            dgv_korisnik.DataSource = dt;
+            try
+            {
+                conn.Open();
+                a.Fill(dt);
+                dgv_korisnik.DataSource = dt;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(dbc.ExError + ex, dbc.CelijaNazivObavjest);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
         private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -24,12 +24,11 @@ namespace KPP_Alpha1
        public bool Insert(KPPeditClass k)
         {
             bool isSuccess = false;
+            string ole = "INSERT INTO knjiga(datumPrimitka, pismeno, brojcano, idPosiljatelj, datum, IDodjel, IDkorisnik)" +
+                            "VALUES(@datumPrimitka, @pismeno, @brojcano, @idPosiljatelj, @datum, @IDodjel, @IDkorisnik)";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string ole = "INSERT INTO knjiga(datumPrimitka, pismeno, brojcano, idPosiljatelj, datum, IDodjel, IDkorisnik)" +
-                    "VALUES(@datumPrimitka, @pismeno, @brojcano, @idPosiljatelj, @datum, @IDodjel, @IDkorisnik)";
-
                 OleDbCommand cmd = new OleDbCommand(ole, conn);
                 cmd.Parameters.AddWithValue("@datumPrimitka", k.DatumPrimitka);
                 cmd.Parameters.AddWithValue("@pismeno", k.Pismeno);
@@ -56,20 +55,16 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         public bool Update(KPPeditClass k)
         {
             bool isSuccess = false;
-
+            string Uredi = "UPDATE knjiga SET id=@id, datumPrimitka=@datumPrimitka, pismeno = @pismeno, brojcano=@brojcano," +
+                            "idPosiljatelj=@idPosiljatelj, datum=@datum, idOdjel=@idOdjel, idkorisnik=@idkorisnik WHERE id=@id";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
-
             try
             {
-                string Uredi = "UPDATE knjiga SET id=@id, datumPrimitka=@datumPrimitka, pismeno = @pismeno, brojcano=@brojcano," +
-                    "idPosiljatelj=@idPosiljatelj, datum=@datum, idOdjel=@idOdjel, idkorisnik=@idkorisnik WHERE id=@id";
-
                 OleDbCommand cmd = new OleDbCommand(Uredi, conn);
                 cmd.Parameters.AddWithValue("@id", k.KnjigaID);
                 cmd.Parameters.AddWithValue("@datumPrimitka", k.DatumPrimitka);
@@ -96,7 +91,6 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
     }

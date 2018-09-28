@@ -68,17 +68,15 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         public bool InsertMjesto(EditClass e)
         {
             bool isSuccess = false;
+            string Unos = "INSERT INTO mjesta(ptt, mjesto, idZupanije, secKey) VALUES(@ptt, @mjesto, @idZupanije, @secKey)";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string Unos = "INSERT INTO mjesta(ptt, mjesto, idZupanije, secKey) VALUES(@ptt, @mjesto, @idZupanije, @secKey)";
-
                 OleDbCommand cmd = new OleDbCommand(Unos, conn);
                 cmd.Parameters.AddWithValue("@ptt", e.Ptt);
                 cmd.Parameters.AddWithValue("@mjesto", e.Mjesto);
@@ -96,23 +94,21 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch(Exception ex) { }
+            catch(Exception ex) {  }
             finally
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         //          UNOS I IZMJENA ODJELA
         public bool InsertOdjel(EditClass e)
         {
             bool isSuccess = false;
+            string Unos = "INSERT INTO odjeli(Naziv) VALUES(@Naziv)";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string Unos = "INSERT INTO odjeli(Naziv) VALUES(@Naziv)";
-
                 OleDbCommand cmd = new OleDbCommand(Unos, conn);
                 cmd.Parameters.AddWithValue("@Naziv", e.NazivOdjela);
                 conn.Open();
@@ -131,17 +127,15 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         public bool UpdateOdjel(EditClass e)
         {
             bool isSuccess = false;
+            string Uredi = "UPDATE odjeli SET ID=@ID, Naziv=@Naziv WHERE ID=@ID";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string Uredi = "UPDATE odjeli SET ID=@ID, Naziv=@Naziv WHERE ID=@ID";
-
                 OleDbCommand cmd = new OleDbCommand(Uredi, conn);
                 cmd.Parameters.AddWithValue("@ID", e.OdjelId);
                 cmd.Parameters.AddWithValue("@Naziv", e.NazivOdjela);
@@ -161,18 +155,16 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         //          UNOS I IZMJENA KORISNIKA
         public bool InsertKorisnik(EditClass e)
         {
             bool isSuccess = false;
+            string Unos = "INSERT INTO korisnici(Ime, Prezime, KorisnickoIme, Lozinka, Uloga) VALUES(@Ime, @Prezime, @KorisnickoIme, @Lozinka, @Uloga)";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string Unos = "INSERT INTO korisnici(Ime, Prezime, KorisnickoIme, Lozinka, Uloga) VALUES(@Ime, @Prezime, @KorisnickoIme, @Lozinka, @Uloga)";
-
                 OleDbCommand cmd = new OleDbCommand(Unos, conn);
                 cmd.Parameters.AddWithValue("@Ime", e.KorisnikIme);
                 cmd.Parameters.AddWithValue("@Prezime", e.KorisnikPrezime);
@@ -195,17 +187,15 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         public bool UpdateKorsinik(EditClass e)
         {
             bool isSuccess = false;
+            string Uredi = "UPDATE korisnici SET id=@id, ime=@ime, prezime=@prezime, KorisnickoIme=@KorisnickoIme, Lozinka=@Lozinka, Uloga=@Uloga WHERE id=@id";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string Uredi = "UPDATE korisnici SET id=@id, ime=@ime, prezime=@prezime, KorisnickoIme=@KorisnickoIme, Lozinka=@Lozinka, Uloga=@Uloga WHERE id=@id";
-
                 OleDbCommand cmd = new OleDbCommand(Uredi, conn);
                 cmd.Parameters.AddWithValue("@id", e.KorisnikId);
                 cmd.Parameters.AddWithValue("@ime", e.KorisnikIme);
@@ -229,18 +219,16 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         //          UNOS I IZMJENA POSILJATELJA
         public bool InsertPosiljatelj(EditClass e)
         {
             bool isSuccess = false;
+            string Unos = "INSERT INTO posiljatelji(naziv, idMjesto) VALUES(@Naziv, @idMjesto)";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string Unos = "INSERT INTO posiljatelji(naziv, idMjesto) VALUES(@Naziv, @idMjesto)";
-
                 OleDbCommand cmd = new OleDbCommand(Unos, conn);
                 cmd.Parameters.AddWithValue("@naziv", e.PosiljateljNaziv);
                 cmd.Parameters.AddWithValue("@idMjesto", e.PosiljateljMjesto);
@@ -260,18 +248,16 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
 
         public bool UpdatePosiljatelj(EditClass e)
         {
             bool isSuccess = false;
+            string Uredi = "UPDATE posiljatelji SET id=@id, naziv=@naziv, idMjesto=@idMjesto WHERE id=@id";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string Uredi = "UPDATE posiljatelji SET id=@id, naziv=@naziv, idMjesto=@idMjesto WHERE id=@id";
-
                 OleDbCommand cmd = new OleDbCommand(Uredi, conn);
                 cmd.Parameters.AddWithValue("@id", e.PosiljateljId);
                 cmd.Parameters.AddWithValue("@naziv", e.PosiljateljNaziv);
@@ -292,21 +278,17 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         public int Sifra (string _sifra, string IzTablice, string GdjeTrazim)
-        {            
+        {
+            string Trazi = "SELECT id FROM " + IzTablice + " WHERE " + GdjeTrazim + " = '" + _sifra + "';";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);            
             try
             {
-                string Trazi = "SELECT id FROM " + IzTablice +" WHERE " + GdjeTrazim + " = '" +_sifra+"';";
                 conn.Open();
                 OleDbCommand cmd = new OleDbCommand(Trazi, conn);                
-                
                 Int32 TrazenaSifra = (Int32)cmd.ExecuteScalar();
-                conn.Close();
-                return TrazenaSifra;                
             }
             catch (Exception ex) { }
             finally
@@ -318,14 +300,13 @@ namespace KPP_Alpha1
         public string UlogiraniKorisnik (string _korIme, string IzTablice, string GdjeTrazim)
         {
             string TrazeniKorisnik = "";
+            string TraziKorIme = "SELECT ime, prezime FROM " + IzTablice + " WHERE " + GdjeTrazim + " = '" + _korIme + "';";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
+            OleDbCommand cmd = new OleDbCommand(TraziKorIme, conn);
             try
             {
-                string TraziKorIme = "SELECT ime, prezime FROM " + IzTablice + " WHERE " + GdjeTrazim + " = '" + _korIme + "';";
                 conn.Open();
-                OleDbCommand cmd = new OleDbCommand(TraziKorIme, conn);
                 OleDbDataReader reader = cmd.ExecuteReader();
-
                 while (reader.Read())
                 {
                     string ImeKor = reader.GetString(0);
@@ -333,8 +314,6 @@ namespace KPP_Alpha1
                     TrazeniKorisnik = ImeKor + " " + PrezimeKor;
                 }
                 reader.Close();
-                conn.Close();
-                return TrazeniKorisnik;
             }
             catch(Exception ex) { }
             finally

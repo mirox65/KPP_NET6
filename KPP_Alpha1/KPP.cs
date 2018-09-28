@@ -97,7 +97,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show("Stavka nije unešena!", dbc.CelijaNazivUpozorenje);
+                    MessageBox.Show(dbc.UnosError, dbc.CelijaNazivUpozorenje);
                 }
             }
         }
@@ -121,12 +121,23 @@ namespace KPP_Alpha1
                 "posiljatelji.naziv AS Pošiljatelj, knjiga.datum AS Datum, odjeli.naziv AS Odjel, korisnici.ime +' '+ korisnici.prezime AS Korisnik FROM (([knjiga] LEFT JOIN [posiljatelji] " +
                 "ON [posiljatelji].[id] = [knjiga].[idposiljatelj]) LEFT JOIN [odjeli] ON odjeli.id = knjiga.idodjel) LEFT JOIN [korisnici] ON korisnici.id = knjiga.idkorisnik " +
                 "WHERE knjiga.pismeno LIKE'%" +Pretraga +"%' OR knjiga.brojcano LIKE '%"+Pretraga+ "%' OR posiljatelji.naziv LIKE '%" + Pretraga + "%' ORDER BY knjiga.id DESC;";
-
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             OleDbDataAdapter a = new OleDbDataAdapter(Dbs, conn);
             DataTable dt = new DataTable();
-            a.Fill(dt);
-            dgv_kpp.DataSource = dt;
+            try
+            {
+                conn.Open();
+                a.Fill(dt);
+                dgv_kpp.DataSource = dt;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(dbc.ExError + ex, dbc.CelijaNazivObavjest);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
         private void dgv_kpp_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -178,7 +189,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show("Unos nije izmjenjen!", dbc.CelijaNazivUpozorenje);
+                    MessageBox.Show(dbc.IzmjenaError, dbc.CelijaNazivUpozorenje);
                 }
             }
         }
