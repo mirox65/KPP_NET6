@@ -281,7 +281,7 @@ namespace KPP_Alpha1
             return isSuccess;
         }
         public int Sifra (string _sifra, string IzTablice, string GdjeTrazim)
-        {
+        {            
             string Trazi = "SELECT id FROM " + IzTablice + " WHERE " + GdjeTrazim + " = '" + _sifra + "';";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);            
             try
@@ -289,6 +289,7 @@ namespace KPP_Alpha1
                 conn.Open();
                 OleDbCommand cmd = new OleDbCommand(Trazi, conn);                
                 Int32 TrazenaSifra = (Int32)cmd.ExecuteScalar();
+                return TrazenaSifra;
             }
             catch (Exception ex) { }
             finally

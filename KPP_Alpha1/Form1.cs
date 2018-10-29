@@ -203,7 +203,7 @@ namespace KPP_Alpha1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, dbc.CelijaNazivObavjest);
+                MessageBox.Show(dbc.ExError + ex.Message, dbc.CelijaNazivUpozorenje);
             }
         }
         private void odspojiToolStripMenuItem_Click_1(object sender, EventArgs e)

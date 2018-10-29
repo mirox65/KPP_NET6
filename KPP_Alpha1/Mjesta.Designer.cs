@@ -33,7 +33,6 @@
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.btn_Uredi = new System.Windows.Forms.Button();
             this.btn_dodaj = new System.Windows.Forms.Button();
-            this.dgv_mjesta = new System.Windows.Forms.DataGridView();
             this.txt_Mjesto = new System.Windows.Forms.TextBox();
             this.txt_Ptt = new System.Windows.Forms.TextBox();
             this.txt_id = new System.Windows.Forms.TextBox();
@@ -48,8 +47,9 @@
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_mjesta)).BeginInit();
+            this.DGV_Mjesta = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Mjesta)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_pretrazivanje
@@ -94,20 +94,6 @@
             this.btn_dodaj.Text = "Spremi novi (F4)";
             this.btn_dodaj.UseVisualStyleBackColor = true;
             this.btn_dodaj.Click += new System.EventHandler(this.btn_dodaj_Click);
-            // 
-            // dgv_mjesta
-            // 
-            this.dgv_mjesta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.dgv_mjesta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_mjesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_mjesta.Location = new System.Drawing.Point(12, 209);
-            this.dgv_mjesta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgv_mjesta.Name = "dgv_mjesta";
-            this.dgv_mjesta.RowTemplate.Height = 24;
-            this.dgv_mjesta.Size = new System.Drawing.Size(758, 327);
-            this.dgv_mjesta.TabIndex = 33;
-            this.dgv_mjesta.TabStop = false;
-            this.dgv_mjesta.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_mjesta_RowHeaderMouseClick);
             // 
             // txt_Mjesto
             // 
@@ -246,12 +232,25 @@
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
             this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
             // 
+            // DGV_Mjesta
+            // 
+            this.DGV_Mjesta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.DGV_Mjesta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_Mjesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Mjesta.Location = new System.Drawing.Point(12, 208);
+            this.DGV_Mjesta.Name = "DGV_Mjesta";
+            this.DGV_Mjesta.Size = new System.Drawing.Size(758, 335);
+            this.DGV_Mjesta.TabIndex = 44;
+            this.DGV_Mjesta.TabStop = false;
+            // 
             // form_Mjesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.DGV_Mjesta);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.txt_secKey);
             this.Controls.Add(this.lbl_secKey);
@@ -261,7 +260,6 @@
             this.Controls.Add(this.txt_pretrazivanje);
             this.Controls.Add(this.btn_Uredi);
             this.Controls.Add(this.btn_dodaj);
-            this.Controls.Add(this.dgv_mjesta);
             this.Controls.Add(this.txt_Mjesto);
             this.Controls.Add(this.txt_Ptt);
             this.Controls.Add(this.txt_id);
@@ -274,9 +272,9 @@
             this.Name = "form_Mjesta";
             this.Text = "Mjesta";
             this.Load += new System.EventHandler(this.Form_Mjesta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_mjesta)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_Mjesta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,7 +285,6 @@
         private System.Windows.Forms.TextBox txt_pretrazivanje;
         private System.Windows.Forms.Button btn_Uredi;
         private System.Windows.Forms.Button btn_dodaj;
-        private System.Windows.Forms.DataGridView dgv_mjesta;
         private System.Windows.Forms.TextBox txt_Mjesto;
         private System.Windows.Forms.TextBox txt_Ptt;
         private System.Windows.Forms.TextBox txt_id;
@@ -302,5 +299,6 @@
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
+        private System.Windows.Forms.DataGridView DGV_Mjesta;
     }
 }

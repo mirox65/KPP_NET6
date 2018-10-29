@@ -43,7 +43,7 @@
             this.lbl_korIme.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.lbl_korIme.Location = new System.Drawing.Point(114, 44);
             this.lbl_korIme.Name = "lbl_korIme";
-            this.lbl_korIme.Size = new System.Drawing.Size(100, 19);
+            this.lbl_korIme.Size = new System.Drawing.Size(124, 23);
             this.lbl_korIme.TabIndex = 0;
             this.lbl_korIme.Text = "Korisničko ime:";
             // 
@@ -53,7 +53,7 @@
             this.lbl_lozinka.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.lbl_lozinka.Location = new System.Drawing.Point(114, 99);
             this.lbl_lozinka.Name = "lbl_lozinka";
-            this.lbl_lozinka.Size = new System.Drawing.Size(58, 19);
+            this.lbl_lozinka.Size = new System.Drawing.Size(71, 23);
             this.lbl_lozinka.TabIndex = 0;
             this.lbl_lozinka.Text = "Lozinka:";
             // 
@@ -63,7 +63,7 @@
             this.txt_korIme.Location = new System.Drawing.Point(114, 67);
             this.txt_korIme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_korIme.Name = "txt_korIme";
-            this.txt_korIme.Size = new System.Drawing.Size(342, 26);
+            this.txt_korIme.Size = new System.Drawing.Size(342, 30);
             this.txt_korIme.TabIndex = 1;
             // 
             // txt_lozinka
@@ -73,7 +73,7 @@
             this.txt_lozinka.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_lozinka.Name = "txt_lozinka";
             this.txt_lozinka.PasswordChar = '*';
-            this.txt_lozinka.Size = new System.Drawing.Size(342, 26);
+            this.txt_lozinka.Size = new System.Drawing.Size(342, 30);
             this.txt_lozinka.TabIndex = 2;
             this.txt_lozinka.UseSystemPasswordChar = true;
             this.txt_lozinka.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter_KeyPress);
@@ -104,8 +104,9 @@
             // 
             // form_Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(553, 292);
             this.Controls.Add(this.btn_izlaz);
             this.Controls.Add(this.btn_prijava);

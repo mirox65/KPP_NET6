@@ -95,7 +95,7 @@ namespace KPP_Alpha1
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ExError + ex, CelijaNazivObavjest);
+                MessageBox.Show(ExError + ex.Message, CelijaNazivObavjest);
             }
             finally
             {

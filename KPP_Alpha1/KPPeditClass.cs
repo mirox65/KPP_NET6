@@ -37,7 +37,6 @@ namespace KPP_Alpha1
                 cmd.Parameters.AddWithValue("@datum", k.Datum);
                 cmd.Parameters.AddWithValue("@IDodjel", k.Idodjel);
                 cmd.Parameters.AddWithValue("@IDkorisnik", k.Idkorisnik);
-                cmd.Parameters.AddWithValue("@IDkorisnik", k.Idkorisnik);
 
                 conn.Open();
                 int rows = cmd.ExecuteNonQuery();

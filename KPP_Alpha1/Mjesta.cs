@@ -38,7 +38,7 @@ namespace KPP_Alpha1
             string Dbs = "SELECT mjesta.id AS ID, mjesta.ptt AS 'Poštanski broj', mjesta.mjesto AS Mjesto, zupanije.zupanija AS Županija, mjesta.secKey AS 'Poštanski ured'" +
                             " FROM mjesta INNER JOIN zupanije ON mjesta.idZupanije = zupanije.id ORDER BY ptt ASC, mjesta.id ASC;";
             DataTable dt = dbc.Select(Dbs);
-            dgv_mjesta.DataSource = dt;
+            DGV_Mjesta.DataSource = dt;
         }
         private void Form_Mjesta_Load(object sender, EventArgs e)
         {
@@ -81,11 +81,11 @@ namespace KPP_Alpha1
         private void dgv_mjesta_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int RowIndex = e.RowIndex;
-            txt_id.Text = dgv_mjesta.Rows[RowIndex].Cells[0].Value.ToString();
-            txt_Ptt.Text = dgv_mjesta.Rows[RowIndex].Cells[1].Value.ToString();
-            txt_Mjesto.Text = dgv_mjesta.Rows[RowIndex].Cells[2].Value.ToString();
-            txt_Zupanija.Text = dgv_mjesta.Rows[RowIndex].Cells[3].Value.ToString();
-            txt_secKey.Text = dgv_mjesta.Rows[RowIndex].Cells[4].Value.ToString();
+            txt_id.Text = DGV_Mjesta.Rows[RowIndex].Cells[0].Value.ToString();
+            txt_Ptt.Text = DGV_Mjesta.Rows[RowIndex].Cells[1].Value.ToString();
+            txt_Mjesto.Text = DGV_Mjesta.Rows[RowIndex].Cells[2].Value.ToString();
+            txt_Zupanija.Text = DGV_Mjesta.Rows[RowIndex].Cells[3].Value.ToString();
+            txt_secKey.Text = DGV_Mjesta.Rows[RowIndex].Cells[4].Value.ToString();
         }
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
         {
@@ -97,7 +97,7 @@ namespace KPP_Alpha1
             OleDbDataAdapter a = new OleDbDataAdapter(Dbs, conn);
             DataTable dt = new DataTable();
             a.Fill(dt);
-            dgv_mjesta.DataSource = dt;
+            DGV_Mjesta.DataSource = dt;
         }
         private void Clear()
         {

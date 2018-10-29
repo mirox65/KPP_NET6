@@ -271,6 +271,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_kpp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_kpp.BackgroundColor = System.Drawing.Color.Gray;
             this.dgv_kpp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_kpp.Location = new System.Drawing.Point(12, 240);
             this.dgv_kpp.Name = "dgv_kpp";
