@@ -44,12 +44,12 @@
             this.bazaPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spojiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odspojiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.izvozPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oAplikacijiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.izvozPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(902, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(934, 29);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -174,7 +174,7 @@
             // spojiToolStripMenuItem
             // 
             this.spojiToolStripMenuItem.Name = "spojiToolStripMenuItem";
-            this.spojiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.spojiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.spojiToolStripMenuItem.Text = "Spoji";
             this.spojiToolStripMenuItem.Click += new System.EventHandler(this.spojiToolStripMenuItem_Click_1);
             // 
@@ -182,9 +182,21 @@
             // 
             this.odspojiToolStripMenuItem.Enabled = false;
             this.odspojiToolStripMenuItem.Name = "odspojiToolStripMenuItem";
-            this.odspojiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.odspojiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.odspojiToolStripMenuItem.Text = "Odspoji";
             this.odspojiToolStripMenuItem.Click += new System.EventHandler(this.odspojiToolStripMenuItem_Click_1);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(167, 6);
+            // 
+            // izvozPodatakaToolStripMenuItem
+            // 
+            this.izvozPodatakaToolStripMenuItem.Name = "izvozPodatakaToolStripMenuItem";
+            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.izvozPodatakaToolStripMenuItem.Text = "Izvoz podataka";
+            this.izvozPodatakaToolStripMenuItem.Click += new System.EventHandler(this.izvozPodatakaToolStripMenuItem_Click);
             // 
             // pomoćToolStripMenuItem
             // 
@@ -207,10 +219,10 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 553);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 669);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(902, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(934, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -219,22 +231,10 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // izvozPodatakaToolStripMenuItem
-            // 
-            this.izvozPodatakaToolStripMenuItem.Name = "izvozPodatakaToolStripMenuItem";
-            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.izvozPodatakaToolStripMenuItem.Text = "Izvoz podataka";
-            this.izvozPodatakaToolStripMenuItem.Click += new System.EventHandler(this.izvozPodatakaToolStripMenuItem_Click);
-            // 
             // form_Main
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(902, 575);
+            this.ClientSize = new System.Drawing.Size(934, 691);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
