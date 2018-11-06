@@ -197,6 +197,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.datotekaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -234,8 +235,9 @@
             // 
             // DGV_Mjesta
             // 
-            this.DGV_Mjesta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.DGV_Mjesta.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DGV_Mjesta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_Mjesta.BackgroundColor = System.Drawing.Color.Gray;
             this.DGV_Mjesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGV_Mjesta.Location = new System.Drawing.Point(12, 208);
             this.DGV_Mjesta.Name = "DGV_Mjesta";

@@ -95,8 +95,9 @@
             // 
             // dgv_odjel
             // 
-            this.dgv_odjel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgv_odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgv_odjel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_odjel.BackgroundColor = System.Drawing.Color.Gray;
             this.dgv_odjel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_odjel.Location = new System.Drawing.Point(12, 208);
             this.dgv_odjel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

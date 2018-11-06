@@ -115,14 +115,15 @@
             // 
             // dgv_korisnik
             // 
-            this.dgv_korisnik.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgv_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgv_korisnik.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_korisnik.BackgroundColor = System.Drawing.Color.Gray;
             this.dgv_korisnik.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_korisnik.Location = new System.Drawing.Point(12, 214);
+            this.dgv_korisnik.Location = new System.Drawing.Point(12, 213);
             this.dgv_korisnik.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_korisnik.Name = "dgv_korisnik";
             this.dgv_korisnik.RowTemplate.Height = 24;
-            this.dgv_korisnik.Size = new System.Drawing.Size(758, 327);
+            this.dgv_korisnik.Size = new System.Drawing.Size(758, 329);
             this.dgv_korisnik.TabIndex = 6;
             this.dgv_korisnik.TabStop = false;
             this.dgv_korisnik.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_korisnik_RowHeaderMouseClick);
@@ -172,6 +173,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.datotekaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);

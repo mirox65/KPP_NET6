@@ -94,14 +94,15 @@
             // 
             // dgv_posiljatelji
             // 
-            this.dgv_posiljatelji.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.dgv_posiljatelji.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgv_posiljatelji.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_posiljatelji.BackgroundColor = System.Drawing.Color.Gray;
             this.dgv_posiljatelji.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_posiljatelji.Location = new System.Drawing.Point(12, 208);
             this.dgv_posiljatelji.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_posiljatelji.Name = "dgv_posiljatelji";
             this.dgv_posiljatelji.RowTemplate.Height = 24;
-            this.dgv_posiljatelji.Size = new System.Drawing.Size(758, 328);
+            this.dgv_posiljatelji.Size = new System.Drawing.Size(758, 334);
             this.dgv_posiljatelji.TabIndex = 20;
             this.dgv_posiljatelji.TabStop = false;
             this.dgv_posiljatelji.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_posiljatelji_RowHeaderMouseClick);
@@ -178,6 +179,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.datotekaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
