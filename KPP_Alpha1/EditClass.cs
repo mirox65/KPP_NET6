@@ -63,7 +63,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -94,7 +94,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch(Exception ex) {  }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -122,7 +122,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -150,7 +150,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -182,7 +182,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -214,7 +214,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -243,7 +243,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -273,7 +273,7 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -291,7 +291,7 @@ namespace KPP_Alpha1
                 Int32 TrazenaSifra = (Int32)cmd.ExecuteScalar();
                 return TrazenaSifra;
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 conn.Close();
@@ -316,7 +316,7 @@ namespace KPP_Alpha1
                 }
                 reader.Close();
             }
-            catch(Exception ex) { }
+            catch(Exception) { }
             finally
             {
                 conn.Close();

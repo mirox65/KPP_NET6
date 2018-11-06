@@ -37,26 +37,26 @@
             // 
             this.lbl_ExportGod.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_ExportGod.AutoSize = true;
-            this.lbl_ExportGod.Location = new System.Drawing.Point(78, 23);
+            this.lbl_ExportGod.Location = new System.Drawing.Point(95, 23);
             this.lbl_ExportGod.Name = "lbl_ExportGod";
-            this.lbl_ExportGod.Size = new System.Drawing.Size(306, 23);
+            this.lbl_ExportGod.Size = new System.Drawing.Size(245, 19);
             this.lbl_ExportGod.TabIndex = 0;
             this.lbl_ExportGod.Text = "Godina za koju radimo izvoz podataka:";
             // 
             // Txt_Godina
             // 
             this.Txt_Godina.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Txt_Godina.Location = new System.Drawing.Point(156, 49);
+            this.Txt_Godina.Location = new System.Drawing.Point(142, 49);
             this.Txt_Godina.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_Godina.Name = "Txt_Godina";
-            this.Txt_Godina.Size = new System.Drawing.Size(150, 30);
+            this.Txt_Godina.Size = new System.Drawing.Size(150, 26);
             this.Txt_Godina.TabIndex = 1;
             this.Txt_Godina.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Btn_IzvozPodataka
             // 
             this.Btn_IzvozPodataka.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Btn_IzvozPodataka.Location = new System.Drawing.Point(155, 87);
+            this.Btn_IzvozPodataka.Location = new System.Drawing.Point(141, 87);
             this.Btn_IzvozPodataka.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Btn_IzvozPodataka.Name = "Btn_IzvozPodataka";
             this.Btn_IzvozPodataka.Size = new System.Drawing.Size(152, 56);
@@ -67,10 +67,10 @@
             // 
             // form_ExportData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(466, 161);
+            this.ClientSize = new System.Drawing.Size(466, 171);
             this.Controls.Add(this.Btn_IzvozPodataka);
             this.Controls.Add(this.Txt_Godina);
             this.Controls.Add(this.lbl_ExportGod);
