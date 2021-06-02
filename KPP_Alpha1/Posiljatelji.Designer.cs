@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Posiljatelji));
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
@@ -94,6 +95,8 @@
             // 
             // dgv_posiljatelji
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgv_posiljatelji.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_posiljatelji.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgv_posiljatelji.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_posiljatelji.BackgroundColor = System.Drawing.Color.Gray;

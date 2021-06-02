@@ -20,8 +20,34 @@ namespace KPP_Alpha1
         public string CelijaNazivObavjest = "Obavjest aplikacije";
         public string IzmjenaError = "Izmjena nije izvršena!";
         public string UnosError = "Unos nije napravljen!";
-        public string IdError = "ID stavke nije prondađen!";
-        public string ExError = "Dogodila se greška:\n";
+        public string IdError = "ID stavke nije pronađen!\n\nProvjeri polja na greške u malim i velikim slovima.\n\n" +
+            "Ako željeni naziv ili korisnik nije ponuđen dodaj ga u bazu.";
+        public string ExError = "Dogodila se greška:\n\n";
+
+        internal void PorukaPraznaCelija()
+        {
+            MessageBox.Show(PraznaCelija, CelijaNazivUpozorenje);
+        }
+
+        internal void MessageDBErrorInsert()
+        {
+            MessageBox.Show(UnosError, CelijaNazivUpozorenje);
+        }
+        internal void MessageDBErrorUpdate()
+        {
+            MessageBox.Show(IzmjenaError, CelijaNazivUpozorenje);
+        }
+
+        internal void MessageGeneralDError(Exception ex)
+        {
+            MessageBox.Show(ExError + ex.Message + $"\n\n" + ex.StackTrace, CelijaNazivUpozorenje);
+        }
+
+        internal void MessageErrorKeyMissing()
+        {
+            MessageBox.Show(IdError, CelijaNazivUpozorenje);
+        }
+
 
         public DataTable Select(string Dbs)
         {
@@ -44,6 +70,7 @@ namespace KPP_Alpha1
             }
             return dt;
         }
+
         public DataTable IzvozPodataka(string Dbs)
         {
             conn = new OleDbConnection(conn_string);
@@ -130,5 +157,59 @@ namespace KPP_Alpha1
             }
             return coll;
         }
+
+        internal Dictionary<int, string> DictFill(string kolona, string tablica)
+        {
+            Dictionary<int, string> dict = new Dictionary<int, string>();
+
+            var dbs = $"SELECT id, {kolona} FROM {tablica};";
+            var conn = new OleDbConnection(conn_string);
+            var cmd = new OleDbCommand(dbs, conn);
+            try
+            {
+                conn.Open();
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var key = Convert.ToInt32(reader["id"].ToString());
+                    var value = reader[$"{kolona}"].ToString();
+                    dict.Add(key, value);
+                }
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                conn.Close();
+            }
+            return dict;
+        }
+        internal Dictionary<int, string> DictFill(string kolona1, string kolona2, string tablica)
+        {
+            Dictionary<int, string> dict = new Dictionary<int, string>();
+
+            var dbs = $"SELECT id, {kolona1}, {kolona2} FROM {tablica};";
+            var conn = new OleDbConnection(conn_string);
+            var cmd = new OleDbCommand(dbs, conn);
+            try
+            {
+                conn.Open();
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var key = Convert.ToInt32(reader["id"].ToString());
+                    var kol1 = reader[$"{kolona1}"].ToString();
+                    var kol2 = reader[$"{kolona2}"].ToString();
+                    var value = $"{kol1} {kol2}";
+                    dict.Add(key, value);
+                }
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                conn.Close();
+            }
+            return dict;
+        }
+
     }
 }

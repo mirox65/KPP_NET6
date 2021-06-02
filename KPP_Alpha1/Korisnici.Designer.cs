@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Korisnici));
             this.lbl_id_korisnik = new System.Windows.Forms.Label();
             this.lbl_ime_korisnik = new System.Windows.Forms.Label();
@@ -115,6 +116,8 @@
             // 
             // dgv_korisnik
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgv_korisnik.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgv_korisnik.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_korisnik.BackgroundColor = System.Drawing.Color.Gray;

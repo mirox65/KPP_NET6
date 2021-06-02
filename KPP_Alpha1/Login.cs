@@ -1,26 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.OleDb;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
 {
     public partial class form_Login : Form
     {
-        dbClass dbc = new dbClass();
-        form_Korisnici Kor = new form_Korisnici();
-        
+        readonly dbClass dbc = new dbClass();
+        readonly form_Korisnici Kor = new form_Korisnici();
+
         public form_Login()
         {
             InitializeComponent();
         }
-        private void btn_prijava_Click_1(object sender, EventArgs e)
+        private void Btn_prijava_Click_1(object sender, EventArgs e)
         {
             string ole = "SELECT * FROM korisnici WHERE KorisnickoIme='" + txt_korIme.Text + "'and Lozinka='" + Kor.NapraviMD5(txt_lozinka.Text) + "'";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
@@ -49,14 +42,14 @@ namespace KPP_Alpha1
             }
         }
 
-        private void btn_izlaz_Click_1(object sender, EventArgs e)
+        private void Btn_izlaz_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
         private void Enter_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 btn_prijava.PerformClick();
             }

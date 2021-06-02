@@ -51,6 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DjelatnikController.cs" />
+    <Compile Include="Controller\PoslaneController.cs" />
+    <Compile Include="Controller\PartnerController.cs" />
+    <Compile Include="Djelatnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Djelatnici.Designer.cs">
+      <DependentUpon>Djelatnici.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,11 +99,20 @@
     <Compile Include="Mjesta.Designer.cs">
       <DependentUpon>Mjesta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DjelatnikModel.cs" />
+    <Compile Include="Models\PoslaneModel.cs" />
+    <Compile Include="Models\PartnerModel.cs" />
     <Compile Include="Odjeli.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Odjeli.Designer.cs">
       <DependentUpon>Odjeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partneri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partneri.Designer.cs">
+      <DependentUpon>Partneri.cs</DependentUpon>
     </Compile>
     <Compile Include="Posiljatelji.cs">
       <SubType>Form</SubType>
@@ -102,8 +120,17 @@
     <Compile Include="Posiljatelji.Designer.cs">
       <DependentUpon>Posiljatelji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Poslane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Poslane.Designer.cs">
+      <DependentUpon>Poslane.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Djelatnici.resx">
+      <DependentUpon>Djelatnici.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExportData.resx">
       <DependentUpon>ExportData.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,8 +152,14 @@
     <EmbeddedResource Include="Odjeli.resx">
       <DependentUpon>Odjeli.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Partneri.resx">
+      <DependentUpon>Partneri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Posiljatelji.resx">
       <DependentUpon>Posiljatelji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Poslane.resx">
+      <DependentUpon>Poslane.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

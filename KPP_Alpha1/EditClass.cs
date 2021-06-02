@@ -1,10 +1,12 @@
-﻿using System;
+﻿using KPP_Alpha1.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace KPP_Alpha1
 {
@@ -12,15 +14,18 @@ namespace KPP_Alpha1
     {
         dbClass dbc = new dbClass();
         //Get i seteri
+
         //Get, seteri za mjesto
         public int idMjesto { get; set; }
         public string Ptt { get; set; }
         public string Mjesto { get; set; }
         public int idZupaija { get; set; }
         public int secKey { get; set; }
+
         //Get, seteri za odjel
         public string NazivOdjela { get; set; }
         public int OdjelId { get; set; }
+
         //Get, seteri za korisnika
         public int KorisnikId { get; set; }
         public string KorisnikIme { get; set; }
@@ -28,13 +33,41 @@ namespace KPP_Alpha1
         public string KorisnikKorisnicko { get; set; }
         public string KorisnikLozinka { get; set; }
         public string KorisnikUloga { get; set; }
+
         //Get. seteri za Posiljatelja
         public int PosiljateljId { get; set; }
         public string PosiljateljNaziv { get; set; }
         public int PosiljateljMjesto { get; set; }
         public int TrazenaSifra { get; set; }
+
         //Cuvanje korisničkog imena ulogiranog korisnika
         public static string KorisnickoIme { get; set; }
+        public static string Korisnik { get; set; }
+        public static int IdKorisnika { get; set; }
+
+        #region Metode za provjeru praznih čelija
+
+        //Metoda za promjenu boja
+        internal void PrazneCelije(TextBox textBox)
+        {
+            if (textBox.Text == "")
+            {
+                textBox.BackColor = Color.LightPink;
+            }
+            else
+            {
+                textBox.BackColor = Color.White;
+            }
+        }
+
+        //Metoda za provjeru null or whitespace-a
+        internal bool NullOrWhite(TextBox textBox)
+        {
+            return string.IsNullOrWhiteSpace(textBox.Text);
+        }
+
+        #endregion
+
         //          UNOS I IZMJENA MJESTA
         public bool UpdateMjesto(EditClass e)
         {
@@ -70,6 +103,9 @@ namespace KPP_Alpha1
             }
             return isSuccess;
         }
+
+
+
         public bool InsertMjesto(EditClass e)
         {
             bool isSuccess = false;
@@ -101,6 +137,7 @@ namespace KPP_Alpha1
             }
             return isSuccess;
         }
+
         //          UNOS I IZMJENA ODJELA
         public bool InsertOdjel(EditClass e)
         {
@@ -132,13 +169,14 @@ namespace KPP_Alpha1
         public bool UpdateOdjel(EditClass e)
         {
             bool isSuccess = false;
-            string Uredi = "UPDATE odjeli SET ID=@ID, Naziv=@Naziv WHERE ID=@ID";
+            string Uredi = "UPDATE odjeli SET Naziv=? WHERE ID=?";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
                 OleDbCommand cmd = new OleDbCommand(Uredi, conn);
-                cmd.Parameters.AddWithValue("@ID", e.OdjelId);
                 cmd.Parameters.AddWithValue("@Naziv", e.NazivOdjela);
+                cmd.Parameters.AddWithValue("@ID", e.OdjelId);
+
                 conn.Open();
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)

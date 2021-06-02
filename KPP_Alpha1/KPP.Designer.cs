@@ -28,19 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_KPP));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_Posiljatelj = new System.Windows.Forms.TextBox();
             this.txt_Pismeno = new System.Windows.Forms.TextBox();
             this.txt_Brojcano = new System.Windows.Forms.TextBox();
             this.txt_Odjel = new System.Windows.Forms.TextBox();
-            this.txt_Korisnik = new System.Windows.Forms.TextBox();
             this.date_datum = new System.Windows.Forms.DateTimePicker();
             this.date_primitka = new System.Windows.Forms.DateTimePicker();
             this.btn_search_posiljatelj = new System.Windows.Forms.Button();
@@ -57,6 +56,7 @@
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_kpp)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,11 +66,11 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(357, 123);
+            this.label2.Location = new System.Drawing.Point(19, 123);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 19);
+            this.label2.Size = new System.Drawing.Size(92, 19);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Datum:";
+            this.label2.Text = "Datum slanja:";
             // 
             // label3
             // 
@@ -106,21 +106,11 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(357, 155);
+            this.label6.Location = new System.Drawing.Point(357, 123);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 19);
             this.label6.TabIndex = 5;
             this.label6.Text = "Odjel:";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 123);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 19);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Korisnik:";
             // 
             // label8
             // 
@@ -163,26 +153,16 @@
             this.txt_Odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_Odjel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_Odjel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Odjel.Location = new System.Drawing.Point(430, 151);
+            this.txt_Odjel.Location = new System.Drawing.Point(430, 119);
             this.txt_Odjel.Name = "txt_Odjel";
             this.txt_Odjel.Size = new System.Drawing.Size(237, 26);
             this.txt_Odjel.TabIndex = 5;
-            // 
-            // txt_Korisnik
-            // 
-            this.txt_Korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Korisnik.Location = new System.Drawing.Point(128, 119);
-            this.txt_Korisnik.Name = "txt_Korisnik";
-            this.txt_Korisnik.ReadOnly = true;
-            this.txt_Korisnik.Size = new System.Drawing.Size(197, 26);
-            this.txt_Korisnik.TabIndex = 15;
-            this.txt_Korisnik.TabStop = false;
             // 
             // date_datum
             // 
             this.date_datum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_datum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_datum.Location = new System.Drawing.Point(430, 119);
+            this.date_datum.Location = new System.Drawing.Point(128, 119);
             this.date_datum.Name = "date_datum";
             this.date_datum.Size = new System.Drawing.Size(120, 26);
             this.date_datum.TabIndex = 4;
@@ -200,26 +180,28 @@
             // btn_search_posiljatelj
             // 
             this.btn_search_posiljatelj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_search_posiljatelj.Location = new System.Drawing.Point(673, 21);
+            this.btn_search_posiljatelj.BackColor = System.Drawing.Color.Moccasin;
+            this.btn_search_posiljatelj.Location = new System.Drawing.Point(673, 23);
             this.btn_search_posiljatelj.Name = "btn_search_posiljatelj";
-            this.btn_search_posiljatelj.Size = new System.Drawing.Size(46, 30);
+            this.btn_search_posiljatelj.Size = new System.Drawing.Size(46, 26);
             this.btn_search_posiljatelj.TabIndex = 18;
             this.btn_search_posiljatelj.TabStop = false;
-            this.btn_search_posiljatelj.Text = "...";
-            this.btn_search_posiljatelj.UseVisualStyleBackColor = true;
+            this.btn_search_posiljatelj.Text = "+";
+            this.btn_search_posiljatelj.UseVisualStyleBackColor = false;
             this.btn_search_posiljatelj.Click += new System.EventHandler(this.btn_search_posiljatelj_Click);
             // 
             // btn_search_odjel
             // 
             this.btn_search_odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_search_odjel.Location = new System.Drawing.Point(673, 149);
+            this.btn_search_odjel.BackColor = System.Drawing.Color.Moccasin;
+            this.btn_search_odjel.Location = new System.Drawing.Point(673, 119);
             this.btn_search_odjel.Name = "btn_search_odjel";
-            this.btn_search_odjel.Size = new System.Drawing.Size(46, 30);
+            this.btn_search_odjel.Size = new System.Drawing.Size(46, 26);
             this.btn_search_odjel.TabIndex = 19;
             this.btn_search_odjel.TabStop = false;
-            this.btn_search_odjel.Text = "...";
+            this.btn_search_odjel.Text = "+";
             this.btn_search_odjel.UseCompatibleTextRendering = true;
-            this.btn_search_odjel.UseVisualStyleBackColor = true;
+            this.btn_search_odjel.UseVisualStyleBackColor = false;
             this.btn_search_odjel.Click += new System.EventHandler(this.btn_search_odjel_Click);
             // 
             // btn_dodaj
@@ -250,7 +232,7 @@
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_pretrazivanje.Location = new System.Drawing.Point(128, 151);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(197, 26);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(591, 26);
             this.txt_pretrazivanje.TabIndex = 24;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretraži_TextChanged);
@@ -267,6 +249,8 @@
             // 
             // dgv_kpp
             // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dgv_kpp.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_kpp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv_kpp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -350,12 +334,25 @@
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(84, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(224, 25);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Knjiga primljenih pošiljki";
+            // 
             // form_KPP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(884, 621);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_id);
@@ -368,13 +365,11 @@
             this.Controls.Add(this.btn_search_posiljatelj);
             this.Controls.Add(this.date_primitka);
             this.Controls.Add(this.date_datum);
-            this.Controls.Add(this.txt_Korisnik);
             this.Controls.Add(this.txt_Odjel);
             this.Controls.Add(this.txt_Brojcano);
             this.Controls.Add(this.txt_Pismeno);
             this.Controls.Add(this.txt_Posiljatelj);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -403,13 +398,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_Posiljatelj;
         private System.Windows.Forms.TextBox txt_Pismeno;
         private System.Windows.Forms.TextBox txt_Brojcano;
         private System.Windows.Forms.TextBox txt_Odjel;
-        private System.Windows.Forms.TextBox txt_Korisnik;
         private System.Windows.Forms.DateTimePicker date_datum;
         private System.Windows.Forms.DateTimePicker date_primitka;
         private System.Windows.Forms.Button btn_search_posiljatelj;
@@ -426,5 +419,6 @@
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

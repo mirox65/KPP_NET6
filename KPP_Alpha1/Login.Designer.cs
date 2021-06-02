@@ -88,7 +88,7 @@
             this.btn_prijava.TabIndex = 3;
             this.btn_prijava.Text = "Prijava";
             this.btn_prijava.UseVisualStyleBackColor = true;
-            this.btn_prijava.Click += new System.EventHandler(this.btn_prijava_Click_1);
+            this.btn_prijava.Click += new System.EventHandler(this.Btn_prijava_Click_1);
             // 
             // btn_izlaz
             // 
@@ -100,7 +100,7 @@
             this.btn_izlaz.TabIndex = 4;
             this.btn_izlaz.Text = "Izlaz";
             this.btn_izlaz.UseVisualStyleBackColor = true;
-            this.btn_izlaz.Click += new System.EventHandler(this.btn_izlaz_Click_1);
+            this.btn_izlaz.Click += new System.EventHandler(this.Btn_izlaz_Click_1);
             // 
             // form_Login
             // 

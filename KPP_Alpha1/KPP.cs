@@ -14,15 +14,16 @@ namespace KPP_Alpha1
 {
     public partial class form_KPP : Form
     {
-        dbClass dbc = new dbClass();
-        KPPeditClass uredi = new KPPeditClass();
-        EditClass EditIt = new EditClass();
+        readonly dbClass dbc = new dbClass();
+        readonly KPPeditClass uredi = new KPPeditClass();
+        readonly EditClass edit = new EditClass();
+
         public string _korIme { get; set; }
         public string _sifra { get; set; }
         public string TrazeniID { get; set; }
         public string IzTablice { get; set; }
         public string GdjeTrazim { get; set; }
-        public string Korisnik { get; set; }
+
         public form_KPP()
         {
             InitializeComponent();
@@ -54,15 +55,14 @@ namespace KPP_Alpha1
                 "ORDER BY knjiga.id DESC;";
             DataTable dt = dbc.Select(Dbs);
             dgv_kpp.DataSource = dt;
-        }        
+        }
         private void form_KPP_Load(object sender, EventArgs e)
         {
             DTUpdate();
-            txt_Korisnik.Text = Korisnik;
         }
         private void btn_dodaj_Click(object sender, EventArgs e)
         {
-            if( txt_Odjel.Text == "" | txt_Brojcano.Text =="" | txt_Pismeno.Text =="" | txt_Posiljatelj.Text =="")
+            if (txt_Odjel.Text == "" | txt_Brojcano.Text == "" | txt_Pismeno.Text == "" | txt_Posiljatelj.Text == "")
             {
                 PrazneCelije();
             }
@@ -75,25 +75,25 @@ namespace KPP_Alpha1
                 _sifra = txt_Posiljatelj.Text;
                 IzTablice = "posiljatelji";
                 GdjeTrazim = "naziv";
-                uredi.Idposiljatelj = EditIt.Sifra(_sifra, IzTablice, GdjeTrazim);
+                uredi.Idposiljatelj = edit.Sifra(_sifra, IzTablice, GdjeTrazim);
 
                 uredi.Datum = date_datum.Text;
 
                 _sifra = txt_Odjel.Text;
                 IzTablice = "odjeli";
                 GdjeTrazim = "naziv";
-                uredi.Idodjel = EditIt.Sifra(_sifra, IzTablice, GdjeTrazim);
+                uredi.Idodjel = edit.Sifra(_sifra, IzTablice, GdjeTrazim);
 
-                _sifra = txt_Korisnik.Text;
+                _sifra = EditClass.Korisnik;
                 IzTablice = "korisnici";
                 GdjeTrazim = "ime+' '+prezime";
-                uredi.Idkorisnik = EditIt.Sifra(_sifra, IzTablice, GdjeTrazim);
+                uredi.Idkorisnik = edit.Sifra(_sifra, IzTablice, GdjeTrazim);
 
                 bool success = uredi.Insert(uredi);
                 if (success == true)
                 {
                     DTUpdate();
-                    Clear();                    
+                    Clear();
                 }
                 else
                 {
@@ -111,7 +111,6 @@ namespace KPP_Alpha1
             txt_Pismeno.BackColor = Color.White;
             txt_Brojcano.BackColor = Color.White;
             txt_Odjel.BackColor = Color.White;
-            txt_Korisnik.BackColor = Color.White;
             txt_Posiljatelj.Focus();
         }
         private void txt_pretraži_TextChanged(object sender, EventArgs e)
@@ -120,7 +119,7 @@ namespace KPP_Alpha1
             string Dbs = "SELECT knjiga.id AS ID, knjiga.datumPrimitka AS 'Datum primitka', knjiga.pismeno AS Pismeno, knjiga.brojcano AS Brojčano, " +
                 "posiljatelji.naziv AS Pošiljatelj, knjiga.datum AS Datum, odjeli.naziv AS Odjel, korisnici.ime +' '+ korisnici.prezime AS Korisnik FROM (([knjiga] LEFT JOIN [posiljatelji] " +
                 "ON [posiljatelji].[id] = [knjiga].[idposiljatelj]) LEFT JOIN [odjeli] ON odjeli.id = knjiga.idodjel) LEFT JOIN [korisnici] ON korisnici.id = knjiga.idkorisnik " +
-                "WHERE knjiga.pismeno LIKE'%" +Pretraga +"%' OR knjiga.brojcano LIKE '%"+Pretraga+ "%' OR posiljatelji.naziv LIKE '%" + Pretraga + "%' ORDER BY knjiga.id DESC;";
+                "WHERE knjiga.pismeno LIKE'%" + Pretraga + "%' OR knjiga.brojcano LIKE '%" + Pretraga + "%' OR posiljatelji.naziv LIKE '%" + Pretraga + "%' ORDER BY knjiga.id DESC;";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             OleDbDataAdapter a = new OleDbDataAdapter(Dbs, conn);
             DataTable dt = new DataTable();
@@ -130,7 +129,7 @@ namespace KPP_Alpha1
                 a.Fill(dt);
                 dgv_kpp.DataSource = dt;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(dbc.ExError + ex, dbc.CelijaNazivObavjest);
             }
@@ -166,19 +165,19 @@ namespace KPP_Alpha1
                 _sifra = txt_Posiljatelj.Text;
                 IzTablice = "posiljatelji";
                 GdjeTrazim = "naziv";
-                uredi.Idposiljatelj = EditIt.Sifra(_sifra, IzTablice, GdjeTrazim);
+                uredi.Idposiljatelj = edit.Sifra(_sifra, IzTablice, GdjeTrazim);
 
                 uredi.Datum = date_datum.Text;
 
                 _sifra = txt_Odjel.Text;
                 IzTablice = "odjeli";
                 GdjeTrazim = "naziv";
-                uredi.Idodjel = EditIt.Sifra(_sifra, IzTablice, GdjeTrazim);
+                uredi.Idodjel = edit.Sifra(_sifra, IzTablice, GdjeTrazim);
 
-                _sifra = txt_Korisnik.Text;
+                _sifra = EditClass.Korisnik;
                 IzTablice = "korisnici";
                 GdjeTrazim = "ime+' '+prezime";
-                uredi.Idkorisnik = EditIt.Sifra(_sifra, IzTablice, GdjeTrazim);
+                uredi.Idkorisnik = edit.Sifra(_sifra, IzTablice, GdjeTrazim);
 
                 bool success = uredi.Update(uredi);
 
@@ -195,7 +194,7 @@ namespace KPP_Alpha1
         }
         private void btn_search_posiljatelj_Click(object sender, EventArgs e)
         {
-            form_Mjesta form = new form_Mjesta();
+            var form = new form_Posiljatelji();
             form.Show();
             form.MdiParent = this.MdiParent;
             form.WindowState = FormWindowState.Maximized;
@@ -203,7 +202,7 @@ namespace KPP_Alpha1
         }
         private void btn_search_odjel_Click(object sender, EventArgs e)
         {
-            form_Odjeli form = new form_Odjeli();
+            var form = new form_Odjeli();
             form.Show();
             form.MdiParent = this.MdiParent;
             form.WindowState = FormWindowState.Maximized;
@@ -213,14 +212,10 @@ namespace KPP_Alpha1
         {
             btn_dodaj.PerformClick();
         }
-        private string KorisnikAplikacije()
-        {            
-            _korIme = EditClass.KorisnickoIme;
-            IzTablice = "korisnici";
-            GdjeTrazim = "korisnickoime";
-            Korisnik = EditIt.UlogiraniKorisnik(_korIme, IzTablice, GdjeTrazim);
-
-            return Korisnik;
+        private void KorisnikAplikacije()
+        {
+            EditClass.Korisnik = edit.UlogiraniKorisnik(EditClass.KorisnickoIme, "korisnici", "korisnickoime");
+            EditClass.IdKorisnika = edit.Sifra(EditClass.KorisnickoIme, "korisnici", "korisnickoime");
         }
         private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -262,5 +257,6 @@ namespace KPP_Alpha1
             }
             MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);
         }
+
     }
 }
