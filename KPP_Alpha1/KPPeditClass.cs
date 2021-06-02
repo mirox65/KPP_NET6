@@ -10,10 +10,10 @@ namespace KPP_Alpha1
 {    
     class KPPeditClass
     {
-        dbClass dbc = new dbClass();
-                
+        readonly dbClass dbc = new dbClass();
+
+        //Geteri i seteri za glavnu formu KPP        
         public int KnjigaID { get; set; }
-        public int BrojPosiljke { get; set; }
         public string DatumPrimitka { get; set; }
         public string Pismeno { get; set; }
         public string Brojcano { get; set; }
@@ -22,16 +22,14 @@ namespace KPP_Alpha1
         public int Idodjel { get; set; }
         public int Idkorisnik { get; set; }
 
-
        public bool Insert(KPPeditClass k)
         {
             bool isSuccess = false;
+            string ole = "INSERT INTO knjiga(datumPrimitka, pismeno, brojcano, idPosiljatelj, datum, IDodjel, IDkorisnik)" +
+                            "VALUES(@datumPrimitka, @pismeno, @brojcano, @idPosiljatelj, @datum, @IDodjel, @IDkorisnik)";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             try
             {
-                string ole = "INSERT INTO knjiga(datumPrimitka, pismeno, brojcano, idPosiljatelj, datum, IDodjel, IDkorisnik)" +
-                    "VALUES(@datumPrimitka, @pismeno, @brojcano, @idPosiljatelj, @datum, @IDodjel, @IDkorisnik)";
-
                 OleDbCommand cmd = new OleDbCommand(ole, conn);
                 cmd.Parameters.AddWithValue("@datumPrimitka", k.DatumPrimitka);
                 cmd.Parameters.AddWithValue("@pismeno", k.Pismeno);
@@ -39,7 +37,6 @@ namespace KPP_Alpha1
                 cmd.Parameters.AddWithValue("@idPosiljatelj", k.Idposiljatelj);
                 cmd.Parameters.AddWithValue("@datum", k.Datum);
                 cmd.Parameters.AddWithValue("@IDodjel", k.Idodjel);
-                cmd.Parameters.AddWithValue("@IDkorisnik", k.Idkorisnik);
                 cmd.Parameters.AddWithValue("@IDkorisnik", k.Idkorisnik);
 
                 conn.Open();
@@ -53,27 +50,22 @@ namespace KPP_Alpha1
                     isSuccess = false;
                 }
             }
-            catch(Exception ex) { }
+            catch(Exception) {  }
             finally
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
         public bool Update(KPPeditClass k)
         {
             bool isSuccess = false;
-
+            string Uredi = "UPDATE knjiga SET datumPrimitka=@datumPrimitka, pismeno = @pismeno, brojcano=@brojcano," +
+                            "idPosiljatelj=@idPosiljatelj, datum=@datum, idOdjel=@idOdjel, idkorisnik=@idkorisnik WHERE id=@id";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
-
             try
             {
-                string Uredi = "UPDATE knjiga SET id=@id, datumPrimitka=@datumPrimitka, pismeno = @pismeno, brojcano=@brojcano," +
-                    "idPosiljatelj=@idPosiljatelj, datum=@datum, idOdjel=@idOdjel, idkorisnik=@idkorisnik WHERE id=@id";
-
                 OleDbCommand cmd = new OleDbCommand(Uredi, conn);
-                cmd.Parameters.AddWithValue("@id", k.KnjigaID);
                 cmd.Parameters.AddWithValue("@datumPrimitka", k.DatumPrimitka);
                 cmd.Parameters.AddWithValue("@pismeno", k.Pismeno);
                 cmd.Parameters.AddWithValue("@brojcano", k.Brojcano);
@@ -81,6 +73,7 @@ namespace KPP_Alpha1
                 cmd.Parameters.AddWithValue("@datum", k.Datum);
                 cmd.Parameters.AddWithValue("@idOdjel", k.Idodjel);
                 cmd.Parameters.AddWithValue("@idkorisnik", k.Idkorisnik);
+                cmd.Parameters.AddWithValue("@id", k.KnjigaID);
 
                 conn.Open();
                 int rows = cmd.ExecuteNonQuery();
@@ -98,7 +91,6 @@ namespace KPP_Alpha1
             {
                 conn.Close();
             }
-            conn.Close();
             return isSuccess;
         }
     }

@@ -41,7 +41,7 @@ namespace KPP_Alpha1
             if (txt_naziv.Text == "")
             {
                 txt_naziv.BackColor = Color.LightPink;
-                MessageBox.Show(dbc.PraznaCelija);
+                MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);
             }
             else
             {
@@ -58,7 +58,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show(dbc.UnosError);
+                    MessageBox.Show(dbc.UnosError, dbc.CelijaNazivUpozorenje);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace KPP_Alpha1
             if(txt_naziv.Text == "")
             {
                 txt_naziv.BackColor = Color.LightPink;
-                MessageBox.Show(dbc.PraznaCelija);
+                MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace KPP_Alpha1
                 uredi.OdjelId = int.Parse(txt_id.Text.Trim());
                 uredi.NazivOdjela = txt_naziv.Text.Trim();
 
-                bool success = uredi.UpdateMjesto(uredi);
+                bool success = uredi.UpdateOdjel(uredi);
 
                 if (success == true)
                 {
@@ -86,7 +86,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    MessageBox.Show(dbc.IzmjenaError);
+                    MessageBox.Show(dbc.IzmjenaError, dbc.CelijaNazivUpozorenje);
                 }
             }            
         }
@@ -101,14 +101,34 @@ namespace KPP_Alpha1
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
         {
             string Pretraga = txt_pretrazivanje.Text;
-            string Dbs = "SELECT * FROM odjeli" +
-                " WHERE naziv LIKE '%" + Pretraga + "%' OR idodjel LIKE '%" + Pretraga + "%'";
-
+            string Dbs = "SELECT * FROM odjeli WHERE naziv LIKE '%" + Pretraga + "%'";
             OleDbConnection conn = new OleDbConnection(dbc.conn_string);
             OleDbDataAdapter a = new OleDbDataAdapter(Dbs, conn);
             DataTable dt = new DataTable();
-            a.Fill(dt);
-            dgv_odjel.DataSource = dt;
+            try
+            {
+                conn.Open();
+                a.Fill(dt);
+                dgv_odjel.DataSource = dt;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(dbc.ExError + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_dodaj.PerformClick();
+        }
+
+        private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btn_uredi.PerformClick();
         }
     }
 }

@@ -7,7 +7,7 @@
     <ProjectGuid>{77557E0E-82AF-4A45-8C57-C973447A277B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>KPP_Alpha1</RootNamespace>
-    <AssemblyName>KPP_Alpha1</AssemblyName>
+    <AssemblyName>KPP</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>notebook %281%29.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -45,6 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DjelatnikController.cs" />
+    <Compile Include="Controller\PoslaneController.cs" />
+    <Compile Include="Controller\PartnerController.cs" />
+    <Compile Include="Djelatnici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Djelatnici.Designer.cs">
+      <DependentUpon>Djelatnici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportData.Designer.cs">
+      <DependentUpon>ExportData.cs</DependentUpon>
+    </Compile>
     <Compile Include="KPPeditClass.cs" />
     <Compile Include="dbClass.cs" />
     <Compile Include="EditClass.cs" />
@@ -66,17 +87,32 @@
     <Compile Include="KPP.Designer.cs">
       <DependentUpon>KPP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mjesta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mjesta.Designer.cs">
       <DependentUpon>Mjesta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DjelatnikModel.cs" />
+    <Compile Include="Models\PoslaneModel.cs" />
+    <Compile Include="Models\PartnerModel.cs" />
     <Compile Include="Odjeli.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Odjeli.Designer.cs">
       <DependentUpon>Odjeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partneri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partneri.Designer.cs">
+      <DependentUpon>Partneri.cs</DependentUpon>
     </Compile>
     <Compile Include="Posiljatelji.cs">
       <SubType>Form</SubType>
@@ -84,8 +120,20 @@
     <Compile Include="Posiljatelji.Designer.cs">
       <DependentUpon>Posiljatelji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Poslane.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Poslane.Designer.cs">
+      <DependentUpon>Poslane.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Djelatnici.resx">
+      <DependentUpon>Djelatnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportData.resx">
+      <DependentUpon>ExportData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,14 +143,23 @@
     <EmbeddedResource Include="KPP.resx">
       <DependentUpon>KPP.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mjesta.resx">
       <DependentUpon>Mjesta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Odjeli.resx">
       <DependentUpon>Odjeli.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Partneri.resx">
+      <DependentUpon>Partneri.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Posiljatelji.resx">
       <DependentUpon>Posiljatelji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Poslane.resx">
+      <DependentUpon>Poslane.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,6 +183,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="notebook %281%29.ico" />
+    <Content Include="notebook -s pozadinom.ico" />
+    <Content Include="notebook.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
