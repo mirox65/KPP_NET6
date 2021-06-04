@@ -46,8 +46,8 @@
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DGV_Mjesta = new System.Windows.Forms.DataGridView();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DGV_Mjesta = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Mjesta)).BeginInit();
             this.SuspendLayout();
@@ -214,11 +214,21 @@
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
             this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
             // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
             // DGV_Mjesta
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.DGV_Mjesta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGV_Mjesta.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DGV_Mjesta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DGV_Mjesta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_Mjesta.BackgroundColor = System.Drawing.Color.Gray;
             this.DGV_Mjesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -228,14 +238,6 @@
             this.DGV_Mjesta.TabIndex = 44;
             this.DGV_Mjesta.TabStop = false;
             this.DGV_Mjesta.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Mjesta_RowHeaderMouseDoubleClick);
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // FormMjesta
             // 
