@@ -52,6 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\DjelatnikController.cs" />
+    <Compile Include="Controller\KnjigaController.cs" />
+    <Compile Include="Controller\KorisnikController.cs" />
+    <Compile Include="Controller\MjestoController.cs" />
+    <Compile Include="Controller\OdjelController.cs" />
+    <Compile Include="Controller\PosiljateljController.cs" />
     <Compile Include="Controller\PoslaneController.cs" />
     <Compile Include="Controller\PartnerController.cs" />
     <Compile Include="Djelatnici.cs">
@@ -66,9 +71,8 @@
     <Compile Include="ExportData.Designer.cs">
       <DependentUpon>ExportData.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPPeditClass.cs" />
-    <Compile Include="dbClass.cs" />
-    <Compile Include="EditClass.cs" />
+    <Compile Include="HelperClasses\DbClass.cs" />
+    <Compile Include="HelperClasses\EditClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +104,11 @@
       <DependentUpon>Mjesta.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\DjelatnikModel.cs" />
+    <Compile Include="Models\KnjigaModel.cs" />
+    <Compile Include="Models\KorisnikModel.cs" />
+    <Compile Include="Models\MjestoModel.cs" />
+    <Compile Include="Models\OdjelModel.cs" />
+    <Compile Include="Models\PosiljateljModel.cs" />
     <Compile Include="Models\PoslaneModel.cs" />
     <Compile Include="Models\PartnerModel.cs" />
     <Compile Include="Odjeli.cs">

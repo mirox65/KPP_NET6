@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
 {
-    public partial class form_Main : Form
+    public partial class Form1 : Form
     {
-        readonly dbClass dbc = new dbClass();
-
-        form_Login LogFrm = new form_Login();
-        OleDbConnection conn = null;
+        readonly FormLogin LogFrm = new FormLogin();
 
         //O aplikaciji
         string MB_NazivAplikacija = "O aplikaciji KPP";
@@ -19,7 +15,7 @@ namespace KPP_Alpha1
         string aboutApp = "Aplikcaija Knjiga primljenih pošiljki je napravaljena kao projekt na predmetu Objektno orijentirano programiranje 2 " +
             "na TVZ-u godina 2017/2018";
 
-        public form_Main()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -27,50 +23,50 @@ namespace KPP_Alpha1
         #region Nove forme
         private void FormaKPP()
         {
-            form_KPP form = new form_KPP();
+            FormKPP form = new FormKPP();
             Forma(form);
         }
         private void FormaKorisnici()
         {
-            form_Korisnici form = new form_Korisnici();
+            FormKorisnici form = new FormKorisnici();
             Forma(form);
         }
         private void FormaOdjeli()
         {
-            form_Odjeli form = new form_Odjeli();
+            FormOdjeli form = new FormOdjeli();
             Forma(form);
         }
         private void FormaPosiljatelji()
         {
-            form_Posiljatelji form = new form_Posiljatelji();
+            FormPosiljatelji form = new FormPosiljatelji();
             Forma(form);
         }
         private void FormaMjesta()
         {
-            form_Mjesta form = new form_Mjesta();
+            FormMjesta form = new FormMjesta();
             Forma(form);
         }
         private void FormaIzvoz()
         {
-            form_ExportData form = new form_ExportData();
+            FormExportData form = new FormExportData();
             Forma(form);
         }
 
         private void FormaDjelatnici()
         {
-            Djelatnici form = new Djelatnici();
+            FormDjelatnici form = new FormDjelatnici();
             Forma(form);
         }
 
         private void FormaPartneri()
         {
-            Partneri form = new Partneri();
+            FormPartneri form = new FormPartneri();
             Forma(form);
         }
 
         private void FormaPoslane()
         {
-            Poslane form = new Poslane();
+            FormPoslane form = new FormPoslane();
             Forma(form);
         }
 
@@ -196,26 +192,6 @@ namespace KPP_Alpha1
             }
         }
 
-        private void spojiToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            try
-            {
-                conn = new OleDbConnection(dbc.conn_string);
-                conn.Open();
-                odspojiToolStripMenuItem.Enabled = true;
-                spojiToolStripMenuItem.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(dbc.ExError + ex.Message, dbc.CelijaNazivUpozorenje);
-            }
-        }
-        private void odspojiToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            conn.Close();
-            odspojiToolStripMenuItem.Enabled = false;
-            spojiToolStripMenuItem.Enabled = true;
-        }
         private void izađiIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -233,14 +209,16 @@ namespace KPP_Alpha1
         }
         private void oAplikacijiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Aplikacija:\t\t" + appName + "\nVerzija aplikacije:\t" + appVersion + "\nAutor aplikacije:\t" + appAuthor + "\n\nO aplikaciji:\n" + aboutApp, MB_NazivAplikacija);
+            MessageBox.Show("Aplikacija:\t\t" + appName + "\nVerzija aplikacije:\t" + appVersion +
+                "\nAutor aplikacije:\t" + appAuthor + "\n\nO aplikaciji:\n" + aboutApp, MB_NazivAplikacija);
         }
         #endregion
 
+        // Metoda load prekida otvaranje aplikacije i poziva formu za prijavu/autentifikaciju korisnika
+        // prava korisnika i prikazivanje elemenata po pravima
         private void form_Main_Load(object sender, EventArgs e)
         {
-            spojiToolStripMenuItem.PerformClick();
-            using (form_Login LogForm = new form_Login())
+            using (FormLogin LogForm = new FormLogin())
             {
                 if (LogFrm.ShowDialog() != DialogResult.OK)
                 {
@@ -249,15 +227,18 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    FormaKPP();
-                    tssl_korisnik.Text = EditClass.Korisnik;
+                    if (EditClass.UlogaKorisnika == "Administrator")
+                    {
+                        dodajKorisnikaToolStripMenuItem.Visible = true;
+                        FormaKPP();
+                    }
+                    else
+                    {
+                        FormaKPP();
+                    }
+                    tssl_korisnik.Text = EditClass.KorisnikAplikacije;
                 }
             }
-        }
-
-        private void form_Main_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            odspojiToolStripMenuItem.PerformClick();
         }
     }
 }

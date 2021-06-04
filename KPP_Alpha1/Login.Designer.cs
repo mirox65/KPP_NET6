@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class form_Login
+    partial class FormLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.lbl_korIme = new System.Windows.Forms.Label();
             this.lbl_lozinka = new System.Windows.Forms.Label();
             this.txt_korIme = new System.Windows.Forms.TextBox();

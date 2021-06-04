@@ -12,11 +12,12 @@ using System.Data.OleDb;
 
 namespace KPP_Alpha1
 {
-    public partial class form_ExportData : Form
+    public partial class FormExportData : Form
     {
-        dbClass dbc = new dbClass();
+        readonly DbClass db = new DbClass();
+        readonly EditClass edit = new EditClass();
 
-        public form_ExportData()
+        public FormExportData()
         {
             InitializeComponent();
         }
@@ -40,7 +41,7 @@ namespace KPP_Alpha1
                 File.Create(DatotekaIzvoz).Close();
                 MessageBox.Show("Kreirana je datoteka " + DatotekaIzvoz);
             }
-            OleDbConnection conn = new OleDbConnection(dbc.conn_string);
+            OleDbConnection conn = new OleDbConnection(db.connString);
             OleDbCommand cmd = new OleDbCommand(Dbs, conn);
             DataTable dt = new DataTable();
             StringBuilder sb = new StringBuilder();
@@ -66,7 +67,7 @@ namespace KPP_Alpha1
             }
             catch (Exception ex)
             {
-                MessageBox.Show(dbc.ExError +ex, dbc.CelijaNazivObavjest);
+                edit.MessageException(ex);
             }
             finally
             {

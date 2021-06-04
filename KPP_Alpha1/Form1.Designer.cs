@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class form_Main
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.otvoriKPPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.knjigaPoslanihPošiljkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zatvoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izađiIzAplikacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,9 +45,6 @@
             this.djelatniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partneriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bazaPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spojiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.odspojiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.izvozPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oAplikacijiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +52,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLable_Korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_korisnik = new System.Windows.Forms.ToolStripStatusLabel();
-            this.knjigaPoslanihPošiljkiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +92,13 @@
             this.otvoriKPPToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
             this.otvoriKPPToolStripMenuItem.Text = "Knjiga primljenih pošiljki";
             this.otvoriKPPToolStripMenuItem.Click += new System.EventHandler(this.otvoriKPPToolStripMenuItem_Click);
+            // 
+            // knjigaPoslanihPošiljkiToolStripMenuItem
+            // 
+            this.knjigaPoslanihPošiljkiToolStripMenuItem.Name = "knjigaPoslanihPošiljkiToolStripMenuItem";
+            this.knjigaPoslanihPošiljkiToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
+            this.knjigaPoslanihPošiljkiToolStripMenuItem.Text = "Knjiga poslanih pošiljki";
+            this.knjigaPoslanihPošiljkiToolStripMenuItem.Click += new System.EventHandler(this.knjigaPoslanihPošiljkiToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -138,75 +142,53 @@
             // dodajKorisnikaToolStripMenuItem
             // 
             this.dodajKorisnikaToolStripMenuItem.Name = "dodajKorisnikaToolStripMenuItem";
-            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
-            this.dodajKorisnikaToolStripMenuItem.Text = "Dodaj korisnika";
+            this.dodajKorisnikaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.dodajKorisnikaToolStripMenuItem.Text = "Korisnici";
+            this.dodajKorisnikaToolStripMenuItem.Visible = false;
             this.dodajKorisnikaToolStripMenuItem.Click += new System.EventHandler(this.dodajKorisnikaToolStripMenuItem_Click);
             // 
             // dodajOdjelToolStripMenuItem
             // 
             this.dodajOdjelToolStripMenuItem.Name = "dodajOdjelToolStripMenuItem";
-            this.dodajOdjelToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
-            this.dodajOdjelToolStripMenuItem.Text = "Dodaj odjel";
+            this.dodajOdjelToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.dodajOdjelToolStripMenuItem.Text = "Odjeli";
             this.dodajOdjelToolStripMenuItem.Click += new System.EventHandler(this.dodajOdjelToolStripMenuItem_Click);
             // 
             // pošiljateljiToolStripMenuItem
             // 
             this.pošiljateljiToolStripMenuItem.Name = "pošiljateljiToolStripMenuItem";
-            this.pošiljateljiToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
-            this.pošiljateljiToolStripMenuItem.Text = "Dodaj pošiljatelja";
+            this.pošiljateljiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.pošiljateljiToolStripMenuItem.Text = "Pošiljatelji";
             this.pošiljateljiToolStripMenuItem.Click += new System.EventHandler(this.pošiljateljiToolStripMenuItem_Click);
             // 
             // mjestaToolStripMenuItem
             // 
             this.mjestaToolStripMenuItem.Name = "mjestaToolStripMenuItem";
-            this.mjestaToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
-            this.mjestaToolStripMenuItem.Text = "Dodaj mjesto";
+            this.mjestaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.mjestaToolStripMenuItem.Text = "Mjesta";
             this.mjestaToolStripMenuItem.Click += new System.EventHandler(this.mjestaToolStripMenuItem_Click);
             // 
             // djelatniciToolStripMenuItem
             // 
             this.djelatniciToolStripMenuItem.Name = "djelatniciToolStripMenuItem";
-            this.djelatniciToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.djelatniciToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.djelatniciToolStripMenuItem.Text = "Djelatnici";
             this.djelatniciToolStripMenuItem.Click += new System.EventHandler(this.djelatniciToolStripMenuItem_Click);
             // 
             // partneriToolStripMenuItem
             // 
             this.partneriToolStripMenuItem.Name = "partneriToolStripMenuItem";
-            this.partneriToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.partneriToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.partneriToolStripMenuItem.Text = "Partneri";
             this.partneriToolStripMenuItem.Click += new System.EventHandler(this.partneriToolStripMenuItem_Click);
             // 
             // bazaPodatakaToolStripMenuItem
             // 
             this.bazaPodatakaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.spojiToolStripMenuItem,
-            this.odspojiToolStripMenuItem,
-            this.toolStripSeparator3,
             this.izvozPodatakaToolStripMenuItem});
             this.bazaPodatakaToolStripMenuItem.Name = "bazaPodatakaToolStripMenuItem";
             this.bazaPodatakaToolStripMenuItem.Size = new System.Drawing.Size(110, 23);
             this.bazaPodatakaToolStripMenuItem.Text = "Baza podataka";
-            // 
-            // spojiToolStripMenuItem
-            // 
-            this.spojiToolStripMenuItem.Name = "spojiToolStripMenuItem";
-            this.spojiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
-            this.spojiToolStripMenuItem.Text = "Spoji";
-            this.spojiToolStripMenuItem.Click += new System.EventHandler(this.spojiToolStripMenuItem_Click_1);
-            // 
-            // odspojiToolStripMenuItem
-            // 
-            this.odspojiToolStripMenuItem.Enabled = false;
-            this.odspojiToolStripMenuItem.Name = "odspojiToolStripMenuItem";
-            this.odspojiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
-            this.odspojiToolStripMenuItem.Text = "Odspoji";
-            this.odspojiToolStripMenuItem.Click += new System.EventHandler(this.odspojiToolStripMenuItem_Click_1);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(167, 6);
             // 
             // izvozPodatakaToolStripMenuItem
             // 
@@ -260,14 +242,7 @@
             this.tssl_korisnik.Name = "tssl_korisnik";
             this.tssl_korisnik.Size = new System.Drawing.Size(0, 17);
             // 
-            // knjigaPoslanihPošiljkiToolStripMenuItem
-            // 
-            this.knjigaPoslanihPošiljkiToolStripMenuItem.Name = "knjigaPoslanihPošiljkiToolStripMenuItem";
-            this.knjigaPoslanihPošiljkiToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
-            this.knjigaPoslanihPošiljkiToolStripMenuItem.Text = "Knjiga poslanih pošiljki";
-            this.knjigaPoslanihPošiljkiToolStripMenuItem.Click += new System.EventHandler(this.knjigaPoslanihPošiljkiToolStripMenuItem_Click);
-            // 
-            // form_Main
+            // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(934, 691);
@@ -278,9 +253,8 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "form_Main";
+            this.Name = "Form1";
             this.Text = "Knjiga primljenih pošiljki";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_Main_FormClosing);
             this.Load += new System.EventHandler(this.form_Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -308,11 +282,8 @@
         private System.Windows.Forms.ToolStripMenuItem pošiljateljiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mjestaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bazaPodatakaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem spojiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem odspojiToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem izvozPodatakaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem djelatniciToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tssLable_Korisnik;

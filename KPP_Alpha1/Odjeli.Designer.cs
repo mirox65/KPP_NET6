@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class form_Odjeli
+    partial class FormOdjeli
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Odjeli));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormOdjeli));
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.btn_uredi = new System.Windows.Forms.Button();
@@ -43,6 +43,7 @@
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_odjel)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -92,7 +93,7 @@
             this.btn_dodaj.TabIndex = 2;
             this.btn_dodaj.Text = "Spremi novi (F4)";
             this.btn_dodaj.UseVisualStyleBackColor = false;
-            this.btn_dodaj.Click += new System.EventHandler(this.lbl_dodaj_Click);
+            this.btn_dodaj.Click += new System.EventHandler(this.Lbl_dodaj_Click);
             // 
             // dgv_odjel
             // 
@@ -166,7 +167,8 @@
             // 
             this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajNoviUnosToolStripMenuItem,
-            this.spremiIzmjeneToolStripMenuItem});
+            this.spremiIzmjeneToolStripMenuItem,
+            this.clearToolStripMenuItem});
             this.datotekaToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
             this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -188,7 +190,15 @@
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
             this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
             // 
-            // form_Odjeli
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // FormOdjeli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -207,7 +217,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "form_Odjeli";
+            this.Name = "FormOdjeli";
             this.Text = "Odjeli";
             this.Load += new System.EventHandler(this.form_Odjeli_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_odjel)).EndInit();
@@ -232,5 +242,6 @@
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }
 }

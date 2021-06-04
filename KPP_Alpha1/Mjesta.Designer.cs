@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class form_Mjesta
+    partial class FormMjesta
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_Mjesta));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMjesta));
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.btn_Uredi = new System.Windows.Forms.Button();
@@ -42,13 +42,12 @@
             this.lbl_id_korisnik = new System.Windows.Forms.Label();
             this.txt_Zupanija = new System.Windows.Forms.TextBox();
             this.lbl_zupanija = new System.Windows.Forms.Label();
-            this.txt_secKey = new System.Windows.Forms.TextBox();
-            this.lbl_secKey = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DGV_Mjesta = new System.Windows.Forms.DataGridView();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Mjesta)).BeginInit();
             this.SuspendLayout();
@@ -108,7 +107,7 @@
             // txt_Ptt
             // 
             this.txt_Ptt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Ptt.Location = new System.Drawing.Point(148, 70);
+            this.txt_Ptt.Location = new System.Drawing.Point(148, 68);
             this.txt_Ptt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Ptt.Name = "txt_Ptt";
             this.txt_Ptt.Size = new System.Drawing.Size(210, 26);
@@ -176,26 +175,6 @@
             this.lbl_zupanija.TabIndex = 40;
             this.lbl_zupanija.Text = "Županija:";
             // 
-            // txt_secKey
-            // 
-            this.txt_secKey.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_secKey.Location = new System.Drawing.Point(463, 142);
-            this.txt_secKey.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_secKey.Name = "txt_secKey";
-            this.txt_secKey.Size = new System.Drawing.Size(105, 26);
-            this.txt_secKey.TabIndex = 42;
-            this.txt_secKey.TabStop = false;
-            // 
-            // lbl_secKey
-            // 
-            this.lbl_secKey.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_secKey.AutoSize = true;
-            this.lbl_secKey.Location = new System.Drawing.Point(368, 146);
-            this.lbl_secKey.Name = "lbl_secKey";
-            this.lbl_secKey.Size = new System.Drawing.Size(53, 19);
-            this.lbl_secKey.TabIndex = 41;
-            this.lbl_secKey.Text = "secKey:";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -212,7 +191,8 @@
             // 
             this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajNoviUnosToolStripMenuItem,
-            this.spremiIzmjeneToolStripMenuItem});
+            this.spremiIzmjeneToolStripMenuItem,
+            this.clearToolStripMenuItem});
             this.datotekaToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
             this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -247,8 +227,17 @@
             this.DGV_Mjesta.Size = new System.Drawing.Size(758, 335);
             this.DGV_Mjesta.TabIndex = 44;
             this.DGV_Mjesta.TabStop = false;
+            this.DGV_Mjesta.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Mjesta_RowHeaderMouseDoubleClick);
             // 
-            // form_Mjesta
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // FormMjesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -256,10 +245,8 @@
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
             this.Controls.Add(this.DGV_Mjesta);
-            this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.txt_secKey);
-            this.Controls.Add(this.lbl_secKey);
             this.Controls.Add(this.txt_Zupanija);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lbl_zupanija);
             this.Controls.Add(this.lbl_pretrazivanje);
             this.Controls.Add(this.txt_pretrazivanje);
@@ -274,7 +261,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "form_Mjesta";
+            this.Name = "FormMjesta";
             this.Text = "Mjesta";
             this.Load += new System.EventHandler(this.Form_Mjesta_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -298,12 +285,11 @@
         private System.Windows.Forms.Label lbl_id_korisnik;
         private System.Windows.Forms.TextBox txt_Zupanija;
         private System.Windows.Forms.Label lbl_zupanija;
-        private System.Windows.Forms.TextBox txt_secKey;
-        private System.Windows.Forms.Label lbl_secKey;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.DataGridView DGV_Mjesta;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }
 }
