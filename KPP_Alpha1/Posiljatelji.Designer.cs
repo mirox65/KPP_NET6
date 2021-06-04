@@ -94,17 +94,19 @@
             this.btn_dodaj.UseVisualStyleBackColor = true;
             this.btn_dodaj.Click += new System.EventHandler(this.lbl_dodaj_Click);
             // 
-            // dgv_posiljatelji
+            // Dgv
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.Dgv.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv.BackgroundColor = System.Drawing.Color.Gray;
             this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv.Location = new System.Drawing.Point(12, 208);
             this.Dgv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Dgv.Name = "dgv_posiljatelji";
+            this.Dgv.Name = "Dgv";
             this.Dgv.RowTemplate.Height = 24;
             this.Dgv.Size = new System.Drawing.Size(758, 334);
             this.Dgv.TabIndex = 20;

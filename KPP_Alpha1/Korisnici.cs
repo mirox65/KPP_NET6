@@ -35,7 +35,7 @@ namespace KPP_Alpha1
             djelatniciDict = db.DictFill("ime", "prezime", "djelatnici");
             CollectionDjelatnici();
         }
-        // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
+        // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append
         private void CollectionDjelatnici()
         {
             string DbAc = "SELECT * FROM djelatnici";
@@ -47,9 +47,10 @@ namespace KPP_Alpha1
         {
             string Dbs = "SELECT k.id AS ID, [d.ime]&' '&[d.prezime] AS Djelatnik, k.korisnickoIme AS KorIme, " +
                 "k.uloga AS Uloga, k.aktivan AS Aktivan, [da.ime]&' '&[da.prezime] AS Korisnik, k.azurirano AS Ažurirano " +
-                "FROM (korisnici AS k " +
+                "FROM ((korisnici AS k " +
                 "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikid) " +
-                "LEFT JOIN djelatnici AS da ON da.id=k.korisnikid " +
+                "LEFT JOIN korisnici AS ka ON ka.id=k.korisnikid) " +
+                "LEFT JOIN djelatnici AS da ON da.id=ka.djelatnikid " +
                 "ORDER BY k.id ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;

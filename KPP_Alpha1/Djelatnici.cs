@@ -46,10 +46,11 @@ namespace KPP_Alpha1
         private void DTUpdate()
         {
             string Dbs = "SELECT d.id AS ID, d.pn AS PN, d.ime AS Ime, d.prezime AS Prezime, o.naziv AS Odjel, " +
-                "[d.ime]&' '&[d.prezime] AS Korisnik, d.azurirano AS Ažurirano " +
+                "[do.ime]&' '&[do.prezime] AS Korisnik, d.azurirano AS Ažurirano " +
                 "FROM ((Djelatnici AS d " +
                 "LEFT JOIN odjeli AS o ON o.id = d.idodjel) " +
                 "LEFT JOIN korisnici AS k ON k.id = d.idkorisnika) " +
+                "LEFT JOIN djelatnici AS do ON do.id=k.djelatnikid " +
                 "ORDER BY d.prezime ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
