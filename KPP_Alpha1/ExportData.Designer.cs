@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class form_ExportData
+    partial class FormExportData
     {
         /// <summary>
         /// Required designer variable.

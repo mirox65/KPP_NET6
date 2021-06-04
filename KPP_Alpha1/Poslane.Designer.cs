@@ -1,7 +1,7 @@
 ﻿
 namespace KPP_Alpha1
 {
-    partial class Poslane
+    partial class FormPoslane
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,13 @@ namespace KPP_Alpha1
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Poslane));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPoslane));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtId = new System.Windows.Forms.TextBox();
             this.lbl_id = new System.Windows.Forms.Label();
             this.Dgv = new System.Windows.Forms.DataGridView();
@@ -82,12 +83,14 @@ namespace KPP_Alpha1
             this.dodajNoviUnosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.dodajNoviUnosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.dodajNoviUnosToolStripMenuItem.Text = "Spremi novi unos";
+            this.dodajNoviUnosToolStripMenuItem.Click += new System.EventHandler(this.dodajNoviUnosToolStripMenuItem_Click);
             // 
             // datotekaToolStripMenuItem
             // 
             this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajNoviUnosToolStripMenuItem,
-            this.spremiIzmjeneToolStripMenuItem});
+            this.spremiIzmjeneToolStripMenuItem,
+            this.clearToolStripMenuItem});
             this.datotekaToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
             this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -99,6 +102,15 @@ namespace KPP_Alpha1
             this.spremiIzmjeneToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.spremiIzmjeneToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
+            this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // txtId
             // 
@@ -122,8 +134,8 @@ namespace KPP_Alpha1
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -365,7 +377,7 @@ namespace KPP_Alpha1
             this.BtnAddPrimatelj.UseVisualStyleBackColor = false;
             this.BtnAddPrimatelj.Click += new System.EventHandler(this.BtnAddPrimatelj_Click);
             // 
-            // Poslane
+            // FormPoslane
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -398,7 +410,7 @@ namespace KPP_Alpha1
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Poslane";
+            this.Name = "FormPoslane";
             this.Text = "Knjiga poslanih pošiljki";
             this.Load += new System.EventHandler(this.Poslane_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -440,5 +452,6 @@ namespace KPP_Alpha1
         private System.Windows.Forms.Button btnAddDjelatnik;
         private System.Windows.Forms.Button BtnAddPartneri;
         private System.Windows.Forms.Button BtnAddPrimatelj;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class form_KPP
+    partial class FormKPP
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_KPP));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKPP));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.btn_uredi = new System.Windows.Forms.Button();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dgv_kpp = new System.Windows.Forms.DataGridView();
+            this.Dgv = new System.Windows.Forms.DataGridView();
             this.txt_id = new System.Windows.Forms.TextBox();
             this.lbl_id = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -57,7 +57,8 @@
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_kpp)).BeginInit();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -247,22 +248,23 @@
             this.label9.TabIndex = 25;
             this.label9.Text = "Pretraživanje:";
             // 
-            // dgv_kpp
+            // Dgv
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.dgv_kpp.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_kpp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_kpp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_kpp.BackgroundColor = System.Drawing.Color.Gray;
-            this.dgv_kpp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_kpp.Location = new System.Drawing.Point(12, 185);
-            this.dgv_kpp.Name = "dgv_kpp";
-            this.dgv_kpp.RowTemplate.Height = 24;
-            this.dgv_kpp.Size = new System.Drawing.Size(860, 424);
-            this.dgv_kpp.TabIndex = 26;
-            this.dgv_kpp.TabStop = false;
-            this.dgv_kpp.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kpp_RowHeaderMouseClick);
+            this.Dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Dgv.BackgroundColor = System.Drawing.Color.Gray;
+            this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv.Location = new System.Drawing.Point(12, 185);
+            this.Dgv.Name = "Dgv";
+            this.Dgv.RowTemplate.Height = 24;
+            this.Dgv.Size = new System.Drawing.Size(860, 424);
+            this.Dgv.TabIndex = 26;
+            this.Dgv.TabStop = false;
+            this.Dgv.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kpp_RowHeaderMouseClick);
             // 
             // txt_id
             // 
@@ -291,7 +293,7 @@
             this.datotekaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(882, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(884, 24);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.Visible = false;
@@ -300,7 +302,8 @@
             // 
             this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dodajNoviUnosToolStripMenuItem,
-            this.spremiIzmjeneToolStripMenuItem});
+            this.spremiIzmjeneToolStripMenuItem,
+            this.clearToolStripMenuItem});
             this.datotekaToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
             this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
@@ -346,7 +349,15 @@
             this.label1.TabIndex = 49;
             this.label1.Text = "Knjiga primljenih pošiljki";
             // 
-            // form_KPP
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // FormKPP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -356,7 +367,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_id);
-            this.Controls.Add(this.dgv_kpp);
+            this.Controls.Add(this.Dgv);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txt_pretrazivanje);
             this.Controls.Add(this.btn_uredi);
@@ -380,10 +391,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "form_KPP";
+            this.Name = "FormKPP";
             this.Text = "KPP";
             this.Load += new System.EventHandler(this.form_KPP_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_kpp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -411,7 +422,7 @@
         private System.Windows.Forms.Button btn_uredi;
         private System.Windows.Forms.TextBox txt_pretrazivanje;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dgv_kpp;
+        private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Label lbl_id;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -420,5 +431,6 @@
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }
 }

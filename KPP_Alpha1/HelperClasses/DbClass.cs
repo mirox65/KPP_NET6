@@ -1,57 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.OleDb;
 using System.Data;
+using System.Data.OleDb;
+using System.Text;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
 {
-    class dbClass
+    class DbClass
     {
+        readonly EditClass edit = new EditClass();
+
         OleDbConnection conn = null;
         OleDbCommand cmd = null;
-        public string conn_string = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\KPP.accdb; Persist Security Info = false";
-        //poruke korisniku kad nešto nije kako treba
-        public string PraznaCelija = "Ćelije ne smiju biti prazne!";
-        public string CelijaNazivUpozorenje = "Upozorenje";
-        public string CelijaNazivObavjest = "Obavjest aplikacije";
-        public string IzmjenaError = "Izmjena nije izvršena!";
-        public string UnosError = "Unos nije napravljen!";
-        public string IdError = "ID stavke nije pronađen!\n\nProvjeri polja na greške u malim i velikim slovima.\n\n" +
-            "Ako željeni naziv ili korisnik nije ponuđen dodaj ga u bazu.";
-        public string ExError = "Dogodila se greška:\n\n";
+        public string connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\KPP.accdb; Persist Security Info = false";
 
-        internal void PorukaPraznaCelija()
+        #region METODE ZA PRISTUP BAZI I IZVRŠAVANJE ZADATAKA QUERY
+        internal bool ExcecuteNonQuery(OleDbCommand cmd, OleDbConnection conn)
         {
-            MessageBox.Show(PraznaCelija, CelijaNazivUpozorenje);
+            bool success = false;
+            try
+            {
+                conn.Open();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    success = true;
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                conn.Close();
+            }
+            return success;
         }
+        #endregion
 
-        internal void MessageDBErrorInsert()
-        {
-            MessageBox.Show(UnosError, CelijaNazivUpozorenje);
-        }
-        internal void MessageDBErrorUpdate()
-        {
-            MessageBox.Show(IzmjenaError, CelijaNazivUpozorenje);
-        }
-
-        internal void MessageGeneralDError(Exception ex)
-        {
-            MessageBox.Show(ExError + ex.Message + $"\n\n" + ex.StackTrace, CelijaNazivUpozorenje);
-        }
-
-        internal void MessageErrorKeyMissing()
-        {
-            MessageBox.Show(IdError, CelijaNazivUpozorenje);
-        }
-
-
+        // Metoda zadužena za popunjavanje DataGridView-ova na svima fromama
         public DataTable Select(string Dbs)
         {
-            conn = new OleDbConnection(conn_string);
+            conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(Dbs, conn);
             DataTable dt = new DataTable();
             try
@@ -60,10 +53,7 @@ namespace KPP_Alpha1
                 conn.Open();
                 a.Fill(dt);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, CelijaNazivObavjest);
-            }
+            catch (Exception ex) { edit.MessageException(ex); }
             finally
             {
                 conn.Close();
@@ -71,20 +61,21 @@ namespace KPP_Alpha1
             return dt;
         }
 
+        // Izvoz podataka za arhivu ovo ne radi treba mu se posvetiti
         public DataTable IzvozPodataka(string Dbs)
         {
-            conn = new OleDbConnection(conn_string);
+            conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(Dbs, conn);
             DataTable dt = new DataTable();
             StringBuilder sb = new StringBuilder();
+            OleDbDataReader myReader = cmd.ExecuteReader();
             try
             {
-                OleDbDataReader myReader = cmd.ExecuteReader();
                 conn.Open();
                 dt.Load(myReader);
-                foreach(DataRow red in dt.Rows)
+                foreach (DataRow red in dt.Rows)
                 {
-                    foreach(DataColumn stup in dt.Columns)
+                    foreach (DataColumn stup in dt.Columns)
                     {
                         sb.ToString();
                         sb.Append(";");
@@ -93,10 +84,7 @@ namespace KPP_Alpha1
                     sb.Append("\n");
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, CelijaNazivObavjest);
-            }
+            catch (Exception ex) { edit.MessageException(ex); }
             finally
             {
                 conn.Close();
@@ -104,14 +92,16 @@ namespace KPP_Alpha1
             return dt;
         }
 
+        #region PREOPTEREČENE METODE ZA IZRADU KOLEKCIJA
+        // Kolekcija s tri varijble, tablica i dvije kolone
         public AutoCompleteStringCollection AutoComplete(string DbAc, string AcPrvi, string AcDrugi)
-        {                        
+        {
             AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
-            conn = new OleDbConnection(conn_string);
+            conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(DbAc, conn);
-            conn.Open();
             try
             {
+                conn.Open();
                 OleDbDataReader myReader = cmd.ExecuteReader();
                 while (myReader.Read())
                 {
@@ -120,25 +110,22 @@ namespace KPP_Alpha1
                     coll.Add(prviString + " " + drugiString);
                 }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ExError + ex.Message, CelijaNazivObavjest);
-            }
+            catch (Exception ex) { edit.MessageException(ex); }
             finally
             {
                 conn.Close();
             }
             return coll;
         }
-
+        // Kolekcija za dvije varijable, tablica i jedna kolona
         public AutoCompleteStringCollection AutoComplete(string DbAc, string AcPrvi)
         {
             AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
-            conn = new OleDbConnection(conn_string);
+            conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(DbAc, conn);
-            conn.Open();
             try
             {
+                conn.Open();
                 OleDbDataReader myReader = cmd.ExecuteReader();
                 int jedan = myReader.GetOrdinal(AcPrvi);
                 while (myReader.Read())
@@ -147,23 +134,23 @@ namespace KPP_Alpha1
                     coll.Add(prviString);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ExError + ex, CelijaNazivObavjest);
-            }
+            catch (Exception ex) { edit.MessageException(ex); }
             finally
             {
                 conn.Close();
             }
             return coll;
         }
+        #endregion
 
+        #region PREOPTEREČENE METODE ZA IZRADU RIJEČNIKA
+        // Rijećnik sa dvije varijable, jedna kolona i tablica
         internal Dictionary<int, string> DictFill(string kolona, string tablica)
         {
             Dictionary<int, string> dict = new Dictionary<int, string>();
 
             var dbs = $"SELECT id, {kolona} FROM {tablica};";
-            var conn = new OleDbConnection(conn_string);
+            var conn = new OleDbConnection(connString);
             var cmd = new OleDbCommand(dbs, conn);
             try
             {
@@ -183,12 +170,13 @@ namespace KPP_Alpha1
             }
             return dict;
         }
+        // Riječnik sa tri varijable, tablica i dvije kolone
         internal Dictionary<int, string> DictFill(string kolona1, string kolona2, string tablica)
         {
             Dictionary<int, string> dict = new Dictionary<int, string>();
 
             var dbs = $"SELECT id, {kolona1}, {kolona2} FROM {tablica};";
-            var conn = new OleDbConnection(conn_string);
+            var conn = new OleDbConnection(connString);
             var cmd = new OleDbCommand(dbs, conn);
             try
             {
@@ -210,6 +198,6 @@ namespace KPP_Alpha1
             }
             return dict;
         }
-
+        #endregion
     }
 }

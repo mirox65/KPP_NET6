@@ -1,187 +1,212 @@
-﻿using System;
+﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.OleDb;
 
 namespace KPP_Alpha1
 {
-    public partial class form_Mjesta : Form
+    public partial class FormMjesta : Form
     {
-        dbClass dbc = new dbClass();
-        EditClass uredi = new EditClass();
+        /// <summary>
+        /// Djelatnici forma i klase koje se bave unosom i izmjenom djelatnika u bazu
+        /// Primarne pomoćne klase su istoimene Model i Controller klase
+        /// Skenudarne pomoćne klase su DbClass i EditClass
+        /// </summary>
 
-        public int idZupaija { get; set; }
-        public string _sifra { get; set; }
-        public string IzTablice { get; set; }
-        public string GdjeTrazim { get; set; }
+        readonly DbClass db = new DbClass();
+        readonly EditClass edit = new EditClass();
+        readonly MjestoController controller = new MjestoController();
 
-        public form_Mjesta()
+        // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
+        public Dictionary<int, string> zpanijeDict = new Dictionary<int, string>();
+
+        // Nakon incijalizacije instaciramo riječnike i kolekcije za daljnju obradu
+        public FormMjesta()
         {
             InitializeComponent();
-            AutoCompZupanija();
+            zpanijeDict = db.DictFill("zupanija", "zupanije");
+            CollectionZpanije();
         }
-        private void AutoCompZupanija()
+        // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
+        private void CollectionZpanije()
         {
             string DbAc = "SELECT * FROM zupanije;";
             string AcPrvi = "zupanija";
-            AutoCompleteStringCollection AcZup = dbc.AutoComplete(DbAc, AcPrvi);
+            AutoCompleteStringCollection AcZup = db.AutoComplete(DbAc, AcPrvi);
             txt_Zupanija.AutoCompleteCustomSource = AcZup;
         }
+        // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
         private void DTUpdate()
         {
-            string Dbs = "SELECT mjesta.id AS ID, mjesta.ptt AS 'Poštanski broj', mjesta.mjesto AS Mjesto, zupanije.zupanija AS Županija, mjesta.secKey AS 'Poštanski ured'" +
-                            " FROM mjesta INNER JOIN zupanije ON mjesta.idZupanije = zupanije.id ORDER BY ptt ASC, mjesta.id ASC;";
-            DataTable dt = dbc.Select(Dbs);
+            string Dbs = "SELECT m.id AS ID, m.ptt AS PTT, m.mjesto AS Mjesto, z.zupanija AS Županija, " +
+                "[d.ime]&' '&[d.prezime] AS Korsinik, m.azurirano AS Ažurirano " +
+                "FROM ((mjesta AS m LEFT JOIN zupanije AS z ON z.id=m.idZupanije) " +
+                "LEFT JOIN korisnici AS k ON k.id=m.korisnikId) " +
+                "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikid " +
+                "ORDER BY m.ptt ASC, m.id ASC;";
+            DataTable dt = db.Select(Dbs);
             DGV_Mjesta.DataSource = dt;
         }
+        // Učitavanje Forme, koja poziva metodu DtUpdate
         private void Form_Mjesta_Load(object sender, EventArgs e)
         {
             DTUpdate();
         }
-        private void btn_Uredi_Click(object sender, EventArgs e)
+        // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
+        // Provjera praznih ćelija, javlja poruke korisnicma (najbliža je korisniku)
+        // Postavlja vrijednosti varijabli u modelu, i poziva generičku metodu za unos podatka
+        private void btn_dodaj_Click(object sender, EventArgs e)
         {
-            if (txt_Mjesto.Text == "" | txt_Ptt.Text == "" | txt_Zupanija.Text == "")
+            if (edit.NullOrWhite(txt_Mjesto) | edit.NullOrWhite(txt_Ptt) | edit.NullOrWhite(txt_Zupanija))
             {
                 PrazneCelije();
+                edit.PorukaPraznaCelija();
             }
             else
             {
-                uredi.idMjesto = int.Parse(txt_id.Text);
-                uredi.Ptt = txt_Ptt.Text;
-                uredi.Mjesto = txt_Mjesto.Text;
-
-                _sifra = txt_Zupanija.Text;
-                GdjeTrazim = "zupanija";
-                IzTablice = "zupanije";
-                uredi.idZupaija = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
-
-                _sifra = txt_secKey.Text;
-                GdjeTrazim = "mjesto";
-                IzTablice = "mjesta";
-                uredi.secKey = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
-                bool success = uredi.UpdateMjesto(uredi);
-                if (success == true)
+                PrazneCelije();
+                var mjesto = SetProperties();
+                var provjera = ProvjeraKljučeva(mjesto);
+                if (provjera is true)
                 {
-                    DTUpdate();
-                    Clear();
-                    txt_Ptt.Focus();
+                    try
+                    {
+                        bool success = controller.Insert(mjesto);
+                        if (success == true)
+                        {
+                            DTUpdate();
+                            Clear();
+                        }
+                        else
+                        {
+                            edit.MessageDBErrorInsert();
+                        }
+                    }
+                    catch (Exception ex) { edit.MessageException(ex); }
                 }
                 else
                 {
-                    MessageBox.Show(dbc.IzmjenaError, dbc.CelijaNazivUpozorenje);
+                    edit.MessageErrorKeyMissing();
                 }
             }
         }
-        private void dgv_mjesta_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        // BTN za izmjenu podataka radi sve što i unos metoda osim koraka pozivanja generičke metode za update podataka u bazi
+        private void btn_Uredi_Click(object sender, EventArgs e)
+        {
+            if (edit.NullOrWhite(txt_Mjesto) | edit.NullOrWhite(txt_Ptt) | edit.NullOrWhite(txt_Zupanija))
+            {
+                PrazneCelije();
+                edit.PorukaPraznaCelija();
+            }
+            else
+            {
+                PrazneCelije();
+                var mjesto = SetProperties();
+                var provjera = ProvjeraKljučeva(mjesto);
+                if (provjera is true)
+                {
+                    edit.MessageErrorKeyMissing();
+                }
+                else
+                {
+                    try
+                    {
+                        bool success = controller.Update(mjesto);
+                        if (success == true)
+                        {
+                            DTUpdate();
+                            Clear();
+                        }
+                        else
+                        {
+                            edit.MessageDBErrorUpdate();
+                        }
+                    }
+                    catch (Exception ex) { edit.MessageException(ex); }
+                }
+            }
+        }
+        // Metoda provjerava da je strani ključ veći od 0 prije unosa
+        private bool ProvjeraKljučeva(MjestoModel mjesto)
+        {
+            bool provjera = false;
+            if (mjesto.IdZupanije > 0)
+            {
+                provjera = true;
+            }
+            return provjera;
+        }
+        // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
+        private MjestoModel SetProperties()
+        {
+            MjestoModel mjesto = new MjestoModel();
+            if (this.edit.NullOrWhite(txt_id)) { }
+            else
+            {
+                mjesto.Id = int.Parse(txt_id.Text.Trim());
+            }
+            mjesto.Ptt = txt_Ptt.Text.Trim();
+            mjesto.Mjesto = txt_Mjesto.Text.Trim();
+            mjesto.IdZupanije = zpanijeDict.FirstOrDefault(z => z.Value == txt_Zupanija.Text.Trim()).Key;
+            return mjesto;
+        }
+        // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
+        private void DGV_Mjesta_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int RowIndex = e.RowIndex;
             txt_id.Text = DGV_Mjesta.Rows[RowIndex].Cells[0].Value.ToString();
             txt_Ptt.Text = DGV_Mjesta.Rows[RowIndex].Cells[1].Value.ToString();
             txt_Mjesto.Text = DGV_Mjesta.Rows[RowIndex].Cells[2].Value.ToString();
             txt_Zupanija.Text = DGV_Mjesta.Rows[RowIndex].Cells[3].Value.ToString();
-            txt_secKey.Text = DGV_Mjesta.Rows[RowIndex].Cells[4].Value.ToString();
         }
+        // Metoda za pretraživanje podataka unesenih u bazu
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
         {
-            string Pretraga = txt_pretrazivanje.Text;
-            string Dbs = "SELECT mjesta.id AS ID, mjesta.ptt AS 'Poštanski broj', mjesta.mjesto AS Mjesto, zupanije.zupanija AS Županija, mjesta.secKey AS 'Poštanski ured'" +
-            " FROM mjesta INNER JOIN zupanije ON mjesta.idZupanije = zupanije.id WHERE mjesta.mjesto LIKE '%" +Pretraga+ "%' OR mjesta.ptt LIKE '%" + Pretraga + "%'";
-
-            OleDbConnection conn = new OleDbConnection(dbc.conn_string);
-            OleDbDataAdapter a = new OleDbDataAdapter(Dbs, conn);
-            DataTable dt = new DataTable();
-            a.Fill(dt);
-            DGV_Mjesta.DataSource = dt;
+            try
+            {
+                (DGV_Mjesta.DataSource as DataTable).DefaultView.RowFilter =
+                    string.Format("ptt LIKE '%{0}%' OR mjesto LIKE '%{0}%' OR županija LIKE '%{0}%'", txt_pretrazivanje.Text.Trim());
+                if (DGV_Mjesta.Rows[0].Cells[0].Value is null)
+                {
+                    return;
+                }
+            }
+            catch (Exception ex) { edit.MessageException(ex); }
         }
+        // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
-            txt_id.Text = "";
-            txt_Ptt.Text = "";
-            txt_Mjesto.Text = "";
-            txt_Zupanija.Text = "";
-            txt_secKey.Text = "";
-            txt_Mjesto.Focus();
+            txt_id.Clear();
+            txt_Ptt.Clear();
+            txt_Mjesto.Clear();
+            txt_Zupanija.Clear();
+            txt_pretrazivanje.Clear();
+            txt_Ptt.Focus();
         }
-        private void btn_dodaj_Click(object sender, EventArgs e)
+        // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
+        private void PrazneCelije()
         {
-            if (txt_Mjesto.Text == "" | txt_Ptt.Text=="" | txt_Zupanija.Text=="")
-            {
-                PrazneCelije();
-            }
-            else
-            {
-                uredi.Mjesto = txt_Mjesto.Text.Trim();
-                uredi.Ptt = txt_Ptt.Text.Trim();
-
-                _sifra = txt_Zupanija.Text.Trim();
-                GdjeTrazim = "zupanija";
-                IzTablice = "zupanije";
-                uredi.idZupaija = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
-
-                _sifra = txt_secKey.Text.Trim();
-                GdjeTrazim = "mjesto";
-                IzTablice = "mjesta";
-                uredi.secKey = uredi.Sifra(_sifra, IzTablice, GdjeTrazim);
-                if(idZupaija < 1)
-                {
-                    MessageBox.Show(dbc.IdError, dbc.CelijaNazivUpozorenje);
-                }
-                else
-                {
-                    bool success = uredi.InsertMjesto(uredi);
-                    if (success == true)
-                    {
-                        DTUpdate();
-                        Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show(dbc.UnosError, dbc.CelijaNazivUpozorenje);
-                    }
-                }                
-            }            
+            edit.PrazneCelije(txt_Mjesto);
+            edit.PrazneCelije(txt_Ptt);
+            edit.PrazneCelije(txt_Zupanija);
         }
+        // Izbornik gumb za Insert/unos podataka kratica F4
         private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btn_dodaj.PerformClick();
         }
+        // Izbornik gumb za Update/izmjenu podataka kratica F3
         private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btn_Uredi.PerformClick();
         }
-        private void PrazneCelije()
+        // Izbornik gumb za brisanje teksta iz textBoxova kratica F1
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                if (txt_Mjesto.Text == "")
-                {
-                    txt_Mjesto.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    txt_Mjesto.BackColor = Color.White;
-                }
-                if (txt_Ptt.Text == "")
-                {
-                    txt_Ptt.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    txt_Ptt.BackColor = Color.White;
-                }
-                if (txt_Zupanija.Text == "")
-                {
-                    txt_Zupanija.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    txt_Zupanija.BackColor = Color.White;
-                }
-                MessageBox.Show(dbc.PraznaCelija, dbc.CelijaNazivUpozorenje);           
+            Clear();
         }
     }
 }
