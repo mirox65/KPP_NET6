@@ -1,5 +1,7 @@
 ﻿using KPP_Alpha1.Models;
 using System.Data.OleDb;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace KPP_Alpha1.Controller
 {
@@ -56,6 +58,21 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@azurirano", korisnik.Azurirano);
             bool success = db.ExcecuteNonQuery(cmd, conn);
             return success;
+        }
+        // Metoda za hesh-anje passworda koji se sprema u bazu kodiran zbog sigurnosti
+        public string NapraviMD5(string Lozinka)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(Lozinka));
+            byte[] rezultat = md5.Hash;
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < rezultat.Length; i++)
+            {
+                sb.Append(rezultat[i].ToString("x2"));
+            }
+            return sb.ToString();
         }
     }
 }

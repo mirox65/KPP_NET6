@@ -22,7 +22,7 @@ namespace KPP_Alpha1
         // Stringovi s kojima se rade poruke
         public string PraznaCelija = "Ćelije ne smiju biti prazne!";
         public string CelijaNazivUpozorenje = "Upozorenje";
-        public string CelijaNazivObavjest = "Obavjest aplikacije";
+        public string CelijaNazivObavjest = "Obavjest";
         public string IzmjenaError = "Izmjena nije izvršena!";
         public string UnosError = "Unos nije napravljen!";
         public string IdError = "ID stavke nije pronađen!\n\nProvjeri polja na greške u malim i velikim slovima.\n\n" +
@@ -57,11 +57,20 @@ namespace KPP_Alpha1
             MessageBox.Show(IdError, CelijaNazivUpozorenje);
         }
         // Poruka korisniku da nije pronađen u aplikaciji kod logiranja ili da nema prava pristupa
-        internal void MessageLoginFaild()
+        internal void MessageAccessDenied()
         {
             MessageBox.Show("Korisničko ime ili lozinka nisu točni. Pokušaj ponovno!\n" +
                         "Ili nisi ovlašten za korištenje aplikacije.", CelijaNazivUpozorenje);
-        }       
+        }
+        internal void MessagePasswordMissmatch()
+        {
+            MessageBox.Show("Lozinke se ne podudaraju!", CelijaNazivUpozorenje);
+        }
+
+        internal void MessagePasswordChanged()
+        {
+            MessageBox.Show("Lozinka je promjenjena.\n\nPrijavite se sa novom lozinkom", CelijaNazivObavjest);
+        }
 
         #endregion
 

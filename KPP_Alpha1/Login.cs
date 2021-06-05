@@ -1,5 +1,6 @@
-﻿using System;
-using System.Data.OleDb;
+﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
+using System;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
@@ -13,9 +14,14 @@ namespace KPP_Alpha1
 
     public partial class FormLogin : Form
     {
-        readonly DbClass db = new DbClass();
         readonly EditClass edit = new EditClass();
-        readonly FormKorisnici korisnici = new FormKorisnici();
+        readonly LoginController controller = new LoginController();
+        readonly LoginController loginController = new LoginController();
+
+        private string KorisnickoIme { get; set; }
+        private string Lozinka { get; set; }
+        private string NovaLozinka { get; set; }
+        private string PonovljenaLozinka { get; set; }
 
         public FormLogin()
         {
@@ -26,48 +32,100 @@ namespace KPP_Alpha1
         // Poziva metodu za isčitavanje podatka iz baze i postavljanje globalnih statičkih varijabli u Edit klasi
         private void Btn_prijava_Click_1(object sender, EventArgs e)
         {
-            var dbs = "SELECT k.id, [d.ime]&' '&[d.prezime] AS Korisnik, k.korisnickoIme, k.uloga " +
-                "FROM (korisnici AS k " +
-                "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikId) " +
-                "WHERE k.korisnickoIme=? AND k.lozinka=? AND aktivan='DA';";
-            var conn = new OleDbConnection(db.connString);
-            var cmd = new OleDbCommand(dbs, conn);
-            cmd.Parameters.AddWithValue("@korsinickoIme", txt_korIme.Text.Trim());
-            cmd.Parameters.AddWithValue("@lozinka", korisnici.NapraviMD5(txt_lozinka.Text.Trim()));
-            try
+            if (btn_prijava.Text == "Prijava")
             {
-                conn.Open();
-                var korisnik = cmd.ExecuteReader();
-                if (korisnik.HasRows)
+                SetProperties();
+                bool accessGranted = loginController.RequestAccess(KorisnickoIme, Lozinka);
+                if (accessGranted is true)
                 {
-                    SetProperties(korisnik);
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    edit.MessageLoginFaild();
+                    edit.MessageAccessDenied();
                     Clear();
                 }
             }
-            catch (Exception ex) { edit.MessageException(ex); }
-            finally
+            else
             {
-                conn.Close();
+                LblBtnNameChanges();
+            }
+        }
+        private void BtnPromjenaLozinke_Click(object sender, EventArgs e)
+        {
+            SetProperties();
+            if (BtnPromjenaLozinke.Text == "Promjena lozinke")
+            {
+                bool accessGranted = controller.RequestAccess(KorisnickoIme, Lozinka);
+                if (accessGranted is true)
+                {
+                    LblBtnNameChanges();
+                }
+                else
+                {
+                    edit.MessageAccessDenied();
+                }
+            }
+            else
+            {
+                SetProperties();
+                if (NovaLozinka == PonovljenaLozinka)
+                {
+                    bool success = controller.UpdatePasswordByUser(LoginHelper.StaticId, NovaLozinka);
+                    if (success is true)
+                    {
+                        edit.MessagePasswordChanged();
+                        LblBtnNameChanges();
+                    }
+                    else
+                    {
+                        edit.MessageDBErrorUpdate();
+                    }
+                }
+                else
+                {
+                    edit.MessagePasswordMissmatch();
+                }
+            }
+        }
+
+        private void LblBtnNameChanges()
+        {
+            if (BtnPromjenaLozinke.Text == "Promjena lozinke")
+            {
+                txt_korIme.Clear();
+                txt_lozinka.Clear();
+                txt_korIme.UseSystemPasswordChar = true;
+                LblKorIme.Text = "Nova lozinka:";
+                LblLozinka.Text = "Ponovi lozinku:";
+                BtnPromjenaLozinke.Text = "Spremi";
+                btn_prijava.Text = "Odbaci";
+                txt_korIme.Focus();
+            }
+            else
+            {
+                LblKorIme.Text = "Korisničko ime:";
+                LblLozinka.Text = "Lozinka:";
+                BtnPromjenaLozinke.Text = "Promjena lozinke";
+                btn_prijava.Text = "Prijava";
+                txt_korIme.UseSystemPasswordChar = false;
+                txt_korIme.Text = KorisnickoIme;
+                Clear();
             }
         }
         // Metoda postavalj globalne statiče varijable koje se koriste za vrije sesije
-        private void SetProperties(OleDbDataReader korisnik)
+        private void SetProperties()
         {
-            while (korisnik.Read())
+            if (BtnPromjenaLozinke.Text == "Promjena lozinke")
             {
-                if (txt_korIme.Text == korisnik.GetValue(2).ToString())
-                {
-                    EditClass.IdKorisnika = int.Parse(korisnik.GetValue(0).ToString());
-                    EditClass.KorisnikAplikacije = korisnik.GetValue(1).ToString();
-                    EditClass.UlogaKorisnika = korisnik.GetValue(3).ToString();
-                }
+                KorisnickoIme = txt_korIme.Text.Trim();
+                Lozinka = txt_lozinka.Text.Trim();
             }
-            korisnik.Close();
+            else
+            {
+                NovaLozinka = txt_korIme.Text.Trim();
+                PonovljenaLozinka = txt_lozinka.Text.Trim();
+            }
         }
         // Brisanje polja i fokus na polje lozinka
         private void Clear()

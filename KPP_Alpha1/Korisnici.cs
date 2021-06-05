@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
@@ -72,21 +70,7 @@ namespace KPP_Alpha1
         {
             DTUpdate();
         }
-        // Metoda za hesh-anje passworda koji se sprema u bazu kodiran zbog sigurnosti
-        public string NapraviMD5(string Lozinka)
-        {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(Lozinka));
-            byte[] rezultat = md5.Hash;
 
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < rezultat.Length; i++)
-            {
-                sb.Append(rezultat[i].ToString("x2"));
-            }
-            return sb.ToString();
-        }
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
         // Provjera praznih ćelija, javlja poruke korisnicma (najbliža je korisniku)
         // Postavlja vrijednosti varijabli u modelu, i poziva generičku metodu za unos podatka
@@ -174,7 +158,7 @@ namespace KPP_Alpha1
         private bool ProvjeraKljučeva(KorisnikModel korisnik)
         {
             bool provjera = false;
-            if(korisnik.DjelatnikId > 0 | korisnik.KorisnikId > 0)
+            if (korisnik.DjelatnikId > 0 | korisnik.KorisnikId > 0)
             {
                 provjera = true;
             }
@@ -187,7 +171,7 @@ namespace KPP_Alpha1
             if (!edit.NullOrWhite(txt_id) | !edit.NullOrWhite(txt_lozinka))
             {
                 korisnik.Id = int.Parse(txt_id.Text.Trim());
-                korisnik.Lozinka = NapraviMD5(txt_lozinka.Text);
+                korisnik.Lozinka = controller.NapraviMD5(txt_lozinka.Text);
 
             }
             korisnik.DjelatnikId = djelatniciDict.FirstOrDefault(d => d.Value == txt_prezime.Text.Trim()).Key;

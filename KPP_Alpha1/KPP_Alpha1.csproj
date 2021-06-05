@@ -54,6 +54,7 @@
     <Compile Include="Controller\DjelatnikController.cs" />
     <Compile Include="Controller\KnjigaController.cs" />
     <Compile Include="Controller\KorisnikController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MjestoController.cs" />
     <Compile Include="Controller\OdjelController.cs" />
     <Compile Include="Controller\PosiljateljController.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperClasses\LoginHelper.cs" />
     <Compile Include="Korisnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +108,7 @@
     <Compile Include="Models\DjelatnikModel.cs" />
     <Compile Include="Models\KnjigaModel.cs" />
     <Compile Include="Models\KorisnikModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MjestoModel.cs" />
     <Compile Include="Models\OdjelModel.cs" />
     <Compile Include="Models\PosiljateljModel.cs" />
