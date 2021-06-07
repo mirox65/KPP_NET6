@@ -29,7 +29,7 @@ namespace KPP_Alpha1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -50,6 +50,10 @@ namespace KPP_Alpha1
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ComBoxFilter = new System.Windows.Forms.ComboBox();
+            this.ComBoxAktivan = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -158,8 +162,8 @@ namespace KPP_Alpha1
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -262,12 +266,68 @@ namespace KPP_Alpha1
             this.ClearToolStripMenuItem.Text = "Clear";
             this.ClearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
             // 
+            // ComBoxFilter
+            // 
+            this.ComBoxFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComBoxFilter.BackColor = System.Drawing.Color.White;
+            this.ComBoxFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBoxFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComBoxFilter.FormattingEnabled = true;
+            this.ComBoxFilter.Items.AddRange(new object[] {
+            "Aktivni djelatnici",
+            "Neaktivni djelatnici"});
+            this.ComBoxFilter.Location = new System.Drawing.Point(502, 78);
+            this.ComBoxFilter.Name = "ComBoxFilter";
+            this.ComBoxFilter.Size = new System.Drawing.Size(133, 25);
+            this.ComBoxFilter.TabIndex = 34;
+            this.ComBoxFilter.TabStop = false;
+            this.ComBoxFilter.SelectionChangeCommitted += new System.EventHandler(this.ComBoxFilter_SelectionChangeCommitted);
+            // 
+            // ComBoxAktivan
+            // 
+            this.ComBoxAktivan.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComBoxAktivan.BackColor = System.Drawing.Color.White;
+            this.ComBoxAktivan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBoxAktivan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComBoxAktivan.FormattingEnabled = true;
+            this.ComBoxAktivan.Items.AddRange(new object[] {
+            "DA",
+            "NE"});
+            this.ComBoxAktivan.Location = new System.Drawing.Point(502, 45);
+            this.ComBoxAktivan.Name = "ComBoxAktivan";
+            this.ComBoxAktivan.Size = new System.Drawing.Size(133, 25);
+            this.ComBoxAktivan.TabIndex = 35;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(421, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Filter:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(421, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 17);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Aktivan:";
+            // 
             // FormDjelatnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.ComBoxFilter);
+            this.Controls.Add(this.ComBoxAktivan);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Dgv);
             this.Controls.Add(this.lbl_pretrazivanje);
@@ -319,5 +379,9 @@ namespace KPP_Alpha1
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
+        private System.Windows.Forms.ComboBox ComBoxFilter;
+        private System.Windows.Forms.ComboBox ComBoxAktivan;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
