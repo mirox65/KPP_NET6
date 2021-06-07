@@ -27,6 +27,7 @@ namespace KPP_Alpha1
         public FormDjelatnici()
         {
             InitializeComponent();
+            Clear();
             odjeliDict = db.DictFill("naziv", "odjeli");
             CollectionOdjeli();
         }
@@ -40,17 +41,18 @@ namespace KPP_Alpha1
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void Djelatnici_Load(object sender, EventArgs e)
         {
-            DTUpdate();
+            DTUpdate("DA");
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
-        private void DTUpdate()
+        private void DTUpdate(string aktivan)
         {
             string Dbs = "SELECT d.id AS ID, d.pn AS PN, d.ime AS Ime, d.prezime AS Prezime, o.naziv AS Odjel, " +
-                "[do.ime]&' '&[do.prezime] AS Korisnik, d.azurirano AS Ažurirano " +
+                "d.aktivan AS Aktivan, [do.ime]&' '&[do.prezime] AS Korisnik, d.azurirano AS Ažurirano " +
                 "FROM ((Djelatnici AS d " +
                 "LEFT JOIN odjeli AS o ON o.id = d.idodjel) " +
                 "LEFT JOIN korisnici AS k ON k.id = d.idkorisnika) " +
                 "LEFT JOIN djelatnici AS do ON do.id=k.djelatnikid " +
+                $"WHERE d.aktivan='{ aktivan }' " +
                 "ORDER BY d.prezime ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
@@ -64,6 +66,8 @@ namespace KPP_Alpha1
             txtOdjelId.Clear();
             txt_id.Clear();
             txt_pretrazivanje.Clear();
+            ComBoxFilter.SelectedIndex = 0;
+            ComBoxAktivan.SelectedIndex = 0;
             txtPN.Focus();
         }
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
@@ -97,7 +101,7 @@ namespace KPP_Alpha1
                         bool sucess = controller.Insert(djelatnik);
                         if (sucess is true)
                         {
-                            DTUpdate();
+                            DTUpdate("DA");
                             Clear();
                         }
                         else
@@ -134,7 +138,7 @@ namespace KPP_Alpha1
                         bool sucess = controller.Update(djelatnik);
                         if (sucess is true)
                         {
-                            DTUpdate();
+                            DTUpdate("DA");
                             Clear();
                         }
                         else
@@ -172,6 +176,7 @@ namespace KPP_Alpha1
             djelatnik.Ime = txt_ime.Text.Trim();
             djelatnik.Prezime = txt_prezime.Text.Trim();
             djelatnik.OdjelId = odjeliDict.FirstOrDefault(o => o.Value == txtOdjelId.Text.Trim()).Key;
+            djelatnik.Aktivan = ComBoxAktivan.Text.Trim();
             return djelatnik;
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
@@ -183,6 +188,7 @@ namespace KPP_Alpha1
             txt_ime.Text = Dgv.Rows[RowIndex].Cells[2].Value.ToString();
             txt_prezime.Text = Dgv.Rows[RowIndex].Cells[3].Value.ToString();
             txtOdjelId.Text = Dgv.Rows[RowIndex].Cells[4].Value.ToString();
+            ComBoxAktivan.Text = Dgv.Rows[RowIndex].Cells[5].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
@@ -213,6 +219,18 @@ namespace KPP_Alpha1
         private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void ComBoxFilter_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if(ComBoxFilter.Text == "Aktivni djelatnici")
+            {
+                DTUpdate("DA");
+            }
+            else
+            {
+                DTUpdate("NE");
+            }
         }
     }
 }

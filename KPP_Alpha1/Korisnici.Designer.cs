@@ -52,6 +52,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.ComBoxAktivan = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ComBoxFilter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -297,12 +299,40 @@
             this.ComBoxAktivan.Size = new System.Drawing.Size(133, 27);
             this.ComBoxAktivan.TabIndex = 6;
             // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(434, 116);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 19);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Filter:";
+            // 
+            // ComBoxFilter
+            // 
+            this.ComBoxFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComBoxFilter.BackColor = System.Drawing.Color.White;
+            this.ComBoxFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBoxFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComBoxFilter.FormattingEnabled = true;
+            this.ComBoxFilter.Items.AddRange(new object[] {
+            "Aktivni korisnici",
+            "Neaktivni korisnici"});
+            this.ComBoxFilter.Location = new System.Drawing.Point(515, 112);
+            this.ComBoxFilter.Name = "ComBoxFilter";
+            this.ComBoxFilter.Size = new System.Drawing.Size(133, 27);
+            this.ComBoxFilter.TabIndex = 6;
+            this.ComBoxFilter.TabStop = false;
+            this.ComBoxFilter.SelectionChangeCommitted += new System.EventHandler(this.ComBoxFilter_SelectionChangeCommitted);
+            // 
             // FormKorisnici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.ComBoxFilter);
             this.Controls.Add(this.ComBoxAktivan);
             this.Controls.Add(this.cmb_uloga);
             this.Controls.Add(this.menuStrip1);
@@ -317,6 +347,7 @@
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lbl_prezime_korisnik);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -359,5 +390,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox ComBoxAktivan;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox ComBoxFilter;
     }
 }

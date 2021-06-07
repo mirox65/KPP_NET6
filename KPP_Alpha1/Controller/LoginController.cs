@@ -16,7 +16,7 @@ namespace KPP_Alpha1.Controller
             var dbs = "SELECT k.id, [d.ime]&' '&[d.prezime] AS Korisnik, k.korisnickoIme, k.uloga " +
                         "FROM (korisnici AS k " +
                         "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikId) " +
-                        "WHERE k.korisnickoIme=? AND k.lozinka=? AND aktivan='DA';";
+                        "WHERE k.korisnickoIme=? AND k.lozinka=? AND k.aktivan='DA';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             cmd.Parameters.AddWithValue("@korsinickoIme", korisnickoIme);
@@ -45,12 +45,10 @@ namespace KPP_Alpha1.Controller
             {
                 if (korisnickoIme == korisnik.GetValue(2).ToString())
                 {
-                    EditClass.IdKorisnika = int.Parse(korisnik.GetValue(0).ToString());
-                    EditClass.KorisnikAplikacije = korisnik.GetValue(1).ToString();
-                    EditClass.UlogaKorisnika = korisnik.GetValue(3).ToString();
                     LoginHelper.StaticId = int.Parse(korisnik.GetValue(0).ToString());
-                    LoginHelper.StaticKorisnickoIme = korisnik.GetValue(1).ToString();
-                    LoginHelper.StaticKorisnik = korisnik.GetValue(3).ToString();
+                    LoginHelper.StaticKorisnik = korisnik.GetValue(1).ToString();
+                    LoginHelper.StaticKorisnickoIme = korisnik.GetValue(2).ToString();
+                    LoginHelper.StaticUloga = korisnik.GetValue(3).ToString();
                 }
             }
             korisnik.Close();

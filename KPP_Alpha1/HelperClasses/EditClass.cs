@@ -12,13 +12,6 @@ namespace KPP_Alpha1
         /// i uloge korisnika aplikacije.
         /// </summary>
 
-        // STATIC čuvanje korisničkog podatka
-        // jako bitna varijabla UlogaKorisnika koristi se kroz aplikaciju
-        // za ograničavanje pristupa elementima ukoliko korisnik nije administrator
-        public static string KorisnikAplikacije { get; set; }
-        public static int IdKorisnika { get; set; }
-        public static string UlogaKorisnika { get; set; }
-
         // Stringovi s kojima se rade poruke
         public string PraznaCelija = "Ćelije ne smiju biti prazne!";
         public string CelijaNazivUpozorenje = "Upozorenje";

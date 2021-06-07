@@ -25,7 +25,7 @@ namespace KPP_Alpha1
         public FormPosiljatelji()
         {
             InitializeComponent();
-            mjestaDict = db.DictFill("mjesto", "mjesta");
+            mjestaDict = db.DictFill("mjesto", "ptt", "mjesta");
             CollecionMjesta();
         }
         // Metoda za kolekciju Mjesta koja se veže za txtBox Mjesta za suggest and append

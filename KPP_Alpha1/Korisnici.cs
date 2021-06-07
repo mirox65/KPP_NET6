@@ -41,7 +41,7 @@ namespace KPP_Alpha1
             txt_prezime.AutoCompleteCustomSource = djelatniciCollection;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
-        private void DTUpdate()
+        private void DTUpdate(string aktivan)
         {
             string Dbs = "SELECT k.id AS ID, [d.ime]&' '&[d.prezime] AS Djelatnik, k.korisnickoIme AS KorIme, " +
                 "k.uloga AS Uloga, k.aktivan AS Aktivan, [da.ime]&' '&[da.prezime] AS Korisnik, k.azurirano AS Ažurirano " +
@@ -49,6 +49,7 @@ namespace KPP_Alpha1
                 "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikid) " +
                 "LEFT JOIN korisnici AS ka ON ka.id=k.korisnikid) " +
                 "LEFT JOIN djelatnici AS da ON da.id=ka.djelatnikid " +
+                $"WHERE k.aktivan='{ aktivan }' " +
                 "ORDER BY k.id ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
@@ -62,13 +63,14 @@ namespace KPP_Alpha1
             txt_lozinka.Clear();
             cmb_uloga.SelectedIndex = 0;
             ComBoxAktivan.SelectedIndex = 0;
+            ComBoxFilter.SelectedIndex = 0;
             txt_pretrazivanje.Clear();
             txt_prezime.Focus();
         }
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void form_Korisnici_Load(object sender, EventArgs e)
         {
-            DTUpdate();
+            DTUpdate("DA");
         }
 
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
@@ -94,7 +96,7 @@ namespace KPP_Alpha1
                     {
                         if (success is true)
                         {
-                            DTUpdate();
+                            DTUpdate("DA");
                             Clear();
                         }
                         else
@@ -138,7 +140,7 @@ namespace KPP_Alpha1
                     {
                         if (success is true)
                         {
-                            DTUpdate();
+                            DTUpdate("DA");
                             Clear();
                         }
                         else
@@ -229,6 +231,18 @@ namespace KPP_Alpha1
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void ComBoxFilter_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (ComBoxFilter.Text == "Aktivni korisnici")
+            {
+                DTUpdate("DA");
+            }
+            else
+            {
+                DTUpdate("NE");
+            }
         }
     }
 }
