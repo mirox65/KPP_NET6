@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KPP_Alpha1.HelperClasses;
+using System;
 
 namespace KPP_Alpha1.Models
 {
@@ -8,7 +9,7 @@ namespace KPP_Alpha1.Models
         public string Ptt { get; set; }
         public string Mjesto { get; set; }
         public int IdZupanije { get; set; }
-        public int KorisnikId { get; set; } = EditClass.IdKorisnika;
+        public int KorisnikId { get; set; } = LoginHelper.StaticId;
         public DateTime Azurirano { get; set; } = DateTime.Now.Date;
     }
 }

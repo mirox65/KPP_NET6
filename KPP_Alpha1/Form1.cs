@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KPP_Alpha1.HelperClasses;
+using System;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
@@ -227,7 +228,7 @@ namespace KPP_Alpha1
                 }
                 else
                 {
-                    if (EditClass.UlogaKorisnika == "Administrator")
+                    if (LoginHelper.StaticUloga == "Administrator")
                     {
                         dodajKorisnikaToolStripMenuItem.Visible = true;
                         FormaKPP();
@@ -236,7 +237,7 @@ namespace KPP_Alpha1
                     {
                         FormaKPP();
                     }
-                    tssl_korisnik.Text = EditClass.KorisnikAplikacije;
+                    tssl_korisnik.Text = LoginHelper.StaticKorisnik;
                 }
             }
         }
