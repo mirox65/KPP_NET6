@@ -173,7 +173,7 @@ namespace KPP_Alpha1
             if (!edit.NullOrWhite(txt_id) | !edit.NullOrWhite(txt_lozinka))
             {
                 korisnik.Id = int.Parse(txt_id.Text.Trim());
-                korisnik.Lozinka = controller.NapraviMD5(txt_lozinka.Text);
+                korisnik.Lozinka = txt_lozinka.Text.Trim();
 
             }
             korisnik.DjelatnikId = djelatniciDict.FirstOrDefault(d => d.Value == txt_prezime.Text.Trim()).Key;

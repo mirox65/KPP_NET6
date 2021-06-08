@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.HelperClasses;
+using KPP_Alpha1.Models;
 using System;
 using System.Data.OleDb;
 
@@ -8,9 +9,9 @@ namespace KPP_Alpha1.Controller
     {
         readonly DbClass db = new DbClass();
         readonly EditClass edit = new EditClass();
-        readonly KorisnikController controller = new KorisnikController();
+        readonly KorisnikController korisnikController = new KorisnikController();
 
-        internal bool RequestAccess(string korisnickoIme, string lozinka)
+        internal bool RequestAccess(LoginModel login)
         {
             bool access = false;
             var dbs = "SELECT k.id, [d.ime]&' '&[d.prezime] AS Korisnik, k.korisnickoIme, k.uloga " +
@@ -19,15 +20,15 @@ namespace KPP_Alpha1.Controller
                         "WHERE k.korisnickoIme=? AND k.lozinka=? AND k.aktivan='DA';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
-            cmd.Parameters.AddWithValue("@korsinickoIme", korisnickoIme);
-            cmd.Parameters.AddWithValue("@lozinka", controller.NapraviMD5(lozinka));
+            cmd.Parameters.AddWithValue("@korsinickoIme", login.KorisnickoIme);
+            cmd.Parameters.AddWithValue("@lozinka", login.HashedLozinka);
             try
             {
                 conn.Open();
                 var korisnik = cmd.ExecuteReader();
                 if (korisnik.HasRows)
                 {
-                    SetStaticProperties(korisnik, korisnickoIme);
+                    SetStaticProperties(korisnik, login.KorisnickoIme);
                     access = true;
                 }
             }
@@ -54,17 +55,9 @@ namespace KPP_Alpha1.Controller
             korisnik.Close();
         }
 
-        internal bool UpdatePasswordByUser(int staticId, string lozinka)
+        internal bool UpdatePasswordByUser(LoginModel login)
         {
-            string Uredi = "UPDATE korisnici SET lozinka=?, korisnikId=?, azurirano=? " +
-                "WHERE id=?";
-            OleDbConnection conn = new OleDbConnection(db.connString);
-            OleDbCommand cmd = new OleDbCommand(Uredi, conn);
-            cmd.Parameters.AddWithValue("@lozinka", controller.NapraviMD5(lozinka));
-            cmd.Parameters.AddWithValue("@korisnikId", staticId);
-            cmd.Parameters.AddWithValue("@azurirano", DateTime.Now.Date);
-            cmd.Parameters.AddWithValue("@id", staticId);
-            bool success = db.ExcecuteNonQuery(cmd, conn);
+            var success = korisnikController.UpdatePasswordByUser(login);
             return success;
         }
     }
