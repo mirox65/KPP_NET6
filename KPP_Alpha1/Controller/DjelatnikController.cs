@@ -11,7 +11,7 @@ namespace KPP_Alpha1.Controller
         {
             string Unos = "INSERT INTO djelatnici(pn, ime, prezime, idodjel, aktivan, " +
                 "idkorisnika, azurirano) " +
-                "VALUES(?, ?, ?, ?, ?, ?)";
+                "VALUES(?, ?, ?, ?, ?, ?, ?)";
             OleDbConnection conn = new OleDbConnection(db.connString);
             OleDbCommand cmd = new OleDbCommand(Unos, conn);
             cmd.Parameters.AddWithValue("@pn", djelatnik.PerNum);

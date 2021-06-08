@@ -9,6 +9,7 @@ namespace KPP_Alpha1.Models
         public int DjelatnikId { get; set; }
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }
+        public string Sol { get; set; }
         public string Uloga { get; set; }
         public string Aktivan { get; set; } = "DA";
         public int KorisnikId { get; set; } = LoginHelper.StaticId;

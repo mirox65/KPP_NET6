@@ -1,5 +1,6 @@
 ﻿using KPP_Alpha1.Controller;
 using KPP_Alpha1.HelperClasses;
+using KPP_Alpha1.Models;
 using System;
 using System.Windows.Forms;
 
@@ -18,11 +19,6 @@ namespace KPP_Alpha1
         readonly LoginController controller = new LoginController();
         readonly LoginController loginController = new LoginController();
 
-        private string KorisnickoIme { get; set; }
-        private string Lozinka { get; set; }
-        private string NovaLozinka { get; set; }
-        private string PonovljenaLozinka { get; set; }
-
         public FormLogin()
         {
             InitializeComponent();
@@ -34,8 +30,8 @@ namespace KPP_Alpha1
         {
             if (btn_prijava.Text == "Prijava")
             {
-                SetProperties();
-                bool accessGranted = loginController.RequestAccess(KorisnickoIme, Lozinka);
+                var login = SetProperties();
+                bool accessGranted = loginController.RequestAccess(login);
                 if (accessGranted is true)
                 {
                     this.DialogResult = DialogResult.OK;
@@ -53,10 +49,10 @@ namespace KPP_Alpha1
         }
         private void BtnPromjenaLozinke_Click(object sender, EventArgs e)
         {
-            SetProperties();
+            var login = SetProperties();
             if (BtnPromjenaLozinke.Text == "Promjena lozinke")
             {
-                bool accessGranted = controller.RequestAccess(KorisnickoIme, Lozinka);
+                bool accessGranted = controller.RequestAccess(login);
                 if (accessGranted is true)
                 {
                     LblBtnNameChanges();
@@ -68,10 +64,9 @@ namespace KPP_Alpha1
             }
             else
             {
-                SetProperties();
-                if (NovaLozinka == PonovljenaLozinka)
+                if (login.NovaLozinka == login.PonovljenaLozinka)
                 {
-                    bool success = controller.UpdatePasswordByUser(LoginHelper.StaticId, NovaLozinka);
+                    bool success = controller.UpdatePasswordByUser(login);
                     if (success is true)
                     {
                         edit.MessagePasswordChanged();
@@ -109,22 +104,27 @@ namespace KPP_Alpha1
                 BtnPromjenaLozinke.Text = "Promjena lozinke";
                 btn_prijava.Text = "Prijava";
                 txt_korIme.UseSystemPasswordChar = false;
-                txt_korIme.Text = KorisnickoIme;
+                txt_korIme.Text = LoginHelper.StaticKorisnickoIme;
                 Clear();
             }
         }
         // Metoda postavalj globalne statiče varijable koje se koriste za vrije sesije
-        private void SetProperties()
+        private LoginModel SetProperties()
         {
             if (BtnPromjenaLozinke.Text == "Promjena lozinke")
             {
-                KorisnickoIme = txt_korIme.Text.Trim();
-                Lozinka = txt_lozinka.Text.Trim();
+                var login = new LoginModel();
+                login.KorisnickoIme = txt_korIme.Text.Trim();
+                login.Lozinka = txt_lozinka.Text.Trim();
+                login.HashedLozinka = login.HashLozinke();
+                return login;
             }
             else
             {
-                NovaLozinka = txt_korIme.Text.Trim();
-                PonovljenaLozinka = txt_lozinka.Text.Trim();
+                var login = new LoginModel();
+                login.NovaLozinka = txt_korIme.Text.Trim();
+                login.PonovljenaLozinka = txt_lozinka.Text.Trim();
+                return login;
             }
         }
         // Brisanje polja i fokus na polje lozinka

@@ -13,7 +13,7 @@ namespace KPP_Alpha1
 
         OleDbConnection conn = null;
         OleDbCommand cmd = null;
-        public string connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\KPP.accdb; Persist Security Info = false";
+        public string connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\KPP.accdb; Jet OLEDB:Database Password=SunceJeLijepo1#;";
 
         #region METODE ZA PRISTUP BAZI I IZVRŠAVANJE ZADATAKA QUERY
         internal bool ExcecuteNonQuery(OleDbCommand cmd, OleDbConnection conn)
