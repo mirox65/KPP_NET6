@@ -96,6 +96,7 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@lozinka", HashLozinkaSHA256(korisnik.Lozinka, sol));
             cmd.Parameters.AddWithValue("@sol", sol);
             cmd.Parameters.AddWithValue("@uloga", korisnik.Uloga);
+            cmd.Parameters.AddWithValue("@aktivan", korisnik.Aktivan);
             cmd.Parameters.AddWithValue("@korisnikId", korisnik.KorisnikId);
             cmd.Parameters.AddWithValue("@azurirano", korisnik.Azurirano);
             bool success = db.ExcecuteNonQuery(cmd, conn);

@@ -210,10 +210,10 @@ namespace KPP_Alpha1
         // Brisanje svih polja i fokus na početno polje
         private void PrazneCelije()
         {
-            edit.PrazneCelije(txt_Odjel);
-            edit.PrazneCelije(txt_Posiljatelj);
-            edit.PrazneCelije(txt_Pismeno);
-            edit.PrazneCelije(txt_Brojcano);
+            edit.BojaPozadineZaPrazneCeliji(txt_Odjel);
+            edit.BojaPozadineZaPrazneCeliji(txt_Posiljatelj);
+            edit.BojaPozadineZaPrazneCeliji(txt_Pismeno);
+            edit.BojaPozadineZaPrazneCeliji(txt_Brojcano);
         }
         // Otvaranje druge forme preko gumba plus pored polja za unos
         private void btn_search_posiljatelj_Click(object sender, EventArgs e)

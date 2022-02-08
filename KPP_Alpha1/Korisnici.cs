@@ -38,7 +38,7 @@ namespace KPP_Alpha1
         {
             string DbAc = "SELECT * FROM djelatnici";
             AutoCompleteStringCollection djelatniciCollection = db.AutoComplete(DbAc, "ime", "prezime");
-            txt_prezime.AutoCompleteCustomSource = djelatniciCollection;
+            txt_djelatnik.AutoCompleteCustomSource = djelatniciCollection;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
         private void DTUpdate(string aktivan)
@@ -58,14 +58,14 @@ namespace KPP_Alpha1
         private void Clear()
         {
             txt_id.Clear();
-            txt_prezime.Clear();
+            txt_djelatnik.Clear();
             txt_korIme.Clear();
             txt_lozinka.Clear();
             cmb_uloga.SelectedIndex = 0;
             ComBoxAktivan.SelectedIndex = 0;
             ComBoxFilter.SelectedIndex = 0;
             txt_pretrazivanje.Clear();
-            txt_prezime.Focus();
+            txt_djelatnik.Focus();
         }
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void form_Korisnici_Load(object sender, EventArgs e)
@@ -76,17 +76,17 @@ namespace KPP_Alpha1
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
         // Provjera praznih ćelija, javlja poruke korisnicma (najbliža je korisniku)
         // Postavlja vrijednosti varijabli u modelu, i poziva generičku metodu za unos podatka
-        private void lbl_dodaj_Click(object sender, EventArgs e)
+        private void Btn_Insert_Click(object sender, EventArgs e)
         {
-            if (edit.NullOrWhite(txt_prezime) | edit.NullOrWhite(txt_korIme) | edit.NullOrWhite(txt_lozinka))
+            if (edit.NullOrWhite(txt_djelatnik) | edit.NullOrWhite(txt_korIme) | edit.NullOrWhite(txt_lozinka))
             {
                 EditPassword = true;
-                PrazneCelije();
+                BojaPozdanieZaPrazneCelije();
             }
             else
             {
                 EditPassword = true;
-                PrazneCelije();
+                BojaPozdanieZaPrazneCelije();
                 var korisnik = SetProperties();
                 var provjera = ProvjeraKljučeva(korisnik);
                 if (provjera is true)
@@ -117,13 +117,13 @@ namespace KPP_Alpha1
         private void Lbl_uredi_Click(object sender, EventArgs e)
         {
             bool success; // lokalna varijabla za provjeru izmjene koja se koristi jedno ovdije zbog passworda
-            if (edit.NullOrWhite(txt_prezime) | edit.NullOrWhite(txt_korIme))
+            if (edit.NullOrWhite(txt_djelatnik) | edit.NullOrWhite(txt_korIme))
             {
-                PrazneCelije();
+                BojaPozdanieZaPrazneCelije();
             }
             else
             {
-                PrazneCelije();
+                BojaPozdanieZaPrazneCelije();
                 var korisnik = SetProperties();
                 var provjera = ProvjeraKljučeva(korisnik);
                 if (provjera is true)
@@ -170,26 +170,28 @@ namespace KPP_Alpha1
         private KorisnikModel SetProperties()
         {
             KorisnikModel korisnik = new KorisnikModel();
-            if (!edit.NullOrWhite(txt_id) | !edit.NullOrWhite(txt_lozinka))
+            if (!edit.NullOrWhite(txt_id))
             {
                 korisnik.Id = int.Parse(txt_id.Text.Trim());
-                korisnik.Lozinka = txt_lozinka.Text.Trim();
-
             }
-            korisnik.DjelatnikId = djelatniciDict.FirstOrDefault(d => d.Value == txt_prezime.Text.Trim()).Key;
+            if (!edit.NullOrWhite(txt_lozinka))
+            {
+                korisnik.Lozinka = txt_lozinka.Text.Trim();
+            }
+            korisnik.DjelatnikId = djelatniciDict.FirstOrDefault(d => d.Value == txt_djelatnik.Text.Trim()).Key;
             korisnik.KorisnickoIme = txt_korIme.Text.Trim();
             korisnik.Uloga = cmb_uloga.Text;
             korisnik.Aktivan = ComBoxAktivan.Text;
             return korisnik;
         }
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
-        private void PrazneCelije()
+        private void BojaPozdanieZaPrazneCelije()
         {
-            edit.PrazneCelije(txt_prezime);
-            edit.PrazneCelije(txt_korIme);
+            edit.BojaPozadineZaPrazneCeliji(txt_djelatnik);
+            edit.BojaPozadineZaPrazneCeliji(txt_korIme);
             if (EditPassword is true)
             {
-                edit.PrazneCelije(txt_lozinka);
+                edit.BojaPozadineZaPrazneCeliji(txt_lozinka);
             }
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
@@ -197,7 +199,7 @@ namespace KPP_Alpha1
         {
             int RowIndex = e.RowIndex;
             txt_id.Text = Dgv.Rows[RowIndex].Cells[0].Value.ToString();
-            txt_prezime.Text = Dgv.Rows[RowIndex].Cells[1].Value.ToString();
+            txt_djelatnik.Text = Dgv.Rows[RowIndex].Cells[1].Value.ToString();
             txt_korIme.Text = Dgv.Rows[RowIndex].Cells[2].Value.ToString();
             cmb_uloga.Text = Dgv.Rows[RowIndex].Cells[3].Value.ToString();
             ComBoxAktivan.Text = Dgv.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -220,12 +222,12 @@ namespace KPP_Alpha1
         // Izbornik gumb za Insert/unos podataka kratica F4
         private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btn_dodaj.PerformClick();
+            Btn_Insert.PerformClick();
         }
         // Izbornik gumb za Update/izmjenu podataka kratica F3
         private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btn_uredi.PerformClick();
+            Btn_Edit.PerformClick();
         }
         // Izbornik gumb za brisanje teksta iz textBoxova kratica F1
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)

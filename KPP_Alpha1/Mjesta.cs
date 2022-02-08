@@ -189,9 +189,9 @@ namespace KPP_Alpha1
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
         private void PrazneCelije()
         {
-            edit.PrazneCelije(txt_Mjesto);
-            edit.PrazneCelije(txt_Ptt);
-            edit.PrazneCelije(txt_Zupanija);
+            edit.BojaPozadineZaPrazneCeliji(txt_Mjesto);
+            edit.BojaPozadineZaPrazneCeliji(txt_Ptt);
+            edit.BojaPozadineZaPrazneCeliji(txt_Zupanija);
         }
         // Izbornik gumb za Insert/unos podataka kratica F4
         private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)

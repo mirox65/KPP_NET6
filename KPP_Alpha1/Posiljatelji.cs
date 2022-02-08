@@ -161,8 +161,8 @@ namespace KPP_Alpha1
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
         private void PrazneCelije()
         {
-            edit.PrazneCelije(txt_naziv);
-            edit.PrazneCelije(txt_mjesto);
+            edit.BojaPozadineZaPrazneCeliji(txt_naziv);
+            edit.BojaPozadineZaPrazneCeliji(txt_mjesto);
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
         private void dgv_posiljatelji_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
