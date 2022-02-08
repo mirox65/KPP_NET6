@@ -113,9 +113,11 @@ namespace KPP_Alpha1
         {
             if (BtnPromjenaLozinke.Text == "Promjena lozinke")
             {
-                var login = new LoginModel();
-                login.KorisnickoIme = txt_korIme.Text.Trim();
-                login.Lozinka = txt_lozinka.Text.Trim();
+                var login = new LoginModel
+                {
+                    KorisnickoIme = txt_korIme.Text.Trim(),
+                    Lozinka = txt_lozinka.Text.Trim()
+                };
                 login.HashedLozinka = login.HashLozinke();
                 return login;
             }

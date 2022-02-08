@@ -73,11 +73,6 @@ namespace KPP_Alpha1
                 bool provjera = ProvjeraKljučeva(poslane);
                 if (provjera is true)
                 {
-                    edit.MessageErrorKeyMissing();
-                }
-                else
-                {
-
                     try
                     {
                         bool success = controller.Insert(poslane);
@@ -92,6 +87,10 @@ namespace KPP_Alpha1
                         }
                     }
                     catch (Exception ex) { edit.MessageException(ex); }
+                }
+                else
+                {
+                    edit.MessageErrorKeyMissing();
                 }
             }
         }
@@ -145,11 +144,11 @@ namespace KPP_Alpha1
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
         private void PrazneCelije()
         {
-            edit.PrazneCelije(txtPrimatelj);
-            edit.PrazneCelije(txtPrevoznik);
-            edit.PrazneCelije(txtPosiljatelj);
-            edit.PrazneCelije(txtNaziv);
-            edit.PrazneCelije(txtNapomena);
+            edit.BojaPozadineZaPrazneCeliji(txtPrimatelj);
+            edit.BojaPozadineZaPrazneCeliji(txtPrevoznik);
+            edit.BojaPozadineZaPrazneCeliji(txtPosiljatelj);
+            edit.BojaPozadineZaPrazneCeliji(txtNaziv);
+            edit.BojaPozadineZaPrazneCeliji(txtNapomena);
         }
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private PoslaneModel SetProperties()

@@ -33,10 +33,10 @@
             this.lbl_id_korisnik = new System.Windows.Forms.Label();
             this.lbl_prezime_korisnik = new System.Windows.Forms.Label();
             this.txt_id = new System.Windows.Forms.TextBox();
-            this.txt_prezime = new System.Windows.Forms.TextBox();
+            this.txt_djelatnik = new System.Windows.Forms.TextBox();
             this.Dgv = new System.Windows.Forms.DataGridView();
-            this.btn_dodaj = new System.Windows.Forms.Button();
-            this.btn_uredi = new System.Windows.Forms.Button();
+            this.Btn_Insert = new System.Windows.Forms.Button();
+            this.Btn_Edit = new System.Windows.Forms.Button();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -89,16 +89,16 @@
             this.txt_id.TabIndex = 1;
             this.txt_id.TabStop = false;
             // 
-            // txt_prezime
+            // txt_djelatnik
             // 
-            this.txt_prezime.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_prezime.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txt_prezime.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_prezime.Location = new System.Drawing.Point(118, 73);
-            this.txt_prezime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_prezime.Name = "txt_prezime";
-            this.txt_prezime.Size = new System.Drawing.Size(201, 26);
-            this.txt_prezime.TabIndex = 2;
+            this.txt_djelatnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txt_djelatnik.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txt_djelatnik.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txt_djelatnik.Location = new System.Drawing.Point(118, 73);
+            this.txt_djelatnik.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_djelatnik.Name = "txt_djelatnik";
+            this.txt_djelatnik.Size = new System.Drawing.Size(201, 26);
+            this.txt_djelatnik.TabIndex = 2;
             // 
             // Dgv
             // 
@@ -119,28 +119,28 @@
             this.Dgv.TabStop = false;
             this.Dgv.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_korisnik_RowHeaderMouseClick);
             // 
-            // btn_dodaj
+            // Btn_Insert
             // 
-            this.btn_dodaj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_dodaj.Location = new System.Drawing.Point(680, 39);
-            this.btn_dodaj.Name = "btn_dodaj";
-            this.btn_dodaj.Size = new System.Drawing.Size(90, 65);
-            this.btn_dodaj.TabIndex = 7;
-            this.btn_dodaj.Text = "Spremi novi (F4)";
-            this.btn_dodaj.UseVisualStyleBackColor = true;
-            this.btn_dodaj.Click += new System.EventHandler(this.lbl_dodaj_Click);
+            this.Btn_Insert.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_Insert.Location = new System.Drawing.Point(680, 39);
+            this.Btn_Insert.Name = "Btn_Insert";
+            this.Btn_Insert.Size = new System.Drawing.Size(90, 65);
+            this.Btn_Insert.TabIndex = 7;
+            this.Btn_Insert.Text = "Spremi novi (F4)";
+            this.Btn_Insert.UseVisualStyleBackColor = true;
+            this.Btn_Insert.Click += new System.EventHandler(this.Btn_Insert_Click);
             // 
-            // btn_uredi
+            // Btn_Edit
             // 
-            this.btn_uredi.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_uredi.Location = new System.Drawing.Point(680, 107);
-            this.btn_uredi.Name = "btn_uredi";
-            this.btn_uredi.Size = new System.Drawing.Size(90, 65);
-            this.btn_uredi.TabIndex = 8;
-            this.btn_uredi.TabStop = false;
-            this.btn_uredi.Text = "Spremi izmjene (F3)";
-            this.btn_uredi.UseVisualStyleBackColor = true;
-            this.btn_uredi.Click += new System.EventHandler(this.Lbl_uredi_Click);
+            this.Btn_Edit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_Edit.Location = new System.Drawing.Point(680, 107);
+            this.Btn_Edit.Name = "Btn_Edit";
+            this.Btn_Edit.Size = new System.Drawing.Size(90, 65);
+            this.Btn_Edit.TabIndex = 8;
+            this.Btn_Edit.TabStop = false;
+            this.Btn_Edit.Text = "Spremi izmjene (F3)";
+            this.Btn_Edit.UseVisualStyleBackColor = true;
+            this.Btn_Edit.Click += new System.EventHandler(this.Lbl_uredi_Click);
             // 
             // txt_pretrazivanje
             // 
@@ -338,12 +338,12 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lbl_pretrazivanje);
             this.Controls.Add(this.txt_pretrazivanje);
-            this.Controls.Add(this.btn_uredi);
-            this.Controls.Add(this.btn_dodaj);
+            this.Controls.Add(this.Btn_Edit);
+            this.Controls.Add(this.Btn_Insert);
             this.Controls.Add(this.Dgv);
             this.Controls.Add(this.txt_lozinka);
             this.Controls.Add(this.txt_korIme);
-            this.Controls.Add(this.txt_prezime);
+            this.Controls.Add(this.txt_djelatnik);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -371,10 +371,10 @@
         private System.Windows.Forms.Label lbl_id_korisnik;
         private System.Windows.Forms.Label lbl_prezime_korisnik;
         private System.Windows.Forms.TextBox txt_id;
-        private System.Windows.Forms.TextBox txt_prezime;
+        private System.Windows.Forms.TextBox txt_djelatnik;
         private System.Windows.Forms.DataGridView Dgv;
-        private System.Windows.Forms.Button btn_dodaj;
-        private System.Windows.Forms.Button btn_uredi;
+        private System.Windows.Forms.Button Btn_Insert;
+        private System.Windows.Forms.Button Btn_Edit;
         private System.Windows.Forms.TextBox txt_pretrazivanje;
         private System.Windows.Forms.Label lbl_pretrazivanje;
         private System.Windows.Forms.MenuStrip menuStrip1;

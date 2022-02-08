@@ -29,7 +29,7 @@ namespace KPP_Alpha1
         {
             if (edit.NullOrWhite(txt_naziv))
             {
-                edit.PrazneCelije(txt_naziv);
+                edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 edit.PorukaPraznaCelija();
             }
             else
@@ -56,12 +56,12 @@ namespace KPP_Alpha1
         {
             if (edit.NullOrWhite(txt_naziv))
             {
-                edit.PrazneCelije(txt_naziv);
+                edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 edit.PorukaPraznaCelija();
             }
             else
             {
-                edit.PrazneCelije(txt_naziv);
+                edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 var partner = SetProperties();
                 try
                 {
