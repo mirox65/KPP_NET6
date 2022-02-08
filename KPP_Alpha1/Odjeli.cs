@@ -51,12 +51,12 @@ namespace KPP_Alpha1
         {
             if (edit.NullOrWhite(txt_naziv))
             {
-                edit.PrazneCelije(txt_naziv);
+                edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 edit.PorukaPraznaCelija();
             }
             else
             {
-                edit.PrazneCelije(txt_naziv);
+                edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 var odjel = SetProperties();
                 bool success = controller.Insert(odjel);
                 if (success is true)
@@ -75,12 +75,12 @@ namespace KPP_Alpha1
         {
             if (edit.NullOrWhite(txt_naziv))
             {
-                edit.PrazneCelije(txt_naziv);
+                edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 edit.PorukaPraznaCelija();
             }
             else
             {
-                edit.PrazneCelije(txt_naziv);
+                edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 var odjel = SetProperties();
                 try
                 {

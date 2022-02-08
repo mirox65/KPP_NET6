@@ -73,10 +73,10 @@ namespace KPP_Alpha1
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
         private void PrazneCelije()
         {
-            edit.PrazneCelije(txtPN);
-            edit.PrazneCelije(txt_ime);
-            edit.PrazneCelije(txt_prezime);
-            edit.PrazneCelije(txtOdjelId);
+            edit.BojaPozadineZaPrazneCeliji(txtPN);
+            edit.BojaPozadineZaPrazneCeliji(txt_ime);
+            edit.BojaPozadineZaPrazneCeliji(txt_prezime);
+            edit.BojaPozadineZaPrazneCeliji(txtOdjelId);
         }
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
         // Provjera praznih ćelija, javlja poruke korisnicma (najbliža je korisniku)

@@ -69,7 +69,7 @@ namespace KPP_Alpha1
 
         #region METODE ZA PROVJERU PRAZNIH ČELIJA
         // Metoda za promjenu pozdaniske boje da se ukaže korisniku koji textBox mora biti ispunjen
-        internal void PrazneCelije(TextBox textBox)
+        internal void BojaPozadineZaPrazneCeliji(TextBox textBox)
         {
             if (textBox.Text == "")
             {
