@@ -52,6 +52,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLable_Korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_korisnik = new System.Windows.Forms.ToolStripStatusLabel();
+            this.iTOpremaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -134,7 +135,8 @@
             this.pošiljateljiToolStripMenuItem,
             this.mjestaToolStripMenuItem,
             this.djelatniciToolStripMenuItem,
-            this.partneriToolStripMenuItem});
+            this.partneriToolStripMenuItem,
+            this.iTOpremaToolStripMenuItem});
             this.urediToolStripMenuItem1.Name = "urediToolStripMenuItem1";
             this.urediToolStripMenuItem1.Size = new System.Drawing.Size(54, 23);
             this.urediToolStripMenuItem1.Text = "Uredi";
@@ -242,6 +244,13 @@
             this.tssl_korisnik.Name = "tssl_korisnik";
             this.tssl_korisnik.Size = new System.Drawing.Size(0, 17);
             // 
+            // iTOpremaToolStripMenuItem
+            // 
+            this.iTOpremaToolStripMenuItem.Name = "iTOpremaToolStripMenuItem";
+            this.iTOpremaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.iTOpremaToolStripMenuItem.Text = "IT Oprema";
+            this.iTOpremaToolStripMenuItem.Click += new System.EventHandler(this.iTOpremaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -290,6 +299,7 @@
         private System.Windows.Forms.ToolStripStatusLabel tssl_korisnik;
         private System.Windows.Forms.ToolStripMenuItem partneriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem knjigaPoslanihPošiljkiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iTOpremaToolStripMenuItem;
     }
 }
 

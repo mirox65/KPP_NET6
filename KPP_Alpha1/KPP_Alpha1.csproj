@@ -58,6 +58,7 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\MjestoController.cs" />
     <Compile Include="Controller\OdjelController.cs" />
+    <Compile Include="Controller\OpremaController.cs" />
     <Compile Include="Controller\PosiljateljController.cs" />
     <Compile Include="Controller\PoslaneController.cs" />
     <Compile Include="Controller\PartnerController.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MjestoModel.cs" />
     <Compile Include="Models\OdjelModel.cs" />
+    <Compile Include="Models\OpremaModel.cs" />
     <Compile Include="Models\PosiljateljModel.cs" />
     <Compile Include="Models\PoslaneModel.cs" />
     <Compile Include="Models\PartnerModel.cs" />
@@ -120,6 +122,12 @@
     </Compile>
     <Compile Include="Odjeli.Designer.cs">
       <DependentUpon>Odjeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oprema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oprema.Designer.cs">
+      <DependentUpon>Oprema.cs</DependentUpon>
     </Compile>
     <Compile Include="Partneri.cs">
       <SubType>Form</SubType>
@@ -164,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Odjeli.resx">
       <DependentUpon>Odjeli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oprema.resx">
+      <DependentUpon>Oprema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partneri.resx">
       <DependentUpon>Partneri.cs</DependentUpon>
