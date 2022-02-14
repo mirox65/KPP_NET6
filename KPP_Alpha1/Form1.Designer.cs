@@ -54,6 +54,7 @@
             this.tssl_korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.dokumentiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ovlastenjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iTOpremaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -137,7 +138,8 @@
             this.pošiljateljiToolStripMenuItem,
             this.mjestaToolStripMenuItem,
             this.djelatniciToolStripMenuItem,
-            this.partneriToolStripMenuItem});
+            this.partneriToolStripMenuItem,
+            this.iTOpremaToolStripMenuItem});
             this.urediToolStripMenuItem1.Name = "urediToolStripMenuItem1";
             this.urediToolStripMenuItem1.Size = new System.Drawing.Size(54, 23);
             this.urediToolStripMenuItem1.Text = "Uredi";
@@ -259,6 +261,13 @@
             this.ovlastenjaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.ovlastenjaToolStripMenuItem.Text = "Ovlastenja";
             this.ovlastenjaToolStripMenuItem.Click += new System.EventHandler(this.ovlastenjaToolStripMenuItem_Click);
+            //
+            // iTOpremaToolStripMenuItem
+            // 
+            this.iTOpremaToolStripMenuItem.Name = "iTOpremaToolStripMenuItem";
+            this.iTOpremaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.iTOpremaToolStripMenuItem.Text = "IT Oprema";
+            this.iTOpremaToolStripMenuItem.Click += new System.EventHandler(this.iTOpremaToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -310,6 +319,7 @@
         private System.Windows.Forms.ToolStripMenuItem knjigaPoslanihPošiljkiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dokumentiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ovlastenjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iTOpremaToolStripMenuItem;
     }
 }
 
