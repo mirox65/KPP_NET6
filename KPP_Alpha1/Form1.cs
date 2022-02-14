@@ -71,7 +71,11 @@ namespace KPP_Alpha1
             Forma(form);
         }
 
-
+        private void FormaOvlastenja()
+        {
+            FormOvlastenja form = new FormOvlastenja();
+            Forma(form);
+        }
         private void Forma(Form form)
         {
             form.Show();
@@ -190,6 +194,19 @@ namespace KPP_Alpha1
             else
             {
                 FormaPoslane();
+            }
+        }
+
+        private void ovlastenjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+            {
+                ActiveMdiChild.Close();
+                FormaOvlastenja();
+            }
+            else
+            {
+                FormaOvlastenja();
             }
         }
 
