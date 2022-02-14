@@ -70,6 +70,12 @@ namespace KPP_Alpha1
             FormPoslane form = new FormPoslane();
             Forma(form);
         }
+        
+        private void FormaOvlastenja()
+        {
+            FormOvlastenja form = new FormOvlastenja();
+            Forma(form);
+        }
 
         private void FormaItOprema()
         {
@@ -198,6 +204,18 @@ namespace KPP_Alpha1
             }
         }
 
+        private void ovlastenjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+            {
+                ActiveMdiChild.Close();
+                FormaOvlastenja();
+            }
+            else
+            {
+                FormaOvlastenja();
+            }
+        }
         private void iTOpremaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ActiveMdiChild != null)
@@ -209,7 +227,6 @@ namespace KPP_Alpha1
             {
                 FormaItOprema();
             }
-
         }
 
         private void izađiIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
