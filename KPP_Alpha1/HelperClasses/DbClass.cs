@@ -145,7 +145,7 @@ namespace KPP_Alpha1
 
         #region PREOPTEREČENE METODE ZA IZRADU RIJEČNIKA
         // Rijećnik sa dvije varijable, jedna kolona i tablica
-        internal Dictionary<int, string> DictFill(string kolona, string tablica)
+        internal Dictionary<int, string> DictIntString(string kolona, string tablica)
         {
             Dictionary<int, string> dict = new Dictionary<int, string>();
 
@@ -171,7 +171,7 @@ namespace KPP_Alpha1
             return dict;
         }
         // Riječnik sa tri varijable, tablica i dvije kolone
-        internal Dictionary<int, string> DictFill(string kolona1, string kolona2, string tablica)
+        internal Dictionary<int, string> DictIntString(string kolona1, string kolona2, string tablica)
         {
             Dictionary<int, string> dict = new Dictionary<int, string>();
 
@@ -198,6 +198,35 @@ namespace KPP_Alpha1
             }
             return dict;
         }
+
+        internal Dictionary<string, string> DictStringString(string keyString1, string keyString2, string zaRaTablica, string tablica)
+        {
+            var dict = new Dictionary<string, string>();
+
+            var dbs = $"SELECT {keyString1}, {keyString2} FROM {tablica};";
+            var conn = new OleDbConnection(connString);
+            var cmd = new OleDbCommand(dbs, conn);
+            try
+            {
+                conn.Open();
+                OleDbDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var keyS1 = reader[$"{keyString1}"].ToString(); 
+                    var keyS2 = reader[$"{keyString2}"].ToString(); 
+                    var key = $"{keyS1} {keyS2}";
+                    var value = $"{zaRaTablica}";
+                    dict.Add(key, value);
+                }
+            }
+            catch (Exception) { throw; }
+            finally
+            {
+                conn.Close();
+            }
+            return dict;
+        }
+
         #endregion
     }
 }

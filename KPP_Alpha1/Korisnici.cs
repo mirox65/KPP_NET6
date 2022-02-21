@@ -30,7 +30,7 @@ namespace KPP_Alpha1
         {
             InitializeComponent();
             Clear();
-            djelatniciDict = db.DictFill("ime", "prezime", "djelatnici");
+            djelatniciDict = db.DictIntString("ime", "prezime", "djelatnici");
             CollectionDjelatnici();
         }
         // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append

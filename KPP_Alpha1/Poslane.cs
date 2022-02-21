@@ -27,9 +27,9 @@ namespace KPP_Alpha1
         public FormPoslane()
         {
             InitializeComponent();
-            partneriDict = db.DictFill("naziv", "partneri");
-            djelatniciDict = db.DictFill("ime", "prezime", "djelatnici");
-            posiljateljiDict = db.DictFill("naziv", "posiljatelji");
+            partneriDict = db.DictIntString("naziv", "partneri");
+            djelatniciDict = db.DictIntString("ime", "prezime", "djelatnici");
+            posiljateljiDict = db.DictIntString("naziv", "posiljatelji");
             CollectionPartneri();
             CollectionDjelatnici();
             CollectionPosiljatelji();

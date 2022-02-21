@@ -29,7 +29,6 @@ namespace KPP_Alpha1
         {
             InitializeComponent();
             Clear();
-
         }
 
         private void Clear()
@@ -46,10 +45,10 @@ namespace KPP_Alpha1
         private void Oprema_Load(object sender, EventArgs e)
         {
             CmbFilter.SelectedIndex = 0;
-            DtUptadte(CmbFilter.Text);
+            DtUpdate(CmbFilter.Text);
         }
 
-        private void DtUptadte(string status)
+        private void DtUpdate(string status)
         {
             if (string.IsNullOrEmpty(status))
             {
@@ -60,7 +59,7 @@ namespace KPP_Alpha1
                 string Dbs = $"SELECT o.id AS Id, o.naziv AS Naziv, o.serbr AS Serijski, o.invbr AS Inventarni, o.status AS Status, " +
                     $"o.datKupovine AS Nabavljeno, o.vijek AS Vijek, o.datZamjene AS Zamjena, " +
                     $"[d.ime]&' '&[d.prezime] AS EditedBy, o.dateEdited AS EditedOn FROM " +
-                    $"(itOprema AS o " +
+                    $"(ictOprema AS o " +
                     $"LEFT JOIN korisnici AS k ON o.korisnikId = k.id) " +
                     $"LEFT JOIN djelatnici AS d ON d.id=k.djelatnikId " +
                     $"WHERE status = '{status}' " +
@@ -92,7 +91,7 @@ namespace KPP_Alpha1
                     bool success = controller.Insert(oprema);
                     if (success)
                     {
-                        DtUptadte("Novo");
+                        DtUpdate("Novo");
                         Clear();
                     }
                     else
@@ -124,7 +123,7 @@ namespace KPP_Alpha1
                     bool success = controller.Update(oprema);
                     if (success is true)
                     {
-                        DtUptadte(CmbAktivno.Text);
+                        DtUpdate(CmbAktivno.Text);
                         Clear();
                     }
                     else
@@ -164,7 +163,7 @@ namespace KPP_Alpha1
 
         private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DtUptadte(CmbFilter.Text);
+            DtUpdate(CmbFilter.Text);
         }
 
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

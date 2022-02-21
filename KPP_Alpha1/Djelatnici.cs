@@ -28,7 +28,7 @@ namespace KPP_Alpha1
         {
             InitializeComponent();
             Clear();
-            odjeliDict = db.DictFill("naziv", "odjeli");
+            odjeliDict = db.DictIntString("naziv", "odjeli");
             CollectionOdjeli();
         }
         // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
