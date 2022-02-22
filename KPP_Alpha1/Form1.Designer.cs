@@ -151,8 +151,8 @@
             this.djelatniciToolStripMenuItem,
             this.partneriToolStripMenuItem,
             this.iTOpremaToolStripMenuItem,
-            this.podatkovneKarticeToolStripMenuItem,
             this.vozilaToolStripMenuItem});
+            this.podatkovneKarticeToolStripMenuItem});
             this.urediToolStripMenuItem1.Name = "urediToolStripMenuItem1";
             this.urediToolStripMenuItem1.Size = new System.Drawing.Size(54, 23);
             this.urediToolStripMenuItem1.Text = "Uredi";
@@ -218,7 +218,7 @@
             // izvozPodatakaToolStripMenuItem
             // 
             this.izvozPodatakaToolStripMenuItem.Name = "izvozPodatakaToolStripMenuItem";
-            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.izvozPodatakaToolStripMenuItem.Text = "Izvoz podataka";
             this.izvozPodatakaToolStripMenuItem.Click += new System.EventHandler(this.izvozPodatakaToolStripMenuItem_Click);
             // 
@@ -287,6 +287,7 @@
             this.podatkovneKarticeToolStripMenuItem.Name = "podatkovneKarticeToolStripMenuItem";
             this.podatkovneKarticeToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
             this.podatkovneKarticeToolStripMenuItem.Text = "Podatkovne kartice";
+            this.podatkovneKarticeToolStripMenuItem.Click += new System.EventHandler(this.podatkovneKarticeToolStripMenuItem_Click);
             // 
             // vozilaToolStripMenuItem
             // 

@@ -21,8 +21,11 @@ namespace KPP_Alpha1
         readonly ZaRaController controller = new ZaRaController();
 
         private Dictionary<int, string> djelatniciDic = new Dictionary<int, string>();
-        private Dictionary<int, string> opremaDic = new Dictionary<int, string>();
+        private Dictionary<string, int> opremaDic = new Dictionary<string, int>();
         private Dictionary<string, string> opremaBazaDic = new Dictionary<string, string>();
+
+        public Dictionary<string, int> OpremaDic { get; set; }
+        public Dictionary<string, string> OpremaBaza { get; set; }
 
         public FormZaRa()
         {
@@ -49,8 +52,10 @@ namespace KPP_Alpha1
 
         private void CollectionOprema()
         {
-            var DbAc = "SELECT * FROM ictOprema;";
-            var AcOprema = db.AutoComplete(DbAc, "serBr", "naziv");
+            var DbIct = "SELECT * FROM ictOprema;";
+            var DbDc = "SELECT * FROM dataCards;";
+            var AcOprema = db.AutoComplete(DbIct, "serBr", "naziv");
+            AcOprema = db.AutoComplete(DbDc, "imei", "SerBr");
             Txt_Oprema.AutoCompleteCustomSource = AcOprema;
         }
 
@@ -63,14 +68,17 @@ namespace KPP_Alpha1
 
         private Dictionary<string, string> UčitavanjeBazaDictionary()
         {
-            opremaBazaDic = db.DictStringString("serBr", "naziv", "zaRaIct", "ictOprema");
+            OpremaBaza = db.DictStringString(opremaBazaDic, "serBr", "naziv", "zaRaIct", "ictOprema");
+            OpremaBaza = db.DictStringString(OpremaBaza, "imei", "serBr", "zaRaDataCards", "dataCards");
             return opremaBazaDic;
         }
 
-        private Dictionary<int, string> UčitavanjeOpremaDictionary()
+        private Dictionary<string, int> UčitavanjeOpremaDictionary()
         {
-            opremaDic = db.DictIntString("serBr", "naziv", "ictOprema");
-            return opremaDic;
+            OpremaDic = db.DicStringInt(opremaDic, "serBr", "naziv", "ictOprema");
+
+            OpremaDic = db.DicStringInt (OpremaDic, "imei", "serBr", "dataCards");
+            return OpremaDic;
         }
 
         private void Clear()
@@ -93,8 +101,14 @@ namespace KPP_Alpha1
                 $"LEFT JOIN djelatnici AS d ON k.djelatnikId = d.id " +
                 $"WHERE z.djelatnikId={djelatnikId};";
             var lista = db.Select(Dbs);
-            //string D2 = "SELECT id FROM korisnici";
-            //lista.Merge(db.Select(D2));
+            string D2 = "SELECT z.id AS Id, [dc.imei]&' '&[dc.serBr] AS Oprema, z.datZaduženja AS Zaduženo, " +
+                "z.datRazduženja AS Razduženo, [d.ime]&' '&[d.prezime] AS Korisnik, z.ažurirano AS Ažurirano " +
+                "FROM ((zaRaDataCards AS z " +
+                "LEFT JOIN dataCards AS dc ON z.opremaId=dc.id) " +
+                "LEFT JOIN korisnici AS k ON z.korisnikId=k.id) " +
+                "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id " +
+                $"WHERE z.djelatnikId={djelatnikId};";
+            lista.Merge(db.Select(D2));
             Dgv.DataSource = lista;
         }
 
@@ -205,7 +219,7 @@ namespace KPP_Alpha1
             else
             {
                 zaRa.DjelatnikId = djelatniciDic.FirstOrDefault(d => d.Value == Txt_Djelatnik.Text.Trim()).Key;
-                zaRa.OpremaId = opremaDic.FirstOrDefault(o => o.Value == Txt_Oprema.Text.Trim()).Key;
+                zaRa.OpremaId = opremaDic.FirstOrDefault(o => o.Key == Txt_Oprema.Text.Trim()).Value;
                 zaRa.NazivZaRaTablice = opremaBazaDic.FirstOrDefault(b => b.Key == Txt_Oprema.Text.Trim()).Value;
                 zaRa.DatumZaduženja = Dtp_Zaduženo.Value.Date;
             }            
