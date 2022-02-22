@@ -33,9 +33,18 @@ namespace KPP_Alpha1
             Txt_Djelatnik.AutoCompleteCustomSource = djelatniciCollection;
         }
 
+        // Metoda za kolekciju koja se veže za txtBox regOznaka za suggest and append
+        private void CollectionVozila()
+        {
+            string DbAc = "SELECT * FROM vozila";
+            AutoCompleteStringCollection vozilaCollection = db.AutoComplete(DbAc, "regOznaka");
+            Txt_RegOznaka.AutoCompleteCustomSource = vozilaCollection;
+        }
+
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
+            Txt_RegOznaka.Clear();
             Txt_Djelatnik.Clear();
             Txt_Djelatnik.Focus();
         }
@@ -84,7 +93,7 @@ namespace KPP_Alpha1
 
                 //find and replace
                 this.FindAndReplace(wordApp, "<name>", Txt_Djelatnik.Text);
-                this.FindAndReplace(wordApp, "<auto>", Txt_Automobil.Text);
+                this.FindAndReplace(wordApp, "<auto>", Txt_RegOznaka.Text);
                 this.FindAndReplace(wordApp, "<datum>", Dtp_DatumOvlastenja.Value.Date);
             }
             else
@@ -108,6 +117,7 @@ namespace KPP_Alpha1
         {
             CreateWordDocument(@"C:\Users\palaca\source\repos\KPP\KPP_Alpha1\bin\Debug\template.doc", @"\\zagw19fs01\Users\palaca\Desktop\Ovlastenje.doc");
         }
+
     }
 
     
