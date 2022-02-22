@@ -29,22 +29,21 @@ namespace KPP_Alpha1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
-            this.txt_prezime = new System.Windows.Forms.TextBox();
-            this.txt_ime = new System.Windows.Forms.TextBox();
-            this.txt_id = new System.Windows.Forms.TextBox();
+            this.Txt_Prezime = new System.Windows.Forms.TextBox();
+            this.Txt_Ime = new System.Windows.Forms.TextBox();
             this.lbl_prezime_korisnik = new System.Windows.Forms.Label();
             this.lbl_ime_korisnik = new System.Windows.Forms.Label();
-            this.lbl_id_korisnik = new System.Windows.Forms.Label();
+            this.Lbl_Id = new System.Windows.Forms.Label();
             this.Dgv = new System.Windows.Forms.DataGridView();
             this.lbl_PN = new System.Windows.Forms.Label();
-            this.txtPN = new System.Windows.Forms.TextBox();
+            this.Txt_Pn = new System.Windows.Forms.TextBox();
             this.lbl_odjel = new System.Windows.Forms.Label();
-            this.txtOdjelId = new System.Windows.Forms.TextBox();
+            this.Txt_OdjelId = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +53,13 @@ namespace KPP_Alpha1
             this.ComBoxAktivan = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Txt_Oib = new System.Windows.Forms.TextBox();
+            this.Lbl_Oib = new System.Windows.Forms.Label();
+            this.Dtp_Otkaz = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Dtp_Zaposlen = new System.Windows.Forms.DateTimePicker();
+            this.CheckBoxOtkaz = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +68,7 @@ namespace KPP_Alpha1
             // 
             this.lbl_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_pretrazivanje.AutoSize = true;
-            this.lbl_pretrazivanje.Location = new System.Drawing.Point(14, 195);
+            this.lbl_pretrazivanje.Location = new System.Drawing.Point(14, 158);
             this.lbl_pretrazivanje.Name = "lbl_pretrazivanje";
             this.lbl_pretrazivanje.Size = new System.Drawing.Size(85, 17);
             this.lbl_pretrazivanje.TabIndex = 21;
@@ -71,9 +77,9 @@ namespace KPP_Alpha1
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(111, 190);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(105, 153);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(661, 25);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(667, 25);
             this.txt_pretrazivanje.TabIndex = 20;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -101,40 +107,29 @@ namespace KPP_Alpha1
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.Btn_dodaj_Click);
             // 
-            // txt_prezime
+            // Txt_Prezime
             // 
-            this.txt_prezime.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_prezime.Location = new System.Drawing.Point(111, 111);
-            this.txt_prezime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_prezime.Name = "txt_prezime";
-            this.txt_prezime.Size = new System.Drawing.Size(210, 25);
-            this.txt_prezime.TabIndex = 3;
+            this.Txt_Prezime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Prezime.Location = new System.Drawing.Point(77, 79);
+            this.Txt_Prezime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Prezime.Name = "Txt_Prezime";
+            this.Txt_Prezime.Size = new System.Drawing.Size(210, 25);
+            this.Txt_Prezime.TabIndex = 3;
             // 
-            // txt_ime
+            // Txt_Ime
             // 
-            this.txt_ime.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_ime.Location = new System.Drawing.Point(111, 78);
-            this.txt_ime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_ime.Name = "txt_ime";
-            this.txt_ime.Size = new System.Drawing.Size(210, 25);
-            this.txt_ime.TabIndex = 2;
-            // 
-            // txt_id
-            // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(111, 12);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 25);
-            this.txt_id.TabIndex = 14;
-            this.txt_id.TabStop = false;
+            this.Txt_Ime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Ime.Location = new System.Drawing.Point(77, 46);
+            this.Txt_Ime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Ime.Name = "Txt_Ime";
+            this.Txt_Ime.Size = new System.Drawing.Size(210, 25);
+            this.Txt_Ime.TabIndex = 2;
             // 
             // lbl_prezime_korisnik
             // 
             this.lbl_prezime_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_prezime_korisnik.AutoSize = true;
-            this.lbl_prezime_korisnik.Location = new System.Drawing.Point(14, 115);
+            this.lbl_prezime_korisnik.Location = new System.Drawing.Point(14, 83);
             this.lbl_prezime_korisnik.Name = "lbl_prezime_korisnik";
             this.lbl_prezime_korisnik.Size = new System.Drawing.Size(57, 17);
             this.lbl_prezime_korisnik.TabIndex = 17;
@@ -144,37 +139,38 @@ namespace KPP_Alpha1
             // 
             this.lbl_ime_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_ime_korisnik.AutoSize = true;
-            this.lbl_ime_korisnik.Location = new System.Drawing.Point(14, 82);
+            this.lbl_ime_korisnik.Location = new System.Drawing.Point(14, 50);
             this.lbl_ime_korisnik.Name = "lbl_ime_korisnik";
             this.lbl_ime_korisnik.Size = new System.Drawing.Size(32, 17);
             this.lbl_ime_korisnik.TabIndex = 15;
             this.lbl_ime_korisnik.Text = "Ime:";
             // 
-            // lbl_id_korisnik
+            // Lbl_Id
             // 
-            this.lbl_id_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_id_korisnik.AutoSize = true;
-            this.lbl_id_korisnik.Location = new System.Drawing.Point(14, 16);
-            this.lbl_id_korisnik.Name = "lbl_id_korisnik";
-            this.lbl_id_korisnik.Size = new System.Drawing.Size(23, 17);
-            this.lbl_id_korisnik.TabIndex = 12;
-            this.lbl_id_korisnik.Text = "ID:";
+            this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Lbl_Id.AutoSize = true;
+            this.Lbl_Id.Location = new System.Drawing.Point(9, 132);
+            this.Lbl_Id.Name = "Lbl_Id";
+            this.Lbl_Id.Size = new System.Drawing.Size(19, 17);
+            this.Lbl_Id.TabIndex = 12;
+            this.Lbl_Id.Text = "Id";
+            this.Lbl_Id.Visible = false;
             // 
             // Dgv
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv.BackgroundColor = System.Drawing.Color.Gray;
             this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv.Location = new System.Drawing.Point(12, 222);
+            this.Dgv.Location = new System.Drawing.Point(12, 185);
             this.Dgv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Dgv.Name = "Dgv";
             this.Dgv.RowTemplate.Height = 24;
-            this.Dgv.Size = new System.Drawing.Size(760, 326);
+            this.Dgv.Size = new System.Drawing.Size(760, 363);
             this.Dgv.TabIndex = 22;
             this.Dgv.TabStop = false;
             this.Dgv.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_RowHeaderMouseDoubleClick);
@@ -183,41 +179,41 @@ namespace KPP_Alpha1
             // 
             this.lbl_PN.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_PN.AutoSize = true;
-            this.lbl_PN.Location = new System.Drawing.Point(14, 49);
+            this.lbl_PN.Location = new System.Drawing.Point(14, 17);
             this.lbl_PN.Name = "lbl_PN";
             this.lbl_PN.Size = new System.Drawing.Size(28, 17);
             this.lbl_PN.TabIndex = 15;
             this.lbl_PN.Text = "PN:";
             // 
-            // txtPN
+            // Txt_Pn
             // 
-            this.txtPN.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtPN.Location = new System.Drawing.Point(111, 45);
-            this.txtPN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtPN.Name = "txtPN";
-            this.txtPN.Size = new System.Drawing.Size(210, 25);
-            this.txtPN.TabIndex = 1;
+            this.Txt_Pn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Pn.Location = new System.Drawing.Point(77, 13);
+            this.Txt_Pn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Pn.Name = "Txt_Pn";
+            this.Txt_Pn.Size = new System.Drawing.Size(210, 25);
+            this.Txt_Pn.TabIndex = 1;
             // 
             // lbl_odjel
             // 
             this.lbl_odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_odjel.AutoSize = true;
-            this.lbl_odjel.Location = new System.Drawing.Point(14, 148);
+            this.lbl_odjel.Location = new System.Drawing.Point(295, 17);
             this.lbl_odjel.Name = "lbl_odjel";
             this.lbl_odjel.Size = new System.Drawing.Size(42, 17);
             this.lbl_odjel.TabIndex = 17;
             this.lbl_odjel.Text = "Odjel:";
             // 
-            // txtOdjelId
+            // Txt_OdjelId
             // 
-            this.txtOdjelId.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtOdjelId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtOdjelId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtOdjelId.Location = new System.Drawing.Point(111, 144);
-            this.txtOdjelId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtOdjelId.Name = "txtOdjelId";
-            this.txtOdjelId.Size = new System.Drawing.Size(210, 25);
-            this.txtOdjelId.TabIndex = 4;
+            this.Txt_OdjelId.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_OdjelId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Txt_OdjelId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.Txt_OdjelId.Location = new System.Drawing.Point(365, 13);
+            this.Txt_OdjelId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_OdjelId.Name = "Txt_OdjelId";
+            this.Txt_OdjelId.Size = new System.Drawing.Size(133, 25);
+            this.Txt_OdjelId.TabIndex = 4;
             // 
             // menuStrip1
             // 
@@ -276,9 +272,9 @@ namespace KPP_Alpha1
             this.ComBoxFilter.Items.AddRange(new object[] {
             "Aktivni djelatnici",
             "Neaktivni djelatnici"});
-            this.ComBoxFilter.Location = new System.Drawing.Point(502, 78);
+            this.ComBoxFilter.Location = new System.Drawing.Point(549, 111);
             this.ComBoxFilter.Name = "ComBoxFilter";
-            this.ComBoxFilter.Size = new System.Drawing.Size(133, 25);
+            this.ComBoxFilter.Size = new System.Drawing.Size(127, 25);
             this.ComBoxFilter.TabIndex = 34;
             this.ComBoxFilter.TabStop = false;
             this.ComBoxFilter.SelectionChangeCommitted += new System.EventHandler(this.ComBoxFilter_SelectionChangeCommitted);
@@ -293,7 +289,7 @@ namespace KPP_Alpha1
             this.ComBoxAktivan.Items.AddRange(new object[] {
             "DA",
             "NE"});
-            this.ComBoxAktivan.Location = new System.Drawing.Point(502, 45);
+            this.ComBoxAktivan.Location = new System.Drawing.Point(365, 111);
             this.ComBoxAktivan.Name = "ComBoxAktivan";
             this.ComBoxAktivan.Size = new System.Drawing.Size(133, 25);
             this.ComBoxAktivan.TabIndex = 35;
@@ -302,7 +298,7 @@ namespace KPP_Alpha1
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(421, 82);
+            this.label5.Location = new System.Drawing.Point(504, 115);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 17);
             this.label5.TabIndex = 32;
@@ -312,11 +308,78 @@ namespace KPP_Alpha1
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(421, 49);
+            this.label4.Location = new System.Drawing.Point(295, 115);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 17);
             this.label4.TabIndex = 33;
             this.label4.Text = "Aktivan:";
+            // 
+            // Txt_Oib
+            // 
+            this.Txt_Oib.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Oib.Location = new System.Drawing.Point(77, 111);
+            this.Txt_Oib.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Oib.Name = "Txt_Oib";
+            this.Txt_Oib.Size = new System.Drawing.Size(210, 25);
+            this.Txt_Oib.TabIndex = 36;
+            // 
+            // Lbl_Oib
+            // 
+            this.Lbl_Oib.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Lbl_Oib.AutoSize = true;
+            this.Lbl_Oib.Location = new System.Drawing.Point(14, 115);
+            this.Lbl_Oib.Name = "Lbl_Oib";
+            this.Lbl_Oib.Size = new System.Drawing.Size(32, 17);
+            this.Lbl_Oib.TabIndex = 37;
+            this.Lbl_Oib.Text = "Oib:";
+            // 
+            // Dtp_Otkaz
+            // 
+            this.Dtp_Otkaz.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Dtp_Otkaz.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Dtp_Otkaz.Location = new System.Drawing.Point(365, 79);
+            this.Dtp_Otkaz.Name = "Dtp_Otkaz";
+            this.Dtp_Otkaz.Size = new System.Drawing.Size(133, 25);
+            this.Dtp_Otkaz.TabIndex = 38;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(295, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Zaposlen:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(295, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 17);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Otkaz:";
+            // 
+            // Dtp_Zaposlen
+            // 
+            this.Dtp_Zaposlen.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Dtp_Zaposlen.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Dtp_Zaposlen.Location = new System.Drawing.Point(365, 46);
+            this.Dtp_Zaposlen.Name = "Dtp_Zaposlen";
+            this.Dtp_Zaposlen.Size = new System.Drawing.Size(133, 25);
+            this.Dtp_Zaposlen.TabIndex = 41;
+            // 
+            // CheckBoxOtkaz
+            // 
+            this.CheckBoxOtkaz.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CheckBoxOtkaz.AutoSize = true;
+            this.CheckBoxOtkaz.Location = new System.Drawing.Point(344, 85);
+            this.CheckBoxOtkaz.Name = "CheckBoxOtkaz";
+            this.CheckBoxOtkaz.Size = new System.Drawing.Size(15, 14);
+            this.CheckBoxOtkaz.TabIndex = 42;
+            this.CheckBoxOtkaz.UseVisualStyleBackColor = true;
             // 
             // FormDjelatnici
             // 
@@ -324,6 +387,13 @@ namespace KPP_Alpha1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.CheckBoxOtkaz);
+            this.Controls.Add(this.Dtp_Zaposlen);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Dtp_Otkaz);
+            this.Controls.Add(this.Txt_Oib);
+            this.Controls.Add(this.Lbl_Oib);
             this.Controls.Add(this.ComBoxFilter);
             this.Controls.Add(this.ComBoxAktivan);
             this.Controls.Add(this.label5);
@@ -334,16 +404,15 @@ namespace KPP_Alpha1
             this.Controls.Add(this.txt_pretrazivanje);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnInsert);
-            this.Controls.Add(this.txtOdjelId);
-            this.Controls.Add(this.txt_prezime);
-            this.Controls.Add(this.txtPN);
-            this.Controls.Add(this.txt_ime);
-            this.Controls.Add(this.txt_id);
+            this.Controls.Add(this.Txt_OdjelId);
+            this.Controls.Add(this.Txt_Prezime);
+            this.Controls.Add(this.Txt_Pn);
+            this.Controls.Add(this.Txt_Ime);
             this.Controls.Add(this.lbl_odjel);
             this.Controls.Add(this.lbl_PN);
             this.Controls.Add(this.lbl_prezime_korisnik);
             this.Controls.Add(this.lbl_ime_korisnik);
-            this.Controls.Add(this.lbl_id_korisnik);
+            this.Controls.Add(this.Lbl_Id);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormDjelatnici";
@@ -363,17 +432,16 @@ namespace KPP_Alpha1
         private System.Windows.Forms.TextBox txt_pretrazivanje;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.TextBox txt_prezime;
-        private System.Windows.Forms.TextBox txt_ime;
-        private System.Windows.Forms.TextBox txt_id;
+        private System.Windows.Forms.TextBox Txt_Prezime;
+        private System.Windows.Forms.TextBox Txt_Ime;
         private System.Windows.Forms.Label lbl_prezime_korisnik;
         private System.Windows.Forms.Label lbl_ime_korisnik;
-        private System.Windows.Forms.Label lbl_id_korisnik;
+        private System.Windows.Forms.Label Lbl_Id;
         private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.Label lbl_PN;
-        private System.Windows.Forms.TextBox txtPN;
+        private System.Windows.Forms.TextBox Txt_Pn;
         private System.Windows.Forms.Label lbl_odjel;
-        private System.Windows.Forms.TextBox txtOdjelId;
+        private System.Windows.Forms.TextBox Txt_OdjelId;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
@@ -383,5 +451,12 @@ namespace KPP_Alpha1
         private System.Windows.Forms.ComboBox ComBoxAktivan;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox Txt_Oib;
+        private System.Windows.Forms.Label Lbl_Oib;
+        private System.Windows.Forms.DateTimePicker Dtp_Otkaz;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker Dtp_Zaposlen;
+        private System.Windows.Forms.CheckBox CheckBoxOtkaz;
     }
 }

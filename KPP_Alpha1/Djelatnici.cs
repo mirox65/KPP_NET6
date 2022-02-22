@@ -36,7 +36,7 @@ namespace KPP_Alpha1
         {
             string DbAc = "SELECT * FROM odjeli;";
             AutoCompleteStringCollection AcOdjel = db.AutoComplete(DbAc, "naziv");
-            txtOdjelId.AutoCompleteCustomSource = AcOdjel;
+            Txt_OdjelId.AutoCompleteCustomSource = AcOdjel;
         }
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void Djelatnici_Load(object sender, EventArgs e)
@@ -46,8 +46,9 @@ namespace KPP_Alpha1
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
         private void DTUpdate(string aktivan)
         {
-            string Dbs = "SELECT d.id AS ID, d.pn AS PN, d.ime AS Ime, d.prezime AS Prezime, o.naziv AS Odjel, " +
-                "d.aktivan AS Aktivan, [do.ime]&' '&[do.prezime] AS Korisnik, d.azurirano AS Ažurirano " +
+            string Dbs = "SELECT d.id AS ID, d.pn AS PN, d.ime AS Ime, d.prezime AS Prezime, d.oib AS Oib, o.naziv AS Odjel, " +
+                "d.datZaposlen AS Zaposlen, d.datOtkaz AS Otkaz, d.aktivan AS Aktivan, [do.ime]&' '&[do.prezime] AS Korisnik, " +
+                "d.azurirano AS Ažurirano " +
                 "FROM ((Djelatnici AS d " +
                 "LEFT JOIN odjeli AS o ON o.id = d.idodjel) " +
                 "LEFT JOIN korisnici AS k ON k.id = d.idkorisnika) " +
@@ -60,31 +61,37 @@ namespace KPP_Alpha1
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
-            txtPN.Clear();
-            txt_ime.Clear();
-            txt_prezime.Clear();
-            txtOdjelId.Clear();
-            txt_id.Clear();
+            Txt_Pn.Clear();
+            Txt_Ime.Clear();
+            Txt_Prezime.Clear();
+            Txt_OdjelId.Clear();
+            Txt_Oib.Clear();
+            Dtp_Otkaz.Value = DateTime.Now.Date;
+            Dtp_Zaposlen.Value = DateTime.Now.Date;
+            Lbl_Id.Text = string.Empty;
             txt_pretrazivanje.Clear();
             ComBoxFilter.SelectedIndex = 0;
             ComBoxAktivan.SelectedIndex = 0;
-            txtPN.Focus();
+            CheckBoxOtkaz.Checked = false;
+            Txt_Pn.Focus();
         }
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
         private void PrazneCelije()
         {
-            edit.BojaPozadineZaPrazneCeliji(txtPN);
-            edit.BojaPozadineZaPrazneCeliji(txt_ime);
-            edit.BojaPozadineZaPrazneCeliji(txt_prezime);
-            edit.BojaPozadineZaPrazneCeliji(txtOdjelId);
+            edit.BojaPozadineZaPrazneCeliji(Txt_Pn);
+            edit.BojaPozadineZaPrazneCeliji(Txt_Ime);
+            edit.BojaPozadineZaPrazneCeliji(Txt_Prezime);
+            edit.BojaPozadineZaPrazneCeliji(Txt_Oib);
+            edit.BojaPozadineZaPrazneCeliji(Txt_OdjelId);
         }
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
         // Provjera praznih ćelija, javlja poruke korisnicma (najbliža je korisniku)
         // Postavlja vrijednosti varijabli u modelu, i poziva generičku metodu za unos podatka
         private void Btn_dodaj_Click(object sender, EventArgs e)
         {
-            if (edit.NullOrWhite(txtPN) | edit.NullOrWhite(txt_ime) |
-               edit.NullOrWhite(txt_prezime) | edit.NullOrWhite(txtOdjelId))
+            if (edit.NullOrWhite(Txt_Pn) | edit.NullOrWhite(Txt_Ime) |
+               edit.NullOrWhite(Txt_Prezime) | edit.NullOrWhite(Txt_OdjelId) |
+               edit.NullOrWhite(Txt_Oib))
             {
                 PrazneCelije();
                 edit.PorukaPraznaCelija();
@@ -120,8 +127,8 @@ namespace KPP_Alpha1
         // BTN za izmjenu podataka radi sve što i unos metoda osim koraka pozivanja generičke metode za update podataka u bazi
         private void Btn_uredi_Click(object sender, EventArgs e)
         {
-            if (edit.NullOrWhite(txtPN) | edit.NullOrWhite(txt_ime) |
-               edit.NullOrWhite(txt_prezime) | edit.NullOrWhite(txtOdjelId))
+            if (edit.NullOrWhite(Txt_Pn) | edit.NullOrWhite(Txt_Ime) |
+               edit.NullOrWhite(Txt_Prezime) | edit.NullOrWhite(Txt_OdjelId))
             {
                 PrazneCelije();
                 edit.PorukaPraznaCelija();
@@ -135,8 +142,16 @@ namespace KPP_Alpha1
                 {
                     try
                     {
-                        bool sucess = controller.Update(djelatnik);
-                        if (sucess is true)
+                        var success = false;
+                        if (CheckBoxOtkaz.Checked)
+                        {
+                            success = controller.UpdateOtkaz(djelatnik);
+                        }
+                        else
+                        {
+                             success = controller.Update(djelatnik);
+                        }
+                        if (success is true)
                         {
                             DTUpdate("DA");
                             Clear();
@@ -167,28 +182,40 @@ namespace KPP_Alpha1
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private DjelatnikModel SetProperties()
         {
-            DjelatnikModel djelatnik = new DjelatnikModel();
-            if (!edit.NullOrWhite(txt_id))
+            var djelatnik = new DjelatnikModel();
+            if (Lbl_Id.Text.Length > 0)
             {
-                djelatnik.Id = Convert.ToInt32(txt_id.Text.Trim());
+                djelatnik.Id = Convert.ToInt32(Lbl_Id.Text.Trim());
             }
-            djelatnik.PerNum = Convert.ToInt32(txtPN.Text.Trim());
-            djelatnik.Ime = txt_ime.Text.Trim();
-            djelatnik.Prezime = txt_prezime.Text.Trim();
-            djelatnik.OdjelId = odjeliDict.FirstOrDefault(o => o.Value == txtOdjelId.Text.Trim()).Key;
+            if (CheckBoxOtkaz.Checked)
+            {
+                djelatnik.DatOtkaz = Dtp_Otkaz.Value.Date;
+            }
+            djelatnik.PerNum = Convert.ToInt32(Txt_Pn.Text.Trim());
+            djelatnik.Ime = Txt_Ime.Text.Trim();
+            djelatnik.Prezime = Txt_Prezime.Text.Trim();
+            djelatnik.Oib = Txt_Oib.Text.Trim();
+            djelatnik.DatZaposlen = Dtp_Zaposlen.Value.Date;
+            djelatnik.OdjelId = odjeliDict.FirstOrDefault(o => o.Value == Txt_OdjelId.Text.Trim()).Key;
             djelatnik.Aktivan = ComBoxAktivan.Text.Trim();
             return djelatnik;
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int RowIndex = e.RowIndex;
-            txt_id.Text = Dgv.Rows[RowIndex].Cells[0].Value.ToString();
-            txtPN.Text = Dgv.Rows[RowIndex].Cells[1].Value.ToString();
-            txt_ime.Text = Dgv.Rows[RowIndex].Cells[2].Value.ToString();
-            txt_prezime.Text = Dgv.Rows[RowIndex].Cells[3].Value.ToString();
-            txtOdjelId.Text = Dgv.Rows[RowIndex].Cells[4].Value.ToString();
-            ComBoxAktivan.Text = Dgv.Rows[RowIndex].Cells[5].Value.ToString();
+            int rowIndex = e.RowIndex;
+            Lbl_Id.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
+            Txt_Pn.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
+            Txt_Ime.Text = Dgv.Rows[rowIndex].Cells[2].Value.ToString();
+            Txt_Prezime.Text = Dgv.Rows[rowIndex].Cells[3].Value.ToString();
+            Txt_Oib.Text = Dgv.Rows[rowIndex].Cells[4].Value.ToString();
+            Txt_OdjelId.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
+            Dtp_Zaposlen.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
+            if (Dgv.Rows[rowIndex].Cells[7].Value != null)
+            {
+                Dtp_Otkaz.Text = Dgv.Rows[rowIndex].Cells[7].Value.ToString();
+            }
+            ComBoxAktivan.Text = Dgv.Rows[rowIndex].Cells[8].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)

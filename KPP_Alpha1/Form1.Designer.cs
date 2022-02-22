@@ -151,8 +151,8 @@
             this.djelatniciToolStripMenuItem,
             this.partneriToolStripMenuItem,
             this.iTOpremaToolStripMenuItem,
-            this.vozilaToolStripMenuItem});
-            this.podatkovneKarticeToolStripMenuItem});
+            this.podatkovneKarticeToolStripMenuItem,
+            this.vozilaToolStripMenuItem});            
             this.urediToolStripMenuItem1.Name = "urediToolStripMenuItem1";
             this.urediToolStripMenuItem1.Size = new System.Drawing.Size(54, 23);
             this.urediToolStripMenuItem1.Text = "Uredi";
