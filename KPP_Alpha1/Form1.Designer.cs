@@ -57,6 +57,7 @@
             this.tssLable_Korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.podatkovneKarticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vozilaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -150,6 +151,7 @@
             this.djelatniciToolStripMenuItem,
             this.partneriToolStripMenuItem,
             this.iTOpremaToolStripMenuItem,
+            this.vozilaToolStripMenuItem});
             this.podatkovneKarticeToolStripMenuItem});
             this.urediToolStripMenuItem1.Name = "urediToolStripMenuItem1";
             this.urediToolStripMenuItem1.Size = new System.Drawing.Size(54, 23);
@@ -287,6 +289,13 @@
             this.podatkovneKarticeToolStripMenuItem.Text = "Podatkovne kartice";
             this.podatkovneKarticeToolStripMenuItem.Click += new System.EventHandler(this.podatkovneKarticeToolStripMenuItem_Click);
             // 
+            // vozilaToolStripMenuItem
+            // 
+            this.vozilaToolStripMenuItem.Name = "vozilaToolStripMenuItem";
+            this.vozilaToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.vozilaToolStripMenuItem.Text = "Vozila";
+            this.vozilaToolStripMenuItem.Click += new System.EventHandler(this.vozilaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -340,6 +349,7 @@
         private System.Windows.Forms.ToolStripMenuItem iTOpremaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zaRaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem podatkovneKarticeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vozilaToolStripMenuItem;
     }
 }
 

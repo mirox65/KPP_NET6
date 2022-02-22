@@ -237,6 +237,19 @@ namespace KPP_Alpha1
                 Forma(form);
             }
         }
+        private void vozilaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormVozila();
+            if (ActiveMdiChild != null)
+            {
+                ActiveMdiChild.Close();
+                Forma(form);
+            }
+            else
+            {
+                Forma(form);
+            }
+        }
 
         private void podatkovneKarticeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -301,6 +314,5 @@ namespace KPP_Alpha1
                 }
             }
         }
-
     }
 }
