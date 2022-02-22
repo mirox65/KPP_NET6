@@ -199,10 +199,39 @@ namespace KPP_Alpha1
             return dict;
         }
 
-        internal Dictionary<string, string> DictStringString(string keyString1, string keyString2, string zaRaTablica, string tablica)
+        internal Dictionary<string, int> DicStringInt(Dictionary<string, int> dict, string keyString1, string keyString2, string tablica)
         {
-            var dict = new Dictionary<string, string>();
+            var dic = dict;
+            var dbs = $"SELECT id, {keyString1}, {keyString2} FROM {tablica}";
+            var conn = new OleDbConnection(connString);
+            var cmd = new OleDbCommand(dbs, conn);
+            try
+            {
+                conn.Open();
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var keyS1 = reader[$"{keyString1}"].ToString();
+                    var keyS2 = reader[$"{keyString2}"].ToString();
+                    var value = Convert.ToInt32(reader[$"id"].ToString());
+                    var key = $"{keyS1} {keyS2}";
+                    dic.Add(key, value);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dict;
+        }
 
+        internal Dictionary<string, string> DictStringString(Dictionary<string, string> opremaBazaDic, string keyString1, string keyString2, string zaRaTablica, string tablica)
+        {
+            var dict = opremaBazaDic;
             var dbs = $"SELECT {keyString1}, {keyString2} FROM {tablica};";
             var conn = new OleDbConnection(connString);
             var cmd = new OleDbCommand(dbs, conn);

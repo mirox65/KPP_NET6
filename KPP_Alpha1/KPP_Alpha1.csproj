@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\DataCardsController.cs" />
     <Compile Include="Controller\DjelatnikController.cs" />
     <Compile Include="Controller\KnjigaController.cs" />
     <Compile Include="Controller\KorisnikController.cs" />
@@ -63,6 +64,12 @@
     <Compile Include="Controller\PoslaneController.cs" />
     <Compile Include="Controller\PartnerController.cs" />
     <Compile Include="Controller\ZaRaController.cs" />
+    <Compile Include="DataCards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataCards.Designer.cs">
+      <DependentUpon>DataCards.cs</DependentUpon>
+    </Compile>
     <Compile Include="Djelatnici.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +82,7 @@
     <Compile Include="ExportData.Designer.cs">
       <DependentUpon>ExportData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataCardModel.cs" />
     <Compile Include="Ovlastenja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +171,9 @@
     <Compile Include="ZaRa.Designer.cs">
       <DependentUpon>ZaRa.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DataCards.resx">
+      <DependentUpon>DataCards.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Djelatnici.resx">
       <DependentUpon>Djelatnici.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,7 +200,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ovlastenja.resx">
       <DependentUpon>Ovlastenja.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Oprema.resx">
       <DependentUpon>Oprema.cs</DependentUpon>
     </EmbeddedResource>
