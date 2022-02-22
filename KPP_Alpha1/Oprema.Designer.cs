@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CmbFilter = new System.Windows.Forms.ComboBox();
             this.CmbAktivno = new System.Windows.Forms.ComboBox();
             this.Lbl_Search = new System.Windows.Forms.Label();
@@ -140,8 +140,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -350,8 +350,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Txt_Vijek);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Dtp_Kupljeno);
@@ -375,7 +375,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormOprema";
-            this.Text = "Oprema";
+            this.Text = "ICT Oprema";
             this.Load += new System.EventHandler(this.Oprema_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
             this.menuStrip1.ResumeLayout(false);

@@ -29,8 +29,8 @@ namespace KPP_Alpha1
         public FormKPP()
         {
             InitializeComponent();
-            odjeliDict = db.DictFill("naziv", "odjeli");
-            posiljateljiDict = db.DictFill("naziv", "posiljatelji");
+            odjeliDict = db.DictIntString("naziv", "odjeli");
+            posiljateljiDict = db.DictIntString("naziv", "posiljatelji");
             CollectionPosiljatelji();
             CollectionOdjeli();
         }

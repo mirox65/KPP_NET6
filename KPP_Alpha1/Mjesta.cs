@@ -27,7 +27,7 @@ namespace KPP_Alpha1
         public FormMjesta()
         {
             InitializeComponent();
-            zpanijeDict = db.DictFill("zupanija", "zupanije");
+            zpanijeDict = db.DictIntString("zupanija", "zupanije");
             CollectionZpanije();
         }
         // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append

@@ -44,6 +44,7 @@
             this.mjestaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.djelatniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.partneriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iTOpremaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bazaPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izvozPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomoćToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +53,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLable_Korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_korisnik = new System.Windows.Forms.ToolStripStatusLabel();
+            this.zaRaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dokumentiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ovlastenjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iTOpremaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,6 +83,7 @@
             this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.otvoriKPPToolStripMenuItem,
             this.knjigaPoslanihPošiljkiToolStripMenuItem,
+            this.zaRaToolStripMenuItem1,
             this.toolStripSeparator1,
             this.zatvoriToolStripMenuItem,
             this.izađiIzAplikacijeToolStripMenuItem,
@@ -187,6 +190,13 @@
             this.partneriToolStripMenuItem.Text = "Partneri";
             this.partneriToolStripMenuItem.Click += new System.EventHandler(this.partneriToolStripMenuItem_Click);
             // 
+            // iTOpremaToolStripMenuItem
+            // 
+            this.iTOpremaToolStripMenuItem.Name = "iTOpremaToolStripMenuItem";
+            this.iTOpremaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.iTOpremaToolStripMenuItem.Text = "IT Oprema";
+            this.iTOpremaToolStripMenuItem.Click += new System.EventHandler(this.iTOpremaToolStripMenuItem_Click);
+            // 
             // bazaPodatakaToolStripMenuItem
             // 
             this.bazaPodatakaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -262,12 +272,12 @@
             this.ovlastenjaToolStripMenuItem.Text = "Ovlastenja";
             this.ovlastenjaToolStripMenuItem.Click += new System.EventHandler(this.ovlastenjaToolStripMenuItem_Click);
             //
-            // iTOpremaToolStripMenuItem
+            // zaRaToolStripMenuItem1
             // 
-            this.iTOpremaToolStripMenuItem.Name = "iTOpremaToolStripMenuItem";
-            this.iTOpremaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.iTOpremaToolStripMenuItem.Text = "IT Oprema";
-            this.iTOpremaToolStripMenuItem.Click += new System.EventHandler(this.iTOpremaToolStripMenuItem_Click);
+            this.zaRaToolStripMenuItem1.Name = "zaRaToolStripMenuItem1";
+            this.zaRaToolStripMenuItem1.Size = new System.Drawing.Size(276, 24);
+            this.zaRaToolStripMenuItem1.Text = "ZaRa";
+            this.zaRaToolStripMenuItem1.Click += new System.EventHandler(this.zaRaToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -320,6 +330,7 @@
         private System.Windows.Forms.ToolStripMenuItem dokumentiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ovlastenjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iTOpremaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zaRaToolStripMenuItem1;
     }
 }
 

@@ -14,7 +14,7 @@ namespace KPP_Alpha1.Controller
 
         internal bool Insert(OpremaModel oprema)
         {
-            var Insert = "INSERT INTO itOprema" +
+            var Insert = "INSERT INTO ictOprema" +
                 "(naziv, serBr, invBr, status, datKupovine, vijek, datZamjene, korisnikId, dateEdited) " +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             var conn = new OleDbConnection(db.connString);
@@ -34,7 +34,7 @@ namespace KPP_Alpha1.Controller
 
         internal bool Update(OpremaModel oprema)
         {
-            string Update = "UPDATE itOprema SET naziv=?, serBr=?, invBr=?, status=?, datKupovine=?, vijek=?, " +
+            string Update = "UPDATE ictOprema SET naziv=?, serBr=?, invBr=?, status=?, datKupovine=?, vijek=?, " +
                 "datZamjene=?, korisnikId=?, dateEdited=? WHERE id=?";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Update, conn);
