@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using Word = Microsoft.Office.Interop.Word;
+using KPP_Alpha1.Models;
 
 namespace KPP_Alpha1
 {
@@ -17,12 +18,29 @@ namespace KPP_Alpha1
     {
 
         readonly DbClass db = new DbClass();
+        private string fileName = @"C:\Users\palaca\source\repos\KPP\KPP_Alpha1\bin\Debug\template.doc";
+        private string saveAs = @"\\zagw19fs01\Users\palaca\Desktop\Ovlastenje.doc";
+
+        private Dictionary<int, string> djelatniciDic = new Dictionary<int, string>();
+        private Dictionary<int, string> vozilaDic = new Dictionary<int, string>();
 
         public FormOvlastenja()
         {
             InitializeComponent();
             Clear();
             CollectionDjelatnici();
+            CollectionVozila();
+
+            if (djelatniciDic.Count > 0)
+            {
+                djelatniciDic.Clear();
+            }
+            djelatniciDic = db.DictIntString("ime", "prezime", "djelatnici");
+            if (vozilaDic.Count > 0)
+            {
+                vozilaDic.Clear();
+            }
+            vozilaDic = db.DictIntString("regOznaka", "vozila");
         }
 
         // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append
@@ -40,6 +58,8 @@ namespace KPP_Alpha1
             AutoCompleteStringCollection vozilaCollection = db.AutoComplete(DbAc, "regOznaka");
             Txt_RegOznaka.AutoCompleteCustomSource = vozilaCollection;
         }
+
+
 
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
@@ -73,7 +93,7 @@ namespace KPP_Alpha1
                 ref matchDiactitis, ref matchAlefHamza, ref matchControl);
         }
 
-        private void CreateWordDocument(object filename, object SaveAs)
+        private void CreateWordDocument(object filename, object SaveAs, DjelatnikModel djelatnik, VozilaModel vozilo)
         {
             Word.Application wordApp = new Word.Application();
             object missing = Missing.Value;
@@ -92,8 +112,13 @@ namespace KPP_Alpha1
                 myWordDoc.Activate();
 
                 //find and replace
-                this.FindAndReplace(wordApp, "<name>", Txt_Djelatnik.Text);
-                this.FindAndReplace(wordApp, "<auto>", Txt_RegOznaka.Text);
+                this.FindAndReplace(wordApp, "<ime_prezime>", Txt_Djelatnik.Text);
+                this.FindAndReplace(wordApp, "<oib>", djelatnik.Oib);
+                this.FindAndReplace(wordApp, "<br_ugovora>", vozilo.BrUgovora);
+                this.FindAndReplace(wordApp, "<marka_vozila>", vozilo.Proizvodac);
+                this.FindAndReplace(wordApp, "<model_vozila>", $"{vozilo.Model} {vozilo.Opis}");
+                this.FindAndReplace(wordApp, "<br_sasije>", vozilo.BrSasije);
+                this.FindAndReplace(wordApp, "<reg_oznaka>", Txt_RegOznaka.Text);
                 this.FindAndReplace(wordApp, "<datum>", Dtp_DatumOvlastenja.Value.Date);
             }
             else
@@ -115,9 +140,48 @@ namespace KPP_Alpha1
 
         private void Btn_Create_Click(object sender, EventArgs e)
         {
-            CreateWordDocument(@"C:\Users\palaca\source\repos\KPP\KPP_Alpha1\bin\Debug\template.doc", @"\\zagw19fs01\Users\palaca\Desktop\Ovlastenje.doc");
+            DjelatnikModel djelatnik = UcitavanjeDjelatnika();
+            VozilaModel vozilo = UcitavanjeVozila();
+            CreateWordDocument(fileName, saveAs, djelatnik, vozilo);
         }
 
+        private VozilaModel UcitavanjeVozila()
+        {
+            var id = vozilaDic.FirstOrDefault(v => v.Value == Txt_RegOznaka.Text.Trim()).Key;
+            var select = $"SELECT * FROM vozila WHERE id = {id}";
+            var dt = db.Select(select);
+
+            VozilaModel vozilo = new VozilaModel();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                vozilo.Id = Convert.ToInt32(row["ID"].ToString());
+                vozilo.Proizvodac = row["proizvođač"].ToString();
+                vozilo.Model = row["model"].ToString();
+                vozilo.Opis = row["opis"].ToString();
+                vozilo.BrSasije = row["brŠasije"].ToString();
+                vozilo.BrUgovora = row["brUgovora"].ToString();
+            }
+
+            return vozilo;
+        }
+
+        private DjelatnikModel UcitavanjeDjelatnika()
+        {
+            var id = djelatniciDic.FirstOrDefault(d => d.Value == Txt_Djelatnik.Text.Trim()).Key;
+            var select = $"SELECT * FROM djelatnici WHERE id = {id}";
+            var dt = db.Select(select);
+
+            DjelatnikModel djelatnik = new DjelatnikModel();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                djelatnik.Id = Convert.ToInt32(row["id"].ToString());
+                djelatnik.Oib = row["oib"].ToString();
+            }
+
+            return djelatnik;
+        }
     }
 
     

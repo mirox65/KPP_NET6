@@ -54,8 +54,10 @@ namespace KPP_Alpha1
         {
             var DbIct = "SELECT * FROM ictOprema;";
             var DbDc = "SELECT * FROM dataCards;";
+            var DbVozila = "SELECT * FROM vozila;";
             var AcOprema = db.AutoComplete(DbIct, "serBr", "naziv");
             AcOprema = db.AutoComplete(DbDc, "imei", "SerBr");
+            AcOprema = db.AutoComplete(DbVozila, "regOznaka", "proizvođač");
             Txt_Oprema.AutoCompleteCustomSource = AcOprema;
         }
 
@@ -70,14 +72,15 @@ namespace KPP_Alpha1
         {
             OpremaBaza = db.DictStringString(opremaBazaDic, "serBr", "naziv", "zaRaIct", "ictOprema");
             OpremaBaza = db.DictStringString(OpremaBaza, "imei", "serBr", "zaRaDataCards", "dataCards");
+            OpremaBaza = db.DictStringString(OpremaBaza, "regOznaka", "proizvođač", "zaRaVozila", "vozila");
             return opremaBazaDic;
         }
 
         private Dictionary<string, int> UčitavanjeOpremaDictionary()
         {
             OpremaDic = db.DicStringInt(opremaDic, "serBr", "naziv", "ictOprema");
-
             OpremaDic = db.DicStringInt (OpremaDic, "imei", "serBr", "dataCards");
+            OpremaDic = db.DicStringInt(OpremaDic, "regOznaka", "proizvođač", "vozila");
             return OpremaDic;
         }
 
@@ -109,6 +112,14 @@ namespace KPP_Alpha1
                 "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id " +
                 $"WHERE z.djelatnikId={djelatnikId};";
             lista.Merge(db.Select(D2));
+            string D3 = "SELECT z.id AS Id, [v.regOznaka]&' '&[v.proizvođač] AS Oprema, z.datZaduženja AS Zaduženo, " +
+                "z.datRazduženja AS Razduženo, [d.ime]&' '&[d.prezime] AS Korisnik, z.ažurirano AS Ažurirano " +
+                "FROM ((zaRaVozila AS z " +
+                "LEFT JOIN vozila AS v ON z.opremaId=v.id) " +
+                "LEFT JOIN korisnici AS k ON z.korisnikId=k.id) " +
+                "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id " +
+                $"WHERE z.djelatnikId={djelatnikId};";
+            lista.Merge(db.Select(D3));
             Dgv.DataSource = lista;
         }
 

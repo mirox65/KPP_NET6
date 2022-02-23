@@ -74,6 +74,8 @@
             // 
             // Txt_RegOznaka
             // 
+            this.Txt_RegOznaka.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Txt_RegOznaka.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.Txt_RegOznaka.Location = new System.Drawing.Point(147, 97);
             this.Txt_RegOznaka.Name = "Txt_RegOznaka";
             this.Txt_RegOznaka.Size = new System.Drawing.Size(182, 26);

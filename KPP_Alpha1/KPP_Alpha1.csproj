@@ -255,7 +255,6 @@
     <Content Include="notebook %281%29.ico" />
     <Content Include="notebook -s pozadinom.ico" />
     <Content Include="notebook.ico" />
-    <None Include="Resources\create_ovlastenje.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -285,6 +284,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

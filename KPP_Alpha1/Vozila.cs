@@ -27,6 +27,7 @@ namespace KPP_Alpha1
         }
         private void Clear()
         {
+            Lbl_ID.Text = string.Empty;
             Txt_Proizvodac.Clear();
             Txt_Model.Clear();
             Txt_Opis.Clear();
