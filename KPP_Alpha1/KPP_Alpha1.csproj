@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Controller\DataCardsController.cs" />
     <Compile Include="Controller\DjelatnikController.cs" />
+    <Compile Include="Controller\KarticeUlazController.cs" />
     <Compile Include="Controller\KnjigaController.cs" />
     <Compile Include="Controller\KorisnikController.cs" />
     <Compile Include="Controller\LoginController.cs" />
@@ -83,6 +84,13 @@
     <Compile Include="ExportData.Designer.cs">
       <DependentUpon>ExportData.cs</DependentUpon>
     </Compile>
+    <Compile Include="KeyCards.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyCards.Designer.cs">
+      <DependentUpon>KeyCards.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KarticeUlazModel.cs" />
     <Compile Include="Models\VozilaModel.cs" />
     <Compile Include="Models\DataCardModel.cs" />
     <Compile Include="Ovlastenja.cs">
@@ -190,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyCards.resx">
+      <DependentUpon>KeyCards.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Korisnici.resx">
       <DependentUpon>Korisnici.cs</DependentUpon>
