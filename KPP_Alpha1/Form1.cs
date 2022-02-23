@@ -264,7 +264,33 @@ namespace KPP_Alpha1
                 Forma(form);
             }
         }
+        private void karticeZaUlazToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormDataCards();
+            if (ActiveMdiChild != null)
+            {
+                ActiveMdiChild.Close();
+                Forma(form);
+            }
+            else
+            {
+                Forma(form);
+            }
+        }
 
+        private void eNCUređajiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new FormDataCards();
+            if (ActiveMdiChild != null)
+            {
+                ActiveMdiChild.Close();
+                Forma(form);
+            }
+            else
+            {
+                Forma(form);
+            }
+        }
 
         private void izađiIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -314,5 +340,7 @@ namespace KPP_Alpha1
                 }
             }
         }
+
+        
     }
 }
