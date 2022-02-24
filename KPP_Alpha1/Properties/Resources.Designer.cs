@@ -59,15 +59,5 @@ namespace KPP_Alpha1.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap create_ovlastenje {
-            get {
-                object obj = ResourceManager.GetObject("create_ovlastenje", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

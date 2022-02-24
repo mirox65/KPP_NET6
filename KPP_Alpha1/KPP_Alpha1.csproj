@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Controller\DataCardsController.cs" />
     <Compile Include="Controller\DjelatnikController.cs" />
+    <Compile Include="Controller\EncController.cs" />
     <Compile Include="Controller\KnjigaController.cs" />
     <Compile Include="Controller\KorisnikController.cs" />
     <Compile Include="Controller\LoginController.cs" />
@@ -77,12 +78,19 @@
     <Compile Include="Djelatnici.Designer.cs">
       <DependentUpon>Djelatnici.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Enc.Designer.cs">
+      <DependentUpon>Enc.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportData.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ExportData.Designer.cs">
       <DependentUpon>ExportData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\EncModel.cs" />
     <Compile Include="Models\VozilaModel.cs" />
     <Compile Include="Models\DataCardModel.cs" />
     <Compile Include="Ovlastenja.cs">
@@ -184,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Djelatnici.resx">
       <DependentUpon>Djelatnici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Enc.resx">
+      <DependentUpon>Enc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportData.resx">
       <DependentUpon>ExportData.cs</DependentUpon>

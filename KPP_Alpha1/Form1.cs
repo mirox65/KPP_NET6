@@ -280,7 +280,7 @@ namespace KPP_Alpha1
 
         private void eNCUređajiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new FormDataCards();
+            var form = new FormEnc();
             if (ActiveMdiChild != null)
             {
                 ActiveMdiChild.Close();
