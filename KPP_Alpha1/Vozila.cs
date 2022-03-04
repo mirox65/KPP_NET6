@@ -39,22 +39,20 @@ namespace KPP_Alpha1
 
         private void DtUpdate()
         {
-            string Dbs = $"SELECT * FROM vozila ORDER BY ažurirano ASC;";
+            string Dbs = $"SELECT v.id AS Id, v.proizvođač AS Proizvođač, v.model AS Model, v.opis AS Opis," +
+                $"v.brŠasije AS Šasija, v.regOznaka AS Registracija, v.brUgovora AS Ugovor, " +
+                $"[dc.ime]&' '&[dc.prezime] AS Zadužio, [d.ime]&' '&[d.prezime] AS Ažurirao, " +
+                $"v.ažurirano AS Ažurirano " +
+                $"FROM (((vozila AS v " +
+                $"LEFT JOIN korisnici AS k ON v.korisnikId=k.id) " +
+                $"LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
+                $"LEFT JOIN zaRaVozila AS zv ON zv.opremaId=v.id) " +
+                $"LEFT JOIN djelatnici AS dc ON zv.djelatnikId=dc.id " +
+                $"ORDER BY v.ažurirano ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
         }
 
-        private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            int rowIndex = e.RowIndex;
-            Lbl_ID.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
-            Txt_Proizvodac.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
-            Txt_Model.Text = Dgv.Rows[rowIndex].Cells[2].Value.ToString();
-            Txt_Opis.Text = Dgv.Rows[rowIndex].Cells[3].Value.ToString();
-            Txt_BrSasije.Text = Dgv.Rows[rowIndex].Cells[4].Value.ToString();
-            Txt_RegOznaka.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
-            Txt_BrUgovora.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
-        }
         private void PromjenaBojePrazneĆelije()
         {
             edit.BojaPozadineZaPrazneCeliji(Txt_Proizvodac);
@@ -143,6 +141,63 @@ namespace KPP_Alpha1
                     edit.MessageException(ex);
                 }
             }
+        }
+
+        private void Dgv_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            Lbl_ID.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
+            Txt_Proizvodac.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
+            Txt_Model.Text = Dgv.Rows[rowIndex].Cells[2].Value.ToString();
+            Txt_Opis.Text = Dgv.Rows[rowIndex].Cells[3].Value.ToString();
+            Txt_BrSasije.Text = Dgv.Rows[rowIndex].Cells[4].Value.ToString();
+            Txt_RegOznaka.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
+            Txt_BrUgovora.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
+        }
+
+        private void Txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                (Dgv.DataSource as DataTable).DefaultView.RowFilter =
+                    String.Format("Šasija LIKE '%{0}%' OR Registracija LIKE '%{0}%' OR Zadužio LIKE '%{0}%'",
+                    Txt_Search.Text.Trim());
+                if (Dgv.Rows[0].Cells[0].Value is null)
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                edit.MessageException(ex);
+            }
+        }
+
+        private void dodajNoviUnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Btn_Insert.PerformClick();
+        }
+
+        private void spremiIzmjeneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Btn_Edit.PerformClick();
+        }
+
+        private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int rowIndex = e.RowIndex;
+            Lbl_ID.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
+            Txt_Proizvodac.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
+            Txt_Model.Text = Dgv.Rows[rowIndex].Cells[2].Value.ToString();
+            Txt_Opis.Text = Dgv.Rows[rowIndex].Cells[3].Value.ToString();
+            Txt_BrSasije.Text = Dgv.Rows[rowIndex].Cells[4].Value.ToString();
+            Txt_RegOznaka.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
+            Txt_BrUgovora.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
         }
     }
 }

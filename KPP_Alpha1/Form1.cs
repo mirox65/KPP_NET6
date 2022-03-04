@@ -329,12 +329,7 @@ namespace KPP_Alpha1
                 {
                     if (LoginHelper.StaticUloga == "Administrator")
                     {
-                        dodajKorisnikaToolStripMenuItem.Visible = true;
-                        FormaKPP();
-                    }
-                    else
-                    {
-                        FormaKPP();
+                        dodajKorisnikaToolStripMenuItem.Visible = true;                        
                     }
                     tssl_korisnik.Text = LoginHelper.StaticKorisnik;
                 }

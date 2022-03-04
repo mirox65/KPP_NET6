@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.Dtp_Zaduženo = new System.Windows.Forms.DateTimePicker();
             this.CmbFilter = new System.Windows.Forms.ComboBox();
@@ -46,7 +46,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Dtp_Razduženo = new System.Windows.Forms.DateTimePicker();
             this.Btn_Pretraži = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InsertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -124,8 +131,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -242,9 +249,65 @@
             this.Btn_Pretraži.Name = "Btn_Pretraži";
             this.Btn_Pretraži.Size = new System.Drawing.Size(90, 57);
             this.Btn_Pretraži.TabIndex = 53;
-            this.Btn_Pretraži.Text = "Pretraži (F1)";
+            this.Btn_Pretraži.Text = "Pretraži (F5)";
             this.Btn_Pretraži.UseVisualStyleBackColor = true;
             this.Btn_Pretraži.Click += new System.EventHandler(this.Btn_Pretraži_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.datotekaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(782, 24);
+            this.menuStrip1.TabIndex = 54;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
+            // 
+            // datotekaToolStripMenuItem
+            // 
+            this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.InsertToolStripMenuItem,
+            this.UpdateToolStripMenuItem,
+            this.ClearToolStripMenuItem,
+            this.SearchToolStripMenuItem});
+            this.datotekaToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
+            this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
+            this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.datotekaToolStripMenuItem.Text = "Datoteka";
+            // 
+            // InsertToolStripMenuItem
+            // 
+            this.InsertToolStripMenuItem.Name = "InsertToolStripMenuItem";
+            this.InsertToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.InsertToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.InsertToolStripMenuItem.Text = "Spremi novi unos";
+            this.InsertToolStripMenuItem.Click += new System.EventHandler(this.InsertToolStripMenuItem_Click);
+            // 
+            // UpdateToolStripMenuItem
+            // 
+            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
+            this.UpdateToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.UpdateToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.UpdateToolStripMenuItem.Text = "Spremi izmjene";
+            this.UpdateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
+            // 
+            // ClearToolStripMenuItem
+            // 
+            this.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem";
+            this.ClearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.ClearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.ClearToolStripMenuItem.Text = "Clear";
+            this.ClearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
+            // 
+            // SearchToolStripMenuItem
+            // 
+            this.SearchToolStripMenuItem.Name = "SearchToolStripMenuItem";
+            this.SearchToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.SearchToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.SearchToolStripMenuItem.Text = "Pretraži";
+            this.SearchToolStripMenuItem.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
             // FormZaRa
             // 
@@ -252,6 +315,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Btn_Pretraži);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Dtp_Razduženo);
@@ -274,6 +338,8 @@
             this.Name = "FormZaRa";
             this.Text = "ZaRa";
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +364,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker Dtp_Razduženo;
         private System.Windows.Forms.Button Btn_Pretraži;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InsertToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SearchToolStripMenuItem;
     }
 }

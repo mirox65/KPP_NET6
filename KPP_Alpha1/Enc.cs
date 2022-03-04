@@ -39,8 +39,8 @@ namespace KPP_Alpha1
 
         private void DtUpdate()
         {
-            var dbs = "SELECT e.id AS Id, e.naziv AS Naziv, [dz.ime]&' '&[dz.prezime] AS Djelatnik, " +
-                "[d.ime]&' '&[d.prezime] AS Korisnik, e.ažurirano AS Ažurirano " +
+            var dbs = "SELECT e.id AS Id, e.naziv AS Naziv, [dz.ime]&' '&[dz.prezime] AS Zadužio, " +
+                "[d.ime]&' '&[d.prezime] AS Ažurirao, e.ažurirano AS Ažurirano " +
                 "FROM (((enc AS e " +
                 "LEFT JOIN korisnici AS k ON e.korisnikId=k.id) " +
                 "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +

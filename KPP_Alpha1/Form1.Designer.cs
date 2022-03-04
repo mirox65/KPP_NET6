@@ -48,6 +48,8 @@
             this.iTOpremaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.podatkovneKarticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vozilaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.karticeZaUlazToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eNCUređajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bazaPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.izvozPodatakaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dokumentiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,8 +60,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLable_Korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_korisnik = new System.Windows.Forms.ToolStripStatusLabel();
-            this.karticeZaUlazToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eNCUređajiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -225,6 +225,20 @@
             this.vozilaToolStripMenuItem.Text = "Vozila";
             this.vozilaToolStripMenuItem.Click += new System.EventHandler(this.vozilaToolStripMenuItem_Click);
             // 
+            // karticeZaUlazToolStripMenuItem
+            // 
+            this.karticeZaUlazToolStripMenuItem.Name = "karticeZaUlazToolStripMenuItem";
+            this.karticeZaUlazToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.karticeZaUlazToolStripMenuItem.Text = "Kartice";
+            this.karticeZaUlazToolStripMenuItem.Click += new System.EventHandler(this.karticeZaUlazToolStripMenuItem_Click);
+            // 
+            // eNCUređajiToolStripMenuItem
+            // 
+            this.eNCUređajiToolStripMenuItem.Name = "eNCUređajiToolStripMenuItem";
+            this.eNCUređajiToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.eNCUređajiToolStripMenuItem.Text = "ENC uređaji";
+            this.eNCUređajiToolStripMenuItem.Click += new System.EventHandler(this.eNCUređajiToolStripMenuItem_Click);
+            // 
             // bazaPodatakaToolStripMenuItem
             // 
             this.bazaPodatakaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -236,7 +250,7 @@
             // izvozPodatakaToolStripMenuItem
             // 
             this.izvozPodatakaToolStripMenuItem.Name = "izvozPodatakaToolStripMenuItem";
-            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.izvozPodatakaToolStripMenuItem.Text = "Izvoz podataka";
             this.izvozPodatakaToolStripMenuItem.Click += new System.EventHandler(this.izvozPodatakaToolStripMenuItem_Click);
             // 
@@ -299,20 +313,6 @@
             // 
             this.tssl_korisnik.Name = "tssl_korisnik";
             this.tssl_korisnik.Size = new System.Drawing.Size(0, 17);
-            // 
-            // karticeZaUlazToolStripMenuItem
-            // 
-            this.karticeZaUlazToolStripMenuItem.Name = "karticeZaUlazToolStripMenuItem";
-            this.karticeZaUlazToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
-            this.karticeZaUlazToolStripMenuItem.Text = "Kartice za ulaz";
-            this.karticeZaUlazToolStripMenuItem.Click += new System.EventHandler(this.karticeZaUlazToolStripMenuItem_Click);
-            // 
-            // eNCUređajiToolStripMenuItem
-            // 
-            this.eNCUređajiToolStripMenuItem.Name = "eNCUređajiToolStripMenuItem";
-            this.eNCUređajiToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
-            this.eNCUređajiToolStripMenuItem.Text = "ENC uređaji";
-            this.eNCUređajiToolStripMenuItem.Click += new System.EventHandler(this.eNCUređajiToolStripMenuItem_Click);
             // 
             // Form1
             // 
