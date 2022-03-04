@@ -40,10 +40,13 @@ namespace KPP_Alpha1
 
         private void DtUpdate()
         {
-            var Dbs = "SELECT dc.id AS Id, dc.imei AS Imei, dc.serBr AS SerBr, [d.ime]&' '&[d.prezime] AS Korisnik," +
-                "dc.ažurirano AS Ažurirano FROM (dataCards AS dc " +
-                "LEFT JOIN korisnici AS k ON dc.korisnikId=k.id)" +
-                "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id;";
+            var Dbs = "SELECT dc.id AS Id, dc.imei AS Imei, dc.serBr AS SerBr, [dz.ime]&' '&[dz.prezime] AS Zadužio, " +
+                "[d.ime]&' '&[d.prezime] AS Ažurirao, dc.ažurirano AS Ažurirano " +
+                "FROM (((dataCards AS dc " +
+                "LEFT JOIN korisnici AS k ON dc.korisnikId=k.id) " +
+                "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
+                "LEFT JOIN zaRaDataCards AS zc ON zc.opremaId=dc.id) " +
+                "LEFT JOIN djelatnici AS dz ON zc.djelatnikId=dz.id;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
         }

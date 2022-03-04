@@ -1,14 +1,7 @@
 ﻿using KPP_Alpha1.Controller;
-using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
@@ -56,16 +49,20 @@ namespace KPP_Alpha1
             }
             else
             {
-                string Dbs = $"SELECT o.id AS Id, o.naziv AS Naziv, o.serbr AS Serijski, o.invbr AS Inventarni, o.status AS Status, " +
-                    $"o.datKupovine AS Nabavljeno, o.vijek AS Vijek, o.datZamjene AS Zamjena, " +
-                    $"[d.ime]&' '&[d.prezime] AS EditedBy, o.dateEdited AS EditedOn FROM " +
-                    $"(ictOprema AS o " +
+                string Dbs = $"SELECT o.id AS Id, o.naziv AS Naziv, o.serbr AS Serijski, o.invbr AS Inventarni, " +
+                    $"o.status AS Status, o.datKupovine AS Nabavljeno, o.vijek AS Vijek, o.datZamjene AS Zamjena, " +
+                    $"[dc.ime]&' '&[dc.prezime] AS Zadužio, [d.ime]&' '&[d.prezime] AS Ažurirao, " +
+                    $"o.dateEdited AS Ažurirano " +
+                    $"FROM (((ictOprema AS o " +
                     $"LEFT JOIN korisnici AS k ON o.korisnikId = k.id) " +
-                    $"LEFT JOIN djelatnici AS d ON d.id=k.djelatnikId " +
-                    $"WHERE status = '{status}' " +
+                    $"LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
+                    $"LEFT JOIN zaRaIct AS z ON z.opremaId=o.id) " +
+                    $"LEFT JOIN djelatnici AS dc ON z.djelatnikId=dc.id " +
+                    $"WHERE o.status = '{status}' AND z.datZaduženja IN " +
+                    $"(SELECT MAX(zaRa2.datZaduženja) FROM zaRaIct zaRa2 WHERE zaRa2.opremaId=kc.id AND zaRa2.datRazduženja is not null) " +
                     $"ORDER BY o.dateEdited ASC;";
                 DataTable dt = db.Select(Dbs);
-                Dgv.DataSource = dt; 
+                Dgv.DataSource = dt;
             }
         }
 
@@ -109,7 +106,7 @@ namespace KPP_Alpha1
         private void Btn_Edit_Click(object sender, EventArgs e)
         {
             if (edit.NullOrWhite(Txt_Id) | edit.NullOrWhite(Txt_Naziv) |
-                edit.NullOrWhite(Txt_InvBroj) | edit.NullOrWhite(Txt_Vijek) )
+                edit.NullOrWhite(Txt_InvBroj) | edit.NullOrWhite(Txt_Vijek))
             {
                 PromjenaBojePrazneČelije();
                 edit.PorukaPraznaCelija();
@@ -140,7 +137,7 @@ namespace KPP_Alpha1
 
         private OpremaModel SetProperties()
         {
-            
+
             var oprema = new OpremaModel
             {
                 Naziv = Txt_Naziv.Text.Trim(),
@@ -184,7 +181,7 @@ namespace KPP_Alpha1
             {
                 (Dgv.DataSource as DataTable).DefaultView.RowFilter =
                     String.Format("Naziv LIKE '%{0}%' OR Serijski LIKE '%{0}%'", Txt_Search.Text.Trim());
-                if(Dgv.Rows[0].Cells [0].Value is null)
+                if (Dgv.Rows[0].Cells[0].Value is null)
                 {
                     return;
                 }
