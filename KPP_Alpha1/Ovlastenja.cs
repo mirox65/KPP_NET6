@@ -18,8 +18,8 @@ namespace KPP_Alpha1
     {
 
         readonly DbClass db = new DbClass();
-        private string fileName = @"C:\Users\palaca\source\repos\KPP\KPP_Alpha1\bin\Debug\template.doc";
-        private string saveAs = @"\\zagw19fs01\Users\palaca\Desktop\Ovlastenje.doc";
+        private string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenja_za_auto_template.doc";
+        private string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc";
 
         private Dictionary<int, string> djelatniciDic = new Dictionary<int, string>();
         private Dictionary<int, string> vozilaDic = new Dictionary<int, string>();
@@ -143,6 +143,8 @@ namespace KPP_Alpha1
             DjelatnikModel djelatnik = UcitavanjeDjelatnika();
             VozilaModel vozilo = UcitavanjeVozila();
             CreateWordDocument(fileName, saveAs, djelatnik, vozilo);
+            System.Diagnostics.Process.Start(@"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc");
+
         }
 
         private VozilaModel UcitavanjeVozila()
