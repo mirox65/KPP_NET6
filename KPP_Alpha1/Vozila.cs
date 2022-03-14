@@ -48,6 +48,9 @@ namespace KPP_Alpha1
                 $"LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
                 $"LEFT JOIN zaRaVozila AS zv ON zv.opremaId=v.id) " +
                 $"LEFT JOIN djelatnici AS dc ON zv.djelatnikId=dc.id " +
+                $"WHERE zv.datZaduženja IS NULL " +
+                $"OR zv.datZaduženja IN (SELECT MAX(zaRa2.datZaduženja) FROM zaRaVozila AS zaRa2 WHERE zaRa2.opremaId=v.id) " +
+
                 $"ORDER BY v.ažurirano ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;

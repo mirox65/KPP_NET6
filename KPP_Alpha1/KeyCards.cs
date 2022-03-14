@@ -36,7 +36,7 @@ namespace KPP_Alpha1
                 $"LEFT JOIN zaRaKeyCards AS zc ON zc.opremaId=kc.id) " +
                 $"LEFT JOIN djelatnici AS dc ON zc.djelatnikId=dc.id " +
                 $"WHERE kc.aktivno='{filter}' AND zc.datZaduženja is null " +
-                $"OR zc.datZaduženja IN (SELECT MAX(zkc2.datZaduženja) FROM zaRaKeyCards zkc2 WHERE zkc2.opremaId=kc.id OR zkc2.datRazduženja is not null) " +
+                $"OR zc.datZaduženja IN (SELECT MAX(zkc2.datZaduženja) FROM zaRaKeyCards AS zkc2 WHERE zkc2.opremaId=kc.id) " +
                 $"ORDER BY kc.ažurirano ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
