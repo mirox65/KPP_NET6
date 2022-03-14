@@ -46,7 +46,10 @@ namespace KPP_Alpha1
                 "LEFT JOIN korisnici AS k ON dc.korisnikId=k.id) " +
                 "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
                 "LEFT JOIN zaRaDataCards AS zc ON zc.opremaId=dc.id) " +
-                "LEFT JOIN djelatnici AS dz ON zc.djelatnikId=dz.id;";
+                "LEFT JOIN djelatnici AS dz ON zc.djelatnikId=dz.id " +
+                $"WHERE zc.datZaduženja IS NULL " +
+                $"OR zc.datZaduženja IN (SELECT MAX(zaRa2.datZaduženja) FROM zaRaDataCards AS zaRa2 WHERE zaRa2.opremaId=dc.id);";
+
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
         }

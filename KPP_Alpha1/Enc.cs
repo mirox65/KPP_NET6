@@ -1,13 +1,8 @@
 ﻿using KPP_Alpha1.Controller;
 using KPP_Alpha1.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
@@ -45,7 +40,10 @@ namespace KPP_Alpha1
                 "LEFT JOIN korisnici AS k ON e.korisnikId=k.id) " +
                 "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
                 "LEFT JOIN zaRaEnc AS ze ON ze.opremaId=e.id) " +
-                "LEFT JOIN djelatnici dz ON ze.djelatnikId=dz.id;";
+                "LEFT JOIN djelatnici dz ON ze.djelatnikId=dz.id " +
+                $"WHERE ze.datZaduženja IS NULL " +
+                $"OR ze.datZaduženja IN (SELECT MAX(zaRa2.datZaduženja) FROM zaRaEnc AS zaRa2 WHERE zaRa2.opremaId=e.id);";
+
             var dt = db.Select(dbs);
             Dgv.DataSource = dt;
         }
