@@ -9,7 +9,7 @@ namespace KPP_Alpha1
 {
     class DbClass
     {
-        readonly EditClass edit = new EditClass();
+        readonly EditClass edit = new();
 
         OleDbConnection conn = null;
         OleDbCommand cmd = null;
@@ -46,10 +46,10 @@ namespace KPP_Alpha1
         {
             conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(Dbs, conn);
-            DataTable dt = new DataTable();
+            DataTable dt = new();
             try
             {
-                OleDbDataAdapter a = new OleDbDataAdapter(cmd);
+                OleDbDataAdapter a = new(cmd);
                 conn.Open();
                 a.Fill(dt);
             }
@@ -66,8 +66,8 @@ namespace KPP_Alpha1
         {
             conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(Dbs, conn);
-            DataTable dt = new DataTable();
-            StringBuilder sb = new StringBuilder();
+            DataTable dt = new();
+            StringBuilder sb = new();
             OleDbDataReader myReader = cmd.ExecuteReader();
             try
             {
@@ -96,7 +96,7 @@ namespace KPP_Alpha1
         // Kolekcija s tri varijble, tablica i dvije kolone
         public AutoCompleteStringCollection AutoComplete(string DbAc, string AcPrvi, string AcDrugi)
         {
-            AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection coll = new();
             conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(DbAc, conn);
             try
@@ -144,7 +144,7 @@ namespace KPP_Alpha1
         // Kolekcija za dvije varijable, tablica i jedna kolona
         public AutoCompleteStringCollection AutoComplete(string DbAc, string AcPrvi)
         {
-            AutoCompleteStringCollection coll = new AutoCompleteStringCollection();
+            AutoCompleteStringCollection coll = new();
             conn = new OleDbConnection(connString);
             cmd = new OleDbCommand(DbAc, conn);
             try

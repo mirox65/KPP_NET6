@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPP_Alpha1", "KPP_Alpha1\KPP_Alpha1.csproj", "{77557E0E-82AF-4A45-8C57-C973447A277B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPP_NET6", "KPP_Alpha1\KPP_NET6.csproj", "{77557E0E-82AF-4A45-8C57-C973447A277B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
