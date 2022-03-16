@@ -143,8 +143,9 @@ namespace KPP_Alpha1
             DjelatnikModel djelatnik = UcitavanjeDjelatnika();
             VozilaModel vozilo = UcitavanjeVozila();
             CreateWordDocument(fileName, saveAs, djelatnik, vozilo);
-            System.Diagnostics.Process.Start(@"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc");
-
+            Word.Application ap = new ();
+            ap.Documents.Open(@"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc");
+            ap.Visible = true;
         }
 
         private VozilaModel UcitavanjeVozila()
@@ -153,7 +154,7 @@ namespace KPP_Alpha1
             var select = $"SELECT * FROM vozila WHERE id = {id}";
             var dt = db.Select(select);
 
-            VozilaModel vozilo = new VozilaModel();
+            var vozilo = new VozilaModel();
 
             foreach (DataRow row in dt.Rows)
             {

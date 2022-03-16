@@ -66,7 +66,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.datotekaToolStripMenuItem,
@@ -250,7 +250,7 @@
             // izvozPodatakaToolStripMenuItem
             // 
             this.izvozPodatakaToolStripMenuItem.Name = "izvozPodatakaToolStripMenuItem";
-            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.izvozPodatakaToolStripMenuItem.Text = "Izvoz podataka";
             this.izvozPodatakaToolStripMenuItem.Click += new System.EventHandler(this.izvozPodatakaToolStripMenuItem_Click);
             // 
@@ -265,8 +265,8 @@
             // ovlastenjaToolStripMenuItem
             // 
             this.ovlastenjaToolStripMenuItem.Name = "ovlastenjaToolStripMenuItem";
-            this.ovlastenjaToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.ovlastenjaToolStripMenuItem.Text = "Ovlastenja";
+            this.ovlastenjaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.ovlastenjaToolStripMenuItem.Text = "Ovlaštenja";
             this.ovlastenjaToolStripMenuItem.Click += new System.EventHandler(this.ovlastenjaToolStripMenuItem_Click);
             // 
             // pomoćToolStripMenuItem
@@ -320,7 +320,7 @@
             this.ClientSize = new System.Drawing.Size(934, 691);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
