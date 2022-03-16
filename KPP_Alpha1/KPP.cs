@@ -63,6 +63,7 @@ namespace KPP_Alpha1
                 "ORDER BY k.id DESC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
+            edit.DgvColumnsResize(Dgv);
         }
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void form_KPP_Load(object sender, EventArgs e)

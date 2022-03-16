@@ -154,6 +154,7 @@ namespace KPP_Alpha1
                 $"WHERE z.djelatnikId={djelatnikId} AND datRazduženja {status};";
             lista.Merge(db.Select(D5));
             Dgv.DataSource = lista;
+            edit.DgvColumnsResize(Dgv);
         }
 
         private void Btn_Insert_Click(object sender, EventArgs e)

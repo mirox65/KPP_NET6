@@ -14,9 +14,9 @@ namespace KPP_Alpha1
         /// Sekundarne pomoćne klase su DbClass i EditClass
         /// </summary>
         /// 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly OpremaController controller = new OpremaController();
+        readonly DbClass db = new ();
+        readonly EditClass edit = new();
+        readonly OpremaController controller = new ();
 
         public FormOprema()
         {
@@ -65,6 +65,7 @@ namespace KPP_Alpha1
                     $"ORDER BY o.dateEdited ASC;";
                 DataTable dt = db.Select(Dbs);
                 Dgv.DataSource = dt;
+                edit.DgvColumnsResize(Dgv);
             }
         }
 

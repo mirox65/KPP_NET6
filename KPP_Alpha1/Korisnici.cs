@@ -53,6 +53,7 @@ namespace KPP_Alpha1
                 "ORDER BY k.id ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
+            edit.DgvColumnsResize(Dgv);
         }
         // Brisanje svih polja i fokus na početno polje
         private void Clear()

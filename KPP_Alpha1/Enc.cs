@@ -46,6 +46,7 @@ namespace KPP_Alpha1
 
             var dt = db.Select(dbs);
             Dgv.DataSource = dt;
+            edit.DgvColumnsResize(Dgv);
         }
 
         private void Btn_Insert_Click(object sender, EventArgs e)

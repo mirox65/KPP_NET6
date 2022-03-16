@@ -87,5 +87,16 @@ namespace KPP_Alpha1
             return string.IsNullOrWhiteSpace(textBox.Text);
         }
         #endregion
+
+        #region METODA ZA RESAJZANJE DGV-A
+        internal void DgvColumnsResize(DataGridView dgv)
+        {
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            }
+        }
+
+        #endregion
     }
 }

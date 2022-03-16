@@ -52,6 +52,7 @@ namespace KPP_Alpha1
 
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
+            edit.DgvColumnsResize(Dgv);
         }
 
         private void Btn_Insert_Click(object sender, EventArgs e)

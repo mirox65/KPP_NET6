@@ -54,6 +54,7 @@ namespace KPP_Alpha1
                 $"ORDER BY v.ažurirano ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
+            edit.DgvColumnsResize(Dgv);
         }
 
         private void PromjenaBojePrazneĆelije()

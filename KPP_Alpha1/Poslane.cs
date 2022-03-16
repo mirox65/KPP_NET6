@@ -192,6 +192,7 @@ namespace KPP_Alpha1
                 "LEFT JOIN djelatnici AS do ON do.id=k.djelatnikid " +
                 "ORDER BY Datum DESC;");
             Dgv.DataSource = dt;
+            edit.DgvColumnsResize(Dgv);
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

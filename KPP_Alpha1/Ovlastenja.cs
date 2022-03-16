@@ -1,28 +1,24 @@
-﻿using System;
+﻿using KPP_Alpha1.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
-using KPP_Alpha1.Models;
 
 namespace KPP_Alpha1
 {
     public partial class FormOvlastenja : Form
     {
 
-        readonly DbClass db = new DbClass();
-        private string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenja_za_auto_template.doc";
-        private string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc";
+        readonly DbClass db = new();
+        private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenja_za_auto_template.doc";
+        private readonly string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc";
 
-        private Dictionary<int, string> djelatniciDic = new Dictionary<int, string>();
-        private Dictionary<int, string> vozilaDic = new Dictionary<int, string>();
+        private Dictionary<int, string> djelatniciDic = new();
+        private Dictionary<int, string> vozilaDic = new();
 
         public FormOvlastenja()
         {
@@ -89,7 +85,7 @@ namespace KPP_Alpha1
 
             wordApp.Selection.Find.Execute2007(ref ToFindText,
                 ref matchCase, ref matchWholeWord, ref matchWildCards, ref matchSoundLike, ref matchAllforms,
-                ref forward, ref wrap, ref format, ref replaceWithText, ref replace, ref matchKashida, 
+                ref forward, ref wrap, ref format, ref replaceWithText, ref replace, ref matchKashida,
                 ref matchDiactitis, ref matchAlefHamza, ref matchControl);
         }
 
@@ -143,8 +139,13 @@ namespace KPP_Alpha1
             DjelatnikModel djelatnik = UcitavanjeDjelatnika();
             VozilaModel vozilo = UcitavanjeVozila();
             CreateWordDocument(fileName, saveAs, djelatnik, vozilo);
-            Word.Application ap = new ();
-            ap.Documents.Open(@"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc");
+            OpenWordDocumentForPrint(saveAs);
+        }
+
+        private static void OpenWordDocumentForPrint(string wordToOpen)
+        {
+            Word.Application ap = new();
+            ap.Documents.Open(wordToOpen);
             ap.Visible = true;
         }
 
@@ -187,6 +188,6 @@ namespace KPP_Alpha1
         }
     }
 
-    
-    
+
+
 }
