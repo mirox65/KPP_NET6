@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKPP));
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,15 +49,14 @@
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.Dgv = new System.Windows.Forms.DataGridView();
-            this.txt_id = new System.Windows.Forms.TextBox();
-            this.lbl_id = new System.Windows.Forms.Label();
+            this.Lbl_Id = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,7 +66,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 123);
+            this.label2.Location = new System.Drawing.Point(19, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 19);
             this.label2.TabIndex = 1;
@@ -87,7 +86,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 91);
+            this.label4.Location = new System.Drawing.Point(19, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 19);
             this.label4.TabIndex = 3;
@@ -163,7 +162,7 @@
             // 
             this.date_datum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_datum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_datum.Location = new System.Drawing.Point(128, 119);
+            this.date_datum.Location = new System.Drawing.Point(128, 91);
             this.date_datum.Name = "date_datum";
             this.date_datum.Size = new System.Drawing.Size(120, 26);
             this.date_datum.TabIndex = 4;
@@ -172,7 +171,7 @@
             // 
             this.date_primitka.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.date_primitka.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_primitka.Location = new System.Drawing.Point(128, 87);
+            this.date_primitka.Location = new System.Drawing.Point(128, 59);
             this.date_primitka.Name = "date_primitka";
             this.date_primitka.Size = new System.Drawing.Size(120, 26);
             this.date_primitka.TabIndex = 16;
@@ -250,8 +249,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -266,25 +265,16 @@
             this.Dgv.TabStop = false;
             this.Dgv.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_kpp_RowHeaderMouseClick);
             // 
-            // txt_id
+            // Lbl_Id
             // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(128, 55);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(120, 26);
-            this.txt_id.TabIndex = 28;
-            this.txt_id.TabStop = false;
-            // 
-            // lbl_id
-            // 
-            this.lbl_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_id.AutoSize = true;
-            this.lbl_id.Location = new System.Drawing.Point(19, 59);
-            this.lbl_id.Name = "lbl_id";
-            this.lbl_id.Size = new System.Drawing.Size(26, 19);
-            this.lbl_id.TabIndex = 27;
-            this.lbl_id.Text = "ID:";
+            this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Lbl_Id.AutoSize = true;
+            this.Lbl_Id.Location = new System.Drawing.Point(19, 126);
+            this.Lbl_Id.Name = "Lbl_Id";
+            this.Lbl_Id.Size = new System.Drawing.Size(17, 19);
+            this.Lbl_Id.TabIndex = 27;
+            this.Lbl_Id.Text = "0";
+            this.Lbl_Id.Visible = false;
             // 
             // menuStrip1
             // 
@@ -325,6 +315,14 @@
             this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
             this.spremiIzmjeneToolStripMenuItem.Click += new System.EventHandler(this.spremiIzmjeneToolStripMenuItem_Click);
             // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -341,21 +339,13 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(84, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(224, 25);
             this.label1.TabIndex = 49;
             this.label1.Text = "Knjiga primljenih pošiljki";
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
             // FormKPP
             // 
@@ -365,8 +355,7 @@
             this.ClientSize = new System.Drawing.Size(884, 621);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txt_id);
-            this.Controls.Add(this.lbl_id);
+            this.Controls.Add(this.Lbl_Id);
             this.Controls.Add(this.Dgv);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txt_pretrazivanje);
@@ -387,7 +376,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -423,8 +412,7 @@
         private System.Windows.Forms.TextBox txt_pretrazivanje;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView Dgv;
-        private System.Windows.Forms.TextBox txt_id;
-        private System.Windows.Forms.Label lbl_id;
+        private System.Windows.Forms.Label Lbl_Id;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;

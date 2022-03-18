@@ -37,10 +37,9 @@
             this.Dgv = new System.Windows.Forms.DataGridView();
             this.txt_mjesto = new System.Windows.Forms.TextBox();
             this.txt_naziv = new System.Windows.Forms.TextBox();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.lbl_mjesto = new System.Windows.Forms.Label();
             this.lbl_naziv = new System.Windows.Forms.Label();
-            this.lbl_id_korisnik = new System.Windows.Forms.Label();
+            this.Lbl_Id = new System.Windows.Forms.Label();
             this.lbl_Mjesto_Id = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +54,7 @@
             // 
             this.lbl_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_pretrazivanje.AutoSize = true;
-            this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 180);
+            this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 148);
             this.lbl_pretrazivanje.Name = "lbl_pretrazivanje";
             this.lbl_pretrazivanje.Size = new System.Drawing.Size(90, 19);
             this.lbl_pretrazivanje.TabIndex = 24;
@@ -64,9 +63,9 @@
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(148, 175);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(108, 143);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 26);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(566, 26);
             this.txt_pretrazivanje.TabIndex = 23;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -104,11 +103,11 @@
             this.Dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv.BackgroundColor = System.Drawing.Color.Gray;
             this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv.Location = new System.Drawing.Point(12, 208);
+            this.Dgv.Location = new System.Drawing.Point(12, 176);
             this.Dgv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Dgv.Name = "Dgv";
             this.Dgv.RowTemplate.Height = 24;
-            this.Dgv.Size = new System.Drawing.Size(758, 334);
+            this.Dgv.Size = new System.Drawing.Size(758, 366);
             this.Dgv.TabIndex = 20;
             this.Dgv.TabStop = false;
             this.Dgv.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_posiljatelji_RowHeaderMouseClick);
@@ -118,7 +117,7 @@
             this.txt_mjesto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_mjesto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_mjesto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_mjesto.Location = new System.Drawing.Point(148, 128);
+            this.txt_mjesto.Location = new System.Drawing.Point(108, 68);
             this.txt_mjesto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_mjesto.Name = "txt_mjesto";
             this.txt_mjesto.Size = new System.Drawing.Size(210, 26);
@@ -127,28 +126,17 @@
             // txt_naziv
             // 
             this.txt_naziv.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_naziv.Location = new System.Drawing.Point(148, 81);
+            this.txt_naziv.Location = new System.Drawing.Point(108, 34);
             this.txt_naziv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_naziv.Name = "txt_naziv";
             this.txt_naziv.Size = new System.Drawing.Size(210, 26);
             this.txt_naziv.TabIndex = 14;
             // 
-            // txt_id
-            // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(148, 33);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 26);
-            this.txt_id.TabIndex = 15;
-            this.txt_id.TabStop = false;
-            // 
             // lbl_mjesto
             // 
             this.lbl_mjesto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_mjesto.AutoSize = true;
-            this.lbl_mjesto.Location = new System.Drawing.Point(12, 132);
+            this.lbl_mjesto.Location = new System.Drawing.Point(12, 71);
             this.lbl_mjesto.Name = "lbl_mjesto";
             this.lbl_mjesto.Size = new System.Drawing.Size(54, 19);
             this.lbl_mjesto.TabIndex = 18;
@@ -158,21 +146,22 @@
             // 
             this.lbl_naziv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_naziv.AutoSize = true;
-            this.lbl_naziv.Location = new System.Drawing.Point(12, 85);
+            this.lbl_naziv.Location = new System.Drawing.Point(12, 37);
             this.lbl_naziv.Name = "lbl_naziv";
             this.lbl_naziv.Size = new System.Drawing.Size(45, 19);
             this.lbl_naziv.TabIndex = 16;
             this.lbl_naziv.Text = "Naziv:";
             // 
-            // lbl_id_korisnik
+            // Lbl_Id
             // 
-            this.lbl_id_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_id_korisnik.AutoSize = true;
-            this.lbl_id_korisnik.Location = new System.Drawing.Point(12, 37);
-            this.lbl_id_korisnik.Name = "lbl_id_korisnik";
-            this.lbl_id_korisnik.Size = new System.Drawing.Size(26, 19);
-            this.lbl_id_korisnik.TabIndex = 13;
-            this.lbl_id_korisnik.Text = "ID:";
+            this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Lbl_Id.AutoSize = true;
+            this.Lbl_Id.Location = new System.Drawing.Point(12, 118);
+            this.Lbl_Id.Name = "Lbl_Id";
+            this.Lbl_Id.Size = new System.Drawing.Size(17, 19);
+            this.Lbl_Id.TabIndex = 13;
+            this.Lbl_Id.Text = "0";
+            this.Lbl_Id.Visible = false;
             // 
             // lbl_Mjesto_Id
             // 
@@ -245,11 +234,10 @@
             this.Controls.Add(this.Dgv);
             this.Controls.Add(this.txt_mjesto);
             this.Controls.Add(this.txt_naziv);
-            this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_mjesto);
             this.Controls.Add(this.lbl_naziv);
-            this.Controls.Add(this.lbl_id_korisnik);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Controls.Add(this.Lbl_Id);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormPosiljatelji";
@@ -271,10 +259,9 @@
         private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.TextBox txt_mjesto;
         private System.Windows.Forms.TextBox txt_naziv;
-        private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Label lbl_mjesto;
         private System.Windows.Forms.Label lbl_naziv;
-        private System.Windows.Forms.Label lbl_id_korisnik;
+        private System.Windows.Forms.Label Lbl_Id;
         private System.Windows.Forms.Label lbl_Mjesto_Id;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;

@@ -153,11 +153,10 @@ namespace KPP_Alpha1
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private PoslaneModel SetProperties()
         {
-            PoslaneModel poslane = new PoslaneModel();
-            if (edit.NullOrWhite(txtId)) { }
-            else
+            PoslaneModel poslane = new ();
+            if (int.Parse(Lbl_Id.Text) > 0) 
             {
-                poslane.Id = Convert.ToInt32(txtId.Text.Trim());
+                poslane.Id = Convert.ToInt32(Lbl_Id.Text.Trim());
             }
             poslane.Datum = dtpDatum.Value.Date;
             poslane.PosiljateljId = posiljateljiDict.FirstOrDefault(p => p.Value == txtPrimatelj.Text.Trim()).Key;
@@ -170,7 +169,7 @@ namespace KPP_Alpha1
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
-            txtId.Clear();
+            Lbl_Id.Text = "0";
             txtNapomena.Clear();
             txtNaziv.Clear();
             txtPosiljatelj.Clear();
@@ -197,7 +196,7 @@ namespace KPP_Alpha1
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtId.Text = Dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Lbl_Id.Text = Dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
             dtpDatum.Text = Dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
             txtPosiljatelj.Text = Dgv.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtPrimatelj.Text = Dgv.Rows[e.RowIndex].Cells[3].Value.ToString();

@@ -160,9 +160,9 @@ namespace KPP_Alpha1
         private KnjigaModel SetProperties()
         {
             KnjigaModel knjiga = new KnjigaModel();
-            if (!edit.NullOrWhite(txt_id))
+            if (int.Parse(Lbl_Id.Text) > 0)
             {
-                knjiga.Id = int.Parse(txt_id.Text);
+                knjiga.Id = int.Parse(Lbl_Id.Text);
             }
             knjiga.DatumPrimitka = date_primitka.Value.Date;
             knjiga.Pismeno = txt_Pismeno.Text;
@@ -200,7 +200,7 @@ namespace KPP_Alpha1
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
         private void dgv_kpp_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txt_id.Text = Dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Lbl_Id.Text = Dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
             date_primitka.Text = Dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
             txt_Pismeno.Text = Dgv.Rows[e.RowIndex].Cells[2].Value.ToString();
             txt_Brojcano.Text = Dgv.Rows[e.RowIndex].Cells[3].Value.ToString();

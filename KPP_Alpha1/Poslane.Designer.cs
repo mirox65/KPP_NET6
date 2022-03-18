@@ -36,8 +36,7 @@ namespace KPP_Alpha1
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.lbl_id = new System.Windows.Forms.Label();
+            this.Lbl_Id = new System.Windows.Forms.Label();
             this.Dgv = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
@@ -112,25 +111,16 @@ namespace KPP_Alpha1
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
-            // txtId
+            // Lbl_Id
             // 
-            this.txtId.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtId.Location = new System.Drawing.Point(220, 88);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(120, 25);
-            this.txtId.TabIndex = 49;
-            this.txtId.TabStop = false;
-            // 
-            // lbl_id
-            // 
-            this.lbl_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_id.AutoSize = true;
-            this.lbl_id.Location = new System.Drawing.Point(128, 94);
-            this.lbl_id.Name = "lbl_id";
-            this.lbl_id.Size = new System.Drawing.Size(23, 17);
-            this.lbl_id.TabIndex = 48;
-            this.lbl_id.Text = "ID:";
+            this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Lbl_Id.AutoSize = true;
+            this.Lbl_Id.Location = new System.Drawing.Point(19, 162);
+            this.Lbl_Id.Name = "Lbl_Id";
+            this.Lbl_Id.Size = new System.Drawing.Size(15, 17);
+            this.Lbl_Id.TabIndex = 48;
+            this.Lbl_Id.Text = "0";
+            this.Lbl_Id.Visible = false;
             // 
             // Dgv
             // 
@@ -196,7 +186,7 @@ namespace KPP_Alpha1
             // 
             this.dtpDatum.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtpDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatum.Location = new System.Drawing.Point(220, 120);
+            this.dtpDatum.Location = new System.Drawing.Point(128, 63);
             this.dtpDatum.Name = "dtpDatum";
             this.dtpDatum.Size = new System.Drawing.Size(120, 25);
             this.dtpDatum.TabIndex = 8;
@@ -281,7 +271,7 @@ namespace KPP_Alpha1
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(128, 126);
+            this.label2.Location = new System.Drawing.Point(36, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 32;
@@ -323,7 +313,7 @@ namespace KPP_Alpha1
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(83, 18);
             this.label4.Name = "label4";
@@ -337,7 +327,7 @@ namespace KPP_Alpha1
             this.btnAddDjelatnik.BackColor = System.Drawing.Color.Moccasin;
             this.btnAddDjelatnik.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnAddDjelatnik.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btnAddDjelatnik.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddDjelatnik.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAddDjelatnik.Location = new System.Drawing.Point(706, 28);
             this.btnAddDjelatnik.Name = "btnAddDjelatnik";
             this.btnAddDjelatnik.Size = new System.Drawing.Size(46, 25);
@@ -387,9 +377,8 @@ namespace KPP_Alpha1
             this.Controls.Add(this.BtnAddPartneri);
             this.Controls.Add(this.btnAddDjelatnik);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lbl_id);
+            this.Controls.Add(this.Lbl_Id);
             this.Controls.Add(this.Dgv);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txt_pretrazivanje);
@@ -408,7 +397,7 @@ namespace KPP_Alpha1
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormPoslane";
             this.Text = "Knjiga poslanih pošiljki";
@@ -428,8 +417,7 @@ namespace KPP_Alpha1
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label lbl_id;
+        private System.Windows.Forms.Label Lbl_Id;
         private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txt_pretrazivanje;

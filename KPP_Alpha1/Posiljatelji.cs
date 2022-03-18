@@ -58,7 +58,7 @@ namespace KPP_Alpha1
         {
             txt_naziv.Clear();
             txt_mjesto.Clear();
-            txt_id.Clear();
+            Lbl_Id.Text = "0";
             txt_pretrazivanje.Clear();
             txt_naziv.Focus();
         }
@@ -149,10 +149,10 @@ namespace KPP_Alpha1
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private PosiljateljModel SetProperties()
         {
-            PosiljateljModel posiljatelj = new PosiljateljModel();
-            if (!edit.NullOrWhite(txt_id))
+            PosiljateljModel posiljatelj = new ();
+            if (int.Parse(Lbl_Id.Text) > 0)
             {
-                posiljatelj.Id = int.Parse(txt_id.Text.Trim());
+                posiljatelj.Id = int.Parse(Lbl_Id.Text.Trim());
             }
             posiljatelj.Naziv = txt_naziv.Text.Trim();
             posiljatelj.IdMjesto = mjestaDict.FirstOrDefault(m => m.Value == txt_mjesto.Text.Trim()).Key;
@@ -167,7 +167,7 @@ namespace KPP_Alpha1
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
         private void dgv_posiljatelji_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txt_id.Text = Dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Lbl_Id.Text = Dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt_naziv.Text = Dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
             txt_mjesto.Text = Dgv.Rows[e.RowIndex].Cells[2].Value.ToString();
         }

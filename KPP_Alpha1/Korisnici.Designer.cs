@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKorisnici));
-            this.lbl_id_korisnik = new System.Windows.Forms.Label();
+            this.Lbl_Id = new System.Windows.Forms.Label();
             this.lbl_prezime_korisnik = new System.Windows.Forms.Label();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.txt_djelatnik = new System.Windows.Forms.TextBox();
             this.Dgv = new System.Windows.Forms.DataGridView();
             this.Btn_Insert = new System.Windows.Forms.Button();
@@ -58,43 +57,33 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbl_id_korisnik
+            // Lbl_Id
             // 
-            this.lbl_id_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_id_korisnik.AutoSize = true;
-            this.lbl_id_korisnik.Location = new System.Drawing.Point(12, 43);
-            this.lbl_id_korisnik.Name = "lbl_id_korisnik";
-            this.lbl_id_korisnik.Size = new System.Drawing.Size(26, 19);
-            this.lbl_id_korisnik.TabIndex = 0;
-            this.lbl_id_korisnik.Text = "ID:";
+            this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Lbl_Id.AutoSize = true;
+            this.Lbl_Id.Location = new System.Drawing.Point(12, 153);
+            this.Lbl_Id.Name = "Lbl_Id";
+            this.Lbl_Id.Size = new System.Drawing.Size(17, 19);
+            this.Lbl_Id.TabIndex = 0;
+            this.Lbl_Id.Text = "0";
+            this.Lbl_Id.Visible = false;
             // 
             // lbl_prezime_korisnik
             // 
             this.lbl_prezime_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_prezime_korisnik.AutoSize = true;
-            this.lbl_prezime_korisnik.Location = new System.Drawing.Point(12, 77);
+            this.lbl_prezime_korisnik.Location = new System.Drawing.Point(12, 51);
             this.lbl_prezime_korisnik.Name = "lbl_prezime_korisnik";
             this.lbl_prezime_korisnik.Size = new System.Drawing.Size(65, 19);
             this.lbl_prezime_korisnik.TabIndex = 2;
             this.lbl_prezime_korisnik.Text = "Djelatnik:";
-            // 
-            // txt_id
-            // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(118, 39);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(133, 26);
-            this.txt_id.TabIndex = 1;
-            this.txt_id.TabStop = false;
             // 
             // txt_djelatnik
             // 
             this.txt_djelatnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_djelatnik.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_djelatnik.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_djelatnik.Location = new System.Drawing.Point(118, 73);
+            this.txt_djelatnik.Location = new System.Drawing.Point(118, 47);
             this.txt_djelatnik.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_djelatnik.Name = "txt_djelatnik";
             this.txt_djelatnik.Size = new System.Drawing.Size(201, 26);
@@ -102,8 +91,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -227,7 +216,7 @@
             // txt_korIme
             // 
             this.txt_korIme.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_korIme.Location = new System.Drawing.Point(118, 107);
+            this.txt_korIme.Location = new System.Drawing.Point(118, 81);
             this.txt_korIme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_korIme.Name = "txt_korIme";
             this.txt_korIme.Size = new System.Drawing.Size(201, 26);
@@ -236,7 +225,7 @@
             // txt_lozinka
             // 
             this.txt_lozinka.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_lozinka.Location = new System.Drawing.Point(118, 141);
+            this.txt_lozinka.Location = new System.Drawing.Point(118, 115);
             this.txt_lozinka.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_lozinka.Name = "txt_lozinka";
             this.txt_lozinka.PasswordChar = '*';
@@ -248,7 +237,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 111);
+            this.label1.Location = new System.Drawing.Point(12, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 19);
             this.label1.TabIndex = 1;
@@ -258,7 +247,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 145);
+            this.label2.Location = new System.Drawing.Point(12, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 19);
             this.label2.TabIndex = 2;
@@ -344,15 +333,14 @@
             this.Controls.Add(this.txt_lozinka);
             this.Controls.Add(this.txt_korIme);
             this.Controls.Add(this.txt_djelatnik);
-            this.Controls.Add(this.txt_id);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbl_prezime_korisnik);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lbl_id_korisnik);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Controls.Add(this.Lbl_Id);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormKorisnici";
@@ -368,9 +356,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbl_id_korisnik;
+        private System.Windows.Forms.Label Lbl_Id;
         private System.Windows.Forms.Label lbl_prezime_korisnik;
-        private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.TextBox txt_djelatnik;
         private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.Button Btn_Insert;

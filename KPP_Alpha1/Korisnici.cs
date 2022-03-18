@@ -58,7 +58,7 @@ namespace KPP_Alpha1
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
-            txt_id.Clear();
+            Lbl_Id.Text = "0";
             txt_djelatnik.Clear();
             txt_korIme.Clear();
             txt_lozinka.Clear();
@@ -171,9 +171,9 @@ namespace KPP_Alpha1
         private KorisnikModel SetProperties()
         {
             KorisnikModel korisnik = new KorisnikModel();
-            if (!edit.NullOrWhite(txt_id))
+            if (int.Parse(Lbl_Id.Text) > 0)
             {
-                korisnik.Id = int.Parse(txt_id.Text.Trim());
+                korisnik.Id = int.Parse(Lbl_Id.Text.Trim());
             }
             if (!edit.NullOrWhite(txt_lozinka))
             {
@@ -199,7 +199,7 @@ namespace KPP_Alpha1
         private void Dgv_korisnik_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int RowIndex = e.RowIndex;
-            txt_id.Text = Dgv.Rows[RowIndex].Cells[0].Value.ToString();
+            Lbl_Id.Text = Dgv.Rows[RowIndex].Cells[0].Value.ToString();
             txt_djelatnik.Text = Dgv.Rows[RowIndex].Cells[1].Value.ToString();
             txt_korIme.Text = Dgv.Rows[RowIndex].Cells[2].Value.ToString();
             cmb_uloga.Text = Dgv.Rows[RowIndex].Cells[3].Value.ToString();
