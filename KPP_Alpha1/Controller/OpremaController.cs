@@ -15,8 +15,8 @@ namespace KPP_Alpha1.Controller
         internal bool Insert(OpremaModel oprema)
         {
             var Insert = "INSERT INTO ictOprema" +
-                "(naziv, serBr, invBr, status, datKupovine, vijek, datZamjene, korisnikId, dateEdited) " +
-                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "(naziv, serBr, invBr, status, datKupovine, vijek, datZamjene, napomena korisnikId, dateEdited) " +
+                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Insert, conn);
             cmd.Parameters.AddWithValue("@naziv", oprema.Naziv);
@@ -26,6 +26,7 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@datKupovine", oprema.DatumKupovine);
             cmd.Parameters.AddWithValue("@vijek", oprema.VijekTrajanja);
             cmd.Parameters.AddWithValue("@datZamjene", oprema.DatumZamjene);
+            cmd.Parameters.AddWithValue("@napomena", oprema.Napomena);
             cmd.Parameters.AddWithValue("@korisnikId", oprema.KorisnikId);
             cmd.Parameters.AddWithValue("@dateEdited", oprema.DateEdited);
 
@@ -35,7 +36,7 @@ namespace KPP_Alpha1.Controller
         internal bool Update(OpremaModel oprema)
         {
             string Update = "UPDATE ictOprema SET naziv=?, serBr=?, invBr=?, status=?, datKupovine=?, vijek=?, " +
-                "datZamjene=?, korisnikId=?, dateEdited=? WHERE id=?";
+                "datZamjene=?, napomena=?, korisnikId=?, dateEdited=? WHERE id=?";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Update, conn);
             cmd.Parameters.AddWithValue("@naziv", oprema.Naziv);
@@ -45,6 +46,7 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@datKupovine", oprema.DatumKupovine);
             cmd.Parameters.AddWithValue("@vijek", oprema.VijekTrajanja);
             cmd.Parameters.AddWithValue("@datZamjene", oprema.DatumZamjene);
+            cmd.Parameters.AddWithValue("@napomena", oprema.Napomena);
             cmd.Parameters.AddWithValue("@korisnikId", oprema.KorisnikId);
             cmd.Parameters.AddWithValue("@dateEdited", oprema.DateEdited);
             cmd.Parameters.AddWithValue("@id", oprema.Id);

@@ -12,31 +12,31 @@ namespace KPP_Alpha1.Controller
     {
         readonly DbClass db = new DbClass();
 
-        internal bool Insert(KarticeUlazModel kartica)
+        internal bool Insert(KeyCardModel kartica)
         {
             var Insert = "INSERT INTO keyCards" +
-                "(naziv, napomena, aktivno, korisnikId, ažurirano) " +
+                "(naziv, napomena, status, korisnikId, ažurirano) " +
                 "VALUES(?, ?, ?, ?, ?)";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Insert, conn);
             cmd.Parameters.AddWithValue("@naziv", kartica.Naziv);
             cmd.Parameters.AddWithValue("@napomena", kartica.Napomena);
-            cmd.Parameters.AddWithValue("@aktivno", kartica.Aktivno);
+            cmd.Parameters.AddWithValue("@status", kartica.Status);
             cmd.Parameters.AddWithValue("@korisnikId", kartica.KorisnikId);
             cmd.Parameters.AddWithValue("@ažurirano", kartica.DateEdited);
 
             return db.ExcecuteNonQuery(cmd, conn);
         }
 
-        internal bool Update(KarticeUlazModel kartica)
+        internal bool Update(KeyCardModel kartica)
         {
-            string Update = "UPDATE keyCards SET naziv=?, napomena=?, aktivno=?, " +
+            string Update = "UPDATE keyCards SET naziv=?, napomena=?, status=?, " +
                 "korisnikId=?, ažurirano=? WHERE id=?";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Update, conn);
             cmd.Parameters.AddWithValue("@naziv", kartica.Naziv);
             cmd.Parameters.AddWithValue("@napomena", kartica.Napomena);
-            cmd.Parameters.AddWithValue("@aktivno", kartica.Aktivno);
+            cmd.Parameters.AddWithValue("@status", kartica.Status);
             cmd.Parameters.AddWithValue("@korisnikId", kartica.KorisnikId);
             cmd.Parameters.AddWithValue("@ažurirano", kartica.DateEdited);
             cmd.Parameters.AddWithValue("@id", kartica.Id);

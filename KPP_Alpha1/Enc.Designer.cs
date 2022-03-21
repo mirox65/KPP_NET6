@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InsertTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +42,12 @@
             this.Txt_Naziv = new System.Windows.Forms.TextBox();
             this.Lbl_Naziv = new System.Windows.Forms.Label();
             this.Lbl_Id = new System.Windows.Forms.Label();
+            this.Txt_Napomena = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CmbStatus = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CmbFilter = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.SuspendLayout();
@@ -141,8 +147,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -164,7 +170,7 @@
             this.Txt_Naziv.Location = new System.Drawing.Point(103, 39);
             this.Txt_Naziv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_Naziv.Name = "Txt_Naziv";
-            this.Txt_Naziv.Size = new System.Drawing.Size(255, 25);
+            this.Txt_Naziv.Size = new System.Drawing.Size(243, 25);
             this.Txt_Naziv.TabIndex = 45;
             // 
             // Lbl_Naziv
@@ -188,12 +194,89 @@
             this.Lbl_Id.Text = "Id";
             this.Lbl_Id.Visible = false;
             // 
+            // Txt_Napomena
+            // 
+            this.Txt_Napomena.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Napomena.Location = new System.Drawing.Point(103, 72);
+            this.Txt_Napomena.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Napomena.Name = "Txt_Napomena";
+            this.Txt_Napomena.Size = new System.Drawing.Size(243, 25);
+            this.Txt_Napomena.TabIndex = 70;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 17);
+            this.label7.TabIndex = 69;
+            this.label7.Text = "Napomena:";
+            // 
+            // CmbStatus
+            // 
+            this.CmbStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbStatus.BackColor = System.Drawing.Color.White;
+            this.CmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbStatus.FormattingEnabled = true;
+            this.CmbStatus.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbStatus.Location = new System.Drawing.Point(103, 104);
+            this.CmbStatus.Name = "CmbStatus";
+            this.CmbStatus.Size = new System.Drawing.Size(133, 25);
+            this.CmbStatus.TabIndex = 68;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 67;
+            this.label4.Text = "Status:";
+            // 
+            // CmbFilter
+            // 
+            this.CmbFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbFilter.BackColor = System.Drawing.Color.White;
+            this.CmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbFilter.FormattingEnabled = true;
+            this.CmbFilter.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbFilter.Location = new System.Drawing.Point(541, 150);
+            this.CmbFilter.Name = "CmbFilter";
+            this.CmbFilter.Size = new System.Drawing.Size(133, 25);
+            this.CmbFilter.TabIndex = 66;
+            this.CmbFilter.TabStop = false;
+            this.CmbFilter.SelectedIndexChanged += new System.EventHandler(this.CmbFilter_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(493, 154);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.TabIndex = 65;
+            this.label5.Text = "Filter:";
+            // 
             // FormEnc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.Txt_Napomena);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.CmbStatus);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CmbFilter);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lbl_pretrazivanje);
             this.Controls.Add(this.Txt_Search);
@@ -203,8 +286,8 @@
             this.Controls.Add(this.Txt_Naziv);
             this.Controls.Add(this.Lbl_Naziv);
             this.Controls.Add(this.Lbl_Id);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormEnc";
             this.Text = "ENC uređaji";
             this.Load += new System.EventHandler(this.FormEnc_Load);
@@ -231,5 +314,11 @@
         private System.Windows.Forms.TextBox Txt_Naziv;
         private System.Windows.Forms.Label Lbl_Naziv;
         private System.Windows.Forms.Label Lbl_Id;
+        private System.Windows.Forms.TextBox Txt_Napomena;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox CmbStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CmbFilter;
+        private System.Windows.Forms.Label label5;
     }
 }

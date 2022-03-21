@@ -1,13 +1,7 @@
 ﻿using KPP_Alpha1.Controller;
 using KPP_Alpha1.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1
@@ -15,15 +9,16 @@ namespace KPP_Alpha1
     public partial class FormVozila : Form
     {
 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly VozilaController controller = new VozilaController();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
+        readonly VozilaController controller = new();
 
         public FormVozila()
         {
             InitializeComponent();
             Clear();
-            DtUpdate();
+            CmbFilter.SelectedIndex = 0;
+            DtUpdate(CmbStatus.Text);
         }
         private void Clear()
         {
@@ -34,23 +29,28 @@ namespace KPP_Alpha1
             Txt_BrSasije.Clear();
             Txt_RegOznaka.Clear();
             Txt_BrUgovora.Clear();
+            Txt_Search.Clear();
             Txt_Proizvodac.Focus();
+            CmbStatus.SelectedIndex = 0;
         }
 
-        private void DtUpdate()
+        private void DtUpdate(string filter)
         {
             string Dbs = $"SELECT v.id AS Id, v.proizvođač AS Proizvođač, v.model AS Model, v.opis AS Opis," +
                 $"v.brŠasije AS Šasija, v.regOznaka AS Registracija, v.brUgovora AS Ugovor, " +
-                $"[dc.ime]&' '&[dc.prezime] AS Zadužio, [d.ime]&' '&[d.prezime] AS Ažurirao, " +
+                $"[dc.ime]&' '&[dc.prezime] AS Zadužio, zv.datZaduženja AS Zaduženo, zv.datRazduženja AS Razduženo, " +
+                $"v.status AS Status, v.napomena AS Napomena, [d.ime]&' '&[d.prezime] AS Ažurirao, " +
                 $"v.ažurirano AS Ažurirano " +
                 $"FROM (((vozila AS v " +
                 $"LEFT JOIN korisnici AS k ON v.korisnikId=k.id) " +
                 $"LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
                 $"LEFT JOIN zaRaVozila AS zv ON zv.opremaId=v.id) " +
                 $"LEFT JOIN djelatnici AS dc ON zv.djelatnikId=dc.id " +
-                $"WHERE zv.datZaduženja IS NULL " +
-                $"OR zv.datZaduženja IN (SELECT MAX(zaRa2.datZaduženja) FROM zaRaVozila AS zaRa2 WHERE zaRa2.opremaId=v.id) " +
-
+                $"WHERE zv.datZaduženja IS NULL AND status='{filter}' " +
+                $"OR zv.datZaduženja IN " +
+                $"(SELECT MAX(zaRa2.datZaduženja) " +
+                $"FROM zaRaVozila AS zaRa2 " +
+                $"WHERE zaRa2.opremaId=v.id AND status='{filter}') " +
                 $"ORDER BY v.ažurirano ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
@@ -68,7 +68,9 @@ namespace KPP_Alpha1
         }
         private void Btn_Insert_Click(object sender, EventArgs e)
         {
-            if (edit.NullOrWhite(Txt_Proizvodac) || edit.NullOrWhite(Txt_BrSasije) || edit.NullOrWhite(Txt_Model) || edit.NullOrWhite(Txt_Opis) || edit.NullOrWhite(Txt_RegOznaka) || edit.NullOrWhite(Txt_BrUgovora))
+            if (edit.NullOrWhite(Txt_Proizvodac) || edit.NullOrWhite(Txt_BrSasije) ||
+                edit.NullOrWhite(Txt_Model) || edit.NullOrWhite(Txt_Opis) ||
+                edit.NullOrWhite(Txt_RegOznaka) || edit.NullOrWhite(Txt_BrUgovora))
             {
                 PromjenaBojePrazneĆelije();
                 edit.PorukaPraznaCelija();
@@ -81,7 +83,7 @@ namespace KPP_Alpha1
                     bool success = controller.Insert(vozilo);
                     if (success)
                     {
-                        DtUpdate();
+                        DtUpdate(CmbFilter.Text);
                         Clear();
                     }
                     else
@@ -104,9 +106,11 @@ namespace KPP_Alpha1
                 Proizvodac = Txt_Proizvodac.Text.Trim(),
                 Model = Txt_Model.Text.Trim(),
                 Opis = Txt_Opis.Text.Trim(),
-                BrSasije = Txt_BrSasije.Text.ToString(),
-                RegOznaka = Txt_RegOznaka.Text.ToString(),
-                BrUgovora = Txt_BrUgovora.Text.ToString()
+                BrSasije = Txt_BrSasije.Text.Trim(),
+                RegOznaka = Txt_RegOznaka.Text.Trim(),
+                BrUgovora = Txt_BrUgovora.Text.Trim(),
+                Status = CmbStatus.Text,
+                Napomena = Txt_Napomena.Text.Trim()
             };
 
             if (Lbl_ID.Text.Length > 0)
@@ -119,7 +123,9 @@ namespace KPP_Alpha1
 
         private void Btn_Edit_Click(object sender, EventArgs e)
         {
-            if (edit.NullOrWhite(Txt_Proizvodac) || edit.NullOrWhite(Txt_BrSasije) || edit.NullOrWhite(Txt_Model) || edit.NullOrWhite(Txt_Opis) || edit.NullOrWhite(Txt_RegOznaka) || edit.NullOrWhite(Txt_BrUgovora))
+            if (edit.NullOrWhite(Txt_Proizvodac) || edit.NullOrWhite(Txt_BrSasije) ||
+                edit.NullOrWhite(Txt_Model) || edit.NullOrWhite(Txt_Opis) ||
+                edit.NullOrWhite(Txt_RegOznaka) || edit.NullOrWhite(Txt_BrUgovora))
             {
                 PromjenaBojePrazneĆelije();
                 edit.PorukaPraznaCelija();
@@ -132,7 +138,7 @@ namespace KPP_Alpha1
                     bool success = controller.Update(vozilo);
                     if (success is true)
                     {
-                        DtUpdate();
+                        DtUpdate(CmbFilter.Text);
                         Clear();
                     }
                     else
@@ -157,6 +163,8 @@ namespace KPP_Alpha1
             Txt_BrSasije.Text = Dgv.Rows[rowIndex].Cells[4].Value.ToString();
             Txt_RegOznaka.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
             Txt_BrUgovora.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
+            CmbStatus.Text = Dgv.Rows[rowIndex].Cells[10].Value.ToString();
+            Txt_Napomena.Text = Dgv.Rows[rowIndex].Cells[11].Value.ToString();
         }
 
         private void Txt_Search_TextChanged(object sender, EventArgs e)
@@ -202,6 +210,13 @@ namespace KPP_Alpha1
             Txt_BrSasije.Text = Dgv.Rows[rowIndex].Cells[4].Value.ToString();
             Txt_RegOznaka.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
             Txt_BrUgovora.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
+            CmbStatus.Text = Dgv.Rows[rowIndex].Cells[10].Value.ToString();
+            Txt_Napomena.Text = Dgv.Rows[rowIndex].Cells[11].Value.ToString();
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DtUpdate(CmbFilter.Text);
         }
     }
 }

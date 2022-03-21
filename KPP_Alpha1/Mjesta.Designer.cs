@@ -36,10 +36,9 @@
             this.btn_dodaj = new System.Windows.Forms.Button();
             this.txt_Mjesto = new System.Windows.Forms.TextBox();
             this.txt_Ptt = new System.Windows.Forms.TextBox();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.lbl_mjesto = new System.Windows.Forms.Label();
             this.lbl_ptt = new System.Windows.Forms.Label();
-            this.lbl_id_korisnik = new System.Windows.Forms.Label();
+            this.Lbl_Id = new System.Windows.Forms.Label();
             this.txt_Zupanija = new System.Windows.Forms.TextBox();
             this.lbl_zupanija = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -56,7 +55,7 @@
             // 
             this.lbl_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_pretrazivanje.AutoSize = true;
-            this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 180);
+            this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 148);
             this.lbl_pretrazivanje.Name = "lbl_pretrazivanje";
             this.lbl_pretrazivanje.Size = new System.Drawing.Size(90, 19);
             this.lbl_pretrazivanje.TabIndex = 37;
@@ -65,9 +64,9 @@
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(148, 176);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(108, 144);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 26);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(539, 26);
             this.txt_pretrazivanje.TabIndex = 36;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -98,37 +97,26 @@
             // txt_Mjesto
             // 
             this.txt_Mjesto.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Mjesto.Location = new System.Drawing.Point(148, 106);
+            this.txt_Mjesto.Location = new System.Drawing.Point(108, 72);
             this.txt_Mjesto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Mjesto.Name = "txt_Mjesto";
-            this.txt_Mjesto.Size = new System.Drawing.Size(210, 26);
+            this.txt_Mjesto.Size = new System.Drawing.Size(250, 26);
             this.txt_Mjesto.TabIndex = 2;
             // 
             // txt_Ptt
             // 
             this.txt_Ptt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_Ptt.Location = new System.Drawing.Point(148, 68);
+            this.txt_Ptt.Location = new System.Drawing.Point(108, 34);
             this.txt_Ptt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Ptt.Name = "txt_Ptt";
-            this.txt_Ptt.Size = new System.Drawing.Size(210, 26);
+            this.txt_Ptt.Size = new System.Drawing.Size(250, 26);
             this.txt_Ptt.TabIndex = 1;
-            // 
-            // txt_id
-            // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(148, 34);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 26);
-            this.txt_id.TabIndex = 28;
-            this.txt_id.TabStop = false;
             // 
             // lbl_mjesto
             // 
             this.lbl_mjesto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_mjesto.AutoSize = true;
-            this.lbl_mjesto.Location = new System.Drawing.Point(12, 110);
+            this.lbl_mjesto.Location = new System.Drawing.Point(12, 76);
             this.lbl_mjesto.Name = "lbl_mjesto";
             this.lbl_mjesto.Size = new System.Drawing.Size(54, 19);
             this.lbl_mjesto.TabIndex = 31;
@@ -138,38 +126,39 @@
             // 
             this.lbl_ptt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_ptt.AutoSize = true;
-            this.lbl_ptt.Location = new System.Drawing.Point(12, 74);
+            this.lbl_ptt.Location = new System.Drawing.Point(12, 40);
             this.lbl_ptt.Name = "lbl_ptt";
             this.lbl_ptt.Size = new System.Drawing.Size(34, 19);
             this.lbl_ptt.TabIndex = 29;
             this.lbl_ptt.Text = "PTT:";
             // 
-            // lbl_id_korisnik
+            // Lbl_Id
             // 
-            this.lbl_id_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_id_korisnik.AutoSize = true;
-            this.lbl_id_korisnik.Location = new System.Drawing.Point(12, 38);
-            this.lbl_id_korisnik.Name = "lbl_id_korisnik";
-            this.lbl_id_korisnik.Size = new System.Drawing.Size(26, 19);
-            this.lbl_id_korisnik.TabIndex = 26;
-            this.lbl_id_korisnik.Text = "ID:";
+            this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Lbl_Id.AutoSize = true;
+            this.Lbl_Id.Location = new System.Drawing.Point(12, 131);
+            this.Lbl_Id.Name = "Lbl_Id";
+            this.Lbl_Id.Size = new System.Drawing.Size(17, 19);
+            this.Lbl_Id.TabIndex = 26;
+            this.Lbl_Id.Text = "0";
+            this.Lbl_Id.Visible = false;
             // 
             // txt_Zupanija
             // 
             this.txt_Zupanija.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_Zupanija.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_Zupanija.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_Zupanija.Location = new System.Drawing.Point(148, 142);
+            this.txt_Zupanija.Location = new System.Drawing.Point(108, 108);
             this.txt_Zupanija.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Zupanija.Name = "txt_Zupanija";
-            this.txt_Zupanija.Size = new System.Drawing.Size(210, 26);
+            this.txt_Zupanija.Size = new System.Drawing.Size(250, 26);
             this.txt_Zupanija.TabIndex = 3;
             // 
             // lbl_zupanija
             // 
             this.lbl_zupanija.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_zupanija.AutoSize = true;
-            this.lbl_zupanija.Location = new System.Drawing.Point(12, 146);
+            this.lbl_zupanija.Location = new System.Drawing.Point(12, 112);
             this.lbl_zupanija.Name = "lbl_zupanija";
             this.lbl_zupanija.Size = new System.Drawing.Size(64, 19);
             this.lbl_zupanija.TabIndex = 40;
@@ -232,9 +221,9 @@
             this.DGV_Mjesta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGV_Mjesta.BackgroundColor = System.Drawing.Color.Gray;
             this.DGV_Mjesta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Mjesta.Location = new System.Drawing.Point(12, 208);
+            this.DGV_Mjesta.Location = new System.Drawing.Point(12, 176);
             this.DGV_Mjesta.Name = "DGV_Mjesta";
-            this.DGV_Mjesta.Size = new System.Drawing.Size(758, 335);
+            this.DGV_Mjesta.Size = new System.Drawing.Size(758, 367);
             this.DGV_Mjesta.TabIndex = 44;
             this.DGV_Mjesta.TabStop = false;
             this.DGV_Mjesta.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Mjesta_RowHeaderMouseDoubleClick);
@@ -256,11 +245,10 @@
             this.Controls.Add(this.btn_dodaj);
             this.Controls.Add(this.txt_Mjesto);
             this.Controls.Add(this.txt_Ptt);
-            this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_mjesto);
             this.Controls.Add(this.lbl_ptt);
-            this.Controls.Add(this.lbl_id_korisnik);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Controls.Add(this.Lbl_Id);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormMjesta";
@@ -281,10 +269,9 @@
         private System.Windows.Forms.Button btn_dodaj;
         private System.Windows.Forms.TextBox txt_Mjesto;
         private System.Windows.Forms.TextBox txt_Ptt;
-        private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Label lbl_mjesto;
         private System.Windows.Forms.Label lbl_ptt;
-        private System.Windows.Forms.Label lbl_id_korisnik;
+        private System.Windows.Forms.Label Lbl_Id;
         private System.Windows.Forms.TextBox txt_Zupanija;
         private System.Windows.Forms.Label lbl_zupanija;
         private System.Windows.Forms.MenuStrip menuStrip1;

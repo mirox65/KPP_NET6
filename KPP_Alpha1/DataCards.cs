@@ -14,41 +14,48 @@ namespace KPP_Alpha1
 {
     public partial class FormDataCards : Form
     {
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly DataCardsController controller = new DataCardsController();
+        readonly DbClass db = new ();
+        readonly EditClass edit = new ();
+        readonly DataCardsController controller = new ();
 
         public FormDataCards()
         {
             InitializeComponent();
             Clear();
+            CmbFilter.SelectedIndex = 0;
         }
 
         private void Clear()
         {
             Lbl_Id.Text = string.Empty;
-            Txt_Imei.Text = string.Empty;
-            Txt_SerBr.Text = string.Empty;
-            Txt_Search.Text = string.Empty;
+            Txt_Imei.Clear();
+            Txt_SerBr.Clear();
+            Txt_Search.Clear();
+            CmbStatus.SelectedIndex = 0;
+            Txt_Napomena.Clear();
             Lbl_Imei.Focus();
         }
 
         private void DataCards_Load(object sender, EventArgs e)
         {
-            DtUpdate();
+            DtUpdate(CmbFilter.Text);
         }
 
-        private void DtUpdate()
+        private void DtUpdate(string filter)
         {
             var Dbs = "SELECT dc.id AS Id, dc.imei AS Imei, dc.serBr AS SerBr, [dz.ime]&' '&[dz.prezime] AS Zadužio, " +
+                "zc.datZaduženja AS Zaduženo, zc.datRazduženja AS Razduženo, dc.status AS Status, dc.napomena AS Napomena, " +
                 "[d.ime]&' '&[d.prezime] AS Ažurirao, dc.ažurirano AS Ažurirano " +
                 "FROM (((dataCards AS dc " +
                 "LEFT JOIN korisnici AS k ON dc.korisnikId=k.id) " +
                 "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
                 "LEFT JOIN zaRaDataCards AS zc ON zc.opremaId=dc.id) " +
                 "LEFT JOIN djelatnici AS dz ON zc.djelatnikId=dz.id " +
-                $"WHERE zc.datZaduženja IS NULL " +
-                $"OR zc.datZaduženja IN (SELECT MAX(zaRa2.datZaduženja) FROM zaRaDataCards AS zaRa2 WHERE zaRa2.opremaId=dc.id);";
+                $"WHERE dc.status='{filter}' AND zc.datZaduženja IS NULL " +
+                $"OR zc.datZaduženja IN " +
+                $"(SELECT MAX(zaRa2.datZaduženja) " +
+                $"FROM zaRaDataCards AS zaRa2 " +
+                $"WHERE zaRa2.opremaId=dc.id AND dc.status='{filter}');";
 
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
@@ -71,7 +78,7 @@ namespace KPP_Alpha1
                     bool success = controller.Insert(dataCard);
                     if (success)
                     {
-                        DtUpdate();
+                        DtUpdate(CmbFilter.Text);
                         Clear();
                     }
                     else
@@ -102,7 +109,7 @@ namespace KPP_Alpha1
                     bool success = controller.Update(dataCard);
                     if (success)
                     {
-                        DtUpdate();
+                        DtUpdate(CmbFilter.Text);
                         Clear();
                     }
                     else
@@ -126,6 +133,8 @@ namespace KPP_Alpha1
             }
             dataCard.Imei = Txt_Imei.Text;
             dataCard.SerBr = Txt_SerBr.Text;
+            dataCard.Status = CmbStatus.Text;
+            dataCard.Napomena = Txt_Napomena.Text;
             return dataCard;
         }
 
@@ -141,6 +150,8 @@ namespace KPP_Alpha1
             Lbl_Id.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
             Txt_Imei.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
             Txt_SerBr.Text = Dgv.Rows[rowIndex].Cells[2].Value.ToString();
+            CmbStatus.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
+            Txt_Napomena.Text = Dgv.Rows[rowIndex].Cells[7].Value.ToString();
         }
 
         private void Txt_Search_TextChanged(object sender, EventArgs e)
@@ -148,7 +159,7 @@ namespace KPP_Alpha1
             try
             {
                 (Dgv.DataSource as DataTable).DefaultView.RowFilter =
-                    String.Format("imei LIKE '%{0}%' OR serBr LIKE '%{0}%'", Txt_Search.Text.Trim());
+                    String.Format("imei LIKE '%{0}%' OR serBr LIKE '%{0}%' OR zadužio LIKE '%{0}%'", Txt_Search.Text.Trim());
                 if (Dgv.Rows[0].Cells[0].Value is null)
                 {
                     return;
@@ -158,6 +169,11 @@ namespace KPP_Alpha1
             {
                 edit.MessageException(ex);
             }
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DtUpdate(CmbFilter.Text);
         }
     }
 }

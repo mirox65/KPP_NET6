@@ -36,7 +36,6 @@
             this.btn_dodaj = new System.Windows.Forms.Button();
             this.dgv_odjel = new System.Windows.Forms.DataGridView();
             this.txt_naziv = new System.Windows.Forms.TextBox();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.lbl_naziv_odjel = new System.Windows.Forms.Label();
             this.lbl_id_odjel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -52,7 +51,7 @@
             // 
             this.lbl_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_pretrazivanje.AutoSize = true;
-            this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 179);
+            this.lbl_pretrazivanje.Location = new System.Drawing.Point(12, 147);
             this.lbl_pretrazivanje.Name = "lbl_pretrazivanje";
             this.lbl_pretrazivanje.Size = new System.Drawing.Size(90, 19);
             this.lbl_pretrazivanje.TabIndex = 24;
@@ -61,9 +60,9 @@
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(148, 175);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(108, 143);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 26);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(566, 26);
             this.txt_pretrazivanje.TabIndex = 2;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -105,11 +104,11 @@
             this.dgv_odjel.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_odjel.BackgroundColor = System.Drawing.Color.Gray;
             this.dgv_odjel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_odjel.Location = new System.Drawing.Point(12, 208);
+            this.dgv_odjel.Location = new System.Drawing.Point(12, 176);
             this.dgv_odjel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_odjel.Name = "dgv_odjel";
             this.dgv_odjel.RowTemplate.Height = 24;
-            this.dgv_odjel.Size = new System.Drawing.Size(758, 334);
+            this.dgv_odjel.Size = new System.Drawing.Size(758, 366);
             this.dgv_odjel.TabIndex = 19;
             this.dgv_odjel.TabStop = false;
             this.dgv_odjel.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_odjel_RowHeaderMouseClick);
@@ -117,28 +116,17 @@
             // txt_naziv
             // 
             this.txt_naziv.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_naziv.Location = new System.Drawing.Point(148, 104);
+            this.txt_naziv.Location = new System.Drawing.Point(108, 33);
             this.txt_naziv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_naziv.Name = "txt_naziv";
-            this.txt_naziv.Size = new System.Drawing.Size(210, 26);
+            this.txt_naziv.Size = new System.Drawing.Size(250, 26);
             this.txt_naziv.TabIndex = 1;
-            // 
-            // txt_id
-            // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(148, 33);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 26);
-            this.txt_id.TabIndex = 1;
-            this.txt_id.TabStop = false;
             // 
             // lbl_naziv_odjel
             // 
             this.lbl_naziv_odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_naziv_odjel.AutoSize = true;
-            this.lbl_naziv_odjel.Location = new System.Drawing.Point(12, 108);
+            this.lbl_naziv_odjel.Location = new System.Drawing.Point(12, 37);
             this.lbl_naziv_odjel.Name = "lbl_naziv_odjel";
             this.lbl_naziv_odjel.Size = new System.Drawing.Size(85, 19);
             this.lbl_naziv_odjel.TabIndex = 15;
@@ -148,11 +136,12 @@
             // 
             this.lbl_id_odjel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_id_odjel.AutoSize = true;
-            this.lbl_id_odjel.Location = new System.Drawing.Point(12, 37);
+            this.lbl_id_odjel.Location = new System.Drawing.Point(12, 128);
             this.lbl_id_odjel.Name = "lbl_id_odjel";
-            this.lbl_id_odjel.Size = new System.Drawing.Size(26, 19);
+            this.lbl_id_odjel.Size = new System.Drawing.Size(17, 19);
             this.lbl_id_odjel.TabIndex = 13;
-            this.lbl_id_odjel.Text = "ID:";
+            this.lbl_id_odjel.Text = "0";
+            this.lbl_id_odjel.Visible = false;
             // 
             // menuStrip1
             // 
@@ -213,10 +202,9 @@
             this.Controls.Add(this.btn_dodaj);
             this.Controls.Add(this.dgv_odjel);
             this.Controls.Add(this.txt_naziv);
-            this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_naziv_odjel);
             this.Controls.Add(this.lbl_id_odjel);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormOdjeli";
@@ -237,7 +225,6 @@
         private System.Windows.Forms.Button btn_dodaj;
         private System.Windows.Forms.DataGridView dgv_odjel;
         private System.Windows.Forms.TextBox txt_naziv;
-        private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Label lbl_naziv_odjel;
         private System.Windows.Forms.Label lbl_id_odjel;
         private System.Windows.Forms.MenuStrip menuStrip1;

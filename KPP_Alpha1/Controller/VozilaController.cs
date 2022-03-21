@@ -15,8 +15,8 @@ namespace KPP_Alpha1.Controller
         internal bool Insert(VozilaModel vozilo)
         {
             var Insert = "INSERT INTO vozila" +
-                "(proizvođač, model, opis, brŠasije, regOznaka, brUgovora, korisnikId, ažurirano) " +
-                "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                "(proizvođač, model, opis, brŠasije, regOznaka, brUgovora, status, napomena, korisnikId, ažurirano) " +
+                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Insert, conn);
             cmd.Parameters.AddWithValue("@proizvođač", vozilo.Proizvodac);
@@ -25,6 +25,8 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@brŠasije", vozilo.BrSasije);
             cmd.Parameters.AddWithValue("@regOznaka", vozilo.RegOznaka);
             cmd.Parameters.AddWithValue("@brUgovora", vozilo.BrUgovora);
+            cmd.Parameters.AddWithValue("@status", vozilo.Status);
+            cmd.Parameters.AddWithValue("@napomena", vozilo.Napomena);
             cmd.Parameters.AddWithValue("@korisnikId", vozilo.KorisnikId);
             cmd.Parameters.AddWithValue("@ažurirano", vozilo.DateEdited);
 
@@ -34,7 +36,7 @@ namespace KPP_Alpha1.Controller
         internal bool Update(VozilaModel vozilo)
         {
             string Update = "UPDATE vozila SET proizvođač=?, model=?, opis=?, brŠasije=?, regOznaka=?, brUgovora=?, " +
-                "korisnikId=?, ažurirano=? WHERE id=?";
+                "status=?, napomena=?, korisnikId=?, ažurirano=? WHERE id=?";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Update, conn);
             cmd.Parameters.AddWithValue("@proizvođač", vozilo.Proizvodac);
@@ -43,6 +45,8 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@brŠasije", vozilo.BrSasije);
             cmd.Parameters.AddWithValue("@regOznaka", vozilo.RegOznaka);
             cmd.Parameters.AddWithValue("@brUgovora", vozilo.BrUgovora);
+            cmd.Parameters.AddWithValue("@status", vozilo.Status);
+            cmd.Parameters.AddWithValue("@napomena", vozilo.Napomena);
             cmd.Parameters.AddWithValue("@korisnikId", vozilo.KorisnikId);
             cmd.Parameters.AddWithValue("@ažurirano", vozilo.DateEdited);
             cmd.Parameters.AddWithValue("@id", vozilo.Id);

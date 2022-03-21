@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Btn_Insert = new System.Windows.Forms.Button();
             this.Btn_Edit = new System.Windows.Forms.Button();
             this.Lbl_Naziv = new System.Windows.Forms.Label();
@@ -36,10 +36,10 @@
             this.Lbl_ID = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Txt_Napomena = new System.Windows.Forms.TextBox();
-            this.Cmb_Aktivno = new System.Windows.Forms.ComboBox();
+            this.CmbStatus = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Cmb_Filter = new System.Windows.Forms.ComboBox();
+            this.CmbFilter = new System.Windows.Forms.ComboBox();
             this.Lbl_Search = new System.Windows.Forms.Label();
             this.Txt_Search = new System.Windows.Forms.TextBox();
             this.Dgv = new System.Windows.Forms.DataGridView();
@@ -122,17 +122,17 @@
             this.Txt_Napomena.Size = new System.Drawing.Size(178, 26);
             this.Txt_Napomena.TabIndex = 3;
             // 
-            // Cmb_Aktivno
+            // CmbStatus
             // 
-            this.Cmb_Aktivno.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Cmb_Aktivno.FormattingEnabled = true;
-            this.Cmb_Aktivno.Items.AddRange(new object[] {
-            "DA",
-            "NE"});
-            this.Cmb_Aktivno.Location = new System.Drawing.Point(105, 81);
-            this.Cmb_Aktivno.Name = "Cmb_Aktivno";
-            this.Cmb_Aktivno.Size = new System.Drawing.Size(121, 27);
-            this.Cmb_Aktivno.TabIndex = 36;
+            this.CmbStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbStatus.FormattingEnabled = true;
+            this.CmbStatus.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbStatus.Location = new System.Drawing.Point(105, 81);
+            this.CmbStatus.Name = "CmbStatus";
+            this.CmbStatus.Size = new System.Drawing.Size(121, 27);
+            this.CmbStatus.TabIndex = 36;
             // 
             // label2
             // 
@@ -140,9 +140,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 19);
+            this.label2.Size = new System.Drawing.Size(50, 19);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Aktvno:";
+            this.label2.Text = "Status:";
             // 
             // label3
             // 
@@ -154,18 +154,18 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Filter:";
             // 
-            // Cmb_Filter
+            // CmbFilter
             // 
-            this.Cmb_Filter.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Cmb_Filter.FormattingEnabled = true;
-            this.Cmb_Filter.Items.AddRange(new object[] {
-            "Aktivne",
-            "Nekativne"});
-            this.Cmb_Filter.Location = new System.Drawing.Point(555, 126);
-            this.Cmb_Filter.Name = "Cmb_Filter";
-            this.Cmb_Filter.Size = new System.Drawing.Size(121, 27);
-            this.Cmb_Filter.TabIndex = 36;
-            this.Cmb_Filter.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.CmbFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbFilter.FormattingEnabled = true;
+            this.CmbFilter.Items.AddRange(new object[] {
+            "Aktivno",
+            "Nekativno"});
+            this.CmbFilter.Location = new System.Drawing.Point(555, 126);
+            this.CmbFilter.Name = "CmbFilter";
+            this.CmbFilter.Size = new System.Drawing.Size(121, 27);
+            this.CmbFilter.TabIndex = 36;
+            this.CmbFilter.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // Lbl_Search
             // 
@@ -189,8 +189,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -263,8 +263,8 @@
             this.Controls.Add(this.Lbl_Search);
             this.Controls.Add(this.Txt_Search);
             this.Controls.Add(this.Dgv);
-            this.Controls.Add(this.Cmb_Filter);
-            this.Controls.Add(this.Cmb_Aktivno);
+            this.Controls.Add(this.CmbFilter);
+            this.Controls.Add(this.CmbStatus);
             this.Controls.Add(this.Lbl_ID);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Txt_Napomena);
@@ -274,7 +274,7 @@
             this.Controls.Add(this.Lbl_Naziv);
             this.Controls.Add(this.Btn_Edit);
             this.Controls.Add(this.Btn_Insert);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormKeyCards";
             this.Text = "Kartice";
@@ -295,10 +295,10 @@
         private System.Windows.Forms.Label Lbl_ID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox Txt_Napomena;
-        private System.Windows.Forms.ComboBox Cmb_Aktivno;
+        private System.Windows.Forms.ComboBox CmbStatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox Cmb_Filter;
+        private System.Windows.Forms.ComboBox CmbFilter;
         private System.Windows.Forms.Label Lbl_Search;
         private System.Windows.Forms.TextBox Txt_Search;
         private System.Windows.Forms.DataGridView Dgv;
