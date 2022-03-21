@@ -40,7 +40,7 @@ namespace KPP_Alpha1
         private void Clear()
         {
             txt_naziv.Clear();
-            txt_id.Clear();
+            lbl_id_odjel.Text = "0";
             txt_pretrazivanje.Clear();
             txt_naziv.Focus();
         }
@@ -102,9 +102,9 @@ namespace KPP_Alpha1
         private OdjelModel SetProperties()
         {
             OdjelModel odjel = new OdjelModel();
-            if (!edit.NullOrWhite(txt_id))
+            if (int.Parse(lbl_id_odjel.Text) > 0)
             {
-                odjel.Id = int.Parse(txt_id.Text.Trim());
+                odjel.Id = int.Parse(lbl_id_odjel.Text.Trim());
             }
             odjel.Naziv = txt_naziv.Text.Trim();
             return odjel;
@@ -113,7 +113,7 @@ namespace KPP_Alpha1
         private void dgv_odjel_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int RowIndex = e.RowIndex;
-            txt_id.Text = dgv_odjel.Rows[RowIndex].Cells[0].Value.ToString();
+            lbl_id_odjel.Text = dgv_odjel.Rows[RowIndex].Cells[0].Value.ToString();
             txt_naziv.Text = dgv_odjel.Rows[RowIndex].Cells[1].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu

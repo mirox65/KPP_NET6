@@ -10,16 +10,18 @@ namespace KPP_Alpha1.Controller
 {
     internal class DataCardsController
     {
-        readonly DbClass db = new DbClass();
+        readonly DbClass db = new ();
 
         internal bool Insert(DataCardModel dataCard)
         {
-            var insert = "INSERT INTO dataCards(imei, serBr, korisnikId, ažurirano) " +
-                "VALUES(?,?,?,?);";
+            var insert = "INSERT INTO dataCards(imei, serBr, status, napomena, korisnikId, ažurirano) " +
+                "VALUES(?,?,?,?,?,?);";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(insert, conn);
             cmd.Parameters.AddWithValue("@imei",dataCard.Imei);
             cmd.Parameters.AddWithValue("@serBr", dataCard.SerBr);
+            cmd.Parameters.AddWithValue("@status", dataCard.Status);
+            cmd.Parameters.AddWithValue("@napomena", dataCard.Napomena);
             cmd.Parameters.AddWithValue("@korisnikId", dataCard.KorisnikId);
             cmd.Parameters.AddWithValue("@ažurirano", dataCard.Ažurirano);
             return db.ExcecuteNonQuery(cmd, conn);
@@ -27,12 +29,14 @@ namespace KPP_Alpha1.Controller
 
         internal bool Update(DataCardModel dataCard)
         {
-            var update = "UPDATE dataCards SET imei=?, serBr=?, korisnikId=?, ažurirano=? " +
+            var update = "UPDATE dataCards SET imei=?, serBr=?, status=?, napomena=?, korisnikId=?, ažurirano=? " +
                 "WHERE id=?;";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(update, conn);
             cmd.Parameters.AddWithValue("@imei", dataCard.Imei);
             cmd.Parameters.AddWithValue("@serBr", dataCard.SerBr);
+            cmd.Parameters.AddWithValue("@status", dataCard.Status);
+            cmd.Parameters.AddWithValue("@napomena", dataCard.Napomena);
             cmd.Parameters.AddWithValue("@korisnikId", dataCard.KorisnikId);
             cmd.Parameters.AddWithValue("@ažurirano", dataCard.Ažurirano);
             cmd.Parameters.AddWithValue("@id", dataCard.Id);

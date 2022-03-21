@@ -13,10 +13,10 @@ namespace KPP_Alpha1
         /// Primarne pomoćne klase su istoimene Model i Controller klase
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
-        
-        readonly EditClass edit = new EditClass();
-        readonly DbClass db = new DbClass();
-        readonly PartnerController controller = new PartnerController();
+
+        readonly EditClass edit = new();
+        readonly DbClass db = new();
+        readonly PartnerController controller = new();
 
         public FormPartneri()
         {
@@ -48,7 +48,7 @@ namespace KPP_Alpha1
                         edit.MessageDBErrorInsert();
                     }
                 }
-                catch(Exception ex) { edit.MessageException(ex); }
+                catch (Exception ex) { edit.MessageException(ex); }
             }
         }
         // BTN za izmjenu podataka radi sve što i unos metoda osim koraka pozivanja generičke metode za update podataka u bazi
@@ -84,9 +84,9 @@ namespace KPP_Alpha1
         private PartnerModel SetProperties()
         {
             PartnerModel partner = new PartnerModel();
-            if (!edit.NullOrWhite(txt_id)) 
+            if (int.Parse(lbl_id_korisnik.Text) > 0)
             {
-                partner.Id = Convert.ToInt32(txt_id.Text.Trim());
+                partner.Id = Convert.ToInt32(lbl_id_korisnik.Text.Trim());
             }
             partner.Naziv = txt_naziv.Text.Trim();
             return partner;
@@ -94,7 +94,7 @@ namespace KPP_Alpha1
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
-            txt_id.Clear();
+            lbl_id_korisnik.Text = "0";
             txt_naziv.Clear();
             txt_pretrazivanje.Clear();
             txt_naziv.Focus();
@@ -117,7 +117,7 @@ namespace KPP_Alpha1
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            txt_id.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
+            lbl_id_korisnik.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
             txt_naziv.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu
@@ -127,12 +127,12 @@ namespace KPP_Alpha1
             {
                 (Dgv.DataSource as DataTable).DefaultView.RowFilter =
                     string.Format("naziv LIKE '%{0}%' OR korisnik LIKE '%{0}%'", txt_pretrazivanje.Text.Trim());
-                if(Dgv.Rows[0].Cells[0].Value is null)
+                if (Dgv.Rows[0].Cells[0].Value is null)
                 {
                     return;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 edit.MessageException(ex);
             }

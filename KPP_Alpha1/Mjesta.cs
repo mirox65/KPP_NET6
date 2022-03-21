@@ -143,10 +143,9 @@ namespace KPP_Alpha1
         private MjestoModel SetProperties()
         {
             MjestoModel mjesto = new MjestoModel();
-            if (this.edit.NullOrWhite(txt_id)) { }
-            else
+            if (int.Parse(Lbl_Id.Text) > 0) 
             {
-                mjesto.Id = int.Parse(txt_id.Text.Trim());
+                mjesto.Id = int.Parse(Lbl_Id.Text.Trim());
             }
             mjesto.Ptt = txt_Ptt.Text.Trim();
             mjesto.Mjesto = txt_Mjesto.Text.Trim();
@@ -157,7 +156,7 @@ namespace KPP_Alpha1
         private void DGV_Mjesta_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int RowIndex = e.RowIndex;
-            txt_id.Text = DGV_Mjesta.Rows[RowIndex].Cells[0].Value.ToString();
+            Lbl_Id.Text = DGV_Mjesta.Rows[RowIndex].Cells[0].Value.ToString();
             txt_Ptt.Text = DGV_Mjesta.Rows[RowIndex].Cells[1].Value.ToString();
             txt_Mjesto.Text = DGV_Mjesta.Rows[RowIndex].Cells[2].Value.ToString();
             txt_Zupanija.Text = DGV_Mjesta.Rows[RowIndex].Cells[3].Value.ToString();
@@ -179,7 +178,7 @@ namespace KPP_Alpha1
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
-            txt_id.Clear();
+            Lbl_Id.Text = "0";
             txt_Ptt.Clear();
             txt_Mjesto.Clear();
             txt_Zupanija.Clear();

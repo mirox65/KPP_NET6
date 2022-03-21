@@ -41,7 +41,6 @@ namespace KPP_Alpha1
             this.btn_dodaj = new System.Windows.Forms.Button();
             this.Dgv = new System.Windows.Forms.DataGridView();
             this.txt_naziv = new System.Windows.Forms.TextBox();
-            this.txt_id = new System.Windows.Forms.TextBox();
             this.lbl_naziv = new System.Windows.Forms.Label();
             this.lbl_id_korisnik = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
@@ -99,7 +98,7 @@ namespace KPP_Alpha1
             // 
             this.lbl_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_pretrazivanje.AutoSize = true;
-            this.lbl_pretrazivanje.Location = new System.Drawing.Point(13, 189);
+            this.lbl_pretrazivanje.Location = new System.Drawing.Point(20, 158);
             this.lbl_pretrazivanje.Name = "lbl_pretrazivanje";
             this.lbl_pretrazivanje.Size = new System.Drawing.Size(85, 17);
             this.lbl_pretrazivanje.TabIndex = 55;
@@ -108,9 +107,9 @@ namespace KPP_Alpha1
             // txt_pretrazivanje
             // 
             this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(149, 184);
+            this.txt_pretrazivanje.Location = new System.Drawing.Point(111, 153);
             this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(622, 25);
+            this.txt_pretrazivanje.Size = new System.Drawing.Size(564, 25);
             this.txt_pretrazivanje.TabIndex = 54;
             this.txt_pretrazivanje.TabStop = false;
             this.txt_pretrazivanje.TextChanged += new System.EventHandler(this.txt_pretrazivanje_TextChanged);
@@ -148,11 +147,11 @@ namespace KPP_Alpha1
             this.Dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv.BackgroundColor = System.Drawing.Color.Gray;
             this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv.Location = new System.Drawing.Point(13, 217);
+            this.Dgv.Location = new System.Drawing.Point(13, 185);
             this.Dgv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Dgv.Name = "Dgv";
             this.Dgv.RowTemplate.Height = 24;
-            this.Dgv.Size = new System.Drawing.Size(758, 334);
+            this.Dgv.Size = new System.Drawing.Size(758, 366);
             this.Dgv.TabIndex = 52;
             this.Dgv.TabStop = false;
             this.Dgv.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Dgv_RowHeaderMouseDoubleClick);
@@ -160,28 +159,17 @@ namespace KPP_Alpha1
             // txt_naziv
             // 
             this.txt_naziv.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_naziv.Location = new System.Drawing.Point(149, 75);
+            this.txt_naziv.Location = new System.Drawing.Point(111, 42);
             this.txt_naziv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_naziv.Name = "txt_naziv";
-            this.txt_naziv.Size = new System.Drawing.Size(210, 25);
+            this.txt_naziv.Size = new System.Drawing.Size(248, 25);
             this.txt_naziv.TabIndex = 46;
-            // 
-            // txt_id
-            // 
-            this.txt_id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_id.Location = new System.Drawing.Point(149, 42);
-            this.txt_id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txt_id.Name = "txt_id";
-            this.txt_id.ReadOnly = true;
-            this.txt_id.Size = new System.Drawing.Size(105, 25);
-            this.txt_id.TabIndex = 47;
-            this.txt_id.TabStop = false;
             // 
             // lbl_naziv
             // 
             this.lbl_naziv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_naziv.AutoSize = true;
-            this.lbl_naziv.Location = new System.Drawing.Point(13, 79);
+            this.lbl_naziv.Location = new System.Drawing.Point(13, 46);
             this.lbl_naziv.Name = "lbl_naziv";
             this.lbl_naziv.Size = new System.Drawing.Size(43, 17);
             this.lbl_naziv.TabIndex = 48;
@@ -191,11 +179,12 @@ namespace KPP_Alpha1
             // 
             this.lbl_id_korisnik.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_id_korisnik.AutoSize = true;
-            this.lbl_id_korisnik.Location = new System.Drawing.Point(13, 46);
+            this.lbl_id_korisnik.Location = new System.Drawing.Point(13, 137);
             this.lbl_id_korisnik.Name = "lbl_id_korisnik";
-            this.lbl_id_korisnik.Size = new System.Drawing.Size(23, 17);
+            this.lbl_id_korisnik.Size = new System.Drawing.Size(15, 17);
             this.lbl_id_korisnik.TabIndex = 45;
-            this.lbl_id_korisnik.Text = "ID:";
+            this.lbl_id_korisnik.Text = "0";
+            this.lbl_id_korisnik.Visible = false;
             // 
             // FormPartneri
             // 
@@ -210,10 +199,9 @@ namespace KPP_Alpha1
             this.Controls.Add(this.btn_dodaj);
             this.Controls.Add(this.Dgv);
             this.Controls.Add(this.txt_naziv);
-            this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_naziv);
             this.Controls.Add(this.lbl_id_korisnik);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormPartneri";
             this.Text = "Partneri";
@@ -238,7 +226,6 @@ namespace KPP_Alpha1
         private System.Windows.Forms.Button btn_dodaj;
         private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.TextBox txt_naziv;
-        private System.Windows.Forms.TextBox txt_id;
         private System.Windows.Forms.Label lbl_naziv;
         private System.Windows.Forms.Label lbl_id_korisnik;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;

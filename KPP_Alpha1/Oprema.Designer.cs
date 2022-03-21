@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.CmbFilter = new System.Windows.Forms.ComboBox();
             this.CmbAktivno = new System.Windows.Forms.ComboBox();
             this.Lbl_Search = new System.Windows.Forms.Label();
@@ -39,7 +39,6 @@
             this.Txt_InvBroj = new System.Windows.Forms.TextBox();
             this.Txt_SerBroj = new System.Windows.Forms.TextBox();
             this.Txt_Naziv = new System.Windows.Forms.TextBox();
-            this.Txt_Id = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,6 +54,8 @@
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Txt_Napomena = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,7 +72,7 @@
             "Novo",
             "Za rashod",
             "Rashodovano"});
-            this.CmbFilter.Location = new System.Drawing.Point(517, 131);
+            this.CmbFilter.Location = new System.Drawing.Point(517, 110);
             this.CmbFilter.Name = "CmbFilter";
             this.CmbFilter.Size = new System.Drawing.Size(133, 25);
             this.CmbFilter.TabIndex = 26;
@@ -90,7 +91,7 @@
             "Aktivno",
             "Za rashod",
             "Rashodovano"});
-            this.CmbAktivno.Location = new System.Drawing.Point(517, 98);
+            this.CmbAktivno.Location = new System.Drawing.Point(517, 77);
             this.CmbAktivno.Name = "CmbAktivno";
             this.CmbAktivno.Size = new System.Drawing.Size(133, 25);
             this.CmbAktivno.TabIndex = 25;
@@ -118,7 +119,7 @@
             // Btn_Edit
             // 
             this.Btn_Edit.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Btn_Edit.Location = new System.Drawing.Point(680, 102);
+            this.Btn_Edit.Location = new System.Drawing.Point(680, 81);
             this.Btn_Edit.Name = "Btn_Edit";
             this.Btn_Edit.Size = new System.Drawing.Size(90, 65);
             this.Btn_Edit.TabIndex = 28;
@@ -130,7 +131,7 @@
             // Btn_Insert
             // 
             this.Btn_Insert.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Btn_Insert.Location = new System.Drawing.Point(680, 34);
+            this.Btn_Insert.Location = new System.Drawing.Point(680, 13);
             this.Btn_Insert.Name = "Btn_Insert";
             this.Btn_Insert.Size = new System.Drawing.Size(90, 65);
             this.Btn_Insert.TabIndex = 27;
@@ -140,8 +141,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -160,7 +161,7 @@
             // Txt_InvBroj
             // 
             this.Txt_InvBroj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Txt_InvBroj.Location = new System.Drawing.Point(118, 136);
+            this.Txt_InvBroj.Location = new System.Drawing.Point(118, 81);
             this.Txt_InvBroj.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_InvBroj.Name = "Txt_InvBroj";
             this.Txt_InvBroj.Size = new System.Drawing.Size(201, 25);
@@ -169,7 +170,7 @@
             // Txt_SerBroj
             // 
             this.Txt_SerBroj.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Txt_SerBroj.Location = new System.Drawing.Point(118, 102);
+            this.Txt_SerBroj.Location = new System.Drawing.Point(118, 47);
             this.Txt_SerBroj.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_SerBroj.Name = "Txt_SerBroj";
             this.Txt_SerBroj.Size = new System.Drawing.Size(201, 25);
@@ -180,28 +181,17 @@
             this.Txt_Naziv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Txt_Naziv.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.Txt_Naziv.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.Txt_Naziv.Location = new System.Drawing.Point(118, 68);
+            this.Txt_Naziv.Location = new System.Drawing.Point(118, 13);
             this.Txt_Naziv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_Naziv.Name = "Txt_Naziv";
             this.Txt_Naziv.Size = new System.Drawing.Size(201, 25);
             this.Txt_Naziv.TabIndex = 20;
             // 
-            // Txt_Id
-            // 
-            this.Txt_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Txt_Id.Location = new System.Drawing.Point(118, 34);
-            this.Txt_Id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Txt_Id.Name = "Txt_Id";
-            this.Txt_Id.ReadOnly = true;
-            this.Txt_Id.Size = new System.Drawing.Size(133, 25);
-            this.Txt_Id.TabIndex = 17;
-            this.Txt_Id.TabStop = false;
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 140);
+            this.label2.Location = new System.Drawing.Point(12, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 19;
@@ -211,7 +201,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 106);
+            this.label1.Location = new System.Drawing.Point(12, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 16;
@@ -221,7 +211,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(426, 134);
+            this.label5.Location = new System.Drawing.Point(426, 113);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 17);
             this.label5.TabIndex = 14;
@@ -231,7 +221,7 @@
             // 
             this.Lbl_Naziv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Lbl_Naziv.AutoSize = true;
-            this.Lbl_Naziv.Location = new System.Drawing.Point(12, 72);
+            this.Lbl_Naziv.Location = new System.Drawing.Point(12, 17);
             this.Lbl_Naziv.Name = "Lbl_Naziv";
             this.Lbl_Naziv.Size = new System.Drawing.Size(43, 17);
             this.Lbl_Naziv.TabIndex = 18;
@@ -241,7 +231,7 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(426, 101);
+            this.label4.Location = new System.Drawing.Point(426, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 13;
@@ -251,17 +241,18 @@
             // 
             this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Lbl_Id.AutoSize = true;
-            this.Lbl_Id.Location = new System.Drawing.Point(12, 38);
+            this.Lbl_Id.Location = new System.Drawing.Point(12, 150);
             this.Lbl_Id.Name = "Lbl_Id";
-            this.Lbl_Id.Size = new System.Drawing.Size(23, 17);
+            this.Lbl_Id.Size = new System.Drawing.Size(15, 17);
             this.Lbl_Id.TabIndex = 12;
-            this.Lbl_Id.Text = "ID:";
+            this.Lbl_Id.Text = "0";
+            this.Lbl_Id.Visible = false;
             // 
             // Dtp_Kupljeno
             // 
             this.Dtp_Kupljeno.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Dtp_Kupljeno.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Dtp_Kupljeno.Location = new System.Drawing.Point(517, 34);
+            this.Dtp_Kupljeno.Location = new System.Drawing.Point(517, 13);
             this.Dtp_Kupljeno.Name = "Dtp_Kupljeno";
             this.Dtp_Kupljeno.Size = new System.Drawing.Size(133, 25);
             this.Dtp_Kupljeno.TabIndex = 31;
@@ -270,7 +261,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(426, 37);
+            this.label3.Location = new System.Drawing.Point(426, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 32;
@@ -281,7 +272,7 @@
             this.Txt_Vijek.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Txt_Vijek.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.Txt_Vijek.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.Txt_Vijek.Location = new System.Drawing.Point(517, 66);
+            this.Txt_Vijek.Location = new System.Drawing.Point(517, 45);
             this.Txt_Vijek.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txt_Vijek.Name = "Txt_Vijek";
             this.Txt_Vijek.Size = new System.Drawing.Size(133, 25);
@@ -291,7 +282,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(426, 72);
+            this.label6.Location = new System.Drawing.Point(426, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 17);
             this.label6.TabIndex = 33;
@@ -344,12 +335,33 @@
             this.ClearToolStripMenuItem.Text = "Clear";
             this.ClearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
             // 
+            // Txt_Napomena
+            // 
+            this.Txt_Napomena.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Napomena.Location = new System.Drawing.Point(118, 114);
+            this.Txt_Napomena.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Napomena.Name = "Txt_Napomena";
+            this.Txt_Napomena.Size = new System.Drawing.Size(201, 25);
+            this.Txt_Napomena.TabIndex = 37;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 118);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 17);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Napomena:";
+            // 
             // FormOprema
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.Txt_Napomena);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.Txt_Vijek);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label6);
@@ -365,14 +377,13 @@
             this.Controls.Add(this.Txt_InvBroj);
             this.Controls.Add(this.Txt_SerBroj);
             this.Controls.Add(this.Txt_Naziv);
-            this.Controls.Add(this.Txt_Id);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Lbl_Naziv);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Lbl_Id);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormOprema";
             this.Text = "ICT Oprema";
@@ -397,7 +408,6 @@
         private System.Windows.Forms.TextBox Txt_InvBroj;
         private System.Windows.Forms.TextBox Txt_SerBroj;
         private System.Windows.Forms.TextBox Txt_Naziv;
-        private System.Windows.Forms.TextBox Txt_Id;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
@@ -413,5 +423,7 @@
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
+        private System.Windows.Forms.TextBox Txt_Napomena;
+        private System.Windows.Forms.Label label7;
     }
 }

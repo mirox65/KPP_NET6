@@ -44,6 +44,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Lbl_Imei = new System.Windows.Forms.Label();
             this.Lbl_Id = new System.Windows.Forms.Label();
+            this.Txt_Napomena = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CmbStatus = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CmbFilter = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.SuspendLayout();
@@ -206,12 +212,89 @@
             this.Lbl_Id.Text = "Id";
             this.Lbl_Id.Visible = false;
             // 
+            // Txt_Napomena
+            // 
+            this.Txt_Napomena.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Napomena.Location = new System.Drawing.Point(103, 81);
+            this.Txt_Napomena.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Napomena.Name = "Txt_Napomena";
+            this.Txt_Napomena.Size = new System.Drawing.Size(243, 25);
+            this.Txt_Napomena.TabIndex = 64;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 17);
+            this.label7.TabIndex = 63;
+            this.label7.Text = "Napomena:";
+            // 
+            // CmbStatus
+            // 
+            this.CmbStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbStatus.BackColor = System.Drawing.Color.White;
+            this.CmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbStatus.FormattingEnabled = true;
+            this.CmbStatus.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbStatus.Location = new System.Drawing.Point(103, 113);
+            this.CmbStatus.Name = "CmbStatus";
+            this.CmbStatus.Size = new System.Drawing.Size(133, 25);
+            this.CmbStatus.TabIndex = 62;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 61;
+            this.label4.Text = "Status:";
+            // 
+            // CmbFilter
+            // 
+            this.CmbFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbFilter.BackColor = System.Drawing.Color.White;
+            this.CmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbFilter.FormattingEnabled = true;
+            this.CmbFilter.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbFilter.Location = new System.Drawing.Point(541, 114);
+            this.CmbFilter.Name = "CmbFilter";
+            this.CmbFilter.Size = new System.Drawing.Size(133, 25);
+            this.CmbFilter.TabIndex = 60;
+            this.CmbFilter.TabStop = false;
+            this.CmbFilter.SelectedIndexChanged += new System.EventHandler(this.CmbFilter_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(493, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 17);
+            this.label5.TabIndex = 59;
+            this.label5.Text = "Filter:";
+            // 
             // FormDataCards
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.Txt_Napomena);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.CmbStatus);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CmbFilter);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.Lbl_Id);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Lbl_Search);
@@ -223,7 +306,7 @@
             this.Controls.Add(this.Txt_Imei);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Lbl_Imei);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormDataCards";
             this.Text = "Podatkovne kartice";
@@ -253,5 +336,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Lbl_Imei;
         private System.Windows.Forms.Label Lbl_Id;
+        private System.Windows.Forms.TextBox Txt_Napomena;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox CmbStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CmbFilter;
+        private System.Windows.Forms.Label label5;
     }
 }

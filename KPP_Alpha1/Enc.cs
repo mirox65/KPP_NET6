@@ -29,20 +29,25 @@ namespace KPP_Alpha1
 
         private void FormEnc_Load(object sender, EventArgs e)
         {
-            DtUpdate();
+            CmbFilter.SelectedIndex = 0;
+            DtUpdate(CmbFilter.Text);
         }
 
-        private void DtUpdate()
+        private void DtUpdate(string filter)
         {
             var dbs = "SELECT e.id AS Id, e.naziv AS Naziv, [dz.ime]&' '&[dz.prezime] AS Zadužio, " +
-                "[d.ime]&' '&[d.prezime] AS Ažurirao, e.ažurirano AS Ažurirano " +
+                "ze.datZaduženja AS Zaduženo, ze.datRazduženja AS Razdužio, e.status AS Status, " +
+                "e.napomena AS Napomena, [d.ime]&' '&[d.prezime] AS Ažurirao, e.ažurirano AS Ažurirano " +
                 "FROM (((enc AS e " +
                 "LEFT JOIN korisnici AS k ON e.korisnikId=k.id) " +
                 "LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
                 "LEFT JOIN zaRaEnc AS ze ON ze.opremaId=e.id) " +
                 "LEFT JOIN djelatnici dz ON ze.djelatnikId=dz.id " +
-                $"WHERE ze.datZaduženja IS NULL " +
-                $"OR ze.datZaduženja IN (SELECT MAX(zaRa2.datZaduženja) FROM zaRaEnc AS zaRa2 WHERE zaRa2.opremaId=e.id);";
+                $"WHERE e.status='{filter}' AND ze.datZaduženja IS NULL " +
+                $"OR ze.datZaduženja IN " +
+                $"(SELECT MAX(zaRa2.datZaduženja) " +
+                $"FROM zaRaEnc AS zaRa2 " +
+                $"WHERE zaRa2.opremaId=e.id AND e.status='{filter}');";
 
             var dt = db.Select(dbs);
             Dgv.DataSource = dt;
@@ -63,7 +68,7 @@ namespace KPP_Alpha1
                 bool success = controller.Insert(enc);
                 if (success)
                 {
-                    DtUpdate();
+                    DtUpdate(CmbFilter.Text);
                     Clear();
                 }
                 else
@@ -87,7 +92,7 @@ namespace KPP_Alpha1
                 bool success = controller.Update(enc);
                 if (success)
                 {
-                    DtUpdate();
+                    DtUpdate(CmbFilter.Text);
                     Clear();
                 }
                 else
@@ -105,6 +110,8 @@ namespace KPP_Alpha1
                 enc.Id = Convert.ToInt32(Lbl_Id.Text);
             }
             enc.Naziv = Txt_Naziv.Text.Trim();
+            enc.Status = CmbStatus.Text;
+            enc.Napomena = Txt_Napomena.Text.Trim();
 
             return enc;
         }
@@ -114,7 +121,7 @@ namespace KPP_Alpha1
             try
             {
                 (Dgv.DataSource as DataTable).DefaultView.RowFilter =
-                    String.Format("naziv LIKE '%{0}%'", Txt_Search.Text.Trim());
+                    String.Format("naziv LIKE '%{0}%' OR zadužio LIKE '%{0}%'", Txt_Search.Text.Trim());
                 if (Dgv.Rows[0].Cells[0].Value is null)
                 {
                     return;
@@ -131,6 +138,8 @@ namespace KPP_Alpha1
             var rowIndex = e.RowIndex;
             Lbl_Id.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
             Txt_Naziv.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
+            CmbStatus.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
+            Txt_Napomena.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
         }
 
         private void InsertTSMI_Click(object sender, EventArgs e)
@@ -146,6 +155,11 @@ namespace KPP_Alpha1
         private void ClearTSMI_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DtUpdate(CmbFilter.Text);
         }
     }
 }

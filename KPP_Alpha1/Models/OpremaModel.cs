@@ -18,6 +18,7 @@ namespace KPP_Alpha1.Models
         public DateTime DatumKupovine { get; set; }
         public int VijekTrajanja { get; set; }
         public DateTime DatumZamjene { get; set; }
+        public string Napomena { get; set; }
         public int KorisnikId { get; set; } = LoginHelper.StaticId;
         public DateTime DateEdited { get; set; } = DateTime.Now.Date;
     }

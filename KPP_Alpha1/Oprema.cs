@@ -26,11 +26,12 @@ namespace KPP_Alpha1
 
         private void Clear()
         {
-            Txt_Id.Clear();
+            Lbl_Id.Text = "0";
             Txt_Naziv.Clear();
             Txt_Search.Clear();
             Txt_InvBroj.Clear();
             Txt_SerBroj.Clear();
+            Txt_Napomena.Clear();
             CmbAktivno.SelectedIndex = 0;
             Txt_Naziv.Focus();
         }
@@ -41,27 +42,28 @@ namespace KPP_Alpha1
             DtUpdate(CmbFilter.Text);
         }
 
-        private void DtUpdate(string status)
+        private void DtUpdate(string filter)
         {
-            if (string.IsNullOrEmpty(status))
+            if (string.IsNullOrEmpty(filter))
             {
-                throw new ArgumentException($"'{nameof(status)}' cannot be null or empty.", nameof(status));
+                throw new ArgumentException($"'{nameof(filter)}' cannot be null or empty.", nameof(filter));
             }
             else
             {
                 string Dbs = $"SELECT o.id AS Id, o.naziv AS Naziv, o.serbr AS Serijski, o.invbr AS Inventarni, " +
                     $"o.status AS Status, o.datKupovine AS Nabavljeno, o.vijek AS Vijek, o.datZamjene AS Zamjena, " +
-                    $"[dc.ime]&' '&[dc.prezime] AS Zadužio, [d.ime]&' '&[d.prezime] AS Ažurirao, " +
+                    $"[dc.ime]&' '&[dc.prezime] AS Zadužio, z.datZaduženja AS Zaduženo, z.datRazduženja AS Razduženo, " +
+                    $"o.napomena AS Napomena, [d.ime]&' '&[d.prezime] AS Ažurirao, " +
                     $"o.dateEdited AS Ažurirano " +
                     $"FROM (((ictOprema AS o " +
                     $"LEFT JOIN korisnici AS k ON o.korisnikId = k.id) " +
                     $"LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
                     $"LEFT JOIN zaRaIct AS z ON z.opremaId=o.id) " +
                     $"LEFT JOIN djelatnici AS dc ON z.djelatnikId=dc.id " +
-                    $"WHERE o.status ='{status}' AND z.datZaduženja is NULL OR " +
+                    $"WHERE o.status ='{filter}' AND z.datZaduženja is NULL OR " +
                     $"z.datZaduženja IN " +
                     $"(SELECT MAX(zaRa2.datZaduženja) FROM zaRaIct AS zaRa2 WHERE zaRa2.opremaId=o.id " +
-                    $"AND o.status = '{status}') " +
+                    $"AND o.status = '{filter}') " +
                     $"ORDER BY o.dateEdited ASC;";
                 DataTable dt = db.Select(Dbs);
                 Dgv.DataSource = dt;
@@ -108,7 +110,7 @@ namespace KPP_Alpha1
 
         private void Btn_Edit_Click(object sender, EventArgs e)
         {
-            if (edit.NullOrWhite(Txt_Id) | edit.NullOrWhite(Txt_Naziv) |
+            if (edit.NullOrWhite(Txt_Naziv) |
                 edit.NullOrWhite(Txt_InvBroj) | edit.NullOrWhite(Txt_Vijek))
             {
                 PromjenaBojePrazneČelije();
@@ -148,11 +150,12 @@ namespace KPP_Alpha1
                 DatumKupovine = Dtp_Kupljeno.Value.Date,
                 StatusOpreme = CmbAktivno.Text.ToString(),
                 VijekTrajanja = Convert.ToInt32(Txt_Vijek.Text.Trim()),
-                DatumZamjene = Dtp_Kupljeno.Value.AddYears(Convert.ToInt32(Txt_Vijek.Text)).Date
+                DatumZamjene = Dtp_Kupljeno.Value.AddYears(Convert.ToInt32(Txt_Vijek.Text)).Date,
+                Napomena = Txt_Napomena.Text.Trim()
             };
-            if (!edit.NullOrWhite(Txt_Id))
+            if (int.Parse(Lbl_Id.Text) > 0)
             {
-                oprema.Id = Convert.ToInt32(Txt_Id.Text);
+                oprema.Id = Convert.ToInt32(Lbl_Id.Text);
             }
             if (!edit.NullOrWhite(Txt_InvBroj))
             {
@@ -169,13 +172,14 @@ namespace KPP_Alpha1
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            Txt_Id.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
+            Lbl_Id.Text = Dgv.Rows[rowIndex].Cells[0].Value.ToString();
             Txt_Naziv.Text = Dgv.Rows[rowIndex].Cells[1].Value.ToString();
             Txt_SerBroj.Text = Dgv.Rows[rowIndex].Cells[2].Value.ToString();
             Txt_InvBroj.Text = Dgv.Rows[rowIndex].Cells[3].Value.ToString();
             CmbAktivno.Text = Dgv.Rows[rowIndex].Cells[4].Value.ToString();
             Dtp_Kupljeno.Text = Dgv.Rows[rowIndex].Cells[5].Value.ToString();
             Txt_Vijek.Text = Dgv.Rows[rowIndex].Cells[6].Value.ToString();
+            Txt_Napomena.Text = Dgv.Rows[rowIndex].Cells[11].Value.ToString();
         }
 
         private void Txt_Search_TextChanged(object sender, EventArgs e)

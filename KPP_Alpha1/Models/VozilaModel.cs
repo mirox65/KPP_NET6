@@ -16,6 +16,8 @@ namespace KPP_Alpha1.Models
         public string BrSasije { get; set; }
         public string RegOznaka { get; set; }
         public string BrUgovora { get; set; }
+        public string Status { get; set; }
+        public string Napomena { get; set; }
         public int KorisnikId { get; set; } = LoginHelper.StaticId;
         public DateTime DateEdited { get; set; } = DateTime.Now.Date;
     }
