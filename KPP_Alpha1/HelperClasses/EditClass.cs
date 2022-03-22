@@ -65,6 +65,18 @@ namespace KPP_Alpha1
             MessageBox.Show("Lozinka je promjenjena.\n\nPrijavite se sa novom lozinkom", CelijaNazivObavjest);
         }
 
+        internal void MessageOpremaJeZadužena()
+        {
+            MessageBox.Show("Oprema je već zadužena.\n\nRazduži prije zaduživanja!", CelijaNazivUpozorenje);
+        }
+
+        internal void MessagePokušajRazduživanjaNaInsert()
+        {
+            MessageBox.Show("Provjeri dropdown ZaRa!\n\nPokušaj razduženja opreme na Spremi novi!" +
+                "\n\nSva oprema za razduživanje mora biti zadužena!", CelijaNazivUpozorenje);
+        }
+
+
         #endregion
 
         #region METODE ZA PROVJERU PRAZNIH ČELIJA

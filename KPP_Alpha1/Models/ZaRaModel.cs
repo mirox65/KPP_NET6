@@ -26,7 +26,7 @@ namespace KPP_Alpha1.Models
     {
         public int Id { get; set; }
         public int DjelatnikId { get; set; }
-        public string NazivZaRaTablice { get; set; }
+        public string NazivTabliceBaze { get; set; }
         public int OpremaId { get; set; }
         public DateTime DatumZaduženja { get; set; }
         public DateTime DatumRazduženja { get; set; }

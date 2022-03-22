@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace KPP_Alpha1
 {
-    public partial class FormOprema : Form
+    public partial class FormIctOprema : Form
     {
         /// <summary>
         /// Oprema forma i klasa koja se bavi unosom i izmjenom it opreme u bazu podataka.
@@ -16,9 +16,9 @@ namespace KPP_Alpha1
         /// 
         readonly DbClass db = new ();
         readonly EditClass edit = new();
-        readonly OpremaController controller = new ();
+        readonly IctOpremaController controller = new ();
 
-        public FormOprema()
+        public FormIctOprema()
         {
             InitializeComponent();
             Clear();
@@ -58,11 +58,11 @@ namespace KPP_Alpha1
                     $"FROM (((ictOprema AS o " +
                     $"LEFT JOIN korisnici AS k ON o.korisnikId = k.id) " +
                     $"LEFT JOIN djelatnici AS d ON k.djelatnikId=d.id) " +
-                    $"LEFT JOIN zaRaIct AS z ON z.opremaId=o.id) " +
+                    $"LEFT JOIN zaRaIctOprema AS z ON z.opremaId=o.id) " +
                     $"LEFT JOIN djelatnici AS dc ON z.djelatnikId=dc.id " +
                     $"WHERE o.status ='{filter}' AND z.datZaduženja is NULL OR " +
                     $"z.datZaduženja IN " +
-                    $"(SELECT MAX(zaRa2.datZaduženja) FROM zaRaIct AS zaRa2 WHERE zaRa2.opremaId=o.id " +
+                    $"(SELECT MAX(zaRa2.datZaduženja) FROM zaRaIctOprema AS zaRa2 WHERE zaRa2.opremaId=o.id " +
                     $"AND o.status = '{filter}') " +
                     $"ORDER BY o.dateEdited ASC;";
                 DataTable dt = db.Select(Dbs);
@@ -140,10 +140,10 @@ namespace KPP_Alpha1
             }
         }
 
-        private OpremaModel SetProperties()
+        private IctOpremaModel SetProperties()
         {
 
-            var oprema = new OpremaModel
+            var oprema = new IctOpremaModel
             {
                 Naziv = Txt_Naziv.Text.Trim(),
                 SerijskiBroj = Txt_SerBroj.Text.Trim(),

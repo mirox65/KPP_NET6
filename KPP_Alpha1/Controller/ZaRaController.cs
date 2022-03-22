@@ -1,20 +1,15 @@
 ﻿using KPP_Alpha1.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KPP_Alpha1.Controller
 {
     internal class ZaRaController
     {
-        readonly DbClass db = new DbClass();
+        readonly DbClass db = new();
 
         internal bool Insert(ZaRaModel zaRa)
         {
-            var insert = $"INSERT INTO {zaRa.NazivZaRaTablice}(opremaId, djelatnikId, datZaduženja, korisnikId, ažurirano) " +
+            var insert = $"INSERT INTO zaRa{zaRa.NazivTabliceBaze}(opremaId, djelatnikId, datZaduženja, korisnikId, ažurirano) " +
                 "VALUES(?, ?, ?, ?, ?)";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(insert, conn);
@@ -29,7 +24,7 @@ namespace KPP_Alpha1.Controller
 
         internal bool Update(ZaRaModel zaRa)
         {
-            var update = $"UPDATE {zaRa.NazivZaRaTablice} SET opremaId=?, djelatnikId=?, datZaduženja=?, korisnikId=?, " +
+            var update = $"UPDATE {zaRa.NazivTabliceBaze} SET opremaId=?, djelatnikId=?, datZaduženja=?, korisnikId=?, " +
                 $"ažurirano=? WHERE id=?;";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(update, conn);
@@ -45,7 +40,7 @@ namespace KPP_Alpha1.Controller
 
         internal bool UpdateRazudženje(ZaRaModel zaRa)
         {
-            var update = $"UPDATE {zaRa.NazivZaRaTablice} SET datRazduženja=?, korisnikId=?, ažurirano=? " +
+            var update = $"UPDATE {zaRa.NazivTabliceBaze} SET datRazduženja=?, korisnikId=?, ažurirano=? " +
                 $"WHERE id=?;";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(update, conn);
@@ -55,6 +50,16 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@id", zaRa.Id);
 
             return db.ExcecuteNonQuery(cmd, conn);
+        }
+
+        internal bool PrvjeraBazePodatak(ZaRaModel zaRa)
+        {
+            var select = $"SELECT COUNT(datZaduženja) FROM zaRa{zaRa.NazivTabliceBaze} " +
+                $"WHERE datRazduženja is null AND opremaId={zaRa.OpremaId};";
+            var conn = new OleDbConnection(db.connString);
+            var cmd = new OleDbCommand(select, conn);
+
+            return db.ExecuteScalar(cmd, conn);
         }
     }
 }

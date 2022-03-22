@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class FormOprema
+    partial class FormIctOprema
     {
         /// <summary>
         /// Required designer variable.

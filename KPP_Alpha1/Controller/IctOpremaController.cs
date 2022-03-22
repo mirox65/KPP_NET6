@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace KPP_Alpha1.Controller
 {
-    internal class OpremaController
+    internal class IctOpremaController
     {
-        readonly DbClass db = new DbClass();
+        readonly DbClass db = new ();
 
-        internal bool Insert(OpremaModel oprema)
+        internal bool Insert(IctOpremaModel oprema)
         {
             var Insert = "INSERT INTO ictOprema" +
                 "(naziv, serBr, invBr, status, datKupovine, vijek, datZamjene, napomena korisnikId, dateEdited) " +
@@ -33,7 +33,7 @@ namespace KPP_Alpha1.Controller
             return db.ExcecuteNonQuery(cmd, conn);            
         }
 
-        internal bool Update(OpremaModel oprema)
+        internal bool Update(IctOpremaModel oprema)
         {
             string Update = "UPDATE ictOprema SET naziv=?, serBr=?, invBr=?, status=?, datKupovine=?, vijek=?, " +
                 "datZamjene=?, napomena=?, korisnikId=?, dateEdited=? WHERE id=?";
