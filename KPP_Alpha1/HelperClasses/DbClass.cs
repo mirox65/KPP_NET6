@@ -61,6 +61,26 @@ namespace KPP_Alpha1
             return dt;
         }
 
+        internal bool ExecuteScalar(OleDbCommand cmd, OleDbConnection conn)
+        {
+            var success = true;
+            try
+            {
+                conn.Open();
+                int provjera = (int)cmd.ExecuteScalar();
+                if(provjera > 0) 
+                {
+                    success = false; 
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return success;
+        }
+
         // Izvoz podataka za arhivu ovo ne radi treba mu se posvetiti
         public DataTable IzvozPodataka(string Dbs)
         {
@@ -306,7 +326,7 @@ namespace KPP_Alpha1
             return dict;
         }
 
-        internal Dictionary<string, string> DictStringString(Dictionary<string, string> opremaBazaDic, string keyString1, string zaRaTablica, string tablica)
+        internal Dictionary<string, string> DictStringString(Dictionary<string, string> opremaBazaDic, string keyString1, string tablica)
         {
             var dict = opremaBazaDic;
             var dbs = $"SELECT {keyString1} FROM {tablica};";
@@ -320,7 +340,7 @@ namespace KPP_Alpha1
                 {
                     var keyS1 = reader[$"{keyString1}"].ToString();
                     var key = $"{keyS1}";
-                    var value = $"{zaRaTablica}";
+                    var value = $"{tablica}";
                     dict.Add(key, value);
                 }
             }
@@ -332,7 +352,7 @@ namespace KPP_Alpha1
             return dict;
         }
 
-        internal Dictionary<string, string> DictStringString(Dictionary<string, string> opremaBazaDic, string keyString1, string keyString2, string zaRaTablica, string tablica)
+        internal Dictionary<string, string> DictStringString(Dictionary<string, string> opremaBazaDic, string keyString1, string keyString2, string tablica)
         {
             var dict = opremaBazaDic;
             var dbs = $"SELECT {keyString1}, {keyString2} FROM {tablica};";
@@ -347,7 +367,7 @@ namespace KPP_Alpha1
                     var keyS1 = reader[$"{keyString1}"].ToString(); 
                     var keyS2 = reader[$"{keyString2}"].ToString(); 
                     var key = $"{keyS1} {keyS2}";
-                    var value = $"{zaRaTablica}";
+                    var value = $"{tablica}";
                     dict.Add(key, value);
                 }
             }

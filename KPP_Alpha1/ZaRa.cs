@@ -15,13 +15,13 @@ namespace KPP_Alpha1
     /// </summary>
     public partial class FormZaRa : Form
     {
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly ZaRaController controller = new ZaRaController();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
+        readonly ZaRaController controller = new();
 
-        private Dictionary<int, string> djelatniciDic = new Dictionary<int, string>();
-        private Dictionary<string, int> opremaDic = new Dictionary<string, int>();
-        private Dictionary<string, string> opremaBazaDic = new Dictionary<string, string>();
+        private Dictionary<int, string> djelatniciDic = new();
+        private Dictionary<string, int> opremaDic = new();
+        private Dictionary<string, string> opremaBazaDic = new();
 
         public Dictionary<string, int> OpremaDic { get; set; }
         public Dictionary<string, string> OpremaBaza { get; set; }
@@ -74,11 +74,11 @@ namespace KPP_Alpha1
 
         private Dictionary<string, string> UčitavanjeBazaDictionary()
         {
-            OpremaBaza = db.DictStringString(opremaBazaDic, "serBr", "naziv", "zaRaIct", "ictOprema");
-            OpremaBaza = db.DictStringString(OpremaBaza, "imei", "serBr", "zaRaDataCards", "dataCards");
-            OpremaBaza = db.DictStringString(OpremaBaza, "regOznaka", "proizvođač", "zaRaVozila", "vozila");
-            OpremaBaza = db.DictStringString(OpremaBaza, "naziv", "zaRaEnc", "enc");
-            OpremaBaza = db.DictStringString(OpremaBaza, "naziv", "zaRaKeyCards", "keyCards");
+            OpremaBaza = db.DictStringString(opremaBazaDic, "serBr", "naziv", "ictOprema");
+            OpremaBaza = db.DictStringString(OpremaBaza, "imei", "serBr", "dataCards");
+            OpremaBaza = db.DictStringString(OpremaBaza, "regOznaka", "proizvođač", "vozila");
+            OpremaBaza = db.DictStringString(OpremaBaza, "naziv", "enc");
+            OpremaBaza = db.DictStringString(OpremaBaza, "naziv", "keyCards");
             return opremaBazaDic;
         }
 
@@ -99,6 +99,7 @@ namespace KPP_Alpha1
             Txt_Oprema.Clear();
             CmbFilter.SelectedIndex = 0;
             CmbZaRa.SelectedIndex = 0;
+            Dgv.Rows.Clear();
         }
 
         private void Btn_Pretraži_Click(object sender, EventArgs e)
@@ -115,7 +116,7 @@ namespace KPP_Alpha1
             var djelatnikId = djelatniciDic.FirstOrDefault(d => d.Value == Txt_Djelatnik.Text.Trim()).Key;
             string Dbs = $"SELECT z.id AS Id, [i.serBr]&' '&[i.naziv] AS Oprema, z.datZaduženja AS Zaduženo, " +
                 $"datRazduženja AS Razduženo, [d.ime]&' '&[d.prezime] AS Ažurirao, z.ažurirano AS Ažurirano " +
-                $"FROM ((zaraIct AS z " +
+                $"FROM ((zaraIctOprema AS z " +
                 $"LEFT JOIN ictOprema AS i ON z.opremaId = i.id) " +
                 $"LEFT JOIN korisnici AS k ON z.korisnikId = k.id)" +
                 $"LEFT JOIN djelatnici AS d ON k.djelatnikId = d.id " +
@@ -168,32 +169,59 @@ namespace KPP_Alpha1
             {
                 PromjenaBojePrazneČelije();
                 var zaRa = SetProperties();
-                bool provjera = ProvjeraKljučeva(zaRa);
-                if (provjera)
+                bool provjeraKljučeva = ProvjeraKljučeva(zaRa);
+                bool provjeraRaspoloživosti = ProvjeraRaspoloživosti(zaRa);
+                bool pokušajRazduživanja = CmbZaRa.Text == "Zaduživanje";
+                if (provjeraKljučeva && provjeraRaspoloživosti && pokušajRazduživanja)
                 {
-                    try
-                    {
-                        bool success = controller.Insert(zaRa);
-                        if (success is true)
-                        {
-                            Btn_Pretraži.PerformClick();
-                            Clear();
-                        }
-                        else
-                        {
-                            edit.MessageDBErrorInsert();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        edit.MessageException(ex);
-                    }
+                    Insert(zaRa);
                 }
                 else
                 {
-                    edit.MessageErrorKeyMissing();
+                    if (!provjeraKljučeva)
+                    {
+                        edit.MessageErrorKeyMissing();
+                    }
+                    if (!provjeraRaspoloživosti)
+                    {
+                        edit.MessageOpremaJeZadužena();
+                    }
+                    if (!pokušajRazduživanja)
+                    {
+                        edit.MessagePokušajRazduživanjaNaInsert();
+                    }
                 }
             }
+        }
+
+        private bool ProvjeraRaspoloživosti(ZaRaModel zaRa) => controller.PrvjeraBazePodatak(zaRa);
+
+        private void Insert(ZaRaModel zaRa)
+        {
+            try
+            {
+                bool success = controller.Insert(zaRa);
+                if (success is true)
+                {
+                    Btn_Pretraži.PerformClick();
+                    OpremaClear();
+                }
+                else
+                {
+                    edit.MessageDBErrorInsert();
+                }
+            }
+            catch (Exception ex)
+            {
+                edit.MessageException(ex);
+            }
+        }
+
+        private void OpremaClear()
+        {
+            Txt_Oprema.Clear();
+            Txt_Oprema.Focus();
+            Btn_Pretraži.PerformClick();
         }
 
         private void Btn_Edit_Click(object sender, EventArgs e)
@@ -224,7 +252,7 @@ namespace KPP_Alpha1
                         if (success is true)
                         {
                             Btn_Pretraži.PerformClick();
-                            Clear();
+                            OpremaClear();
                         }
                         else
                         {
@@ -247,7 +275,7 @@ namespace KPP_Alpha1
         private bool ProvjeraKljučeva(ZaRaModel zaRa)
         {
             var provjera = false;
-            if (zaRa.DjelatnikId > 0 & zaRa.OpremaId > 0 & zaRa.NazivZaRaTablice.Length > 0)
+            if (zaRa.DjelatnikId > 0 & zaRa.OpremaId > 0 & zaRa.NazivTabliceBaze.Length > 0)
             {
                 provjera = true;
             }
@@ -263,7 +291,7 @@ namespace KPP_Alpha1
             }
             zaRa.DjelatnikId = djelatniciDic.FirstOrDefault(d => d.Value == Txt_Djelatnik.Text.Trim()).Key;
             zaRa.OpremaId = opremaDic.FirstOrDefault(o => o.Key == Txt_Oprema.Text.Trim()).Value;
-            zaRa.NazivZaRaTablice = opremaBazaDic.FirstOrDefault(b => b.Key == Txt_Oprema.Text.Trim()).Value;
+            zaRa.NazivTabliceBaze = opremaBazaDic.FirstOrDefault(b => b.Key == Txt_Oprema.Text.Trim()).Value;
             zaRa.DatumZaduženja = Dtp_Zaduženo.Value.Date;
             if (Lbl_Id.Text.Length > 0)
             {
@@ -303,6 +331,12 @@ namespace KPP_Alpha1
 
         private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Btn_Pretraži.PerformClick();
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CmbZaRa.SelectedIndex = CmbFilter.SelectedIndex;
             Btn_Pretraži.PerformClick();
         }
     }

@@ -212,7 +212,7 @@ namespace KPP_Alpha1
         }
         private void iTOpremaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new FormOprema();
+            var form = new FormIctOprema();
             if (ActiveMdiChild != null)
             {
                 ActiveMdiChild.Close();
