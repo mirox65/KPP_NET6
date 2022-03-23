@@ -6,9 +6,8 @@ namespace KPP_Alpha1.Models
 {
     public class LoginModel
     {
-        readonly KorisnikController korisnikController = new KorisnikController();
+        readonly KorisnikController korisnikController = new();
 
-        private string lozinka;
         public int Id { get; set; } = LoginHelper.StaticId;
         public string KorisnickoIme { get; set; }
         public string Lozinka { get; set; }

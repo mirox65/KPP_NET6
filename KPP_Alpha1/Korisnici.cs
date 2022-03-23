@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,14 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly KorisnikController controller = new KorisnikController();
+        readonly DbClass db = new ();
+        readonly EditClass edit = new ();
+        readonly DictionaryHelper dictionary = new();
+        readonly AutocompleteHelper autocomplete = new  ();
+        readonly KorisnikController controller = new ();
 
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
-        public Dictionary<int, string> djelatniciDict = new Dictionary<int, string>();
+        public Dictionary<int, string> djelatniciDict = new();
         // Bool varijabla koja određuje da korisnik kod unosa mora imati password zadan za novog korisnika
         private bool EditPassword { get; set; } = false;
 
@@ -30,14 +33,14 @@ namespace KPP_Alpha1
         {
             InitializeComponent();
             Clear();
-            djelatniciDict = db.DictIntString("ime", "prezime", "djelatnici");
+            djelatniciDict = dictionary.DictIntString("ime", "prezime", "djelatnici");
             CollectionDjelatnici();
         }
         // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append
         private void CollectionDjelatnici()
         {
             string DbAc = "SELECT * FROM djelatnici";
-            AutoCompleteStringCollection djelatniciCollection = db.AutoComplete(DbAc, "ime", "prezime");
+            AutoCompleteStringCollection djelatniciCollection = autocomplete.AutoComplete(DbAc, "ime", "prezime");
             txt_djelatnik.AutoCompleteCustomSource = djelatniciCollection;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u

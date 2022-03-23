@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
@@ -16,18 +17,20 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly MjestoController controller = new MjestoController();
+        readonly DbClass db = new ();
+        readonly EditClass edit = new ();
+        readonly DictionaryHelper dictionary = new();
+        readonly AutocompleteHelper autocomplete = new ();
+        readonly MjestoController controller = new ();
 
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
-        public Dictionary<int, string> zpanijeDict = new Dictionary<int, string>();
+        public Dictionary<int, string> zpanijeDict = new();
 
         // Nakon incijalizacije instaciramo riječnike i kolekcije za daljnju obradu
         public FormMjesta()
         {
             InitializeComponent();
-            zpanijeDict = db.DictIntString("zupanija", "zupanije");
+            zpanijeDict = dictionary.DictIntString("zupanija", "zupanije");
             CollectionZpanije();
         }
         // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
@@ -35,7 +38,7 @@ namespace KPP_Alpha1
         {
             string DbAc = "SELECT * FROM zupanije;";
             string AcPrvi = "zupanija";
-            AutoCompleteStringCollection AcZup = db.AutoComplete(DbAc, AcPrvi);
+            AutoCompleteStringCollection AcZup = autocomplete.AutoComplete(DbAc, AcPrvi);
             txt_Zupanija.AutoCompleteCustomSource = AcZup;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
@@ -142,7 +145,7 @@ namespace KPP_Alpha1
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private MjestoModel SetProperties()
         {
-            MjestoModel mjesto = new MjestoModel();
+            MjestoModel mjesto = new();
             if (int.Parse(Lbl_Id.Text) > 0) 
             {
                 mjesto.Id = int.Parse(Lbl_Id.Text.Trim());

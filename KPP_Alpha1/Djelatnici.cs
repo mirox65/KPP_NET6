@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
@@ -16,26 +17,28 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly DjelatnikController controller = new DjelatnikController();
+        readonly DbClass db = new ();
+        readonly EditClass edit = new ();
+        readonly DictionaryHelper dictionary = new();
+        readonly AutocompleteHelper autocomplete = new  ();
+        readonly DjelatnikController controller = new ();
 
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
-        public Dictionary<int, string> odjeliDict = new Dictionary<int, string>();
+        public Dictionary<int, string> odjeliDict = new();
 
         // Nakon incijalizacije instaciramo riječnike i kolekcije za daljnju obradu
         public FormDjelatnici()
         {
             InitializeComponent();
             Clear();
-            odjeliDict = db.DictIntString("naziv", "odjeli");
+            odjeliDict = dictionary.DictIntString("naziv", "odjeli");
             CollectionOdjeli();
         }
         // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
         private void CollectionOdjeli()
         {
             string DbAc = "SELECT * FROM odjeli;";
-            AutoCompleteStringCollection AcOdjel = db.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcOdjel = autocomplete.AutoComplete(DbAc, "naziv");
             Txt_OdjelId.AutoCompleteCustomSource = AcOdjel;
         }
         // Učitavanje Forme, koja poziva metodu DtUpdate
