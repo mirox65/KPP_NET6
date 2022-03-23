@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
@@ -17,20 +18,22 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly KnjigaController controller = new KnjigaController();
+        readonly DbClass db = new ();
+        readonly EditClass edit = new ();
+        readonly DictionaryHelper dictionary = new ();
+        readonly AutocompleteHelper autocomplete = new ();
+        readonly KnjigaController controller = new ();
 
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
-        public Dictionary<int, string> odjeliDict = new Dictionary<int, string>();
-        public Dictionary<int, string> posiljateljiDict = new Dictionary<int, string>();
+        public Dictionary<int, string> odjeliDict = new();
+        public Dictionary<int, string> posiljateljiDict = new();
 
         // Nakon incijalizacije instaciramo riječnike i kolekcije za daljnju obradu
         public FormKPP()
         {
             InitializeComponent();
-            odjeliDict = db.DictIntString("naziv", "odjeli");
-            posiljateljiDict = db.DictIntString("naziv", "posiljatelji");
+            odjeliDict = dictionary.DictIntString("naziv", "odjeli");
+            posiljateljiDict = dictionary.DictIntString("naziv", "posiljatelji");
             CollectionPosiljatelji();
             CollectionOdjeli();
         }
@@ -38,7 +41,7 @@ namespace KPP_Alpha1
         private void CollectionPosiljatelji()
         {
             string DbAc = "SELECT naziv FROM posiljatelji;";
-            AutoCompleteStringCollection AcPosiljatelj = db.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcPosiljatelj = autocomplete.AutoComplete(DbAc, "naziv");
 
             txt_Posiljatelj.AutoCompleteCustomSource = AcPosiljatelj;
         }
@@ -46,7 +49,7 @@ namespace KPP_Alpha1
         private void CollectionOdjeli()
         {
             string DbAc = "SELECT naziv FROM odjeli;";
-            AutoCompleteStringCollection AcOdjel = db.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcOdjel = autocomplete.AutoComplete(DbAc, "naziv");
 
             txt_Odjel.AutoCompleteCustomSource = AcOdjel;
         }

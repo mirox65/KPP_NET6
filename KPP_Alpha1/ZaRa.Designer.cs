@@ -52,6 +52,7 @@
             this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Btn_Kreiraj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -100,8 +101,8 @@
             this.CmbZaRa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmbZaRa.FormattingEnabled = true;
             this.CmbZaRa.Items.AddRange(new object[] {
-            "Zaduživanje",
-            "Razduživanje"});
+            "Zaduženje",
+            "Razduženje"});
             this.CmbZaRa.Location = new System.Drawing.Point(85, 59);
             this.CmbZaRa.Name = "CmbZaRa";
             this.CmbZaRa.Size = new System.Drawing.Size(133, 25);
@@ -310,12 +311,24 @@
             this.SearchToolStripMenuItem.Text = "Pretraži";
             this.SearchToolStripMenuItem.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
+            // Btn_Kreiraj
+            // 
+            this.Btn_Kreiraj.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_Kreiraj.Location = new System.Drawing.Point(523, 119);
+            this.Btn_Kreiraj.Name = "Btn_Kreiraj";
+            this.Btn_Kreiraj.Size = new System.Drawing.Size(133, 41);
+            this.Btn_Kreiraj.TabIndex = 55;
+            this.Btn_Kreiraj.TabStop = false;
+            this.Btn_Kreiraj.UseVisualStyleBackColor = true;
+            this.Btn_Kreiraj.Click += new System.EventHandler(this.Btn_Kreiraj_Click);
+            // 
             // FormZaRa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.Btn_Kreiraj);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Btn_Pretraži);
             this.Controls.Add(this.label2);
@@ -371,5 +384,6 @@
         private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SearchToolStripMenuItem;
+        private System.Windows.Forms.Button Btn_Kreiraj;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using System.Windows.Forms;
 namespace KPP_Alpha1
 {
     /// <summary>
-    /// Zadužnice i razdužnice klasa namjenjana za pračenje opreme
+    /// Zadužnice i razdužnice klasa namjenjana za praćenje opreme
     /// koja se nalazi kod djelatnika da nemamo repova. 
-    /// Zaduženja raditi odmah kad se oprema izdaje a razudžnica tek
+    /// Zaduženja raditi odmah kad se oprema izdaje a razdužnica tek
     /// kad se oprema vrati u ured
     /// </summary>
     public partial class FormZaRa : Form
@@ -18,6 +19,13 @@ namespace KPP_Alpha1
         readonly DbClass db = new();
         readonly EditClass edit = new();
         readonly ZaRaController controller = new();
+        readonly DictionaryHelper dictionary = new();
+        readonly AutocompleteHelper autocomplete = new();
+        readonly WordHelper wc = new();
+        readonly ListHelper lh = new();
+
+        private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ZARA_TEMPLATE.doc";
+        private readonly string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ZaRaCreated.doc";
 
         private Dictionary<int, string> djelatniciDic = new();
         private Dictionary<string, int> opremaDic = new();
@@ -34,7 +42,7 @@ namespace KPP_Alpha1
             {
                 djelatniciDic.Clear();
             }
-            djelatniciDic = db.DictIntString("ime", "prezime", "djelatnici");
+            djelatniciDic = dictionary.DictIntString("ime", "prezime", "djelatnici");
             if (opremaDic.Count > 0)
             {
                 opremaDic.Clear();
@@ -57,38 +65,38 @@ namespace KPP_Alpha1
             var DbVozila = "SELECT * FROM vozila;";
             var DbEnc = "SELECT * FROM enc";
             var DbKeyCards = "SELECT * FROM keyCards";
-            var AcOprema = db.AutoComplete(collection, DbIct, "serBr", "naziv");
-            AcOprema = db.AutoComplete(AcOprema, DbDc, "imei", "SerBr");
-            AcOprema = db.AutoComplete(AcOprema, DbVozila, "regOznaka", "proizvođač");
-            AcOprema = db.AutoComplete(AcOprema, DbEnc, "naziv");
-            AcOprema = db.AutoComplete(AcOprema, DbKeyCards, "naziv");
+            var AcOprema = autocomplete.AutoComplete(collection, DbIct, "serBr", "naziv");
+            AcOprema = autocomplete.AutoComplete(AcOprema, DbDc, "imei", "SerBr");
+            AcOprema = autocomplete.AutoComplete(AcOprema, DbVozila, "regOznaka", "proizvođač");
+            AcOprema = autocomplete.AutoComplete(AcOprema, DbEnc, "naziv");
+            AcOprema = autocomplete.AutoComplete(AcOprema, DbKeyCards, "naziv");
             Txt_Oprema.AutoCompleteCustomSource = AcOprema;
         }
 
         private void CoollectionDjelatnici()
         {
             var DbAc = "SELECT * FROM djelatnici;";
-            var AcDjelatnici = db.AutoComplete(DbAc, "ime", "prezime");
+            var AcDjelatnici = autocomplete.AutoComplete(DbAc, "ime", "prezime");
             Txt_Djelatnik.AutoCompleteCustomSource = AcDjelatnici;
         }
 
         private Dictionary<string, string> UčitavanjeBazaDictionary()
         {
-            OpremaBaza = db.DictStringString(opremaBazaDic, "serBr", "naziv", "ictOprema");
-            OpremaBaza = db.DictStringString(OpremaBaza, "imei", "serBr", "dataCards");
-            OpremaBaza = db.DictStringString(OpremaBaza, "regOznaka", "proizvođač", "vozila");
-            OpremaBaza = db.DictStringString(OpremaBaza, "naziv", "enc");
-            OpremaBaza = db.DictStringString(OpremaBaza, "naziv", "keyCards");
+            OpremaBaza = dictionary.DictStringString(opremaBazaDic, "serBr", "naziv", "ictOprema");
+            OpremaBaza = dictionary.DictStringString(OpremaBaza, "imei", "serBr", "dataCards");
+            OpremaBaza = dictionary.DictStringString(OpremaBaza, "regOznaka", "proizvođač", "vozila");
+            OpremaBaza = dictionary.DictStringString(OpremaBaza, "naziv", "enc");
+            OpremaBaza = dictionary.DictStringString(OpremaBaza, "naziv", "keyCards");
             return opremaBazaDic;
         }
 
         private Dictionary<string, int> UčitavanjeOpremaDictionary()
         {
-            OpremaDic = db.DicStringInt(opremaDic, "serBr", "naziv", "ictOprema");
-            OpremaDic = db.DicStringInt(OpremaDic, "imei", "serBr", "dataCards");
-            OpremaDic = db.DicStringInt(OpremaDic, "regOznaka", "proizvođač", "vozila");
-            OpremaDic = db.DicStringInt(OpremaDic, "naziv", "enc");
-            OpremaDic = db.DicStringInt(OpremaDic, "naziv", "keyCards");
+            OpremaDic = dictionary.DicStringInt(opremaDic, "serBr", "naziv", "ictOprema");
+            OpremaDic = dictionary.DicStringInt(OpremaDic, "imei", "serBr", "dataCards");
+            OpremaDic = dictionary.DicStringInt(OpremaDic, "regOznaka", "proizvođač", "vozila");
+            OpremaDic = dictionary.DicStringInt(OpremaDic, "naziv", "enc");
+            OpremaDic = dictionary.DicStringInt(OpremaDic, "naziv", "keyCards");
             return OpremaDic;
         }
 
@@ -99,7 +107,8 @@ namespace KPP_Alpha1
             Txt_Oprema.Clear();
             CmbFilter.SelectedIndex = 0;
             CmbZaRa.SelectedIndex = 0;
-            Dgv.Rows.Clear();
+            Btn_Pretraži.PerformClick();
+            Txt_Djelatnik.Focus();
         }
 
         private void Btn_Pretraži_Click(object sender, EventArgs e)
@@ -171,7 +180,7 @@ namespace KPP_Alpha1
                 var zaRa = SetProperties();
                 bool provjeraKljučeva = ProvjeraKljučeva(zaRa);
                 bool provjeraRaspoloživosti = ProvjeraRaspoloživosti(zaRa);
-                bool pokušajRazduživanja = CmbZaRa.Text == "Zaduživanje";
+                bool pokušajRazduživanja = CmbZaRa.Text == "Zaduženje";
                 if (provjeraKljučeva && provjeraRaspoloživosti && pokušajRazduživanja)
                 {
                     Insert(zaRa);
@@ -241,7 +250,7 @@ namespace KPP_Alpha1
                     try
                     {
                         var success = false;
-                        if (CmbZaRa.Text == "Razduživanje")
+                        if (CmbZaRa.Text == "Razduženje")
                         {
                             success = controller.UpdateRazudženje(zaRa);
                         }
@@ -285,7 +294,7 @@ namespace KPP_Alpha1
         private ZaRaModel SetProperties()
         {
             var zaRa = new ZaRaModel();
-            if (CmbZaRa.Text == "Razduživanje")
+            if (CmbZaRa.Text == "Razduženje")
             {
                 zaRa.DatumRazduženja = Dtp_Razduženo.Value.Date;
             }
@@ -337,7 +346,62 @@ namespace KPP_Alpha1
         private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             CmbZaRa.SelectedIndex = CmbFilter.SelectedIndex;
+            Btn_Kreiraj.Text = $"Kreiraj {CmbZaRa.Text.ToLower()}";
             Btn_Pretraži.PerformClick();
+        }
+
+        private ZaRaDokumentModel SetZaraModel()
+        {
+            ZaRaDokumentModel zaraDoc = new();
+
+            zaraDoc.Djelatnik = Txt_Djelatnik.Text;
+            zaraDoc.Datum = (CmbFilter.Text == "Razduženo") ? Dtp_Razduženo.Value.Date : Dtp_Zaduženo.Value.Date;
+            zaraDoc.Filter = CmbFilter.Text;
+            zaraDoc.TipDokumenta = (CmbFilter.Text == "Razduženo") ? "Razdužnica" : "Zadužnica";
+            zaraDoc.PredaoPreuzeo = (CmbFilter.Text == "Razduženo") ? "Preuzeo/la" : "Predao/la";
+            zaraDoc.ZaduzioRazduzio = (CmbFilter.Text == "Razduženo") ? "Razdužio/la" : "Zadužio/la";
+
+            return zaraDoc;
+        }
+
+        private void Btn_Kreiraj_Click(object sender, EventArgs e)
+        {
+            ZaRaDokumentModel zaraDoc = SetZaraModel();
+            List<string> popis = new();
+
+            for (int i = 0; i < Dgv.SelectedRows.Count; i++)
+            {
+                popis.Add(PovuciPotegni(Dgv.SelectedRows[i].Cells["Oprema"].Value.ToString()));
+            }
+
+            wc.CreateWordDocument(fileName, saveAs, zaraDoc, popis);
+        }
+
+        private string PovuciPotegni(string nazivOpreme)
+        {
+            var nazivBaze = opremaBazaDic.FirstOrDefault(b => b.Key == nazivOpreme).Value;
+            var id = opremaDic.FirstOrDefault(o => o.Key == nazivOpreme).Value;
+            var element = "";
+
+            switch (nazivBaze)
+            {
+                case "vozila":
+                    element = lh.PovuciVozilo(id);
+                    break;
+                case "keyCards":
+                    element = lh.PovuciKeyCard(id);
+                    break;
+                case "dataCards":
+                    element = lh.PovuciDataCard(id);
+                    break;
+                case "enc":
+                    element = lh.PovuciEnc(id);
+                    break;
+                case "ictOprema":
+                    element = lh.PovuciIctOprema(id);
+                    break;
+            }
+            return element;
         }
     }
 }

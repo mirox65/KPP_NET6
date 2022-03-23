@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
@@ -16,23 +17,25 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly PosiljateljController controller = new PosiljateljController();
+        readonly DbClass db = new ();
+        readonly EditClass edit = new ();
+        readonly DictionaryHelper dictionary = new();
+        readonly AutocompleteHelper autocomplete = new ();
+        readonly PosiljateljController controller = new ();
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
-        public Dictionary<int, string> mjestaDict = new Dictionary<int, string>();
+        public Dictionary<int, string> mjestaDict = new();
         // Nakon incijalizacije instaciramo riječnik Mjesta i kolekciju Mjesto
         public FormPosiljatelji()
         {
             InitializeComponent();
-            mjestaDict = db.DictIntString("mjesto", "ptt", "mjesta");
+            mjestaDict = dictionary.DictIntString("mjesto", "ptt", "mjesta");
             CollecionMjesta();
         }
         // Metoda za kolekciju Mjesta koja se veže za txtBox Mjesta za suggest and append
         private void CollecionMjesta()
         {
             string DbAc = "SELECT * FROM mjesta;";
-            AutoCompleteStringCollection AcMjesto = db.AutoComplete(DbAc, "mjesto", "ptt");
+            AutoCompleteStringCollection AcMjesto = autocomplete.AutoComplete(DbAc, "mjesto", "ptt");
             txt_mjesto.AutoCompleteCustomSource = AcMjesto;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u

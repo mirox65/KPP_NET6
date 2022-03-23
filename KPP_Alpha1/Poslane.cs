@@ -1,4 +1,5 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
@@ -16,20 +17,22 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
         
-        readonly EditClass edit = new EditClass();
-        readonly DbClass db = new DbClass();
-        readonly PoslaneController controller = new PoslaneController();
+        readonly EditClass edit = new ();
+        readonly DbClass db = new ();
+        readonly DictionaryHelper dictionary = new();
+        readonly AutocompleteHelper autocomplete = new ();
+        readonly PoslaneController controller = new ();
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
-        public Dictionary<int, string> partneriDict = new Dictionary<int, string>();
-        public Dictionary<int, string> djelatniciDict = new Dictionary<int, string>();
-        public Dictionary<int, string> posiljateljiDict = new Dictionary<int, string>();
+        public Dictionary<int, string> partneriDict = new();
+        public Dictionary<int, string> djelatniciDict = new();
+        public Dictionary<int, string> posiljateljiDict = new();
         // Nakon incijalizacije instaciramo riječnike i kolekcije za daljnju obradu
         public FormPoslane()
         {
             InitializeComponent();
-            partneriDict = db.DictIntString("naziv", "partneri");
-            djelatniciDict = db.DictIntString("ime", "prezime", "djelatnici");
-            posiljateljiDict = db.DictIntString("naziv", "posiljatelji");
+            partneriDict = dictionary.DictIntString("naziv", "partneri");
+            djelatniciDict = dictionary.DictIntString("ime", "prezime", "djelatnici");
+            posiljateljiDict = dictionary.DictIntString("naziv", "posiljatelji");
             CollectionPartneri();
             CollectionDjelatnici();
             CollectionPosiljatelji();
@@ -38,21 +41,21 @@ namespace KPP_Alpha1
         private void CollectionPosiljatelji()
         {
             string DbAc = "SELECT * FROM posiljatelji;";
-            AutoCompleteStringCollection AcPosiljatelji = db.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcPosiljatelji = autocomplete.AutoComplete(DbAc, "naziv");
             txtPrimatelj.AutoCompleteCustomSource = AcPosiljatelji;
         }
         // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append
         private void CollectionDjelatnici()
         {
             string DbAc = "SELECT * FROM djelatnici;";
-            AutoCompleteStringCollection AcDjelatnici = db.AutoComplete(DbAc, "ime", "prezime");
+            AutoCompleteStringCollection AcDjelatnici = autocomplete.AutoComplete(DbAc, "ime", "prezime");
             txtPosiljatelj.AutoCompleteCustomSource = AcDjelatnici;
         }
         // Metoda za kolekciju  koja se veže za txtBox Partneri za suggest and append
         private void CollectionPartneri()
         {
             string dbAc = "SELECT * FROM partneri;";
-            AutoCompleteStringCollection acPartneri = db.AutoComplete(dbAc, "naziv");
+            AutoCompleteStringCollection acPartneri = autocomplete.AutoComplete(dbAc, "naziv");
             txtPrevoznik.AutoCompleteCustomSource = acPartneri;
         }
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
