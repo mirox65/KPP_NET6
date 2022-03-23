@@ -30,6 +30,7 @@ namespace KPP_Alpha1
             Txt_RegOznaka.Clear();
             Txt_BrUgovora.Clear();
             Txt_Search.Clear();
+            Txt_Napomena.Clear();
             Txt_Proizvodac.Focus();
             CmbStatus.SelectedIndex = 0;
         }

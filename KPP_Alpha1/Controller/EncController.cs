@@ -13,7 +13,7 @@ namespace KPP_Alpha1.Controller
         readonly DbClass db = new DbClass();
         internal bool Insert(EncModel enc)
         {
-            var insert = "INSERT INTO enc(naziv, korisnikId, status, napomena, ažurirano) " +
+            var insert = "INSERT INTO enc(naziv, status, napomena, korisnikId, ažurirano) " +
                 "VALUES(?, ?, ?, ?, ?);";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(insert, conn);

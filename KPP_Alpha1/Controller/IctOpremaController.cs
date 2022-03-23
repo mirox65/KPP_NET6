@@ -15,7 +15,7 @@ namespace KPP_Alpha1.Controller
         internal bool Insert(IctOpremaModel oprema)
         {
             var Insert = "INSERT INTO ictOprema" +
-                "(naziv, serBr, invBr, status, datKupovine, vijek, datZamjene, napomena korisnikId, dateEdited) " +
+                "(naziv, serBr, invBr, status, datKupovine, vijek, datZamjene, napomena, korisnikId, dateEdited) " +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Insert, conn);

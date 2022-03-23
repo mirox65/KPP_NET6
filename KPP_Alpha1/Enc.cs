@@ -24,6 +24,8 @@ namespace KPP_Alpha1
             Lbl_Id.Text = string.Empty;
             Txt_Naziv.Clear();
             Txt_Search.Clear();
+            Txt_Napomena.Clear();
+            CmbStatus.SelectedIndex = 0;
             Txt_Naziv.Focus();
         }
 

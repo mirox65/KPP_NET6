@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Text;
-using System.Windows.Forms;
 
 namespace KPP_Alpha1
 {
@@ -68,9 +66,9 @@ namespace KPP_Alpha1
             {
                 conn.Open();
                 int provjera = (int)cmd.ExecuteScalar();
-                if(provjera > 0) 
+                if (provjera > 0)
                 {
-                    success = false; 
+                    success = false;
                 }
             }
             catch (Exception)
@@ -111,7 +109,6 @@ namespace KPP_Alpha1
             }
             return dt;
         }
-
 
     }
 }
