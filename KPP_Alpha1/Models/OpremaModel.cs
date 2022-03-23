@@ -11,7 +11,7 @@ namespace KPP_Alpha1.Models
     {
 
         public int Id { get; set; }
-        public string Naziv { get; set; }
+        public string Naziv { get; set; } 
         public string SerijskiBroj { get; set; }
         public string InventarniBroj { get; set; } = "Novo";
         public string StatusOpreme { get; set; }

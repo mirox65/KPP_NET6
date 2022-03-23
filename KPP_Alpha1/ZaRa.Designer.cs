@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.Dtp_Zaduženo = new System.Windows.Forms.DateTimePicker();
             this.CmbFilter = new System.Windows.Forms.ComboBox();
@@ -52,6 +52,7 @@
             this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Btn_Kreiraj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +91,7 @@
             this.CmbFilter.Size = new System.Drawing.Size(133, 25);
             this.CmbFilter.TabIndex = 43;
             this.CmbFilter.TabStop = false;
+            this.CmbFilter.SelectedIndexChanged += new System.EventHandler(this.CmbFilter_SelectedIndexChanged);
             // 
             // CmbZaRa
             // 
@@ -99,8 +101,8 @@
             this.CmbZaRa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmbZaRa.FormattingEnabled = true;
             this.CmbZaRa.Items.AddRange(new object[] {
-            "Zaduživanje",
-            "Razduživanje"});
+            "Zaduženje",
+            "Razduženje"});
             this.CmbZaRa.Location = new System.Drawing.Point(85, 59);
             this.CmbZaRa.Name = "CmbZaRa";
             this.CmbZaRa.Size = new System.Drawing.Size(133, 25);
@@ -131,8 +133,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -309,12 +311,24 @@
             this.SearchToolStripMenuItem.Text = "Pretraži";
             this.SearchToolStripMenuItem.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
+            // Btn_Kreiraj
+            // 
+            this.Btn_Kreiraj.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_Kreiraj.Location = new System.Drawing.Point(523, 119);
+            this.Btn_Kreiraj.Name = "Btn_Kreiraj";
+            this.Btn_Kreiraj.Size = new System.Drawing.Size(133, 41);
+            this.Btn_Kreiraj.TabIndex = 55;
+            this.Btn_Kreiraj.Text = "Kreiraj";
+            this.Btn_Kreiraj.UseVisualStyleBackColor = true;
+            this.Btn_Kreiraj.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormZaRa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.Btn_Kreiraj);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Btn_Pretraži);
             this.Controls.Add(this.label2);
@@ -333,7 +347,7 @@
             this.Controls.Add(this.Lbl_Naziv);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Lbl_Id);
-            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormZaRa";
             this.Text = "ZaRa";
@@ -370,5 +384,6 @@
         private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SearchToolStripMenuItem;
+        private System.Windows.Forms.Button Btn_Kreiraj;
     }
 }

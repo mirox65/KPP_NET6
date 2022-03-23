@@ -1,27 +1,37 @@
 ﻿using KPP_Alpha1.Controller;
+using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace KPP_Alpha1
 {
     /// <summary>
-    /// Zadužnice i razdužnice klasa namjenjana za pračenje opreme
+    /// Zadužnice i razdužnice klasa namjenjana za praćenje opreme
     /// koja se nalazi kod djelatnika da nemamo repova. 
-    /// Zaduženja raditi odmah kad se oprema izdaje a razudžnica tek
+    /// Zaduženja raditi odmah kad se oprema izdaje a razdužnica tek
     /// kad se oprema vrati u ured
     /// </summary>
     public partial class FormZaRa : Form
     {
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly ZaRaController controller = new ZaRaController();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
+        readonly WordHelper wc = new();
+        readonly ZaRaController controller = new();
+        readonly ListHelper lh = new();
+        
+        private readonly string fileName = @"C:\Users\palaca\source\repos\KPP_NET6\KPP_Alpha1\bin\x86\Debug\net6.0-windows\ZARA_TEMPLATE.doc";
+        private readonly string saveAs = @"\\zagw19fs01\Users\palaca\Desktop\ZaduRazdu.doc";
 
-        private Dictionary<int, string> djelatniciDic = new Dictionary<int, string>();
-        private Dictionary<string, int> opremaDic = new Dictionary<string, int>();
-        private Dictionary<string, string> opremaBazaDic = new Dictionary<string, string>();
+        private Dictionary<int, string> djelatniciDic = new();
+        private Dictionary<string, int> opremaDic = new();
+        private Dictionary<string, string> opremaBazaDic = new();
 
         public Dictionary<string, int> OpremaDic { get; set; }
         public Dictionary<string, string> OpremaBaza { get; set; }
@@ -99,6 +109,8 @@ namespace KPP_Alpha1
             Txt_Oprema.Clear();
             CmbFilter.SelectedIndex = 0;
             CmbZaRa.SelectedIndex = 0;
+            Txt_Djelatnik.Focus();
+            Dgv.Rows.Clear();
         }
 
         private void Btn_Pretraži_Click(object sender, EventArgs e)
@@ -177,7 +189,7 @@ namespace KPP_Alpha1
                         if (success is true)
                         {
                             Btn_Pretraži.PerformClick();
-                            Clear();
+                            OpremaClear();
                         }
                         else
                         {
@@ -194,6 +206,12 @@ namespace KPP_Alpha1
                     edit.MessageErrorKeyMissing();
                 }
             }
+        }
+
+        private void OpremaClear()
+        {
+            Txt_Oprema.Clear();
+            Txt_Oprema.Focus();
         }
 
         private void Btn_Edit_Click(object sender, EventArgs e)
@@ -213,7 +231,7 @@ namespace KPP_Alpha1
                     try
                     {
                         var success = false;
-                        if (CmbZaRa.Text == "Razduživanje")
+                        if (CmbZaRa.Text == "Razduženje")
                         {
                             success = controller.UpdateRazudženje(zaRa);
                         }
@@ -224,7 +242,7 @@ namespace KPP_Alpha1
                         if (success is true)
                         {
                             Btn_Pretraži.PerformClick();
-                            Clear();
+                            OpremaClear();
                         }
                         else
                         {
@@ -257,7 +275,7 @@ namespace KPP_Alpha1
         private ZaRaModel SetProperties()
         {
             var zaRa = new ZaRaModel();
-            if (CmbZaRa.Text == "Razduživanje")
+            if (CmbZaRa.Text == "Razduženje")
             {
                 zaRa.DatumRazduženja = Dtp_Razduženo.Value.Date;
             }
@@ -265,6 +283,7 @@ namespace KPP_Alpha1
             zaRa.OpremaId = opremaDic.FirstOrDefault(o => o.Key == Txt_Oprema.Text.Trim()).Value;
             zaRa.NazivZaRaTablice = opremaBazaDic.FirstOrDefault(b => b.Key == Txt_Oprema.Text.Trim()).Value;
             zaRa.DatumZaduženja = Dtp_Zaduženo.Value.Date;
+
             if (Lbl_Id.Text.Length > 0)
             {
                 zaRa.Id = Convert.ToInt32(Lbl_Id.Text);
@@ -304,6 +323,66 @@ namespace KPP_Alpha1
         private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Btn_Pretraži.PerformClick();
+        }
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CmbZaRa.SelectedIndex = CmbFilter.SelectedIndex;
+            Btn_Kreiraj.Text = $"Kreiraj {CmbZaRa.Text.ToLower()}";
+            Btn_Pretraži.PerformClick();
+        }
+
+        private ZaRaDokumentModel SetZaraModel()
+        {
+            ZaRaDokumentModel zaraDoc = new();
+
+            zaraDoc.Djelatnik = Txt_Djelatnik.Text;
+            zaraDoc.Datum = (CmbFilter.Text == "Razduženo") ? Dtp_Razduženo.Value.Date : Dtp_Zaduženo.Value.Date;            
+            zaraDoc.Filter = CmbFilter.Text;
+            zaraDoc.TipDokumenta = (CmbFilter.Text == "Razduženo") ? "Razdužnica" : "Zadužnica";
+            zaraDoc.PredaoPreuzeo = (CmbFilter.Text == "Razduženo") ? "Preuzeo/la" : "Predao/la";
+            zaraDoc.ZaduzioRazduzio = (CmbFilter.Text == "Razduženo") ? "Razdužio/la" : "Zadužio/la";
+
+            return zaraDoc;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ZaRaDokumentModel zaraDoc = SetZaraModel();
+            List<string> popis = new();
+
+            for (int i = 0; i < Dgv.SelectedRows.Count; i++)
+            {
+                popis.Add(PovuciPotegni(Dgv.SelectedRows[i].Cells["Oprema"].Value.ToString())); 
+            }
+
+            wc.CreateWordDocument(fileName, saveAs, zaraDoc, popis);
+        }
+
+        private string PovuciPotegni(string nazivOpreme)
+        {
+            var nazivBaze = opremaBazaDic.FirstOrDefault(b => b.Key == nazivOpreme).Value;
+            var id = opremaDic.FirstOrDefault(o => o.Key == nazivOpreme).Value;
+            var element = "";
+
+            switch (nazivBaze)
+            {
+                case "vozila":
+                    element = lh.PovuciVozilo(id);
+                    break;
+                case "keyCards":
+                    element = lh.PovuciKeyCard(id);
+                    break;
+                case "dataCards":
+                    element = lh.PovuciDataCard(id);
+                    break;
+                case "enc":
+                    element = lh.PovuciEnc(id);
+                    break;
+                case "ictOprema":
+                    element = lh.PovuciIctOprema(id);
+                    break;
+            }
+            return element;
         }
     }
 }
