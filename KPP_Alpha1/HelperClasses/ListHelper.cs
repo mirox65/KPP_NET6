@@ -13,7 +13,7 @@ namespace KPP_Alpha1.HelperClasses
         {
             var vozilo = modelHelper.UcitavanjeVozila(id);
 
-            return $"{vozilo.Proizvodac} {vozilo.Model} {vozilo.Opis}, broj šasije {vozilo.BrSasije}; " +
+            return $"{vozilo.Proizvodac} {vozilo.Model} {vozilo.Opis}, broj šasije: {vozilo.BrSasije}, " +
                 $"registarskih oznaka: {vozilo.RegOznaka}";
         }
 

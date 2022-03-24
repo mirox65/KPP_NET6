@@ -76,7 +76,7 @@ namespace KPP_Alpha1.HelperClasses
 
             myWordDoc.Close();
             wordApp.Quit();
-            MessageBox.Show("Ovlaštenje kreirano!");
+            MessageBox.Show("Ovlaštenje kreirano!", "Obavijest");
         }
         //Kreiranje Word dokumenta - Zadužnica/Razdužnica
         public void CreateWordDocument(object filename, object SaveAs, ZaRaDokumentModel zaRaDoc, List<string> popis)

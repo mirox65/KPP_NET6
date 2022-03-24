@@ -16,7 +16,7 @@ namespace KPP_Alpha1
         readonly ModelHelper modelHelper = new();
 
         private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenja_za_auto_template.docx";
-        private readonly string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.docx";
+        private readonly string saveAsPath = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\";
 
         private Dictionary<int, string> djelatniciDic = new();
         private Dictionary<int, string> vozilaDic = new();
@@ -81,6 +81,7 @@ namespace KPP_Alpha1
             var vozilo = modelHelper.UcitavanjeVozila(vozilaDic.FirstOrDefault(v => v.Value == Txt_RegOznaka.Text.Trim()).Key);
             var ovlastenje = SetProperties();
 
+            var saveAs = $"{saveAsPath}Ovlaštenje_{ovlastenje.Djelatnik}_{ovlastenje.RegOznaka}.docx";
             wordHelper.CreateWordDocument(fileName, saveAs, djelatnik, vozilo, ovlastenje);
             wordHelper.OpenWordDocumentForPrint(saveAs);
         }
