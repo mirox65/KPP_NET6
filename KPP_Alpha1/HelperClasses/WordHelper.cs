@@ -133,6 +133,7 @@ namespace KPP_Alpha1.HelperClasses
             myWordDoc.Close();
             wordApp.Quit();
             MessageBox.Show($"{zaRaDoc.TipDokumenta} kreirana!");
+
         }
         //Otvaranje dokumenta za print
         public void OpenWordDocumentForPrint(string wordToOpen)

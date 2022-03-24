@@ -21,21 +21,21 @@ namespace KPP_Alpha1.HelperClasses
         {
             var keyCard = modelHelper.UcitavanjeKeyCard(id);
 
-            return $"{keyCard.Naziv}";
+            return $"Kartica: {keyCard.Naziv}";
         }
 
         internal string PovuciDataCard(int id)
         {
             var dataCard = modelHelper.UcitavanjeDataCard(id);
 
-            return $"{dataCard.Imei} {dataCard.SerBr}";
+            return $"Podatkovna kartica: {dataCard.Imei} {dataCard.SerBr}";
         }
 
         internal string PovuciEnc(int id)
         {
             var enc = modelHelper.UcitavanjeEnc(id);
 
-            return $"{enc.Naziv}";
+            return $"ENC: {enc.Naziv}";
         }
 
         internal string PovuciIctOprema(int id)
