@@ -15,8 +15,8 @@ namespace KPP_Alpha1
         readonly WordHelper wordHelper = new();
         readonly ModelHelper modelHelper = new();
 
-        private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenja_za_auto_template.doc";
-        private readonly string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.doc";
+        private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenja_za_auto_template.docx";
+        private readonly string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ovlastenje_za_auto_created.docx";
 
         private Dictionary<int, string> djelatniciDic = new();
         private Dictionary<int, string> vozilaDic = new();

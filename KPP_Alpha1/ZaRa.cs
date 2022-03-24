@@ -24,8 +24,8 @@ namespace KPP_Alpha1
         readonly WordHelper wc = new();
         readonly ListHelper lh = new();
 
-        private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ZARA_TEMPLATE.doc";
-        private readonly string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ZaRaCreated.doc";
+        private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ZARA_TEMPLATE.docx";
+        private readonly string saveAs = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\ZaRaCreated.docx";
 
         private Dictionary<int, string> djelatniciDic = new();
         private Dictionary<string, int> opremaDic = new();
@@ -375,6 +375,7 @@ namespace KPP_Alpha1
             }
 
             wc.CreateWordDocument(fileName, saveAs, zaraDoc, popis);
+            wc.OpenWordDocumentForPrint(saveAs);
         }
 
         private string PovuciPotegni(string nazivOpreme)
