@@ -24,7 +24,7 @@ namespace KPP_Alpha1.Controller
 
         internal bool Update(ZaRaModel zaRa)
         {
-            var update = $"UPDATE {zaRa.NazivTabliceBaze} SET opremaId=?, djelatnikId=?, datZaduženja=?, korisnikId=?, " +
+            var update = $"UPDATE zaRa{zaRa.NazivTabliceBaze} SET opremaId=?, djelatnikId=?, datZaduženja=?, korisnikId=?, " +
                 $"ažurirano=? WHERE id=?;";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(update, conn);
@@ -40,7 +40,7 @@ namespace KPP_Alpha1.Controller
 
         internal bool UpdateRazudženje(ZaRaModel zaRa)
         {
-            var update = $"UPDATE {zaRa.NazivTabliceBaze} SET datRazduženja=?, korisnikId=?, ažurirano=? " +
+            var update = $"UPDATE zaRa{zaRa.NazivTabliceBaze} SET datRazduženja=?, korisnikId=?, ažurirano=? " +
                 $"WHERE id=?;";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(update, conn);
