@@ -318,7 +318,7 @@ namespace KPP_Alpha1
         // prava korisnika i prikazivanje elemenata po pravima
         private void form_Main_Load(object sender, EventArgs e)
         {
-            using (FormLogin LogForm = new FormLogin())
+            using (FormLogin LogForm = new())
             {
                 if (LogFrm.ShowDialog() != DialogResult.OK)
                 {
@@ -329,7 +329,16 @@ namespace KPP_Alpha1
                 {
                     if (LoginHelper.StaticUloga == "Administrator")
                     {
-                        dodajKorisnikaToolStripMenuItem.Visible = true;                        
+                        dodajKorisnikaToolStripMenuItem.Visible = true;
+
+                        if (LoginHelper.StaticOdjel == "ICT")
+                        {
+                            ICTToolStripMenuItem.Visible = true;
+                        }
+                        if (LoginHelper.StaticOdjel == "ICT" || LoginHelper.StaticOdjel == "HR")
+                        {
+                            HRToolStripMenuItem.Visible = true;
+                        }
                     }
                     tssl_korisnik.Text = LoginHelper.StaticKorisnik;
                 }

@@ -15,9 +15,9 @@ namespace KPP_Alpha1
 
     public partial class FormLogin : Form
     {
-        readonly EditClass edit = new EditClass();
-        readonly LoginController controller = new LoginController();
-        readonly LoginController loginController = new LoginController();
+        readonly EditClass edit = new();
+        readonly LoginController controller = new();
+        readonly LoginController loginController = new();
 
         public FormLogin()
         {

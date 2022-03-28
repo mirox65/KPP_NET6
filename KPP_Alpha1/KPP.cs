@@ -162,7 +162,7 @@ namespace KPP_Alpha1
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private KnjigaModel SetProperties()
         {
-            KnjigaModel knjiga = new KnjigaModel();
+            var knjiga = new KnjigaModel();
             if (int.Parse(Lbl_Id.Text) > 0)
             {
                 knjiga.Id = int.Parse(Lbl_Id.Text);

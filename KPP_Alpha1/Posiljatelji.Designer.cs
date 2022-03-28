@@ -46,6 +46,12 @@
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Txt_Oib = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CmbStatus = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CmbFilter = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,7 +123,7 @@
             this.txt_mjesto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txt_mjesto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.txt_mjesto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txt_mjesto.Location = new System.Drawing.Point(108, 68);
+            this.txt_mjesto.Location = new System.Drawing.Point(108, 102);
             this.txt_mjesto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_mjesto.Name = "txt_mjesto";
             this.txt_mjesto.Size = new System.Drawing.Size(210, 26);
@@ -136,7 +142,7 @@
             // 
             this.lbl_mjesto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_mjesto.AutoSize = true;
-            this.lbl_mjesto.Location = new System.Drawing.Point(12, 71);
+            this.lbl_mjesto.Location = new System.Drawing.Point(12, 105);
             this.lbl_mjesto.Name = "lbl_mjesto";
             this.lbl_mjesto.Size = new System.Drawing.Size(54, 19);
             this.lbl_mjesto.TabIndex = 18;
@@ -156,7 +162,7 @@
             // 
             this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Lbl_Id.AutoSize = true;
-            this.Lbl_Id.Location = new System.Drawing.Point(12, 118);
+            this.Lbl_Id.Location = new System.Drawing.Point(12, 127);
             this.Lbl_Id.Name = "Lbl_Id";
             this.Lbl_Id.Size = new System.Drawing.Size(17, 19);
             this.Lbl_Id.TabIndex = 13;
@@ -219,12 +225,89 @@
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
+            // Txt_Oib
+            // 
+            this.Txt_Oib.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Oib.Location = new System.Drawing.Point(108, 68);
+            this.Txt_Oib.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Txt_Oib.Name = "Txt_Oib";
+            this.Txt_Oib.Size = new System.Drawing.Size(210, 26);
+            this.Txt_Oib.TabIndex = 45;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 71);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 19);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "OIB/MB:";
+            // 
+            // CmbStatus
+            // 
+            this.CmbStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbStatus.BackColor = System.Drawing.Color.White;
+            this.CmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbStatus.FormattingEnabled = true;
+            this.CmbStatus.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbStatus.Location = new System.Drawing.Point(464, 33);
+            this.CmbStatus.Name = "CmbStatus";
+            this.CmbStatus.Size = new System.Drawing.Size(133, 27);
+            this.CmbStatus.TabIndex = 66;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(404, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 19);
+            this.label4.TabIndex = 65;
+            this.label4.Text = "Status:";
+            // 
+            // CmbFilter
+            // 
+            this.CmbFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbFilter.BackColor = System.Drawing.Color.White;
+            this.CmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbFilter.FormattingEnabled = true;
+            this.CmbFilter.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbFilter.Location = new System.Drawing.Point(464, 110);
+            this.CmbFilter.Name = "CmbFilter";
+            this.CmbFilter.Size = new System.Drawing.Size(133, 27);
+            this.CmbFilter.TabIndex = 64;
+            this.CmbFilter.TabStop = false;
+            this.CmbFilter.SelectedIndexChanged += new System.EventHandler(this.CmbFilter_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(404, 114);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 19);
+            this.label5.TabIndex = 63;
+            this.label5.Text = "Filter:";
+            // 
             // FormPosiljatelji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.CmbStatus);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CmbFilter);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Txt_Oib);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lbl_Mjesto_Id);
             this.Controls.Add(this.lbl_pretrazivanje);
@@ -268,5 +351,11 @@
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.TextBox Txt_Oib;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox CmbStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CmbFilter;
+        private System.Windows.Forms.Label label5;
     }
 }

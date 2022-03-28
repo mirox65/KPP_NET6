@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormKorisnici));
             this.Lbl_Id = new System.Windows.Forms.Label();
             this.lbl_prezime_korisnik = new System.Windows.Forms.Label();
@@ -91,8 +91,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -269,9 +269,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(434, 83);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 19);
+            this.label4.Size = new System.Drawing.Size(50, 19);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Aktivan:";
+            this.label4.Text = "Status:";
             // 
             // ComBoxAktivan
             // 
@@ -281,8 +281,8 @@
             this.ComBoxAktivan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComBoxAktivan.FormattingEnabled = true;
             this.ComBoxAktivan.Items.AddRange(new object[] {
-            "DA",
-            "NE"});
+            "Aktivno",
+            "Neaktivno"});
             this.ComBoxAktivan.Location = new System.Drawing.Point(515, 79);
             this.ComBoxAktivan.Name = "ComBoxAktivan";
             this.ComBoxAktivan.Size = new System.Drawing.Size(133, 27);
@@ -306,8 +306,8 @@
             this.ComBoxFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComBoxFilter.FormattingEnabled = true;
             this.ComBoxFilter.Items.AddRange(new object[] {
-            "Aktivni korisnici",
-            "Neaktivni korisnici"});
+            "Aktivno",
+            "Neaktivno"});
             this.ComBoxFilter.Location = new System.Drawing.Point(515, 112);
             this.ComBoxFilter.Name = "ComBoxFilter";
             this.ComBoxFilter.Size = new System.Drawing.Size(133, 27);

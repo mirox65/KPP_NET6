@@ -14,7 +14,7 @@ namespace KPP_Alpha1.Models
 
         public DateTime DatZaposlen { get; set; }
         public DateTime DatOtkaz { get; set; }
-        public string Aktivan { get; set; }
+        public string Status { get; set; }
         public int KorisnikId { get; set; } = LoginHelper.StaticId;
         public DateTime Azurirano { get; set; } = DateTime.Now.Date;
     }

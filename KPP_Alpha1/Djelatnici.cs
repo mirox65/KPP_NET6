@@ -17,11 +17,11 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new ();
-        readonly EditClass edit = new ();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
         readonly DictionaryHelper dictionary = new();
-        readonly AutocompleteHelper autocomplete = new  ();
-        readonly DjelatnikController controller = new ();
+        readonly AutocompleteHelper autocomplete = new();
+        readonly DjelatnikController controller = new();
 
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
         public Dictionary<int, string> odjeliDict = new();
@@ -44,19 +44,19 @@ namespace KPP_Alpha1
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void Djelatnici_Load(object sender, EventArgs e)
         {
-            DTUpdate("DA");
+            DTUpdate(ComBoxFilter.Text);
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
-        private void DTUpdate(string aktivan)
+        private void DTUpdate(string filter)
         {
             string Dbs = "SELECT d.id AS ID, d.pn AS PN, d.ime AS Ime, d.prezime AS Prezime, d.oib AS Oib, o.naziv AS Odjel, " +
-                "d.datZaposlen AS Zaposlen, d.datOtkaz AS Otkaz, d.aktivan AS Aktivan, [do.ime]&' '&[do.prezime] AS Korisnik, " +
+                "d.datZaposlen AS Zaposlen, d.datOtkaz AS Otkaz, d.status AS Status, [do.ime]&' '&[do.prezime] AS Korisnik, " +
                 "d.azurirano AS Ažurirano " +
                 "FROM ((Djelatnici AS d " +
                 "LEFT JOIN odjeli AS o ON o.id = d.idodjel) " +
                 "LEFT JOIN korisnici AS k ON k.id = d.idkorisnika) " +
                 "LEFT JOIN djelatnici AS do ON do.id=k.djelatnikid " +
-                $"WHERE d.aktivan='{ aktivan }' " +
+                $"WHERE d.status='{ filter }' " +
                 "ORDER BY d.prezime ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
@@ -75,7 +75,7 @@ namespace KPP_Alpha1
             Lbl_Id.Text = string.Empty;
             txt_pretrazivanje.Clear();
             ComBoxFilter.SelectedIndex = 0;
-            ComBoxAktivan.SelectedIndex = 0;
+            ComBoxStatus.SelectedIndex = 0;
             CheckBoxOtkaz.Checked = false;
             Txt_Pn.Focus();
         }
@@ -112,7 +112,7 @@ namespace KPP_Alpha1
                         bool sucess = controller.Insert(djelatnik);
                         if (sucess is true)
                         {
-                            DTUpdate("DA");
+                            DTUpdate(ComBoxFilter.Text);
                             Clear();
                         }
                         else
@@ -157,7 +157,7 @@ namespace KPP_Alpha1
                         }
                         if (success is true)
                         {
-                            DTUpdate("DA");
+                            DTUpdate(ComBoxFilter.Text);
                             Clear();
                         }
                         else
@@ -201,7 +201,7 @@ namespace KPP_Alpha1
             djelatnik.Oib = Txt_Oib.Text.Trim();
             djelatnik.DatZaposlen = Dtp_Zaposlen.Value.Date;
             djelatnik.OdjelId = odjeliDict.FirstOrDefault(o => o.Value == Txt_OdjelId.Text.Trim()).Key;
-            djelatnik.Aktivan = ComBoxAktivan.Text.Trim();
+            djelatnik.Status = ComBoxStatus.Text.Trim();
             return djelatnik;
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
@@ -219,7 +219,7 @@ namespace KPP_Alpha1
             {
                 Dtp_Otkaz.Text = Dgv.Rows[rowIndex].Cells[7].Value.ToString();
             }
-            ComBoxAktivan.Text = Dgv.Rows[rowIndex].Cells[8].Value.ToString();
+            ComBoxStatus.Text = Dgv.Rows[rowIndex].Cells[8].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
@@ -252,16 +252,9 @@ namespace KPP_Alpha1
             Clear();
         }
 
-        private void ComBoxFilter_SelectionChangeCommitted(object sender, EventArgs e)
+        private void ComBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ComBoxFilter.Text == "Aktivni djelatnici")
-            {
-                DTUpdate("DA");
-            }
-            else
-            {
-                DTUpdate("NE");
-            }
+            DTUpdate(ComBoxFilter.Text);
         }
     }
 }

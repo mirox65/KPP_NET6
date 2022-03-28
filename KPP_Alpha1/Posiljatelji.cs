@@ -17,17 +17,19 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new ();
-        readonly EditClass edit = new ();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
         readonly DictionaryHelper dictionary = new();
-        readonly AutocompleteHelper autocomplete = new ();
-        readonly PosiljateljController controller = new ();
+        readonly AutocompleteHelper autocomplete = new();
+        readonly PosiljateljController controller = new();
+        readonly DoubleCheckHelper doubleCheck = new();
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
         public Dictionary<int, string> mjestaDict = new();
         // Nakon incijalizacije instaciramo riječnik Mjesta i kolekciju Mjesto
         public FormPosiljatelji()
         {
             InitializeComponent();
+            Clear();
             mjestaDict = dictionary.DictIntString("mjesto", "ptt", "mjesta");
             CollecionMjesta();
         }
@@ -39,14 +41,15 @@ namespace KPP_Alpha1
             txt_mjesto.AutoCompleteCustomSource = AcMjesto;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
-        private void DTUpdate()
+        private void DTUpdate(string filter)
         {
-            string Dbs = "SELECT p.id AS ID, p.naziv AS Pošiljatelj, m.mjesto AS Mjesto, " +
-                "[d.ime]&' '&[d.prezime] AS Korisnik, p.azurirano AS Ažurirano " +
+            string Dbs = "SELECT p.id AS ID, p.naziv AS Pošiljatelj, p.oib AS OIB, m.mjesto AS Mjesto, p.status AS Status, " +
+                "[d.ime]&' '&[d.prezime] AS Ažurirao, p.azurirano AS Ažurirano " +
                 "FROM ((posiljatelji AS p " +
                 "LEFT JOIN mjesta AS m ON m.id = p.idmjesto) " +
                 "LEFT JOIN korisnici AS k ON k.id=p.korisnikId) " +
                 "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikid " +
+                $"WHERE p.status = '{filter}' " +
                 "ORDER BY p.naziv ASC;";
             DataTable dt = db.Select(Dbs);
             Dgv.DataSource = dt;
@@ -54,13 +57,16 @@ namespace KPP_Alpha1
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void form_Posiljatelji_Load(object sender, EventArgs e)
         {
-            DTUpdate();
+            DTUpdate(CmbFilter.Text);
         }
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
             txt_naziv.Clear();
+            Txt_Oib.Clear();
             txt_mjesto.Clear();
+            CmbStatus.SelectedIndex = 0;
+            CmbFilter.SelectedIndex = 0;
             Lbl_Id.Text = "0";
             txt_pretrazivanje.Clear();
             txt_naziv.Focus();
@@ -80,29 +86,40 @@ namespace KPP_Alpha1
                 PrazneCelije();
                 var posiljatelj = SetProperties();
                 var provjera = ProvjeraKljučeva(posiljatelj);
-                if (provjera is true)
+                var duplikat = doubleCheck.DoubleInsertChecker("oib", "posiljatelji",posiljatelj.Oib);
+                if (provjera is true && duplikat is true)
                 {
-                    try
-                    {
-                        bool success = controller.Insert(posiljatelj);
-                        if (success is true)
-                        {
-                            DTUpdate();
-                            Clear();
-                        }
-                        else
-                        {
-                            edit.MessageDBErrorInsert();
-                        }
-                    }
-                    catch (Exception ex) { edit.MessageException(ex); }
+                    Insert(posiljatelj);
+                    DTUpdate(CmbFilter.Text);
+                    Clear();
                 }
                 else
                 {
-                    edit.MessageErrorKeyMissing();
+                    if (provjera is false)
+                    {
+                        edit.MessageErrorKeyMissing();
+                    }
+                    if (duplikat is false)
+                    {
+                        edit.MessageDuplikat();
+                    }
                 }
             }
         }
+
+        private void Insert(PosiljateljModel posiljatelj)
+        {
+            try
+            {
+                bool success = controller.Insert(posiljatelj);
+                if (success is not true)
+                {
+                    edit.MessageDBErrorInsert();
+                }
+            }
+            catch (Exception ex) { edit.MessageException(ex); }
+        }
+
         // BTN za izmjenu podataka radi sve što i unos metoda osim koraka pozivanja generičke metode za update podataka u bazi
         private void lbl_uredi_Click(object sender, EventArgs e)
         {
@@ -116,29 +133,41 @@ namespace KPP_Alpha1
                 PrazneCelije();
                 var posiljatelj = SetProperties();
                 var provjera = ProvjeraKljučeva(posiljatelj);
-                if (provjera is true)
+                var duplikat = doubleCheck.DoubleInsertChecker("oib", "posiljatelji", posiljatelj.Oib);
+                if (provjera is true && duplikat is true)
                 {
-                    try
-                    {
-                        bool success = controller.Update(posiljatelj);
-                        if (success is true)
-                        {
-                            DTUpdate();
-                            Clear();
-                        }
-                        else
-                        {
-                            edit.MessageDBErrorUpdate();
-                        }
-                    }
-                    catch (Exception ex) { edit.MessageException(ex); }
+                    Update(posiljatelj);
+                    DTUpdate(CmbFilter.Text);
+                    Clear();
+
                 }
                 else
                 {
-                    edit.MessageErrorKeyMissing();
+                    if (provjera is false)
+                    {
+                        edit.MessageErrorKeyMissing();
+                    }
+                    if (duplikat is false)
+                    {
+                        edit.MessageDuplikat();
+                    }
                 }
             }
         }
+
+        private void Update(PosiljateljModel posiljatelj)
+        {
+            try
+            {
+                bool success = controller.Update(posiljatelj);
+                if (success is false)
+                {
+                    edit.MessageDBErrorUpdate();
+                }
+            }
+            catch (Exception ex) { edit.MessageException(ex); }
+        }
+
         // Metoda provjerava da je strani ključ veći od 0 prije unosa
         private object ProvjeraKljučeva(PosiljateljModel posiljatelj)
         {
@@ -152,13 +181,15 @@ namespace KPP_Alpha1
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private PosiljateljModel SetProperties()
         {
-            PosiljateljModel posiljatelj = new ();
+            PosiljateljModel posiljatelj = new();
             if (int.Parse(Lbl_Id.Text) > 0)
             {
                 posiljatelj.Id = int.Parse(Lbl_Id.Text.Trim());
             }
             posiljatelj.Naziv = txt_naziv.Text.Trim();
+            posiljatelj.Oib = Txt_Oib.Text.Trim();
             posiljatelj.IdMjesto = mjestaDict.FirstOrDefault(m => m.Value == txt_mjesto.Text.Trim()).Key;
+            posiljatelj.Status = CmbStatus.Text;
             return posiljatelj;
         }
         // Provjera je li neka od ćelija prazna. Poziva generičku metodu u edit klasi koju koriste sve forme
@@ -172,7 +203,9 @@ namespace KPP_Alpha1
         {
             Lbl_Id.Text = Dgv.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt_naziv.Text = Dgv.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txt_mjesto.Text = Dgv.Rows[e.RowIndex].Cells[2].Value.ToString();
+            Txt_Oib.Text = Dgv.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt_mjesto.Text = Dgv.Rows[e.RowIndex].Cells[3].Value.ToString();
+            CmbStatus.Text = Dgv.Rows[e.RowIndex].Cells[4].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
@@ -180,7 +213,7 @@ namespace KPP_Alpha1
             try
             {
                 (Dgv.DataSource as DataTable).DefaultView.RowFilter =
-                     string.Format("pošiljatelj LIKE '%{0}%' OR mjesto LIKE '%{0}%' OR korisnik LIKE '%{0}%'",
+                     string.Format("pošiljatelj LIKE '%{0}%' OR mjesto LIKE '%{0}%' OR ažurirao LIKE '%{0}%'",
                      txt_pretrazivanje.Text.Trim());
                 if (Dgv.Rows[0].Cells[0].Value is null)
                 {
@@ -203,6 +236,11 @@ namespace KPP_Alpha1
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DTUpdate(CmbFilter.Text);
         }
     }
 }
