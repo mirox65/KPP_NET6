@@ -60,8 +60,8 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssLable_Korisnik = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssl_korisnik = new System.Windows.Forms.ToolStripStatusLabel();
-            this.iTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ICTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,8 +75,8 @@
             this.urediToolStripMenuItem1,
             this.bazaPodatakaToolStripMenuItem,
             this.dokumentiToolStripMenuItem,
-            this.iTToolStripMenuItem,
-            this.hRToolStripMenuItem,
+            this.ICTToolStripMenuItem,
+            this.HRToolStripMenuItem,
             this.pomoćToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -318,17 +318,19 @@
             this.tssl_korisnik.Name = "tssl_korisnik";
             this.tssl_korisnik.Size = new System.Drawing.Size(0, 17);
             // 
-            // iTToolStripMenuItem
+            // ICTToolStripMenuItem
             // 
-            this.iTToolStripMenuItem.Name = "iTToolStripMenuItem";
-            this.iTToolStripMenuItem.Size = new System.Drawing.Size(32, 23);
-            this.iTToolStripMenuItem.Text = "IT";
+            this.ICTToolStripMenuItem.Name = "ICTToolStripMenuItem";
+            this.ICTToolStripMenuItem.Size = new System.Drawing.Size(41, 23);
+            this.ICTToolStripMenuItem.Text = "ICT";
+            this.ICTToolStripMenuItem.Visible = false;
             // 
-            // hRToolStripMenuItem
+            // HRToolStripMenuItem
             // 
-            this.hRToolStripMenuItem.Name = "hRToolStripMenuItem";
-            this.hRToolStripMenuItem.Size = new System.Drawing.Size(39, 23);
-            this.hRToolStripMenuItem.Text = "HR";
+            this.HRToolStripMenuItem.Name = "HRToolStripMenuItem";
+            this.HRToolStripMenuItem.Size = new System.Drawing.Size(39, 23);
+            this.HRToolStripMenuItem.Text = "HR";
+            this.HRToolStripMenuItem.Visible = false;
             // 
             // Form1
             // 
@@ -386,8 +388,8 @@
         private System.Windows.Forms.ToolStripMenuItem vozilaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem karticeZaUlazToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eNCUređajiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem iTToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ICTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HRToolStripMenuItem;
     }
 }
 

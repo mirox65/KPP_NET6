@@ -12,5 +12,6 @@
         public static string StaticKorisnickoIme { get; set; }
         public static string StaticKorisnik { get; set; }
         public static string StaticUloga { get; set; }
+        public static string StaticOdjel { get; set; }
     }
 }

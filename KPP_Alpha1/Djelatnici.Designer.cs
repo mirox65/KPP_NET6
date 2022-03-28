@@ -29,7 +29,7 @@ namespace KPP_Alpha1
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
             this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@ namespace KPP_Alpha1
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ComBoxFilter = new System.Windows.Forms.ComboBox();
-            this.ComBoxAktivan = new System.Windows.Forms.ComboBox();
+            this.ComBoxStatus = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.Txt_Oib = new System.Windows.Forms.TextBox();
@@ -158,8 +158,8 @@ namespace KPP_Alpha1
             // 
             // Dgv
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -270,29 +270,29 @@ namespace KPP_Alpha1
             this.ComBoxFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ComBoxFilter.FormattingEnabled = true;
             this.ComBoxFilter.Items.AddRange(new object[] {
-            "Aktivni djelatnici",
-            "Neaktivni djelatnici"});
+            "Aktivno",
+            "Neaktivno"});
             this.ComBoxFilter.Location = new System.Drawing.Point(549, 111);
             this.ComBoxFilter.Name = "ComBoxFilter";
             this.ComBoxFilter.Size = new System.Drawing.Size(127, 25);
             this.ComBoxFilter.TabIndex = 34;
             this.ComBoxFilter.TabStop = false;
-            this.ComBoxFilter.SelectionChangeCommitted += new System.EventHandler(this.ComBoxFilter_SelectionChangeCommitted);
+            this.ComBoxFilter.SelectedIndexChanged += new System.EventHandler(this.ComBoxFilter_SelectedIndexChanged);
             // 
-            // ComBoxAktivan
+            // ComBoxStatus
             // 
-            this.ComBoxAktivan.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ComBoxAktivan.BackColor = System.Drawing.Color.White;
-            this.ComBoxAktivan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComBoxAktivan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ComBoxAktivan.FormattingEnabled = true;
-            this.ComBoxAktivan.Items.AddRange(new object[] {
-            "DA",
-            "NE"});
-            this.ComBoxAktivan.Location = new System.Drawing.Point(365, 111);
-            this.ComBoxAktivan.Name = "ComBoxAktivan";
-            this.ComBoxAktivan.Size = new System.Drawing.Size(133, 25);
-            this.ComBoxAktivan.TabIndex = 35;
+            this.ComBoxStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComBoxStatus.BackColor = System.Drawing.Color.White;
+            this.ComBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComBoxStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComBoxStatus.FormattingEnabled = true;
+            this.ComBoxStatus.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.ComBoxStatus.Location = new System.Drawing.Point(365, 111);
+            this.ComBoxStatus.Name = "ComBoxStatus";
+            this.ComBoxStatus.Size = new System.Drawing.Size(133, 25);
+            this.ComBoxStatus.TabIndex = 35;
             // 
             // label5
             // 
@@ -310,9 +310,9 @@ namespace KPP_Alpha1
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(295, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 17);
+            this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 33;
-            this.label4.Text = "Aktivan:";
+            this.label4.Text = "Status:";
             // 
             // Txt_Oib
             // 
@@ -395,7 +395,7 @@ namespace KPP_Alpha1
             this.Controls.Add(this.Txt_Oib);
             this.Controls.Add(this.Lbl_Oib);
             this.Controls.Add(this.ComBoxFilter);
-            this.Controls.Add(this.ComBoxAktivan);
+            this.Controls.Add(this.ComBoxStatus);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.menuStrip1);
@@ -413,7 +413,7 @@ namespace KPP_Alpha1
             this.Controls.Add(this.lbl_prezime_korisnik);
             this.Controls.Add(this.lbl_ime_korisnik);
             this.Controls.Add(this.Lbl_Id);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormDjelatnici";
             this.Text = "Djelatnici";
@@ -448,7 +448,7 @@ namespace KPP_Alpha1
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
         private System.Windows.Forms.ComboBox ComBoxFilter;
-        private System.Windows.Forms.ComboBox ComBoxAktivan;
+        private System.Windows.Forms.ComboBox ComBoxStatus;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Txt_Oib;

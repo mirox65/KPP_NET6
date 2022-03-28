@@ -22,7 +22,7 @@ namespace KPP_Alpha1
             "Ako željeni naziv ili korisnik nije ponuđen dodaj ga u bazu.";
         public string ExError = "Dogodila se greška:\n\n";
 
-        #region USER MESSAGES
+        #region SYSTEM MESSAGES TO USER
         // Poruke korisniku
         // Prazna ćelija upozorava da ista ne smije biti prazna
         internal void PorukaPraznaCelija()
@@ -75,6 +75,12 @@ namespace KPP_Alpha1
             MessageBox.Show("Provjeri dropdown ZaRa!\n\nPokušaj razduženja opreme na Spremi novi!" +
                 "\n\nSva oprema za razduživanje mora biti zadužena!", CelijaNazivUpozorenje);
         }
+
+        internal void MessageDuplikat()
+        {
+            MessageBox.Show("Ova stavka već postoji u bazi!\n\nNije dopušteno imati duple unose!", CelijaNazivUpozorenje);
+        }
+
 
 
         #endregion

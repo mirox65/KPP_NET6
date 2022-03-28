@@ -7,17 +7,18 @@ namespace KPP_Alpha1.Controller
 {
     public class LoginController
     {
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly KorisnikController korisnikController = new KorisnikController();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
+        readonly KorisnikController korisnikController = new();
 
         internal bool RequestAccess(LoginModel login)
         {
             bool access = false;
-            var dbs = "SELECT k.id, [d.ime]&' '&[d.prezime] AS Korisnik, k.korisnickoIme, k.uloga " +
-                        "FROM (korisnici AS k " +
+            var dbs = "SELECT k.id, [d.ime]&' '&[d.prezime] AS Korisnik, k.korisnickoIme, k.uloga, o.naziv " +
+                        "FROM ((korisnici AS k " +
                         "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikId) " +
-                        "WHERE k.korisnickoIme=? AND k.lozinka=? AND k.aktivan='DA';";
+                        "LEFT JOIN odjeli AS o ON d.idOdjel=o.id) " +
+                        "WHERE k.korisnickoIme=? AND k.lozinka=? AND k.status='Aktivno';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             cmd.Parameters.AddWithValue("@korsinickoIme", login.KorisnickoIme);
@@ -50,6 +51,7 @@ namespace KPP_Alpha1.Controller
                     LoginHelper.StaticKorisnik = korisnik.GetValue(1).ToString();
                     LoginHelper.StaticKorisnickoIme = korisnik.GetValue(2).ToString();
                     LoginHelper.StaticUloga = korisnik.GetValue(3).ToString();
+                    LoginHelper.StaticOdjel = korisnik.GetValue(4).ToString();
                 }
             }
             korisnik.Close();
