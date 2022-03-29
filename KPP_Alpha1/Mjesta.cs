@@ -17,38 +17,42 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new ();
-        readonly EditClass edit = new ();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
         readonly DictionaryHelper dictionary = new();
-        readonly AutocompleteHelper autocomplete = new ();
-        readonly MjestoController controller = new ();
+        readonly AutocompleteHelper autocomplete = new();
+        readonly MjestoController controller = new();
+
+        int setId;
 
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
-        public Dictionary<int, string> zpanijeDict = new();
+        public Dictionary<int, string> zupanijeDict = new();
+        public Dictionary<int, string> mjestaDic = new();
 
         // Nakon incijalizacije instaciramo riječnike i kolekcije za daljnju obradu
         public FormMjesta()
         {
             InitializeComponent();
-            zpanijeDict = dictionary.DictIntString("zupanija", "zupanije");
+            zupanijeDict = dictionary.DictIntString("zupanija", "zupanije");
+            mjestaDic = dictionary.DictIntString("ptt", "mjesto", "mjesta");
             CollectionZpanije();
+            Clear();
         }
         // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
         private void CollectionZpanije()
         {
-            string DbAc = "SELECT * FROM zupanije;";
-            string AcPrvi = "zupanija";
-            AutoCompleteStringCollection AcZup = autocomplete.AutoComplete(DbAc, AcPrvi);
+            AutoCompleteStringCollection AcZup = autocomplete.AutoComplete("zupanije", "zupanija");
             txt_Zupanija.AutoCompleteCustomSource = AcZup;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
-        private void DTUpdate()
+        private void DTUpdate(string filter)
         {
-            string Dbs = "SELECT m.id AS ID, m.ptt AS PTT, m.mjesto AS Mjesto, z.zupanija AS Županija, " +
-                "[d.ime]&' '&[d.prezime] AS Korsinik, m.azurirano AS Ažurirano " +
+            string Dbs = "SELECT m.id AS ID, m.ptt AS PTT, m.mjesto AS Mjesto, z.zupanija AS Županija, m.status AS Status, " +
+                "[d.ime]&' '&[d.prezime] AS Ažurirao, m.azurirano AS Ažurirano " +
                 "FROM ((mjesta AS m LEFT JOIN zupanije AS z ON z.id=m.idZupanije) " +
                 "LEFT JOIN korisnici AS k ON k.id=m.korisnikId) " +
                 "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikid " +
+                $"WHERE m.status='{filter}' " +
                 "ORDER BY m.ptt ASC, m.id ASC;";
             DataTable dt = db.Select(Dbs);
             DGV_Mjesta.DataSource = dt;
@@ -56,7 +60,7 @@ namespace KPP_Alpha1
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void Form_Mjesta_Load(object sender, EventArgs e)
         {
-            DTUpdate();
+            DTUpdate(CmbFilter.Text);
         }
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
         // Provjera praznih ćelija, javlja poruke korisnicma (najbliža je korisniku)
@@ -75,20 +79,9 @@ namespace KPP_Alpha1
                 var provjera = ProvjeraKljučeva(mjesto);
                 if (provjera is true)
                 {
-                    try
-                    {
-                        bool success = controller.Insert(mjesto);
-                        if (success == true)
-                        {
-                            DTUpdate();
-                            Clear();
-                        }
-                        else
-                        {
-                            edit.MessageDBErrorInsert();
-                        }
-                    }
-                    catch (Exception ex) { edit.MessageException(ex); }
+                    Insert(mjesto);
+                    DTUpdate(CmbFilter.Text);
+                    Clear();
                 }
                 else
                 {
@@ -96,6 +89,20 @@ namespace KPP_Alpha1
                 }
             }
         }
+
+        private void Insert(MjestoModel mjesto)
+        {
+            try
+            {
+                bool success = controller.Insert(mjesto);
+                if (success is false)
+                {
+                    edit.MessageDBErrorInsert();
+                }
+            }
+            catch (Exception ex) { edit.MessageException(ex); }
+        }
+
         // BTN za izmjenu podataka radi sve što i unos metoda osim koraka pozivanja generičke metode za update podataka u bazi
         private void btn_Uredi_Click(object sender, EventArgs e)
         {
@@ -111,27 +118,30 @@ namespace KPP_Alpha1
                 var provjera = ProvjeraKljučeva(mjesto);
                 if (provjera is true)
                 {
-                    edit.MessageErrorKeyMissing();
+                    Update(mjesto);
+                    DTUpdate(CmbFilter.Text);
+                    Clear();
                 }
                 else
                 {
-                    try
-                    {
-                        bool success = controller.Update(mjesto);
-                        if (success == true)
-                        {
-                            DTUpdate();
-                            Clear();
-                        }
-                        else
-                        {
-                            edit.MessageDBErrorUpdate();
-                        }
-                    }
-                    catch (Exception ex) { edit.MessageException(ex); }
+                    edit.MessageErrorKeyMissing();
                 }
             }
         }
+
+        private void Update(MjestoModel mjesto)
+        {
+            try
+            {
+                bool success = controller.Update(mjesto);
+                if (success is false)
+                {
+                    edit.MessageDBErrorUpdate();
+                }
+            }
+            catch (Exception ex) { edit.MessageException(ex); }
+        }
+
         // Metoda provjerava da je strani ključ veći od 0 prije unosa
         private bool ProvjeraKljučeva(MjestoModel mjesto)
         {
@@ -145,24 +155,26 @@ namespace KPP_Alpha1
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private MjestoModel SetProperties()
         {
-            MjestoModel mjesto = new();
-            if (int.Parse(Lbl_Id.Text) > 0) 
+            var mjesto = new MjestoModel();
+            if (setId > 0)
             {
-                mjesto.Id = int.Parse(Lbl_Id.Text.Trim());
+                mjesto.Id = setId;
             }
             mjesto.Ptt = txt_Ptt.Text.Trim();
             mjesto.Mjesto = txt_Mjesto.Text.Trim();
-            mjesto.IdZupanije = zpanijeDict.FirstOrDefault(z => z.Value == txt_Zupanija.Text.Trim()).Key;
+            mjesto.IdZupanije = zupanijeDict.FirstOrDefault(z => z.Value == txt_Zupanija.Text.Trim()).Key;
+            mjesto.Status = CmbStatus.Text;
             return mjesto;
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
         private void DGV_Mjesta_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int RowIndex = e.RowIndex;
-            Lbl_Id.Text = DGV_Mjesta.Rows[RowIndex].Cells[0].Value.ToString();
-            txt_Ptt.Text = DGV_Mjesta.Rows[RowIndex].Cells[1].Value.ToString();
-            txt_Mjesto.Text = DGV_Mjesta.Rows[RowIndex].Cells[2].Value.ToString();
-            txt_Zupanija.Text = DGV_Mjesta.Rows[RowIndex].Cells[3].Value.ToString();
+            int rowIndex = e.RowIndex;
+            setId = int.Parse(DGV_Mjesta.Rows[rowIndex].Cells[0].Value.ToString());
+            txt_Ptt.Text = DGV_Mjesta.Rows[rowIndex].Cells[1].Value.ToString();
+            txt_Mjesto.Text = DGV_Mjesta.Rows[rowIndex].Cells[2].Value.ToString();
+            txt_Zupanija.Text = DGV_Mjesta.Rows[rowIndex].Cells[3].Value.ToString();
+            CmbStatus.Text = DGV_Mjesta.Rows[rowIndex].Cells[4].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
@@ -181,10 +193,12 @@ namespace KPP_Alpha1
         // Brisanje svih polja i fokus na početno polje
         private void Clear()
         {
-            Lbl_Id.Text = "0";
+            setId = 0;
             txt_Ptt.Clear();
             txt_Mjesto.Clear();
             txt_Zupanija.Clear();
+            CmbStatus.SelectedIndex = 0;
+            CmbFilter.SelectedIndex = 0;
             txt_pretrazivanje.Clear();
             txt_Ptt.Focus();
         }
@@ -209,6 +223,11 @@ namespace KPP_Alpha1
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DTUpdate(CmbFilter.Text);
         }
     }
 }

@@ -39,8 +39,7 @@ namespace KPP_Alpha1
         // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append
         private void CollectionDjelatnici()
         {
-            string DbAc = "SELECT * FROM djelatnici";
-            AutoCompleteStringCollection djelatniciCollection = autocomplete.AutoComplete(DbAc, "ime", "prezime");
+            AutoCompleteStringCollection djelatniciCollection = autocomplete.AutoComplete("djelatnici", "ime", "prezime");
             txt_djelatnik.AutoCompleteCustomSource = djelatniciCollection;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u

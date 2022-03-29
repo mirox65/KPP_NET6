@@ -23,8 +23,10 @@ namespace KPP_Alpha1
         readonly AutocompleteHelper autocomplete = new();
         readonly PosiljateljController controller = new();
         readonly DoubleCheckHelper doubleCheck = new();
+
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
         public Dictionary<int, string> mjestaDict = new();
+
         // Nakon incijalizacije instaciramo riječnik Mjesta i kolekciju Mjesto
         public FormPosiljatelji()
         {
@@ -36,8 +38,7 @@ namespace KPP_Alpha1
         // Metoda za kolekciju Mjesta koja se veže za txtBox Mjesta za suggest and append
         private void CollecionMjesta()
         {
-            string DbAc = "SELECT * FROM mjesta;";
-            AutoCompleteStringCollection AcMjesto = autocomplete.AutoComplete(DbAc, "mjesto", "ptt");
+            AutoCompleteStringCollection AcMjesto = autocomplete.AutoComplete("mjesta", "mjesto", "ptt");
             txt_mjesto.AutoCompleteCustomSource = AcMjesto;
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
@@ -112,7 +113,7 @@ namespace KPP_Alpha1
             try
             {
                 bool success = controller.Insert(posiljatelj);
-                if (success is not true)
+                if (success is false)
                 {
                     edit.MessageDBErrorInsert();
                 }

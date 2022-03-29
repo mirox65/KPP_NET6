@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPP_Alpha1.HelperClasses
@@ -11,23 +7,24 @@ namespace KPP_Alpha1.HelperClasses
     internal class AutocompleteHelper
     {
         private readonly DbClass db = new();
-        private readonly EditClass edit = new ();
+        private readonly EditClass edit = new();
 
         #region PREOPTEREČENE METODE ZA IZRADU KOLEKCIJA
         // Kolekcija s tri varijble, tablica i dvije kolone
-        public AutoCompleteStringCollection AutoComplete(string DbAc, string AcPrvi, string AcDrugi)
+        public AutoCompleteStringCollection AutoComplete(string tablica, string acPrvi, string acDrugi)
         {
-            AutoCompleteStringCollection coll = new();
+            var select = $"SELECT * FROM {tablica} WHERE status='Aktivno';";
+            var coll = new AutoCompleteStringCollection();
             var conn = new OleDbConnection(db.connString);
-            var cmd = new OleDbCommand(DbAc, conn);
+            var cmd = new OleDbCommand(select, conn);
             try
             {
                 conn.Open();
                 OleDbDataReader myReader = cmd.ExecuteReader();
                 while (myReader.Read())
                 {
-                    string prviString = myReader[AcPrvi].ToString();
-                    string drugiString = myReader[AcDrugi].ToString();
+                    string prviString = myReader[acPrvi].ToString();
+                    string drugiString = myReader[acDrugi].ToString();
                     coll.Add(prviString + " " + drugiString);
                 }
             }
@@ -39,19 +36,20 @@ namespace KPP_Alpha1.HelperClasses
             return coll;
         }
 
-        public AutoCompleteStringCollection AutoComplete(AutoCompleteStringCollection collectiion, string DbAc, string AcPrvi, string AcDrugi)
+        public AutoCompleteStringCollection AutoComplete(AutoCompleteStringCollection collectiion, string tablica, string acPrvi, string acDrugi)
         {
+            var select = $"SELECT * FROM {tablica} WHERE status='Aktivno';";
             var coll = collectiion;
             var conn = new OleDbConnection(db.connString);
-            var cmd = new OleDbCommand(DbAc, conn);
+            var cmd = new OleDbCommand(select, conn);
             try
             {
                 conn.Open();
                 OleDbDataReader myReader = cmd.ExecuteReader();
                 while (myReader.Read())
                 {
-                    string prviString = myReader[AcPrvi].ToString();
-                    string drugiString = myReader[AcDrugi].ToString();
+                    string prviString = myReader[acPrvi].ToString();
+                    string drugiString = myReader[acDrugi].ToString();
                     coll.Add(prviString + " " + drugiString);
                 }
             }
@@ -63,16 +61,17 @@ namespace KPP_Alpha1.HelperClasses
             return coll;
         }
         // Kolekcija za dvije varijable, tablica i jedna kolona
-        public AutoCompleteStringCollection AutoComplete(string DbAc, string AcPrvi)
+        public AutoCompleteStringCollection AutoComplete(string tablica, string acPrvi)
         {
-            AutoCompleteStringCollection coll = new();
+            var select = $"SELECT * FROM {tablica} WHERE status='Aktivno';";
+            var coll = new AutoCompleteStringCollection();
             var conn = new OleDbConnection(db.connString);
-            var cmd = new OleDbCommand(DbAc, conn);
+            var cmd = new OleDbCommand(select, conn);
             try
             {
                 conn.Open();
                 OleDbDataReader myReader = cmd.ExecuteReader();
-                int jedan = myReader.GetOrdinal(AcPrvi);
+                int jedan = myReader.GetOrdinal(acPrvi);
                 while (myReader.Read())
                 {
                     string prviString = myReader.GetString(jedan);
@@ -87,11 +86,12 @@ namespace KPP_Alpha1.HelperClasses
             return coll;
         }
 
-        public AutoCompleteStringCollection AutoComplete(AutoCompleteStringCollection collection, string DbAc, string AcPrvi)
+        public AutoCompleteStringCollection AutoComplete(AutoCompleteStringCollection collection, string tablica, string AcPrvi)
         {
+            var select = $"SELECT * FROM {tablica} WHERE status='Aktivno';";
             var coll = collection;
             var conn = new OleDbConnection(db.connString);
-            var cmd = new OleDbCommand(DbAc, conn);
+            var cmd = new OleDbCommand(select, conn);
             try
             {
                 conn.Open();

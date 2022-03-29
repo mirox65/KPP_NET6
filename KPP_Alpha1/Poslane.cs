@@ -40,22 +40,19 @@ namespace KPP_Alpha1
         // Metoda za kolekciju  koja se veže za txtBox Pošiljatelji za suggest and append
         private void CollectionPosiljatelji()
         {
-            string DbAc = "SELECT * FROM posiljatelji;";
-            AutoCompleteStringCollection AcPosiljatelji = autocomplete.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcPosiljatelji = autocomplete.AutoComplete("posiljatelji", "naziv");
             txtPrimatelj.AutoCompleteCustomSource = AcPosiljatelji;
         }
         // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append
         private void CollectionDjelatnici()
         {
-            string DbAc = "SELECT * FROM djelatnici;";
-            AutoCompleteStringCollection AcDjelatnici = autocomplete.AutoComplete(DbAc, "ime", "prezime");
+            AutoCompleteStringCollection AcDjelatnici = autocomplete.AutoComplete("djelatnici", "ime", "prezime");
             txtPosiljatelj.AutoCompleteCustomSource = AcDjelatnici;
         }
         // Metoda za kolekciju  koja se veže za txtBox Partneri za suggest and append
         private void CollectionPartneri()
         {
-            string dbAc = "SELECT * FROM partneri;";
-            AutoCompleteStringCollection acPartneri = autocomplete.AutoComplete(dbAc, "naziv");
+            AutoCompleteStringCollection acPartneri = autocomplete.AutoComplete("partneri", "naziv");
             txtPrevoznik.AutoCompleteCustomSource = acPartneri;
         }
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak

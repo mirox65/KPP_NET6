@@ -60,23 +60,17 @@ namespace KPP_Alpha1
         private void CollectionOprema()
         {
             var collection = new AutoCompleteStringCollection();
-            var DbIct = "SELECT * FROM ictOprema;";
-            var DbDc = "SELECT * FROM dataCards;";
-            var DbVozila = "SELECT * FROM vozila;";
-            var DbEnc = "SELECT * FROM enc";
-            var DbKeyCards = "SELECT * FROM keyCards";
-            var AcOprema = autocomplete.AutoComplete(collection, DbIct, "serBr", "naziv");
-            AcOprema = autocomplete.AutoComplete(AcOprema, DbDc, "imei", "SerBr");
-            AcOprema = autocomplete.AutoComplete(AcOprema, DbVozila, "regOznaka", "proizvođač");
-            AcOprema = autocomplete.AutoComplete(AcOprema, DbEnc, "naziv");
-            AcOprema = autocomplete.AutoComplete(AcOprema, DbKeyCards, "naziv");
+            var AcOprema = autocomplete.AutoComplete(collection, "ictOprema", "serBr", "naziv");
+            AcOprema = autocomplete.AutoComplete(AcOprema, "dataCards", "imei", "SerBr");
+            AcOprema = autocomplete.AutoComplete(AcOprema, "vozila", "regOznaka", "proizvođač");
+            AcOprema = autocomplete.AutoComplete(AcOprema, "enc", "naziv");
+            AcOprema = autocomplete.AutoComplete(AcOprema, "keyCards", "naziv");
             Txt_Oprema.AutoCompleteCustomSource = AcOprema;
         }
 
         private void CoollectionDjelatnici()
         {
-            var DbAc = "SELECT * FROM djelatnici;";
-            var AcDjelatnici = autocomplete.AutoComplete(DbAc, "ime", "prezime");
+            var AcDjelatnici = autocomplete.AutoComplete("djelatnici", "ime", "prezime");
             Txt_Djelatnik.AutoCompleteCustomSource = AcDjelatnici;
         }
 

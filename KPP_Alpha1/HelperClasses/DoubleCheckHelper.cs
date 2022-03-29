@@ -13,7 +13,7 @@ namespace KPP_Alpha1.HelperClasses
 
         internal bool DoubleInsertChecker(string atribut, string tablica, string provjeri)
         {
-            var query = $"SELECT id FROM {tablica} WHERE {atribut}='{provjeri}';";
+            var query = $"SELECT COUNT(id) FROM {tablica} WHERE {atribut}='{provjeri}';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(query, conn);
             

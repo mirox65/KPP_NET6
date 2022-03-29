@@ -40,16 +40,14 @@ namespace KPP_Alpha1
         // Metoda za kolekciju koja se veže za txtBox Pošiljatelji za suggest and append
         private void CollectionPosiljatelji()
         {
-            string DbAc = "SELECT naziv FROM posiljatelji;";
-            AutoCompleteStringCollection AcPosiljatelj = autocomplete.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcPosiljatelj = autocomplete.AutoComplete("posiljatelji", "naziv");
 
             txt_Posiljatelj.AutoCompleteCustomSource = AcPosiljatelj;
         }
         // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
         private void CollectionOdjeli()
         {
-            string DbAc = "SELECT naziv FROM odjeli;";
-            AutoCompleteStringCollection AcOdjel = autocomplete.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcOdjel = autocomplete.AutoComplete("odjeli", "naziv");
 
             txt_Odjel.AutoCompleteCustomSource = AcOdjel;
         }

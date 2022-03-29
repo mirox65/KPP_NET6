@@ -37,8 +37,7 @@ namespace KPP_Alpha1
         // Metoda za kolekciju koja se veže za txtBox Odjeli za suggest and append
         private void CollectionOdjeli()
         {
-            string DbAc = "SELECT * FROM odjeli;";
-            AutoCompleteStringCollection AcOdjel = autocomplete.AutoComplete(DbAc, "naziv");
+            AutoCompleteStringCollection AcOdjel = autocomplete.AutoComplete("odjeli", "naziv");
             Txt_OdjelId.AutoCompleteCustomSource = AcOdjel;
         }
         // Učitavanje Forme, koja poziva metodu DtUpdate

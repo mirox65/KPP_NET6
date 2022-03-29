@@ -38,7 +38,6 @@
             this.txt_Ptt = new System.Windows.Forms.TextBox();
             this.lbl_mjesto = new System.Windows.Forms.Label();
             this.lbl_ptt = new System.Windows.Forms.Label();
-            this.Lbl_Id = new System.Windows.Forms.Label();
             this.txt_Zupanija = new System.Windows.Forms.TextBox();
             this.lbl_zupanija = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -47,6 +46,10 @@
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DGV_Mjesta = new System.Windows.Forms.DataGridView();
+            this.CmbStatus = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CmbFilter = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Mjesta)).BeginInit();
             this.SuspendLayout();
@@ -131,17 +134,6 @@
             this.lbl_ptt.Size = new System.Drawing.Size(34, 19);
             this.lbl_ptt.TabIndex = 29;
             this.lbl_ptt.Text = "PTT:";
-            // 
-            // Lbl_Id
-            // 
-            this.Lbl_Id.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Lbl_Id.AutoSize = true;
-            this.Lbl_Id.Location = new System.Drawing.Point(12, 131);
-            this.Lbl_Id.Name = "Lbl_Id";
-            this.Lbl_Id.Size = new System.Drawing.Size(17, 19);
-            this.Lbl_Id.TabIndex = 26;
-            this.Lbl_Id.Text = "0";
-            this.Lbl_Id.Visible = false;
             // 
             // txt_Zupanija
             // 
@@ -228,6 +220,58 @@
             this.DGV_Mjesta.TabStop = false;
             this.DGV_Mjesta.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGV_Mjesta_RowHeaderMouseDoubleClick);
             // 
+            // CmbStatus
+            // 
+            this.CmbStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbStatus.BackColor = System.Drawing.Color.White;
+            this.CmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbStatus.FormattingEnabled = true;
+            this.CmbStatus.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbStatus.Location = new System.Drawing.Point(514, 32);
+            this.CmbStatus.Name = "CmbStatus";
+            this.CmbStatus.Size = new System.Drawing.Size(133, 27);
+            this.CmbStatus.TabIndex = 70;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(454, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 19);
+            this.label4.TabIndex = 69;
+            this.label4.Text = "Status:";
+            // 
+            // CmbFilter
+            // 
+            this.CmbFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbFilter.BackColor = System.Drawing.Color.White;
+            this.CmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbFilter.FormattingEnabled = true;
+            this.CmbFilter.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbFilter.Location = new System.Drawing.Point(514, 109);
+            this.CmbFilter.Name = "CmbFilter";
+            this.CmbFilter.Size = new System.Drawing.Size(133, 27);
+            this.CmbFilter.TabIndex = 68;
+            this.CmbFilter.TabStop = false;
+            this.CmbFilter.SelectedIndexChanged += new System.EventHandler(this.CmbFilter_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(454, 113);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 19);
+            this.label5.TabIndex = 67;
+            this.label5.Text = "Filter:";
+            // 
             // FormMjesta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -235,6 +279,10 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.CmbStatus);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CmbFilter);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.DGV_Mjesta);
             this.Controls.Add(this.txt_Zupanija);
             this.Controls.Add(this.menuStrip1);
@@ -247,7 +295,6 @@
             this.Controls.Add(this.txt_Ptt);
             this.Controls.Add(this.lbl_mjesto);
             this.Controls.Add(this.lbl_ptt);
-            this.Controls.Add(this.Lbl_Id);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -271,7 +318,6 @@
         private System.Windows.Forms.TextBox txt_Ptt;
         private System.Windows.Forms.Label lbl_mjesto;
         private System.Windows.Forms.Label lbl_ptt;
-        private System.Windows.Forms.Label Lbl_Id;
         private System.Windows.Forms.TextBox txt_Zupanija;
         private System.Windows.Forms.Label lbl_zupanija;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -280,5 +326,9 @@
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.DataGridView DGV_Mjesta;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.ComboBox CmbStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CmbFilter;
+        private System.Windows.Forms.Label label5;
     }
 }

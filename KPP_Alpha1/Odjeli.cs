@@ -14,25 +14,28 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
-        readonly OdjelController controller = new OdjelController();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
+        readonly OdjelController controller = new();
 
         public FormOdjeli()
         {
             InitializeComponent();
+            Clear();
         }
         // Učitavanje Forme, koja poziva metodu DtUpdate
         private void form_Odjeli_Load(object sender, EventArgs e)
         {
-            DTUpdate();
+            DTUpdate(CmbFilter.Text);
         }
         // Metoda koja isčitava podatke iz baze i prikazuje u DataGridView-u
-        private void DTUpdate()
+        private void DTUpdate(string filter)
         {
-            string Dbs = "SELECT o.id AS ID, o.naziv AS Naziv, [d.ime]&' '&[d.prezime] AS Korisnik, o.azurirano AS Ažurirano " +
+            string Dbs = "SELECT o.id AS ID, o.naziv AS Naziv, o.status AS Status, [d.ime]&' '&[d.prezime] AS Ažurirao, o.azurirano AS Ažurirano " +
                 "FROM (odjeli AS o LEFT JOIN korisnici AS k ON k.id=o.korisnikid) " +
-                "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikid ORDER BY naziv ASC;";
+                "LEFT JOIN djelatnici AS d ON d.id=k.djelatnikid " +
+                $"WHERE o.status='{filter}' " +
+                "ORDER BY naziv ASC;";
             DataTable dt = db.Select(Dbs);
             dgv_odjel.DataSource = dt;
         }
@@ -42,6 +45,8 @@ namespace KPP_Alpha1
             txt_naziv.Clear();
             lbl_id_odjel.Text = "0";
             txt_pretrazivanje.Clear();
+            CmbStatus.SelectedIndex = 0;
+            CmbFilter.SelectedIndex = 0;
             txt_naziv.Focus();
         }
         // BTN za INSERT podataka u bazu ova metoda poziva više metoda da bi uspješno izvršila zadatak
@@ -58,18 +63,26 @@ namespace KPP_Alpha1
             {
                 edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 var odjel = SetProperties();
+                Insert(odjel);
+                DTUpdate(CmbFilter.Text);
+                Clear();
+            }
+        }
+
+        private void Insert(OdjelModel odjel)
+        {
+            try
+            {
                 bool success = controller.Insert(odjel);
-                if (success is true)
-                {
-                    DTUpdate();
-                    Clear();
-                }
-                else
+                if (success is false)
                 {
                     edit.MessageDBErrorInsert();
                 }
+
             }
+            catch (Exception) { throw; }
         }
+
         // BTN za izmjenu podataka radi sve što i unos metoda osim koraka pozivanja generičke metode za update podataka u bazi
         private void lbl_uredi_Click(object sender, EventArgs e)
         {
@@ -82,31 +95,35 @@ namespace KPP_Alpha1
             {
                 edit.BojaPozadineZaPrazneCeliji(txt_naziv);
                 var odjel = SetProperties();
-                try
-                {
-                    bool success = controller.Update(odjel);
-                    if (success is true)
-                    {
-                        DTUpdate();
-                        Clear();
-                    }
-                    else
-                    {
-                        edit.MessageDBErrorUpdate();
-                    }
-                }
-                catch (Exception ex) { edit.MessageException(ex); }
+                Edit(odjel);
+                DTUpdate(CmbFilter.Text);
+                Clear();
             }
         }
+
+        private void Edit(OdjelModel odjel)
+        {
+            try
+            {
+                bool success = controller.Update(odjel);
+                if (success is false)
+                {
+                    edit.MessageDBErrorUpdate();
+                }
+            }
+            catch (Exception ex) { edit.MessageException(ex); }
+        }
+
         // Metoda postavljanja varijabili koja se poziva prije unosa i izmjne podatka
         private OdjelModel SetProperties()
         {
-            OdjelModel odjel = new OdjelModel();
+            var odjel = new OdjelModel();
             if (int.Parse(lbl_id_odjel.Text) > 0)
             {
                 odjel.Id = int.Parse(lbl_id_odjel.Text.Trim());
             }
             odjel.Naziv = txt_naziv.Text.Trim();
+            odjel.Status = CmbStatus.Text;
             return odjel;
         }
         // Učitavanje podataka iz tablice za prikaz prije editiranja (izmjene)
@@ -115,6 +132,7 @@ namespace KPP_Alpha1
             int RowIndex = e.RowIndex;
             lbl_id_odjel.Text = dgv_odjel.Rows[RowIndex].Cells[0].Value.ToString();
             txt_naziv.Text = dgv_odjel.Rows[RowIndex].Cells[1].Value.ToString();
+            CmbStatus.Text = dgv_odjel.Rows[RowIndex].Cells[2].Value.ToString();
         }
         // Metoda za pretraživanje podataka unesenih u bazu
         private void txt_pretrazivanje_TextChanged(object sender, EventArgs e)
@@ -122,7 +140,7 @@ namespace KPP_Alpha1
             try
             {
                 (dgv_odjel.DataSource as DataTable).DefaultView.RowFilter =
-                    string.Format("naziv LIKE '%{0}%' OR korisnik LIKE '%{0}%'", txt_pretrazivanje.Text.Trim());
+                    string.Format("naziv LIKE '%{0}%' OR ažurirao LIKE '%{0}%'", txt_pretrazivanje.Text.Trim());
                 if (dgv_odjel.Rows[0].Cells[0].Value is null)
                 {
                     return;
@@ -144,6 +162,11 @@ namespace KPP_Alpha1
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DTUpdate(CmbFilter.Text);
         }
     }
 }

@@ -43,6 +43,10 @@
             this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CmbStatus = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CmbFilter = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_odjel)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -189,12 +193,68 @@
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
             // 
+            // CmbStatus
+            // 
+            this.CmbStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbStatus.BackColor = System.Drawing.Color.White;
+            this.CmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbStatus.FormattingEnabled = true;
+            this.CmbStatus.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbStatus.Location = new System.Drawing.Point(108, 66);
+            this.CmbStatus.Name = "CmbStatus";
+            this.CmbStatus.Size = new System.Drawing.Size(133, 27);
+            this.CmbStatus.TabIndex = 74;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 19);
+            this.label4.TabIndex = 73;
+            this.label4.Text = "Status:";
+            // 
+            // CmbFilter
+            // 
+            this.CmbFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CmbFilter.BackColor = System.Drawing.Color.White;
+            this.CmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmbFilter.FormattingEnabled = true;
+            this.CmbFilter.Items.AddRange(new object[] {
+            "Aktivno",
+            "Neaktivno"});
+            this.CmbFilter.Location = new System.Drawing.Point(541, 110);
+            this.CmbFilter.Name = "CmbFilter";
+            this.CmbFilter.Size = new System.Drawing.Size(133, 27);
+            this.CmbFilter.TabIndex = 72;
+            this.CmbFilter.TabStop = false;
+            this.CmbFilter.SelectedIndexChanged += new System.EventHandler(this.CmbFilter_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(481, 114);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 19);
+            this.label5.TabIndex = 71;
+            this.label5.Text = "Filter:";
+            // 
             // FormOdjeli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(782, 555);
+            this.Controls.Add(this.CmbStatus);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.CmbFilter);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lbl_pretrazivanje);
             this.Controls.Add(this.txt_pretrazivanje);
@@ -232,5 +292,9 @@
         private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.ComboBox CmbStatus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CmbFilter;
+        private System.Windows.Forms.Label label5;
     }
 }

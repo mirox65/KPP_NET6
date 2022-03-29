@@ -16,7 +16,7 @@ namespace KPP_Alpha1.HelperClasses
         {
             Dictionary<int, string> dict = new();
 
-            var dbs = $"SELECT id, {kolona} FROM {tablica};";
+            var dbs = $"SELECT id, {kolona} FROM {tablica} WHERE status='Aktivno';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             try
@@ -42,7 +42,7 @@ namespace KPP_Alpha1.HelperClasses
         {
             Dictionary<int, string> dict = new Dictionary<int, string>();
 
-            var dbs = $"SELECT id, {kolona1}, {kolona2} FROM {tablica};";
+            var dbs = $"SELECT id, {kolona1}, {kolona2} FROM {tablica} WHERE status='Aktivno';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             try
@@ -69,7 +69,7 @@ namespace KPP_Alpha1.HelperClasses
         internal Dictionary<string, int> DicStringInt(Dictionary<string, int> dict, string keyString1, string tablica)
         {
             var dic = dict;
-            var dbs = $"SELECT id, {keyString1} FROM {tablica}";
+            var dbs = $"SELECT id, {keyString1} FROM {tablica} WHERE status='Aktivno'";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             try
@@ -98,7 +98,7 @@ namespace KPP_Alpha1.HelperClasses
         internal Dictionary<string, int> DicStringInt(Dictionary<string, int> dict, string keyString1, string keyString2, string tablica)
         {
             var dic = dict;
-            var dbs = $"SELECT id, {keyString1}, {keyString2} FROM {tablica}";
+            var dbs = $"SELECT id, {keyString1}, {keyString2} FROM {tablica} WHERE status='Aktivno';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             try
@@ -128,7 +128,7 @@ namespace KPP_Alpha1.HelperClasses
         internal Dictionary<string, string> DictStringString(Dictionary<string, string> opremaBazaDic, string keyString1, string tablica)
         {
             var dict = opremaBazaDic;
-            var dbs = $"SELECT {keyString1} FROM {tablica};";
+            var dbs = $"SELECT {keyString1} FROM {tablica} WHERE status='Aktivno';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             try
@@ -154,7 +154,7 @@ namespace KPP_Alpha1.HelperClasses
         internal Dictionary<string, string> DictStringString(Dictionary<string, string> opremaBazaDic, string keyString1, string keyString2, string tablica)
         {
             var dict = opremaBazaDic;
-            var dbs = $"SELECT {keyString1}, {keyString2} FROM {tablica};";
+            var dbs = $"SELECT {keyString1}, {keyString2} FROM {tablica} WHERE status='Aktivno';";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(dbs, conn);
             try

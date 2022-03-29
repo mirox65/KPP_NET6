@@ -43,16 +43,14 @@ namespace KPP_Alpha1
         // Metoda za kolekciju koja se veže za txtBox Djelatnici za suggest and append
         private void CollectionDjelatnici()
         {
-            string DbAc = "SELECT * FROM djelatnici";
-            AutoCompleteStringCollection djelatniciCollection = autocomplete.AutoComplete(DbAc, "ime", "prezime");
+            AutoCompleteStringCollection djelatniciCollection = autocomplete.AutoComplete("djelatnici", "ime", "prezime");
             Txt_Djelatnik.AutoCompleteCustomSource = djelatniciCollection;
         }
 
         // Metoda za kolekciju koja se veže za txtBox regOznaka za suggest and append
         private void CollectionVozila()
         {
-            string DbAc = "SELECT * FROM vozila";
-            AutoCompleteStringCollection vozilaCollection = autocomplete.AutoComplete(DbAc, "regOznaka");
+            AutoCompleteStringCollection vozilaCollection = autocomplete.AutoComplete("vozila", "regOznaka");
             Txt_RegOznaka.AutoCompleteCustomSource = vozilaCollection;
         }
 
