@@ -48,6 +48,7 @@ namespace KPP_Alpha1
                 $"LEFT JOIN korisnici AS k ON db.korisnikId=k.id) " +
                 $"LEFT JOIN djelatnici AS dk ON k.djelatnikId=dk.id;";
             Dgv.DataSource = db.Select(select);
+            edit.DgvColumnsResize(Dgv);
         }
 
         private void Clear()
