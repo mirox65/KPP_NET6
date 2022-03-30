@@ -291,6 +291,19 @@ namespace KPP_Alpha1
                 Forma(form);
             }
         }
+        private void UserDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new UsersData();
+            if (ActiveMdiChild != null)
+            {
+                ActiveMdiChild.Close();
+                Forma(form);
+            }
+            else
+            {
+                Forma(form);
+            }
+        }
 
         private void izađiIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
