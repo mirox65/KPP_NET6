@@ -58,7 +58,7 @@ namespace KPP_Alpha1
         private void karticeZaUlazToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormKeyCards());
         private void eNCUređajiToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormEnc());
         private void PodatciODjelatnicimaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new DjelatniciBasic());
-        private void UserDataToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new UsersData());
+        private void UserDataToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormUsersData());
 
         private void izađiIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
         {

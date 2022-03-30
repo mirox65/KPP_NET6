@@ -132,7 +132,6 @@ namespace KPP_Alpha1
                     }
                 }
             }
-
         }
 
         private void Insert(DjelatnikBasicModel djelatnikBasic)

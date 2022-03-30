@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace KPP_Alpha1
 {
-    public partial class UsersData : Form
+    public partial class FormUsersData : Form
     {
         readonly DbClass db = new();
         readonly EditClass edit = new();
@@ -22,7 +22,7 @@ namespace KPP_Alpha1
 
         int setId;
 
-        public UsersData()
+        public FormUsersData()
         {
             InitializeComponent();
             DtUpdate();
@@ -179,6 +179,21 @@ namespace KPP_Alpha1
             {
                 edit.MessageException(ex);
             }
+        }
+
+        private void InsertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Btn_Insert.PerformClick();
+        }
+
+        private void UpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Btn_Edit.PerformClick();
+        }
+
+        private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clear();
         }
     }
 }

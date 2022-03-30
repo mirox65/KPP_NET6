@@ -1,6 +1,6 @@
 ﻿namespace KPP_Alpha1
 {
-    partial class UsersData
+    partial class FormUsersData
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Lbl_Filter = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Txt_Username = new System.Windows.Forms.TextBox();
             this.Lbl_Username = new System.Windows.Forms.Label();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spremiIzmjeneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajNoviUnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InsertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.CmbFilter = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_Mjesto_Id = new System.Windows.Forms.Label();
             this.Lbl_Search = new System.Windows.Forms.Label();
@@ -55,16 +53,6 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Lbl_Filter
-            // 
-            this.Lbl_Filter.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Lbl_Filter.AutoSize = true;
-            this.Lbl_Filter.Location = new System.Drawing.Point(405, 123);
-            this.Lbl_Filter.Name = "Lbl_Filter";
-            this.Lbl_Filter.Size = new System.Drawing.Size(42, 19);
-            this.Lbl_Filter.TabIndex = 81;
-            this.Lbl_Filter.Text = "Filter:";
             // 
             // Txt_Username
             // 
@@ -85,65 +73,51 @@
             this.Lbl_Username.TabIndex = 80;
             this.Lbl_Username.Text = "Username:";
             // 
-            // clearToolStripMenuItem
+            // ClearToolStripMenuItem
             // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
+            this.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem";
+            this.ClearToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.ClearToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.ClearToolStripMenuItem.Text = "Clear";
+            this.ClearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
             // 
-            // spremiIzmjeneToolStripMenuItem
+            // UpdateToolStripMenuItem
             // 
-            this.spremiIzmjeneToolStripMenuItem.Name = "spremiIzmjeneToolStripMenuItem";
-            this.spremiIzmjeneToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.spremiIzmjeneToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.spremiIzmjeneToolStripMenuItem.Text = "Spremi izmjene";
+            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
+            this.UpdateToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.UpdateToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.UpdateToolStripMenuItem.Text = "Spremi izmjene";
+            this.UpdateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
             // 
-            // dodajNoviUnosToolStripMenuItem
+            // InsertToolStripMenuItem
             // 
-            this.dodajNoviUnosToolStripMenuItem.Name = "dodajNoviUnosToolStripMenuItem";
-            this.dodajNoviUnosToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.dodajNoviUnosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.dodajNoviUnosToolStripMenuItem.Text = "Spremi novi unos";
+            this.InsertToolStripMenuItem.Name = "InsertToolStripMenuItem";
+            this.InsertToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.InsertToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.InsertToolStripMenuItem.Text = "Spremi novi unos";
+            this.InsertToolStripMenuItem.Click += new System.EventHandler(this.InsertToolStripMenuItem_Click);
             // 
             // datotekaToolStripMenuItem
             // 
             this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajNoviUnosToolStripMenuItem,
-            this.spremiIzmjeneToolStripMenuItem,
-            this.clearToolStripMenuItem});
+            this.InsertToolStripMenuItem,
+            this.UpdateToolStripMenuItem,
+            this.ClearToolStripMenuItem});
             this.datotekaToolStripMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
             this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.datotekaToolStripMenuItem.Text = "Datoteka";
-            // 
-            // CmbFilter
-            // 
-            this.CmbFilter.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CmbFilter.BackColor = System.Drawing.Color.White;
-            this.CmbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CmbFilter.FormattingEnabled = true;
-            this.CmbFilter.Items.AddRange(new object[] {
-            "Aktivno",
-            "Neaktivno"});
-            this.CmbFilter.Location = new System.Drawing.Point(465, 119);
-            this.CmbFilter.Name = "CmbFilter";
-            this.CmbFilter.Size = new System.Drawing.Size(133, 27);
-            this.CmbFilter.TabIndex = 82;
-            this.CmbFilter.TabStop = false;
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.datotekaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(1, 9);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(782, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 78;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.Visible = false;
             // 
             // lbl_Mjesto_Id
             // 
@@ -199,8 +173,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -298,7 +272,7 @@
             this.Lbl_PhoneNumber.TabIndex = 84;
             this.Lbl_PhoneNumber.Text = "Phone Number:";
             // 
-            // UsersData
+            // FormUsersData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -308,10 +282,8 @@
             this.Controls.Add(this.Lbl_Email);
             this.Controls.Add(this.Txt_PhoneNumber);
             this.Controls.Add(this.Lbl_PhoneNumber);
-            this.Controls.Add(this.Lbl_Filter);
             this.Controls.Add(this.Txt_Username);
             this.Controls.Add(this.Lbl_Username);
-            this.Controls.Add(this.CmbFilter);
             this.Controls.Add(this.lbl_Mjesto_Id);
             this.Controls.Add(this.Lbl_Search);
             this.Controls.Add(this.Txt_Search);
@@ -325,8 +297,8 @@
             this.Controls.Add(this.Lbl_Djelatnik);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "UsersData";
-            this.Text = "UsersData";
+            this.Name = "FormUsersData";
+            this.Text = "Korisnički podatci";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
@@ -336,14 +308,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label Lbl_Filter;
         private System.Windows.Forms.TextBox Txt_Username;
         private System.Windows.Forms.Label Lbl_Username;
-        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem spremiIzmjeneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajNoviUnosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ClearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InsertToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
-        private System.Windows.Forms.ComboBox CmbFilter;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lbl_Mjesto_Id;
         private System.Windows.Forms.Label Lbl_Search;
