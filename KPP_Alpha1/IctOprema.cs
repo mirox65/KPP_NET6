@@ -167,6 +167,7 @@ namespace KPP_Alpha1
         private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             DtUpdate(CmbFilter.Text);
+            CmbAktivno.SelectedIndex = CmbFilter.SelectedIndex;
         }
 
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
