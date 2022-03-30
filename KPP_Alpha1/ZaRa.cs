@@ -53,7 +53,7 @@ namespace KPP_Alpha1
                 opremaBazaDic.Clear();
             }
             opremaBazaDic = UčitavanjeBazaDictionary();
-            CoollectionDjelatnici();
+            CollectionDjelatnici();
             CollectionOprema();
         }
 
@@ -68,7 +68,7 @@ namespace KPP_Alpha1
             Txt_Oprema.AutoCompleteCustomSource = AcOprema;
         }
 
-        private void CoollectionDjelatnici()
+        private void CollectionDjelatnici()
         {
             var AcDjelatnici = autocomplete.AutoComplete("djelatnici", "ime", "prezime");
             Txt_Djelatnik.AutoCompleteCustomSource = AcDjelatnici;

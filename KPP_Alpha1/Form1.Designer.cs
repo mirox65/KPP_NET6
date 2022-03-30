@@ -271,7 +271,7 @@
             // ovlastenjaToolStripMenuItem
             // 
             this.ovlastenjaToolStripMenuItem.Name = "ovlastenjaToolStripMenuItem";
-            this.ovlastenjaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.ovlastenjaToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
             this.ovlastenjaToolStripMenuItem.Text = "Ovlaštenja";
             this.ovlastenjaToolStripMenuItem.Click += new System.EventHandler(this.ovlastenjaToolStripMenuItem_Click);
             // 
@@ -289,6 +289,7 @@
             this.UserDataToolStripMenuItem.Name = "UserDataToolStripMenuItem";
             this.UserDataToolStripMenuItem.Size = new System.Drawing.Size(184, 24);
             this.UserDataToolStripMenuItem.Text = "Korisnički podatci";
+            this.UserDataToolStripMenuItem.Click += new System.EventHandler(this.UserDataToolStripMenuItem_Click);
             // 
             // HRToolStripMenuItem
             // 
