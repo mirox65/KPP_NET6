@@ -81,6 +81,12 @@ namespace KPP_Alpha1
             MessageBox.Show("Ova stavka već postoji u bazi!\n\nNije dopušteno imati duple unose!", CelijaNazivUpozorenje);
         }
 
+        internal void MessageNijeOdabranaStavka()
+        {
+            MessageBox.Show("Nije odabrana stavaka za uređivanje!", CelijaNazivUpozorenje);
+        }
+
+
 
 
         #endregion
@@ -114,7 +120,6 @@ namespace KPP_Alpha1
                 dgv.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             }
         }
-
         #endregion
     }
 }

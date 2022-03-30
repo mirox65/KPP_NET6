@@ -6,7 +6,7 @@ namespace KPP_Alpha1
 {
     public partial class Form1 : Form
     {
-        readonly FormLogin LogFrm = new FormLogin();
+        readonly FormLogin LogFrm = new();
 
         //O aplikaciji
         string MB_NazivAplikacija = "O aplikaciji KPP";
@@ -21,276 +21,43 @@ namespace KPP_Alpha1
             InitializeComponent();
         }
 
-        #region Nove forme
-        private void FormaKPP()
-        {
-            FormKPP form = new FormKPP();
-            Forma(form);
-        }
-        private void FormaKorisnici()
-        {
-            FormKorisnici form = new FormKorisnici();
-            Forma(form);
-        }
-        private void FormaOdjeli()
-        {
-            FormOdjeli form = new FormOdjeli();
-            Forma(form);
-        }
-        private void FormaPosiljatelji()
-        {
-            FormPosiljatelji form = new FormPosiljatelji();
-            Forma(form);
-        }
-        private void FormaMjesta()
-        {
-            FormMjesta form = new FormMjesta();
-            Forma(form);
-        }
-        private void FormaIzvoz()
-        {
-            FormExportData form = new FormExportData();
-            Forma(form);
-        }
-
-        private void FormaDjelatnici()
-        {
-            FormDjelatnici form = new FormDjelatnici();
-            Forma(form);
-        }
-
-        private void FormaPartneri()
-        {
-            FormPartneri form = new FormPartneri();
-            Forma(form);
-        }
-
-        private void FormaPoslane()
-        {
-            FormPoslane form = new FormPoslane();
-            Forma(form);
-        }
-        
-        private void FormaOvlastenja()
-        {
-            FormOvlastenja form = new FormOvlastenja();
-            Forma(form);
-        }
+        #region One form to open them all
 
         private void Forma(Form form)
         {
+            CloseMdiChild();
             form.Show();
             form.MdiParent = this;
             form.WindowState = FormWindowState.Maximized;
         }
+
+        private void CloseMdiChild()
+        {
+            if (ActiveMdiChild is not null)
+            {
+                ActiveMdiChild.Close();
+            }
+        }
         #endregion
 
         #region Tool strip menu item click events
-        private void otvoriKPPToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaKPP();
-            }
-            else
-            {
-                FormaKPP();
-            }
-        }
-        private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaKorisnici();
-            }
-            else
-            {
-                FormaKorisnici();
-            }
-        }
-        private void dodajOdjelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaOdjeli();
-            }
-            else
-            {
-                FormaOdjeli();
-            }
-        }
-        private void pošiljateljiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaPosiljatelji();
-            }
-            else
-            {
-                FormaPosiljatelji();
-            }
-        }
-        private void mjestaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaMjesta();
-            }
-            else
-            {
-                FormaMjesta();
-            }
-        }
-        private void izvozPodatakaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaIzvoz();
-            }
-            else
-            {
-                FormaIzvoz();
-            }
-        }
-
-        private void djelatniciToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaDjelatnici();
-            }
-            else
-            {
-                FormaDjelatnici();
-            }
-        }
-
-        private void partneriToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaPartneri();
-            }
-            else
-            {
-                FormaPartneri();
-            }
-        }
-
-        private void knjigaPoslanihPošiljkiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaPoslane();
-            }
-            else
-            {
-                FormaPoslane();
-            }
-        }
-
-        private void ovlastenjaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                FormaOvlastenja();
-            }
-            else
-            {
-                FormaOvlastenja();
-            }
-        }
-        private void iTOpremaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = new FormIctOprema();
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                Forma(form);
-            }
-            else
-            {
-                Forma(form);
-            }
-        }
-
-        private void zaRaToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            var form = new FormZaRa();
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                Forma(form);
-            }
-            else
-            {
-                Forma(form);
-            }
-        }
-        private void vozilaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = new FormVozila();
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                Forma(form);
-            }
-            else
-            {
-                Forma(form);
-            }
-        }
-
-        private void podatkovneKarticeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = new FormDataCards();
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                Forma(form);
-            }
-            else
-            {
-                Forma(form);
-            }
-        }
-        private void karticeZaUlazToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = new FormKeyCards();
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                Forma(form);
-            }
-            else
-            {
-                Forma(form);
-            }
-        }
-
-        private void eNCUređajiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = new FormEnc();
-            if (ActiveMdiChild != null)
-            {
-                ActiveMdiChild.Close();
-                Forma(form);
-            }
-            else
-            {
-                Forma(form);
-            }
-        }
+        private void otvoriKPPToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormKPP());
+        private void dodajKorisnikaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormKorisnici());
+        private void dodajOdjelToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormOdjeli());
+        private void pošiljateljiToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormPosiljatelji());
+        private void mjestaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormMjesta());
+        private void izvozPodatakaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormExportData());
+        private void djelatniciToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormDjelatnici());
+        private void partneriToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormPartneri());
+        private void knjigaPoslanihPošiljkiToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormPoslane());
+        private void ovlastenjaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormOvlastenja());
+        private void iTOpremaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormIctOprema());
+        private void zaRaToolStripMenuItem1_Click(object sender, EventArgs e) => Forma(new FormZaRa());
+        private void vozilaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormVozila());
+        private void podatkovneKarticeToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormDataCards());
+        private void karticeZaUlazToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormKeyCards());
+        private void eNCUređajiToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new FormEnc());
+        private void PodatciODjelatnicimaToolStripMenuItem_Click(object sender, EventArgs e) => Forma(new DjelatniciBasic());
 
         private void izađiIzAplikacijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -298,7 +65,7 @@ namespace KPP_Alpha1
         }
         private void zatvoriToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ActiveMdiChild == null)
+            if (ActiveMdiChild is null)
             {
                 this.Close();
             }
@@ -344,7 +111,5 @@ namespace KPP_Alpha1
                 }
             }
         }
-
-        
     }
 }
