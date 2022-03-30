@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_pretrazivanje = new System.Windows.Forms.Label();
-            this.txt_pretrazivanje = new System.Windows.Forms.TextBox();
+            this.Txt_Search = new System.Windows.Forms.TextBox();
             this.Btn_Update = new System.Windows.Forms.Button();
             this.Btn_Insert = new System.Windows.Forms.Button();
             this.Dgv = new System.Windows.Forms.DataGridView();
@@ -81,14 +81,15 @@
             this.lbl_pretrazivanje.TabIndex = 76;
             this.lbl_pretrazivanje.Text = "Pretraživanje:";
             // 
-            // txt_pretrazivanje
+            // Txt_Search
             // 
-            this.txt_pretrazivanje.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_pretrazivanje.Location = new System.Drawing.Point(105, 215);
-            this.txt_pretrazivanje.Name = "txt_pretrazivanje";
-            this.txt_pretrazivanje.Size = new System.Drawing.Size(666, 25);
-            this.txt_pretrazivanje.TabIndex = 75;
-            this.txt_pretrazivanje.TabStop = false;
+            this.Txt_Search.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Txt_Search.Location = new System.Drawing.Point(105, 215);
+            this.Txt_Search.Name = "Txt_Search";
+            this.Txt_Search.Size = new System.Drawing.Size(666, 25);
+            this.Txt_Search.TabIndex = 75;
+            this.Txt_Search.TabStop = false;
+            this.Txt_Search.TextChanged += new System.EventHandler(this.Txt_Search_TextChanged);
             // 
             // Btn_Update
             // 
@@ -115,8 +116,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -373,7 +374,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_pretrazivanje);
-            this.Controls.Add(this.txt_pretrazivanje);
+            this.Controls.Add(this.Txt_Search);
             this.Controls.Add(this.Btn_Update);
             this.Controls.Add(this.Btn_Insert);
             this.Controls.Add(this.Dgv);
@@ -382,7 +383,7 @@
             this.Controls.Add(this.Lbl_Djelatnik);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "DjelatniciBasic";
-            this.Text = "DjelatniciBasic";
+            this.Text = "Podatci o djelatnicima";
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -395,7 +396,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_pretrazivanje;
-        private System.Windows.Forms.TextBox txt_pretrazivanje;
+        private System.Windows.Forms.TextBox Txt_Search;
         private System.Windows.Forms.Button Btn_Update;
         private System.Windows.Forms.Button Btn_Insert;
         private System.Windows.Forms.DataGridView Dgv;

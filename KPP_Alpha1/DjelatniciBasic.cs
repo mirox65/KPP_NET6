@@ -3,6 +3,7 @@ using KPP_Alpha1.HelperClasses;
 using KPP_Alpha1.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -56,7 +57,7 @@ namespace KPP_Alpha1
             setId = 0;
             Txt_Djelatnik.Clear();
             Txt_Adresa.Clear();
-            txt_pretrazivanje.Clear();
+            Txt_Search.Clear();
             Txt_ChartNumber.Clear();
             Txt_Mjesto.Clear();
             Txt_Position.Clear();
@@ -231,6 +232,23 @@ namespace KPP_Alpha1
         private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void Txt_Search_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                (Dgv.DataSource as DataTable).DefaultView.RowFilter =
+                    string.Format("djelatnik LIKE '%{0}%' OR grad LIKE '%{0}%' OR pozicija LIKE '%{0}%' OR chartnum LIKE '%{0}%'", Txt_Search.Text.Trim());
+                if (Dgv.Rows[0].Cells[0].Value is null)
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                edit.MessageException(ex);
+            }
         }
     }
 }
