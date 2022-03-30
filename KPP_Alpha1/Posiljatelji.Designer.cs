@@ -200,6 +200,7 @@
             this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
             this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.datotekaToolStripMenuItem.Text = "Datoteka";
+            this.datotekaToolStripMenuItem.Visible = false;
             // 
             // dodajNoviUnosToolStripMenuItem
             // 

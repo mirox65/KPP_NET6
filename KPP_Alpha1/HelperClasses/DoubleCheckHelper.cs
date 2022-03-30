@@ -19,5 +19,14 @@ namespace KPP_Alpha1.HelperClasses
             
             return db.ExecuteScalar(cmd, conn);
         }
+
+        internal bool DoubleInsertChecker(string atribut, string tablica, int provjeri)
+        {
+            var query = $"SELECT COUNT(id) FROM {tablica} WHERE {atribut}={provjeri};";
+            var conn = new OleDbConnection(db.connString);
+            var cmd = new OleDbCommand(query, conn);
+            
+            return db.ExecuteScalar(cmd, conn);
+        }
     }
 }
