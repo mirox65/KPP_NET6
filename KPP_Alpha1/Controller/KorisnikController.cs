@@ -4,25 +4,24 @@ using System;
 using System.Data.OleDb;
 using System.Security.Cryptography;
 using System.Text;
-using System.Windows.Forms;
 
 namespace KPP_Alpha1.Controller
 {
     class KorisnikController
     {
-        readonly DbClass db = new DbClass();
-        readonly EditClass edit = new EditClass();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
 
         internal bool Edit(KorisnikModel korisnik)
         {
             string Uredi = "UPDATE korisnici SET djelatnikId=?, korisnickoIme=?, " +
-                "uloga=?, aktivan=?, korisnikId=?, azurirano=? WHERE id=?";
+                "uloga=?, status=?, korisnikId=?, azurirano=? WHERE id=?";
             var conn = new OleDbConnection(db.connString);
             var cmd = new OleDbCommand(Uredi, conn);
             cmd.Parameters.AddWithValue("@djelatnikId", korisnik.DjelatnikId);
             cmd.Parameters.AddWithValue("@korisnickoIme", korisnik.KorisnickoIme);
             cmd.Parameters.AddWithValue("@uloga", korisnik.Uloga);
-            cmd.Parameters.AddWithValue("@aktivan", korisnik.Aktivan);
+            cmd.Parameters.AddWithValue("@status", korisnik.Aktivan);
             cmd.Parameters.AddWithValue("@korisnikId", korisnik.KorisnikId);
             cmd.Parameters.AddWithValue("@azurirano", korisnik.Azurirano);
             cmd.Parameters.AddWithValue("@id", korisnik.Id);
@@ -34,7 +33,7 @@ namespace KPP_Alpha1.Controller
         {
             var sol = CreateSalt();
             string Uredi = "UPDATE korisnici SET djelatnikId=?, korisnickoIme=?, " +
-                "lozinka=?, sol=?, uloga=?, aktivan=?, korisnikId=?, azurirano=? WHERE id=?";
+                "lozinka=?, sol=?, uloga=?, status=?, korisnikId=?, azurirano=? WHERE id=?";
             OleDbConnection conn = new OleDbConnection(db.connString);
             OleDbCommand cmd = new OleDbCommand(Uredi, conn);
             cmd.Parameters.AddWithValue("@djelatnikId", korisnik.DjelatnikId);
@@ -42,7 +41,7 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@lozinka", HashLozinkaSHA256(korisnik.Lozinka, sol));
             cmd.Parameters.AddWithValue("@sol", sol);
             cmd.Parameters.AddWithValue("@uloga", korisnik.Uloga);
-            cmd.Parameters.AddWithValue("@aktivan", korisnik.Aktivan);
+            cmd.Parameters.AddWithValue("@status", korisnik.Aktivan);
             cmd.Parameters.AddWithValue("@korisnikId", korisnik.KorisnikId);
             cmd.Parameters.AddWithValue("@azurirano", korisnik.Azurirano);
             cmd.Parameters.AddWithValue("@id", korisnik.Id);
@@ -64,30 +63,13 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@id", LoginHelper.StaticId);
             bool success = db.ExcecuteNonQuery(cmd, conn);
             return success;
-        }        
-        
-        // Metoda se koristi dok svi korisnici ne pređu na SHA hashiranje lozinki
-        internal bool UpdatePasswordBySystemTransitionToSha(KorisnikModel korisnikModel)
-        {
-            var sol = CreateSalt();
-            var Uredi = "UPDATE korisnici SET lozinka=?, sol=?, korisnikId=?, azurirano=? " +
-                "WHERE id=?";
-            var conn = new OleDbConnection(db.connString);
-            var cmd = new OleDbCommand(Uredi, conn);
-            cmd.Parameters.AddWithValue("@lozinka", HashLozinkaSHA256(korisnikModel.Lozinka, sol));
-            cmd.Parameters.AddWithValue("@sol", sol);
-            cmd.Parameters.AddWithValue("@korisnikId", korisnikModel.Id);
-            cmd.Parameters.AddWithValue("@azurirano", DateTime.Now.Date);
-            cmd.Parameters.AddWithValue("@id", korisnikModel.Id);
-            bool success = db.ExcecuteNonQuery(cmd, conn);
-            return success;
         }
 
         internal bool Insert(KorisnikModel korisnik)
         {
             var sol = CreateSalt();
             string edit = "INSERT INTO korisnici(djelatnikId, korisnickoIme, lozinka, sol, " +
-                "uloga, aktivan, korisnikId, azurirano) " +
+                "uloga, status, korisnikId, azurirano) " +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
             OleDbConnection conn = new OleDbConnection(db.connString);
             OleDbCommand cmd = new OleDbCommand(edit, conn);
@@ -96,7 +78,7 @@ namespace KPP_Alpha1.Controller
             cmd.Parameters.AddWithValue("@lozinka", HashLozinkaSHA256(korisnik.Lozinka, sol));
             cmd.Parameters.AddWithValue("@sol", sol);
             cmd.Parameters.AddWithValue("@uloga", korisnik.Uloga);
-            cmd.Parameters.AddWithValue("@aktivan", korisnik.Aktivan);
+            cmd.Parameters.AddWithValue("@status", korisnik.Aktivan);
             cmd.Parameters.AddWithValue("@korisnikId", korisnik.KorisnikId);
             cmd.Parameters.AddWithValue("@azurirano", korisnik.Azurirano);
             bool success = db.ExcecuteNonQuery(cmd, conn);
@@ -131,24 +113,8 @@ namespace KPP_Alpha1.Controller
                     }
                 }
             }
-            catch(Exception ex) { edit.MessageException(ex); }
+            catch (Exception ex) { edit.MessageException(ex); }
             return korisnikModel;
-        }
-
-        // Metoda za hash-anje passworda koji se sprema u bazu kodiran zbog sigurnosti
-        public string NapraviMD5(string lozinka)
-        {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(lozinka));
-            byte[] rezultat = md5.Hash;
-
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < rezultat.Length; i++)
-            {
-                sb.Append(rezultat[i].ToString("x2"));
-            }
-            return sb.ToString();
         }
 
         private string HashLozinkaSHA256(string lozinka, string sol)
@@ -185,18 +151,7 @@ namespace KPP_Alpha1.Controller
         internal string HashPasswordForCheck(string korisnickoIme, string lozinka)
         {
             var korisnikModel = GetSalt(korisnickoIme);
-            korisnikModel.Lozinka = lozinka;
-            string hashedLozinka;
-            if(korisnikModel.Sol is null)
-            {
-                hashedLozinka = NapraviMD5(lozinka);
-                MessageBox.Show("Prešli smo na novi sustav zaštite.\n\nMolim da prvom sljedećom prilikom promjeniti lozinku!\n\nHvala!!!", edit.CelijaNazivUpozorenje);
-            }
-            else
-            {
-                hashedLozinka = HashLozinkaSHA256(lozinka, korisnikModel.Sol);
-            }
-            return hashedLozinka;
+            return HashLozinkaSHA256(lozinka, korisnikModel.Sol);
         }
     }
 }

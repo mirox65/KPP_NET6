@@ -17,11 +17,11 @@ namespace KPP_Alpha1
         /// Skenudarne pomoćne klase su DbClass i EditClass
         /// </summary>
 
-        readonly DbClass db = new ();
-        readonly EditClass edit = new ();
+        readonly DbClass db = new();
+        readonly EditClass edit = new();
         readonly DictionaryHelper dictionary = new();
-        readonly AutocompleteHelper autocomplete = new  ();
-        readonly KorisnikController controller = new ();
+        readonly AutocompleteHelper autocomplete = new();
+        readonly KorisnikController controller = new();
 
         // Riječnik koji učitava djelatnike te se koristi kod pronažaenja stranog ključa prije unosa u bazu
         public Dictionary<int, string> djelatniciDict = new();
