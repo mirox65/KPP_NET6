@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Txt_Username = new System.Windows.Forms.TextBox();
             this.Lbl_Username = new System.Windows.Forms.Label();
             this.ClearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +50,7 @@
             this.Lbl_Email = new System.Windows.Forms.Label();
             this.Txt_PhoneNumber = new System.Windows.Forms.TextBox();
             this.Lbl_PhoneNumber = new System.Windows.Forms.Label();
+            this.Btn_Create = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.SuspendLayout();
@@ -118,6 +119,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 78;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // lbl_Mjesto_Id
             // 
@@ -143,7 +145,7 @@
             this.Txt_Search.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Txt_Search.Location = new System.Drawing.Point(109, 152);
             this.Txt_Search.Name = "Txt_Search";
-            this.Txt_Search.Size = new System.Drawing.Size(566, 26);
+            this.Txt_Search.Size = new System.Drawing.Size(349, 26);
             this.Txt_Search.TabIndex = 75;
             this.Txt_Search.TabStop = false;
             this.Txt_Search.TextChanged += new System.EventHandler(this.Txt_Search_TextChanged);
@@ -173,8 +175,8 @@
             // 
             // Dgv
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.Dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -272,12 +274,24 @@
             this.Lbl_PhoneNumber.TabIndex = 84;
             this.Lbl_PhoneNumber.Text = "Phone Number:";
             // 
+            // Btn_Create
+            // 
+            this.Btn_Create.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_Create.Location = new System.Drawing.Point(526, 114);
+            this.Btn_Create.Name = "Btn_Create";
+            this.Btn_Create.Size = new System.Drawing.Size(90, 65);
+            this.Btn_Create.TabIndex = 7;
+            this.Btn_Create.Text = "Kreiraj podatke";
+            this.Btn_Create.UseVisualStyleBackColor = true;
+            this.Btn_Create.Click += new System.EventHandler(this.Btn_Create_Click);
+            // 
             // FormUsersData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.Btn_Create);
             this.Controls.Add(this.Txt_Email);
             this.Controls.Add(this.Lbl_Email);
             this.Controls.Add(this.Txt_PhoneNumber);
@@ -329,5 +343,6 @@
         private System.Windows.Forms.Label Lbl_Email;
         private System.Windows.Forms.TextBox Txt_PhoneNumber;
         private System.Windows.Forms.Label Lbl_PhoneNumber;
+        private System.Windows.Forms.Button Btn_Create;
     }
 }
