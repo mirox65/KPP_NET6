@@ -16,17 +16,14 @@ namespace KPP_Alpha1.HelperClasses
 
             VozilaModel vozilo = new();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                vozilo.Id = Convert.ToInt32(row["ID"].ToString());
-                vozilo.Proizvodac = row["proizvođač"].ToString();
-                vozilo.Model = row["model"].ToString();
-                vozilo.Opis = row["opis"].ToString();
-                vozilo.BrSasije = row["brŠasije"].ToString();
-                vozilo.BrUgovora = row["brUgovora"].ToString();
-                vozilo.RegOznaka = row["regOznaka"].ToString();
-            }
-
+                vozilo.Id = Convert.ToInt32(dt.Rows[0]["ID"]);
+                vozilo.Proizvodac = dt.Rows[0]["proizvođač"].ToString();
+                vozilo.Model = dt.Rows[0]["model"].ToString();
+                vozilo.Opis = dt.Rows[0]["opis"].ToString();
+                vozilo.BrSasije = dt.Rows[0]["brŠasije"].ToString();
+                vozilo.BrUgovora = dt.Rows[0]["brUgovora"].ToString();
+                vozilo.RegOznaka = dt.Rows[0]["regOznaka"].ToString();
+            
             return vozilo;
         }
 
@@ -37,12 +34,12 @@ namespace KPP_Alpha1.HelperClasses
 
             DjelatnikModel djelatnik = new();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                djelatnik.Id = Convert.ToInt32(row["id"].ToString());
-                djelatnik.Oib = row["oib"].ToString();
-            }
-
+            djelatnik.Id = Convert.ToInt32(dt.Rows[0]["ID"]);
+            djelatnik.PerNum = Convert.ToInt32(dt.Rows[0]["PN"]);
+            djelatnik.Ime = dt.Rows[0]["Ime"].ToString();
+            djelatnik.Prezime = dt.Rows[0]["Prezime"].ToString();
+            djelatnik.Oib = dt.Rows[0]["Oib"].ToString();
+            
             return djelatnik;
         }
         internal KeyCardModel UcitavanjeKeyCard(int id)
@@ -52,12 +49,9 @@ namespace KPP_Alpha1.HelperClasses
 
             KeyCardModel kartica = new();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                kartica.Id = Convert.ToInt32(row["id"].ToString());
-                kartica.Naziv = row["naziv"].ToString();
-            }
-
+                kartica.Id = Convert.ToInt32(dt.Rows[0]["id"]);
+                kartica.Naziv = dt.Rows[0]["naziv"].ToString();
+            
             return kartica;
         }
         internal DataCardModel UcitavanjeDataCard(int id)
@@ -67,13 +61,10 @@ namespace KPP_Alpha1.HelperClasses
 
             DataCardModel kartica = new();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                kartica.Id = Convert.ToInt32(row["id"].ToString());
-                kartica.Imei = row["imei"].ToString();
-                kartica.SerBr = row["SerBr"].ToString();
-            }
-
+                kartica.Id = Convert.ToInt32(dt.Rows[0]["id"]);
+                kartica.Imei = dt.Rows[0]["imei"].ToString();
+                kartica.SerBr = dt.Rows[0]["SerBr"].ToString();
+            
             return kartica;
         }
         internal EncModel UcitavanjeEnc(int id)
@@ -83,12 +74,9 @@ namespace KPP_Alpha1.HelperClasses
 
             EncModel enc = new();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                enc.Id = Convert.ToInt32(row["id"].ToString());
-                enc.Naziv = row["naziv"].ToString();
-            }
-
+                enc.Id = Convert.ToInt32(dt.Rows[0]["id"]);
+                enc.Naziv = dt.Rows[0]["naziv"].ToString();
+            
             return enc;
         }
         internal IctOpremaModel UcitavanjeIctOprema(int id)
@@ -98,13 +86,10 @@ namespace KPP_Alpha1.HelperClasses
 
             IctOpremaModel oprema = new();
 
-            foreach (DataRow row in dt.Rows)
-            {
-                oprema.Id = Convert.ToInt32(row["id"].ToString());
-                oprema.Naziv = row["naziv"].ToString();
-                oprema.InventarniBroj = row["invBr"].ToString();
-            }
-
+                oprema.Id = Convert.ToInt32(dt.Rows[0]["id"]);
+                oprema.Naziv = dt.Rows[0]["naziv"].ToString();
+                oprema.InventarniBroj = dt.Rows[0]["invBr"].ToString();
+            
             return oprema;
         }
     }

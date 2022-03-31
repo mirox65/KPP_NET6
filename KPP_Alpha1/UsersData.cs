@@ -17,6 +17,11 @@ namespace KPP_Alpha1
         readonly DictionaryHelper dictionary = new();
         readonly UsersDataController controller = new();
         readonly DoubleCheckHelper doubleCheck = new();
+        readonly WordHelper wordHelper = new();
+        readonly ModelHelper modelHelper = new();
+
+        private readonly string fileName = @"R:\Studenti\DB\KPP_DB\Bianco dokumenti - NE DIRATI\KORISNIČKI_PODATCI_TEMPLATE.docx";
+        private readonly string saveAsPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
         private Dictionary<int, string> djelatniciDic = new();
 
@@ -194,6 +199,16 @@ namespace KPP_Alpha1
         private void ClearToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clear();
+        }
+
+        private void Btn_Create_Click(object sender, EventArgs e)
+        {
+            var usersData = SetProperties();
+            var djelatnik = modelHelper.UcitavanjeDjelatnika(djelatniciDic.FirstOrDefault(d => d.Value == Txt_Djelatnik.Text.Trim()).Key);
+
+            string saveAs = $"{saveAsPath}\\Korisnički podatci_{Txt_Djelatnik.Text}.docx";
+            wordHelper.CreateWordDocument(fileName, saveAs, usersData, djelatnik);
+            wordHelper.OpenWordDocumentForPrint(saveAs);
         }
     }
 }

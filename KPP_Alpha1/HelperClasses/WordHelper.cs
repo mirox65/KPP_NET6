@@ -135,6 +135,52 @@ namespace KPP_Alpha1.HelperClasses
             MessageBox.Show($"{zaRaDoc.TipDokumenta} kreirana!");
 
         }
+        //Kreiranje word dokumenta - UsersData
+        public void CreateWordDocument(object filename, object SaveAs, UsersDataModel usersData, DjelatnikModel djelatnik)
+        {
+            Word.Application wordApp = new();
+            object missing = Missing.Value;
+            Word.Document myWordDoc = null;
+
+            if (File.Exists((string)filename))
+            {
+                object readOnly = false;
+                object isVisible = false;
+                wordApp.Visible = false;
+
+                myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
+                    ref missing, ref missing, ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing, ref missing, ref missing,
+                    ref missing, ref missing, ref missing);
+                myWordDoc.Activate();
+
+                //find and replace
+                FindAndReplace(wordApp, "<datum>", System.DateTime.Now.Date);
+                FindAndReplace(wordApp, "<djelatnik.Ime>", djelatnik.Ime);
+                FindAndReplace(wordApp, "<djelatnik.Prezime>", djelatnik.Prezime);
+                FindAndReplace(wordApp, "<djelatnik.Pn1>", djelatnik.PerNum);
+                FindAndReplace(wordApp, "<djelatnik.email>", usersData.Email);
+                FindAndReplace(wordApp, "<djelatnik.username>", usersData.Username);
+                FindAndReplace(wordApp, "<djelatnik.Pn2>", djelatnik.PerNum);
+                FindAndReplace(wordApp, "<djelatnik.password1>", usersData.Password);
+                FindAndReplace(wordApp, "<djelatnik.Pn3>-<djelatnik.password2>", $"{djelatnik.PerNum}-{usersData.Password}");
+            }
+            else
+            {
+                MessageBox.Show("File not found!");
+            }
+
+            //Save as
+            myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing,
+                ref missing, ref missing, ref missing, ref missing,
+                ref missing);
+
+            myWordDoc.Close();
+            wordApp.Quit();
+            MessageBox.Show("Korisnički podatci napravljeni!", "Obavijest");
+        }
         //Otvaranje dokumenta za print
         public void OpenWordDocumentForPrint(string wordToOpen)
         {
