@@ -167,6 +167,7 @@ namespace KPP_Alpha1
         private void CmbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             DtUpdate(CmbFilter.Text);
+            CmbAktivno.SelectedIndex = CmbFilter.SelectedIndex;
         }
 
         private void Dgv_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -187,7 +188,7 @@ namespace KPP_Alpha1
             try
             {
                 (Dgv.DataSource as DataTable).DefaultView.RowFilter =
-                    String.Format("Naziv LIKE '%{0}%' OR Serijski LIKE '%{0}%'", Txt_Search.Text.Trim());
+                    String.Format("Naziv LIKE '%{0}%' OR Serijski LIKE '%{0}%' OR inventarni LIKE '%{0}%' OR Zadužio LIKE '%{0}%'", Txt_Search.Text.Trim());
                 if (Dgv.Rows[0].Cells[0].Value is null)
                 {
                     return;
