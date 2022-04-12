@@ -98,6 +98,8 @@ namespace KPP_Alpha1
                     if (LoginHelper.StaticUloga == "Administrator")
                     {
                         dodajKorisnikaToolStripMenuItem.Visible = true;
+                        // dodano dok se ne upišu svi podatci nakon odrade obrisati red 101 i 102 !!ODKOMENTIRAJ RED 110
+                        HRToolStripMenuItem.Visible = true;
 
                         if (LoginHelper.StaticOdjel == "ICT")
                         {
@@ -105,7 +107,7 @@ namespace KPP_Alpha1
                         }
                         if (LoginHelper.StaticOdjel == "ICT" || LoginHelper.StaticOdjel == "HR")
                         {
-                            HRToolStripMenuItem.Visible = true;
+                           // HRToolStripMenuItem.Visible = true;
                         }
                     }
                     tssl_korisnik.Text = LoginHelper.StaticKorisnik;
