@@ -98,8 +98,6 @@ namespace KPP_Alpha1
                     if (LoginHelper.StaticUloga == "Administrator")
                     {
                         dodajKorisnikaToolStripMenuItem.Visible = true;
-                        // dodano dok se ne upišu svi podatci nakon odrade obrisati red 101 i 102 !!ODKOMENTIRAJ RED 110
-                        HRToolStripMenuItem.Visible = true;
 
                         if (LoginHelper.StaticOdjel == "ICT")
                         {

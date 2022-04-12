@@ -256,7 +256,7 @@
             // izvozPodatakaToolStripMenuItem
             // 
             this.izvozPodatakaToolStripMenuItem.Name = "izvozPodatakaToolStripMenuItem";
-            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.izvozPodatakaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.izvozPodatakaToolStripMenuItem.Text = "Izvoz podataka";
             this.izvozPodatakaToolStripMenuItem.Click += new System.EventHandler(this.izvozPodatakaToolStripMenuItem_Click);
             // 
@@ -271,7 +271,7 @@
             // ovlastenjaToolStripMenuItem
             // 
             this.ovlastenjaToolStripMenuItem.Name = "ovlastenjaToolStripMenuItem";
-            this.ovlastenjaToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.ovlastenjaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.ovlastenjaToolStripMenuItem.Text = "Ovlaštenja";
             this.ovlastenjaToolStripMenuItem.Click += new System.EventHandler(this.ovlastenjaToolStripMenuItem_Click);
             // 
@@ -298,7 +298,6 @@
             this.HRToolStripMenuItem.Name = "HRToolStripMenuItem";
             this.HRToolStripMenuItem.Size = new System.Drawing.Size(39, 23);
             this.HRToolStripMenuItem.Text = "HR";
-            this.HRToolStripMenuItem.Visible = false;
             // 
             // PodatciODjelatnicimaToolStripMenuItem
             // 
@@ -318,7 +317,7 @@
             // oAplikacijiToolStripMenuItem
             // 
             this.oAplikacijiToolStripMenuItem.Name = "oAplikacijiToolStripMenuItem";
-            this.oAplikacijiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.oAplikacijiToolStripMenuItem.Size = new System.Drawing.Size(143, 24);
             this.oAplikacijiToolStripMenuItem.Text = "O aplikaciji";
             this.oAplikacijiToolStripMenuItem.Click += new System.EventHandler(this.oAplikacijiToolStripMenuItem_Click);
             // 
